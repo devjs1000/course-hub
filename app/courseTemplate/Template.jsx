@@ -1,5 +1,5 @@
 import React from "react";
-import "./app.css";
+import "./App.css";
 import demo from "./assets/feature-icons/doubt.png";
 import Header from "./components/Header/Header";
 import Hero from "./containers/hero/Hero";
