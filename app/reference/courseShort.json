@@ -1,0 +1,313 @@
+{
+  "title": "category",
+  "data": [
+    {
+      "_id": "61c6fa162561b973f3e80cbf",
+      "instructorId": "61d326239e68ba700baddce4",
+      "name": "course name",
+      "tagline": "punchline",
+      "type": "category",
+      "description": "description",
+      "assignmentQuestion": "Build a website having 4 buttons, 3 input fields, a <h1> header and add image and video to the page",
+      "price": 1499,
+      "advantages": [
+        {
+          "advantageName": "Beginner friendly",
+          "_id": "61c6fa162561b973f3e80cc0"
+        },
+        {
+          "advantageName": "24x7 support",
+          "_id": "61c6fa162561b973f3e80cc1"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterName": "Introduction to webpages",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic functioning of webpages in the internet",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fa162561b973f3e80cc3"
+        },
+        {
+          "chapterNumber": 2,
+          "chapterName": "Heading tags",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic styling of headers",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fa162561b973f3e80cc4"
+        }
+      ],
+      "image": "https://cdn.lynda.com/course/170427/170427-636923997581008095-16x9.jpg",
+      "createdAt": "2021-12-25T11:01:42.860Z",
+      "updatedAt": "2021-12-25T11:01:42.860Z",
+      "__v": 0,
+      "quiz": [
+        {
+          "_id": "6204bf435f9cb7c9ff68cfe9",
+          "question": "What tag is used for making text bold?",
+          "correct": "b",
+          "incorrect": ["p", "h1", "i"]
+        },
+        {
+          "_id": "6204bf435f9cb7c9ff68cfea",
+          "question": "What tag is used for italic?",
+          "correct": "i",
+          "incorrect": ["p", "h1", "b"]
+        },
+        {
+          "_id": "6204bf435f9cb7c9ff68cfeb",
+          "question": "What is larger in size?",
+          "correct": "h1",
+          "incorrect": ["h2", "h3", "h4"]
+        },
+        {
+          "_id": "6204bf435f9cb7c9ff68cfec",
+          "question": "What does HTML stand for?",
+          "correct": "Hyper Text Markup Language",
+          "incorrect": [
+            "Home Tool Markup Language",
+            "Hyperlinks and Text Markup Language",
+            "Home Title Markup Language"
+          ]
+        }
+      ]
+    },
+    
+    {
+      "_id": "61c6fbc12561b973f3e80ccd",
+      "instructorId": "61d326239e68ba700baddce4",
+      "name": "ReactJS Course",
+      "tagline": "Beginner to Advance ReactJS",
+      "type": "frontend",
+      "description": "Course taught by Adnan Sir with 10+ years in IT Industry",
+      "assignmentQuestion": "Create 2 pages of user profile and employee profile",
+      "price": 1499,
+      "advantages": [
+        {
+          "advantageName": "Beginner friendly",
+          "_id": "61c6fbc12561b973f3e80cce"
+        },
+        {
+          "advantageName": "24x7 support",
+          "_id": "61c6fbc12561b973f3e80ccf"
+        },
+        {
+          "advantageName": "Live doubt solving",
+          "_id": "61c6fbc12561b973f3e80cd0"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterName": "Introduction to Frontend services",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fbc12561b973f3e80cd1"
+        },
+        {
+          "chapterNumber": 2,
+          "chapterName": "Introduction to React and Redux",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic features of ReactJS",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fbc12561b973f3e80cd2"
+        }
+      ],
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--50wZvNu6--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/1wwdyw5de8avrdkgtz5n.png",
+      "createdAt": "2021-12-25T11:08:49.101Z",
+      "updatedAt": "2021-12-25T11:08:49.101Z",
+      "__v": 0,
+      "quiz": []
+    },
+    {
+      "_id": "61c6fcf62561b973f3e80cd4",
+      "instructorId": "61d339be9e68ba700bade401",
+      "name": "Javascript Course",
+      "tagline": "Beginner to Advance Javascript",
+      "type": "frontend",
+      "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
+      "assignmentQuestion": "Create 2 models of user and employee",
+      "price": 1499,
+      "advantages": [
+        {
+          "advantageName": "Beginner friendly",
+          "_id": "61c6fcf62561b973f3e80cd5"
+        },
+        {
+          "advantageName": "24x7 support",
+          "_id": "61c6fcf62561b973f3e80cd6"
+        },
+        {
+          "advantageName": "Live doubt solving",
+          "_id": "61c6fcf62561b973f3e80cd7"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterName": "Introduction to Javascript",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fcf62561b973f3e80cd8"
+        },
+        {
+          "chapterNumber": 2,
+          "chapterName": "Introduction to Javascript and its frameworks",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic features of Javascript",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fcf62561b973f3e80cd9"
+        }
+      ],
+      "image": "https://cyberhoot.com/wp-content/uploads/2020/07/Free-Courses-to-learn-JavaScript-768x432.jpg",
+      "createdAt": "2021-12-25T11:13:58.523Z",
+      "updatedAt": "2021-12-25T11:13:58.523Z",
+      "__v": 0,
+      "quiz": []
+    },
+    {
+      "_id": "61c6fddf2561b973f3e80cdb",
+      "instructorId": "61d339be9e68ba700bade401",
+      "name": "AngularJS  Course",
+      "tagline": "Beginner to Advance Angular",
+      "type": "frontend",
+      "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
+      "assignmentQuestion": "Create 2 UI of user profile page and employee profile page",
+      "price": 1499,
+      "advantages": [
+        {
+          "advantageName": "Beginner friendly",
+          "_id": "61c6fddf2561b973f3e80cdc"
+        },
+        {
+          "advantageName": "24x7 support",
+          "_id": "61c6fddf2561b973f3e80cdd"
+        },
+        {
+          "advantageName": "Live doubt solving",
+          "_id": "61c6fddf2561b973f3e80cde"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterName": "Introduction to Angular",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fddf2561b973f3e80cdf"
+        },
+        {
+          "chapterNumber": 2,
+          "chapterName": "Introduction to Angular and its frameworks",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic features of AngularJS",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6fddf2561b973f3e80ce0"
+        }
+      ],
+      "image": "https://nareshit.com/wp-content/uploads/2018/08/angular-JS-online-training-nareshit.jpg",
+      "createdAt": "2021-12-25T11:17:51.494Z",
+      "updatedAt": "2021-12-25T11:17:51.494Z",
+      "__v": 0,
+      "quiz": []
+    },
+    {
+      "_id": "61c6ff152561b973f3e80ce2",
+      "instructorId": "61d339be9e68ba700bade401",
+      "name": "VueJS Course",
+      "tagline": "Beginner to Advance Vue JS",
+      "type": "frontend",
+      "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
+      "assignmentQuestion": "Create 2 UI pages of user profile and employee profile",
+      "price": 1499,
+      "advantages": [
+        {
+          "advantageName": "Beginner friendly",
+          "_id": "61c6ff152561b973f3e80ce3"
+        },
+        {
+          "advantageName": "24x7 support",
+          "_id": "61c6ff152561b973f3e80ce4"
+        },
+        {
+          "advantageName": "Live doubt solving",
+          "_id": "61c6ff152561b973f3e80ce5"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterName": "Introduction to Vue JS",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6ff152561b973f3e80ce6"
+        },
+        {
+          "chapterNumber": 2,
+          "chapterName": "Introduction to Vue and its frameworks",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic features of NodeJS",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c6ff152561b973f3e80ce7"
+        }
+      ],
+      "image": "https://3lhowb48prep40031529g5yj-wpengine.netdna-ssl.com/wp-content/uploads/2019/10/logo-vuejs-min.png",
+      "createdAt": "2021-12-25T11:23:01.010Z",
+      "updatedAt": "2021-12-25T11:23:01.010Z",
+      "__v": 0,
+      "quiz": []
+    },
+    {
+      "_id": "61c703ea2561b973f3e80db7",
+      "instructorId": "61d326239e68ba700baddce4",
+      "name": "ElectronJS Course",
+      "tagline": "Beginner to Advance ElectronJS stack",
+      "type": "frontend",
+      "description": "Course taught by Adnan Sir with 20+ years in IT Industry",
+      "assignmentQuestion": "Create 2 Frontend pages of user and employee profile page",
+      "price": 1499,
+      "advantages": [
+        {
+          "advantageName": "Beginner friendly",
+          "_id": "61c703ea2561b973f3e80db8"
+        },
+        {
+          "advantageName": "24x7 support",
+          "_id": "61c703ea2561b973f3e80db9"
+        },
+        {
+          "advantageName": "Live doubt solving",
+          "_id": "61c703ea2561b973f3e80dba"
+        }
+      ],
+      "chapters": [
+        {
+          "chapterNumber": 1,
+          "chapterName": "Introduction to ElectronJS",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c703ea2561b973f3e80dbb"
+        },
+        {
+          "chapterNumber": 2,
+          "chapterName": "Introduction to ElectronJS and its frameworks",
+          "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+          "chapterVideoDescription": "This chapter introduces to basic features of ElectronJS",
+          "chapterStudyMaterial": "Self study",
+          "_id": "61c703ea2561b973f3e80dbc"
+        }
+      ],
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--dEmfE1jO--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/s3uitx6rdv7sod1g2acz.png",
+      "createdAt": "2021-12-25T11:43:38.851Z",
+      "updatedAt": "2021-12-25T11:43:38.851Z",
+      "__v": 0,
+      "quiz": []
+    }
+  ]
+}
