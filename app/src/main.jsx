@@ -4,13 +4,15 @@ import App from "./App";
 import "./styles/tailwind.css";
 import "./styles/global.css";
 import MainContext from "./context/mainContext";
-
+import { BrowserRouter } from "react-router-dom";
 
 render(
   <StrictMode>
-    <MainContext>
-      <App />
-    </MainContext>
+    <BrowserRouter>
+      <MainContext>
+        <App />
+      </MainContext>
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById("root")
 );
