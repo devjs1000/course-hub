@@ -4,7 +4,7 @@ import logoPrimary from '../../images/logo-primary.png';
 import menuBar from '../../images/icons/menu-bar.svg';
 import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
-import Link from 'react-router-dom'
+import {Link} from 'react-router-dom'
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
 
