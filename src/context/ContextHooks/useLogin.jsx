@@ -2,23 +2,23 @@ import axios from 'axios';
 import useStore from '../useStore'
 
 const useLogin = () => {
-    const {setUser,setUserLoading} = useStore()
+    const {setUser,setUserLoading, userLoading} = useStore()
+
+    if(userLoading) return
 
     const login =async (data)=>{
         setUserLoading(true)
         try{
-            const response= axios.post('link will be here',data)
-            if('all ok here from response'){
-                // setUser(response.data) or do something else here
+            const response= axios.post('/api/user/login',data)
+            if(response.data){
+                setUser(response.data)
                 setUserLoading(false)
             }else{
-                // do something here
                 setUserLoading(false)
             }
-        }catch(error){
-             // do something here
+          }catch(error){
             setUserLoading(false)
-        }
+          }
     }
     return {login}
 };

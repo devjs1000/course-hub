@@ -2,23 +2,24 @@ import axios from 'axios';
 import useStore from '../useStore'
 
 const useSignup = () => {
-    const {setUser,setUserLoading} = useStore()
+    const {setUser,setUserLoading, userLoading} = useStore()
+
+    if(userLoading) return
 
     const signup =async (data)=>{
+
         setUserLoading(true)
         try{
-            const response= axios.post('link will be here',data)
-            if('all ok here from response'){
-                // setUser(response.data) or do something else here
+            const response= axios.post('/api/user/register',data)
+            if(response.data){
+                setUser(response.data)
                 setUserLoading(false)
             }else{
-                // do something here
                 setUserLoading(false)
             }
-        }catch(error){
-             // do something here
+          }catch(error){
             setUserLoading(false)
-        }
+          }
     }
     return {signup}
 };
