@@ -1,69 +1,70 @@
 :root {
-	--color-primary-dark: #9d0000;
+  --color-primary-dark: #9d0000;
 }
 
 body {
-	padding: 2rem;
-	background-color: #d94749;
+  padding: 2rem;
+  background-color: #d94749;
 }
 
 /* BUTTON */
-.btn {
-	height: 3rem;
-	width: 7rem;
-}
+/* /* .btn {
+  height: 3rem;
+  width: 7rem;
+} */
 
 @media (min-width: 500px) {
-	.btn {
-		width: 8rem;
-	}
+  .btn {
+    width: 8rem;
+  }
 }
 
 @media (min-width: 1024px) {
-	.btn {
-		width: 10rem;
-	}
+  .btn {
+    width: 10rem;
+  }
 }
+*/
 
 /* LINK */
-.link::after {
-	position: absolute;
-	content: '';
-	height: 2px;
-	width: 100%;
-	bottom: -0.3rem;
-	left: 0;
-	background-color: currentColor;
-}
+/* .link::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  bottom: -0.3rem;
+  left: 0;
+  background-color: currentColor;
+} */
 
 /* sectio-hero */
-.section-hero {
-	height: 85vh;
-	z-index: -2;
-}
+/* .section-hero {
+  height: 85vh;
+  z-index: -2;
+} */
 
 .section-hero::before {
-	position: absolute;
-	content: '';
-	right: 0;
-	top: 0;
-	height: 100%;
-	width: calc(100% - 50%);
-	background: #fff;
-	z-index: -1;
-	clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: calc(100% - 50%);
+  background: #fff;
+  z-index: -1;
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .section-hero-svg {
-	position: absolute;
-	bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .sidebar {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 20%;
-	height: 100vh;
-	background-color: #fff7f3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100vh;
+  background-color: #fff7f3;
 }

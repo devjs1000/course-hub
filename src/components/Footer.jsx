@@ -1,7 +1,15 @@
 import React from "react";
 import { Envelope, Facebook, Geo, Google, Telephone, Twitter, Youtube } from "react-bootstrap-icons";
+import { useLocation } from "react-router-dom";
 import { footerStyles } from "../styles/styleObjects";
+
 const Footer = () => {
+
+  const location = useLocation()
+
+  const path = location.pathname.split('/')[1];
+
+  if(path==='login'||path==='signup')return null;
 
   
   return (
