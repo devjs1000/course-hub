@@ -2,9 +2,8 @@ import axios from 'axios';
 import useStore from '../useStore'
 
 const useSignup = () => {
-    const {setUser,setUserLoading, userLoading} = useStore()
+    const {setUser,setUserLoading} = useStore()
 
-    if(userLoading) return
 
     const signup =async (data)=>{
 

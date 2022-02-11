@@ -2,9 +2,8 @@ import axios from 'axios';
 import useStore from '../useStore'
 
 const useLogin = () => {
-    const {setUser,setUserLoading, userLoading} = useStore()
+    const {setUser,setUserLoading} = useStore()
 
-    if(userLoading) return
 
     const login =async (data)=>{
         setUserLoading(true)
