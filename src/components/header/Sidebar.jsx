@@ -6,9 +6,9 @@ import assignmentIcon from '../../images/icons/assignment.svg';
 import profileIcon from '../../images/icons/profile.svg';
 
 function Sidebar({ openSidebar, setOpenSidebar }) {
-	let asideClasses = `absolute top-0 right-0 w-3/12  ${
+	let asideClasses = `absolute top-24 right-0 w-full  ${
 		openSidebar ? 'transform translate-x-0' : 'transform translate-x-full'
-	} h-screen bg-white py-3 px-16 drop-shadow-lg transition ease-out duration-500`;
+	} h-screen bg-white py-3 px-8 drop-shadow-lg transition ease-out duration-500 md:w-4/12 md:top-0 lg:w-1/4`;
 
 	const closeSidebarHandler = () => {
 		setOpenSidebar(!openSidebar);
@@ -34,7 +34,7 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
 
 	return (
 		<aside className={asideClasses}>
-			<ul className="flex flex-col items-start gap-10">
+			<ul className="flex flex-col items-start gap-10 top">
 				<li className="self-end cursor-pointer">
 					<img
 						src={closeIcon}

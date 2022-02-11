@@ -12,25 +12,24 @@ function Navbar() {
 	};
 
 	return (
-		<nav className="flex items-center px-16 py-2 bg-white relative">
-			<div className="flex items-center gap-10">
-				<img src={logoPrimary} alt="primary-logo img" />
-			</div>
-			<div className="flex items-center gap-4 ml-auto">
+		<nav className="flex flex-col gap-3 items-center justify-between px-4 py-2 bg-white relative xsm:gap-5 md:flex-row md:px-16">
+			<img src={logoPrimary} alt="primary-logo-img" className="w-36" />
+
+			<div className="flex items-center gap-4 xsm:gap-6">
 				<a
 					href="#"
-					className="link relative text-primary-color-dark font-semibold"
+					className="link relative text-sm text-primary-color-dark font-semibold xsm:text-base"
 				>
 					New here?
 				</a>
 				<Button isPrimary={true}>Register</Button>
+				<img
+					src={menuBar}
+					alt="ham-menu-icon"
+					className="w-8 cursor-pointer ml-4"
+					onClick={openSidebarHandler}
+				/>
 			</div>
-			<img
-				src={menuBar}
-				alt="ham-menu-icon"
-				className="w-10 cursor-pointer ml-4"
-				onClick={openSidebarHandler}
-			/>
 
 			<Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
 		</nav>

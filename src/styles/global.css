@@ -9,8 +9,8 @@ body {
 
 /* BUTTON */
 .btn {
-	height: 3rem;
-	width: 7rem;
+	height: 2.5rem;
+	width: 6rem;
 }
 
 @media (min-width: 500px) {
@@ -21,6 +21,7 @@ body {
 
 @media (min-width: 1024px) {
 	.btn {
+		height: 3rem;
 		width: 10rem;
 	}
 }
@@ -38,23 +39,57 @@ body {
 
 /* sectio-hero */
 .section-hero {
-	height: 85vh;
 	z-index: -2;
 }
 
 .section-hero::before {
 	position: absolute;
 	content: '';
-	right: 0;
-	top: 0;
-	height: 100%;
-	width: calc(100% - 50%);
-	background: #fff;
+	left: 0;
+	top: 1%;
+	height: 30%;
+	width: 100%;
 	z-index: -1;
-	clip-path: polygon(100% 0, 100% 0, 100% 100%, 0% 100%);
+	background: #fff;
+	clip-path: polygon(100% 0, 100% 100%, 50% 50%, 0 100%, 0 0);
 }
 
 .section-hero-svg {
 	position: absolute;
 	bottom: 0;
+	visibility: hidden;
+}
+
+@media (min-width: 500px) {
+	.section-hero::before {
+		height: 40%;
+	}
+}
+
+@media (min-width: 768px) {
+	.section-hero::before {
+		height: 40%;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 50%;
+		z-index: -1;
+		transform: rotateZ(180deg);
+		transform-origin: right;
+		clip-path: polygon(0 100%, 100% 0, 0 0);
+	}
+}
+
+@media (min-width: 1024px) {
+	.section-hero-svg {
+		width: 15rem;
+		visibility: visible;
+	}
+}
+
+@media (min-width: 1280px) {
+	.section-hero-svg {
+		width: 20rem;
+		left: 5rem;
+	}
 }
