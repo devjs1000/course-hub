@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import logoPrimary from '../../images/logo-primary.png';
 import menuBar from '../../images/icons/menu-bar.svg';
 import Button from '../../UI/Button';
@@ -9,11 +10,12 @@ function Navbar() {
 
 	const openSidebarHandler = () => {
 		setOpenSidebar(!openSidebar);
+		document.getElementById('root').style.filter = 'blur(3px)';
 	};
 
 	return (
 		<nav className="flex flex-col gap-3 items-center justify-between px-4 py-2 bg-white relative xsm:gap-5 md:flex-row md:px-16">
-			<img src={logoPrimary} alt="primary-logo-img" className="w-36" />
+			<img src={logoPrimary} alt="primary-logo-img" className="w-36 lg:w-48" />
 
 			<div className="flex items-center gap-4 xsm:gap-6">
 				<a
@@ -30,8 +32,10 @@ function Navbar() {
 					onClick={openSidebarHandler}
 				/>
 			</div>
-
-			<Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />
+			{createPortal(
+				<Sidebar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar} />,
+				document.getElementById('sidebar'),
+			)}
 		</nav>
 	);
 }
