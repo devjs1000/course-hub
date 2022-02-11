@@ -4,7 +4,7 @@ import logoPrimary from '../../images/logo-primary.png';
 import menuBar from '../../images/icons/menu-bar.svg';
 import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
-
+import Link from 'react-router-dom'
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -18,13 +18,15 @@ function Navbar() {
 			<img src={logoPrimary} alt="primary-logo-img" className="w-36 lg:w-48" />
 
 			<div className="flex items-center gap-4 xsm:gap-6">
-				<a
-					href="#"
+				<Link
+					to='/login'
 					className="link relative text-sm text-primary-color-dark font-semibold xsm:text-base"
 				>
-					New here?
-				</a>
+					Login?
+				</Link>
+				<Link to='/signup'>
 				<Button isPrimary={true}>Register</Button>
+				</Link>
 				<img
 					src={menuBar}
 					alt="ham-menu-icon"
