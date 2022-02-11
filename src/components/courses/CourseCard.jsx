@@ -12,8 +12,8 @@ const CourseCard = ({ courseImg }) => {
 				className="course-img h-40 bg-slate-800 bg-no-repeat bg-center relative"
 				style={styles}
 			></div>
-			<h3 className="course-heading text-2xl absolute top-24 right-0 text-white w-3/4 uppercase text-right">
-				<span>Course Title of pytgon</span>
+			<h3 className="course-heading rounded-tl-[1rem] hover:text-red-600 pt-2 truncate h-[5rem] bg-slate-50 text-2xl absolute top-24 right-0 text-red-800 font-semibold w-3/4 uppercase text-right">
+				<span>React js 50 Lectures, 22hrs 50 Lectures, 22hrs</span>
 			</h3>
 			<div className="p-4 flex flex-col items-start gap-2">
 				<p className="text-sm">Author name</p>

@@ -5,9 +5,10 @@ import { List } from 'react-bootstrap-icons';
 import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
 import { Link, useLocation } from 'react-router-dom'
+import useStore from '../../context/useStore'
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
-
+	const {user}=useStore()
 	//this line of code makes navbar hidden in login and signup
 	const location = useLocation()
   const path = location.pathname.split('/')[1];
@@ -24,12 +25,15 @@ function Navbar() {
 			<img src={logoPrimary} alt="primary-logo-img" className="w-36 lg:w-48" />
 
 			<div className="flex items-center gap-4 xsm:gap-6">
+			{!user.token ? <>
 				<Link to='/login' className="link relative text-sm text-primary-color-dark font-semibold xsm:text-base">
 					Login?
 				</Link>
 				<Link to='/signup'>
 					<Button isPrimary={true}>Register</Button>
 				</Link>
+</>: <div>welcome, <span className='text-red-800 text-xl'>{user.data.name}</span></div>
+}
 
 				<List className="w-8 cursor-pointer ml-4 text-7xl" onClick={openSidebarHandler}></List>
 
