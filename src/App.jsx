@@ -7,7 +7,7 @@ import Signup from './components/Auth/Signup';
 import Navbar from './components/header/Navbar'
 function App() {
 	return (
-		<div className="App rounded-md overflow-hidden">
+		<div className="App overflow-hidden">
 			<Navbar />
 			<Routes>
 				<Route path='/' element={<Home />} />

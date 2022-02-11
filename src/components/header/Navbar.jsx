@@ -4,15 +4,20 @@ import logoPrimary from '../../images/logo-primary.png';
 import { List } from 'react-bootstrap-icons';
 import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
+
+	//this line of code makes navbar hidden in login and signup
+	const location = useLocation()
+  const path = location.pathname.split('/')[1];
+  if(path==='login'||path==='signup')return null;
 
 	const openSidebarHandler = () => {
 		setOpenSidebar(!openSidebar);
 		document.getElementById('root').style.filter = 'blur(3px)';
 	};
-		
+
 
 	return (
 		<nav className="flex flex-col gap-3 items-center justify-between px-4 py-2 bg-white relative xsm:gap-5 md:flex-row md:px-16">
@@ -34,7 +39,7 @@ function Navbar() {
 		   document.getElementById('sidebar')
 	   ))}
 		</nav>
-	
+
 	);
 }
 

@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://management-xcitedu.herokuapp.com/",
+        target: "http://management-xcitedu.herokuapp.com",
         changeOrigin: true,
         secure: false,
         ws: true,

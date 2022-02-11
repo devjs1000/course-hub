@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Envelope, Lock} from 'react-bootstrap-icons';
+import { Envelope, Lock, ArrowLeft} from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import useLogin from '../../context/ContextHooks/useLogin';
 import { authDesign } from '../../styles/styleObjects';
 
 const Login = () => {
-    
+
     const {login} = useLogin()
     const [loginData,setLoginData] = useState({})
 
@@ -24,11 +24,14 @@ const Login = () => {
         e.target.reset()
     }
 
- 
+
 
     return (
         <div className={authDesign.screen}>
             <div className={authDesign.mainDiv}>
+            <Link to='/'>
+            <ArrowLeft className='absolute left-[1rem] cursor-pointer' size={30}/>
+            </Link>
 
             <h1 className={authDesign.title}>Login</h1>
 

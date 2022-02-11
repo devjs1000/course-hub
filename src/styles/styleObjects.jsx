@@ -16,14 +16,14 @@ export const footerStyles={
   socialIcon:'text-2xl mx-4 hover:text-red-400 cursor-pointer'
 }
 export const authDesign={
-screen:'h-screen flex items-center justify-center bg-red-500',
-mainDiv:'w-4/5 md:w-2/4 lg:w-2/6 border-2 bg-white rounded-md px-7 py-4',
+screen:'h-screen flex items-center justify-center bg-red-800',
+mainDiv:'w-4/5 md:w-2/4 lg:w-2/6 border-2 bg-white  relative px-7 py-4',
 title:'mb-12 text-center font-bold text-3xl text-gray-600',
 itemDiv:'w-full flex items-center mb-5 pb-3 border-b-2',
 inputIcon:'text-gray-600 font-bold text-2xl',
-input:'w-full pl-2 border-0 outline-none',
+input:'w-full px-4 py-2 border-0 outline-none',
 forgotPass:'w-fit ml-auto my-1 cursor-pointer text-gray-500 font-semibold hover:text-red-500',
-mainBtn:'w-1/2 block mx-auto mt-7 py-2 rounded-3xl text-white font-bold text-md bg-gradient-to-r from-red-500 to-orange-500 hover:bg-gradient-to-l from-red-500 to-orange-500',
+mainBtn:'w-1/2 block mx-auto mt-7 py-2 rounded-3xl text-white font-bold text-md bg-gradient-to-r from-red-500 to-red-800 hover:bg-gradient-to-l from-red-500 to-orange-500',
 bottomText:'mt-8 text-center font-semibold text-gray-500 border-t-2',
 bottomIn:'ml-2 text-red-500 cursor-pointer',
 }

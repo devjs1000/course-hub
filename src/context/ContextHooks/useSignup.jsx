@@ -9,7 +9,7 @@ const useSignup = () => {
 
         setUserLoading(true)
         try{
-            const response= axios.post('/api/user/register',data)
+            const response=await axios.post('http://management-xcitedu.herokuapp.com/user/userRegister',data)
             if(response.data){
                 setUser(response.data)
                 setUserLoading(false)

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {authDesign} from '../../styles/styleObjects'
-import { Envelope, Lock, Person} from 'react-bootstrap-icons';
+import { Envelope, Lock, Person, TelephonePlusFill, ArrowLeft} from 'react-bootstrap-icons';
 import useSignup from '../../context/ContextHooks/useSignup';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const {signup} = useSignup()
-    const [signupData,setSignupData] = useState({})
+    const [signupData,setSignupData] = useState({isAdmin:false, isInstructor:false})
 
     const getSignupData=e=>{
         const name = e.target.name
@@ -18,13 +18,7 @@ const Signup = () => {
 
     const submitSignup=e=>{
         e.preventDefault()
-        
-        if(signupData.password.length<6){
-            return alert('Password should be minimum 6 characters long')
-        }
-        if(signupData.password!==signupData.password2){
-            return alert('Password didn"t matched')
-        }
+
         signup(signupData)
         e.target.reset()
     }
@@ -34,29 +28,31 @@ const Signup = () => {
     return (
         <div className={authDesign.screen}>
             <div className={authDesign.mainDiv}>
-
+            <Link to='/'>
+            <ArrowLeft className='absolute left-[1rem] cursor-pointer' size={30}/>
+            </Link>
             <h1 className={authDesign.title}>Signup</h1>
 
             <form onSubmit={submitSignup}>
 
                 <div className={authDesign.itemDiv}>
                     <Person className={authDesign.inputIcon}/>
-                    <input onChange={getSignupData} required name='name' placeholder='Enter your name' className={authDesign.input} type="text" />
+                    <input onChange={getSignupData} required name='name' placeholder='name' className={authDesign.input} type="text" />
                 </div>
 
                 <div className={authDesign.itemDiv}>
                     <Envelope className={authDesign.inputIcon}/>
-                    <input onChange={getSignupData} required name='email' placeholder='Enter your email' className={authDesign.input} type="email" />
+                    <input onChange={getSignupData} required name='email' placeholder='email' className={authDesign.input} type="email" />
                 </div>
 
                 <div className={authDesign.itemDiv}>
                     <Lock className={authDesign.inputIcon}/>
-                    <input onChange={getSignupData} required name='password' placeholder='Enter your password' className={authDesign.input} type="password" />
+                    <input onChange={getSignupData} required name='password' placeholder='password' className={authDesign.input} type="password" />
                 </div>
 
                 <div className={authDesign.itemDiv}>
-                    <Lock className={authDesign.inputIcon}/>
-                    <input onChange={getSignupData} required name='password2' placeholder='Retype your password' className={authDesign.input} type="password" />
+                    <TelephonePlusFill className={authDesign.inputIcon}/>
+                    <input onChange={getSignupData} required name='mobileNumber' placeholder='mobile number' className={authDesign.input} type="number" />
                 </div>
 
                 <button type='submit' className={authDesign.mainBtn}>Signup</button>
