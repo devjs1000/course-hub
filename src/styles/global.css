@@ -58,12 +58,3 @@ body {
 	position: absolute;
 	bottom: 0;
 }
-
-.sidebar {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 20%;
-	height: 100vh;
-	background-color: #fff7f3;
-}
