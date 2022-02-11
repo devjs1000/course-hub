@@ -18,6 +18,13 @@ const Signup = () => {
 
     const submitSignup=e=>{
         e.preventDefault()
+        
+        if(signupData.password.length<6){
+            return alert('Password should be minimum 6 characters long')
+        }
+        if(signupData.password!==signupData.password2){
+            return alert('Password didn"t matched')
+        }
         signup(signupData)
         e.target.reset()
     }
