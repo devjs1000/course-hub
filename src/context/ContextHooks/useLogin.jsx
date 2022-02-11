@@ -8,7 +8,7 @@ const useLogin = () => {
     const login =async (data)=>{
         setUserLoading(true)
         try{
-            const response=await axios.post('http://management-xcitedu.herokuapp.com/user/userLogin',data)
+            const response=await axios.post('/api/user/userLogin',data)
             if(response.data){
                 setUser(response.data)
                 setUserLoading(false)

@@ -16,9 +16,17 @@ const Signup = () => {
         setSignupData(newData)
     }
 
+    const getChecks=e=>{
+        const name = e.target.name
+        const value = e.target.checked
+        const newData = {...signupData}
+        newData[name]=value
+        setSignupData(newData)
+    }
+
     const submitSignup=e=>{
         e.preventDefault()
-
+// console.log(signupData);
         signup(signupData)
         e.target.reset()
     }
@@ -54,6 +62,10 @@ const Signup = () => {
                     <TelephonePlusFill className={authDesign.inputIcon}/>
                     <input onChange={getSignupData} required name='mobileNumber' placeholder='mobile number' className={authDesign.input} type="number" />
                 </div>
+                <input type="checkbox" onChange={getChecks} value={true} id="isInstructor" name="isInstructor"  />
+                <label for="isInstructor" className='px-2' >isInstructor?</label><br />
+                <input type="checkbox" onChange={getChecks} id="isAdmin" value={true} name="isAdmin" />
+                <label for="isAdmin" className='px-2'>isAdmin?</label><br />
 
                 <button type='submit' className={authDesign.mainBtn}>Signup</button>
 
