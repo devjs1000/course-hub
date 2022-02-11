@@ -8,7 +8,7 @@ const Auth = () => {
     const [signupData,setSignupData] = useState({})
     const [loginData,setLoginData] = useState({})
 
-    var container;
+    let container;
 
     const getSignupData=e=>{
         const name = e.target.name
