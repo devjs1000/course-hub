@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import logoPrimary from '../../images/logo-primary.png';
-import menuBar from '../../images/icons/menu-bar.svg';
+import { List } from 'react-bootstrap-icons';
 import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
 
@@ -25,10 +25,8 @@ function Navbar() {
 					New here?
 				</a>
 				<Button isPrimary={true}>Register</Button>
-				<img
-					src={menuBar}
-					alt="ham-menu-icon"
-					className="w-8 cursor-pointer ml-4"
+				<List
+					className="w-8 cursor-pointer ml-4 text-7xl"
 					onClick={openSidebarHandler}
 				/>
 			</div>
