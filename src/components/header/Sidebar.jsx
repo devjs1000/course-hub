@@ -7,7 +7,7 @@ const Overlay = ({ closeSidebarHandler }) => {
 };
 
 function Sidebar({ openSidebar, setOpenSidebar }) {
-	let asideClasses = `fixed top-24 right-0 w-full  ${
+	let asideClasses = `fixed top-0 right-0 w-full  ${
 		openSidebar ? 'transform translate-x-0' : 'transform translate-x-full'
 	} h-full bg-white py-6 px-8 drop-shadow-lg transition ease-out duration-500 md:w-4/12 md:top-0 lg:w-1/4`;
 
