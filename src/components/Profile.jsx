@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Activity, BoxArrowLeft, Journal, PatchCheck, Person,  Sliders, XDiamond } from 'react-bootstrap-icons';
 
 const Profile = () => {
+    const [active,setActive] = useState('profile')
     const image = 'https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_960_720.png'
 
     const profileDesign={
@@ -9,9 +10,10 @@ const Profile = () => {
         leftMain:'col-span-12 md:col-span-4 lg:col-span-3  p-4 h-fit bg-slate-100',
         profileImg:'p-2 w-24 h-24 rounded-full block mx-auto shadow-2xl',
         profileName:'text-lg font-bold text-center mt-4 text-gray-800',
-        intro:'text-center text-md font-semibold',
-        mainBtn:'ease-in duration-200 w-full flex items-center mt-3 hover:bg-red-700 hover:text-white py-1 rounded-lg shadow-md cursor-pointer bg-white',
-        mainIcon:'mx-2 w-8 h-8 p-1',
+        intro:'text-center text-sm font-semibold',
+        mainBtn:'ease-in duration-200 w-full flex items-center pl-2 mt-3 hover:bg-red-500 hover:text-white py-1 rounded-lg shadow-md cursor-pointer bg-white',
+        active:'ease-in duration-200 w-full flex items-center bg-gray-300 pl-5 mt-3 py-1 rounded-lg shadow-2xl cursor-pointer',
+        mainIcon:'mr-2 w-8 h-8 p-1',
         mainBtnText:'text-md font-bold',
         rightMain:'col-span-12 md:col-span-8 lg:col-span-9 shadow-lg p-4 rounded-lg h-fit bg-white',
         infoMain:'flex justify-between items-center border-b pb-2 text-md font-semibold px-3 mb-3',
@@ -28,32 +30,32 @@ const Profile = () => {
                 <p className={profileDesign.intro}>Student</p>
                 <p className={profileDesign.intro}>Joined at 10th July 2020</p>
 
-                <div className={profileDesign.mainBtn}>
+                <div onClick={()=>setActive('profile')} className={active==='profile'?profileDesign.active:profileDesign.mainBtn}>
                 <Person className={profileDesign.mainIcon}/>
                 <p className={profileDesign.mainBtnText}>Profile</p>
                 </div>
 
-                <div className={profileDesign.mainBtn}>
+                <div onClick={()=>setActive('edit')} className={active==='edit'?profileDesign.active:profileDesign.mainBtn}>
                 <Sliders className={profileDesign.mainIcon}/>
                 <p className={profileDesign.mainBtnText}>Edit Profile</p>
                 </div>
 
-                <div className={profileDesign.mainBtn}>
+                <div onClick={()=>setActive('courses')} className={active==='courses'?profileDesign.active:profileDesign.mainBtn}>
                 <Journal className={profileDesign.mainIcon}/>
                 <p className={profileDesign.mainBtnText}>Courses</p>
                 </div>
 
-                <div className={profileDesign.mainBtn}>
+                <div onClick={()=>setActive('verify')} className={active==='verify'?profileDesign.active:profileDesign.mainBtn}>
                 <PatchCheck className={profileDesign.mainIcon}/>
                 <p className={profileDesign.mainBtnText}>Verifications</p>
                 </div>
 
-                <div className={profileDesign.mainBtn}>
+                <div onClick={()=>setActive('reset')} className={active==='reset'?profileDesign.active:profileDesign.mainBtn}>
                 <XDiamond className={profileDesign.mainIcon}/>
                 <p className={profileDesign.mainBtnText}>Reset Password</p>
                 </div>
 
-                <div className={profileDesign.mainBtn}>
+                <div onClick={()=>setActive('activity')} className={active==='activity'?profileDesign.active:profileDesign.mainBtn}>
                 <Activity className={profileDesign.mainIcon}/>
                 <p className={profileDesign.mainBtnText}>Activity Log</p>
                 </div>
