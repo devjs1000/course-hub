@@ -14,7 +14,7 @@ const Profile = () => {
         mainIcon:'mx-2 text-red-700 w-8 h-8 p-1 bg-white rounded-full',
         mainBtnText:'text-md font-bold',
         rightMain:'col-span-12 md:col-span-8 lg:col-span-9 shadow-lg p-4 rounded-lg h-fit bg-white',
-        infoMain:'flex justify-between items-center border-b border-red-700 pb-2 text-md font-semibold px-3 mb-3',
+        infoMain:'flex justify-between items-center border-b pb-2 text-md font-semibold px-3 mb-3',
     }
     
     return (
