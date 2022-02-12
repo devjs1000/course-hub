@@ -6,8 +6,7 @@ const CourseCard = ({ image, title, description, price, tagline, name, type }) =
 		backgroundImage: `url(${image})`,
 		backgroundSize: 'cover',
 	};
-	return (
-		<div className="overflow-hidden shadow-xl rounded-xl">
+	return <div className="overflow-hidden shadow-xl rounded-xl">
 			<div
 				className="course-img h-40 bg-slate-800 bg-no-repeat bg-center relative"
 				style={styles}
@@ -29,7 +28,6 @@ const CourseCard = ({ image, title, description, price, tagline, name, type }) =
 				</a>
 			</div>
 		</div>
-	);
 };
 
 export default CourseCard;

@@ -7,13 +7,11 @@ import { Navigation } from 'swiper';
 import courseImg from '../../images/course-img.jpg';
 import CourseCard from './CourseCard';
 
-function Courses({courseArray=undefined, title}) {
-	if(courseArray==undefined) return null
+function Courses({courseArray=[], title}) {
+	if(courseArray==[]) return null
 
-const courses=courseArray
-	return (
-		<div className="h-screen bg-slate-50 px-16 py-16 select-none">
-			<h2 className="text-4xl font-semibold w-full text-slate-700 text-center">frontend course</h2>
+	return <div className="h-screen bg-slate-50 px-16 py-16 select-none">
+			<h2 className="text-4xl font-semibold w-full text-slate-700 text-center">{title}</h2>
 
 			<Swiper
 				style={{
@@ -21,6 +19,8 @@ const courses=courseArray
 				}}
 				slidesPerView={1}
 				spaceBetween={20}
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
 				breakpoints={{
 					640: {
 						slidesPerView: 2,
@@ -39,20 +39,17 @@ const courses=courseArray
 				modules={[Navigation]}
 				className="mt-16 py-8"
 			>
-			{Children.toArray(
-				courses.map(course=>{
+			{
+				courseArray.map((course, i)=>{
 					return <>
-					<SwiperSlide>
-						<CourseCard image={course.image} title={course.name} tagline={course.tagline} price={course.price}  type={course.type} description={course.description} />
+					<SwiperSlide key={course.name+course.type+i}>
+						<CourseCard  image={course.image} title={course.name} tagline={course.tagline} price={course.price}  type={course.type} description={course.description} />
 					</SwiperSlide>
 					</>
 				})
-
-
-			)}
+			}
 			</Swiper>
 		</div>
-	);
 }
 
 export default Courses;

@@ -1,11 +1,11 @@
 import Header from '../components/header/Header';
-import Courses from '../components/courses/Courses';
+import CourseSections from '../components/courses/CourseSections';
 
 const Home = () => {
 	return (
 		<>
 			<Header />
-			<Courses />
+			<CourseSections />
 		</>
 	);
 };

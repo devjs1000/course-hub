@@ -63,9 +63,9 @@ const Signup = () => {
                     <input onChange={getSignupData} required name='mobileNumber' placeholder='mobile number' className={authDesign.input} type="number" />
                 </div>
                 <input type="checkbox" onChange={getChecks} value={true} id="isInstructor" name="isInstructor"  />
-                <label for="isInstructor" className='px-2' >isInstructor?</label><br />
+                <label htmlFor="isInstructor" className='px-2' >isInstructor?</label><br />
                 <input type="checkbox" onChange={getChecks} id="isAdmin" value={true} name="isAdmin" />
-                <label for="isAdmin" className='px-2'>isAdmin?</label><br />
+                <label htmlFor="isAdmin" className='px-2'>isAdmin?</label><br />
 
                 <button type='submit' className={authDesign.mainBtn}>Signup</button>
 
