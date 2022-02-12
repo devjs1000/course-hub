@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export async function getAllAssignment(match, func) {
+export async function getAllAssignmentsOfInstructor(match, func) {
     const response=await axios.get(`/api/assignment/getAllAssignmentsOfInstructor/${match}`)
     func(response)
 }
 
-export async function assignmentCertificateCreate(id, course, email, comment, func){
+export async function updateToCertified(id, course, email, comment, func){
     const response=await axios.post(`/api/assignment/updateToCertified/${id}`,{course,email,comment})
     func(response)
 }

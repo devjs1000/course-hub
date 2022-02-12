@@ -40,6 +40,13 @@ export async function allOtherCourses(func) {
   func(data)
 }
 
+export async function checkIfUserIsEnrolledInCourse(courseId, id, func) {
+  const { data } = await axios.get("/api/order/checkIfUserIsEnrolledInCourse",{ courseId, id });
+  func(data)
+}
+
+
+
 export async function createCourse(instructorId, name, tagline, type, description, assignmentQuestion, imageLink, func){
   const { data } = await axios.post(
     "/api/course/createCourse",
