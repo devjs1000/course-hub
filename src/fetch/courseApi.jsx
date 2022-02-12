@@ -35,17 +35,12 @@ export async function allFullstackCourses(func) {
   func(data)
 }
 
-export async function allFullstackCourses(func) {
-  const { data } = await axios.get("/api/course/allFullstackCourses");
-  func(data)
-}
-
 export async function allOtherCourses(func) {
   const { data } = await axios.get("/api/course/allOtherCourses");
   func(data)
 }
 
-export async createCourse(instructorId, name, tagline, type, description, assignmentQuestion, imageLink, func){
+export async function createCourse(instructorId, name, tagline, type, description, assignmentQuestion, imageLink, func){
   const { data } = await axios.post(
     "/api/course/createCourse",
     {instructorId,name,tagline,type,description,assignmentQuestion,image: imageLink});

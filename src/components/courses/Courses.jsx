@@ -1,5 +1,5 @@
-import {Children} from 'react';
-
+import {Children, useEffect, useState} from 'react';
+import{allFrontendCourses} from '../../fetch/courseApi'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,30 +7,13 @@ import { Navigation } from 'swiper';
 import courseImg from '../../images/course-img.jpg';
 import CourseCard from './CourseCard';
 
-function Courses() {
+function Courses({courseArray=undefined, title}) {
+	if(courseArray==undefined) return null
 
-	//dummy props for testing
-	const props={
-		title:"frontend",
-		data:[
-			{
-				name:'course name',
-				tagline:'course tagline',
-				course:'course type',
-				description:'course description',
-				price:'course price',
-				image:courseImg,
-				type:"frontend",
-				advantages:[
-
-				]
-			}
-		]
-	}
-
+const courses=courseArray
 	return (
-		<div className="h-screen bg-slate-50 px-16 py-16">
-			<h2 className="text-4xl font-semibold">What to learn next</h2>
+		<div className="h-screen bg-slate-50 px-16 py-16 select-none">
+			<h2 className="text-4xl font-semibold w-full text-slate-700 text-center">frontend course</h2>
 
 			<Swiper
 				style={{
@@ -57,7 +40,7 @@ function Courses() {
 				className="mt-16 py-8"
 			>
 			{Children.toArray(
-				props.data.map(course=>{
+				courses.map(course=>{
 					return <>
 					<SwiperSlide>
 						<CourseCard image={course.image} title={course.name} tagline={course.tagline} price={course.price}  type={course.type} description={course.description} />
