@@ -19,8 +19,6 @@ function Courses({courseArray=[], title}) {
 				}}
 				slidesPerView={1}
 				spaceBetween={20}
-      pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
 				breakpoints={{
 					640: {
 						slidesPerView: 2,
@@ -41,11 +39,9 @@ function Courses({courseArray=[], title}) {
 			>
 			{
 				courseArray.map((course, i)=>{
-					return <>
-					<SwiperSlide key={course.name+course.type+i}>
+					return <SwiperSlide key={course.name+course.type+i}>
 						<CourseCard  image={course.image} title={course.name} tagline={course.tagline} price={course.price}  type={course.type} description={course.description} />
 					</SwiperSlide>
-					</>
 				})
 			}
 			</Swiper>
