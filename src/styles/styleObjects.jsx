@@ -15,6 +15,7 @@ export const footerStyles={
   socialMain:'flex items-center',
   socialIcon:'text-2xl mx-4 hover:text-red-400 cursor-pointer'
 }
+
 export const authDesign={
 screen:'h-screen flex items-center justify-center bg-red-800',
 mainDiv:'w-4/5 md:w-2/4 lg:w-2/6 border-2 bg-white  relative px-7 py-4',
@@ -26,4 +27,19 @@ forgotPass:'w-fit ml-auto my-1 cursor-pointer text-gray-500 font-semibold hover:
 mainBtn:'w-1/2 block mx-auto mt-7 py-2 rounded-3xl text-white font-bold text-md bg-gradient-to-r from-red-500 to-red-800 hover:bg-gradient-to-l from-red-500 to-orange-500',
 bottomText:'mt-8 text-center font-semibold text-gray-500 border-t-2',
 bottomIn:'ml-2 text-red-500 cursor-pointer',
+}
+
+
+export const profileDesign={
+    mainDiv:'grid grid-cols-12 gap-3 p-3 my-3 mx-3 text-slate-800 md:mx-12 bg-slate-100',
+    leftMain:'col-span-12 md:col-span-4 lg:col-span-3  p-4 h-fit bg-slate-100',
+    profileImg:'p-2 w-36 h-36 rounded-full object-cover block mx-auto ',
+    profileName:'text-lg font-bold text-center mt-4 text-slate-700',
+    intro:'text-center text-sm font-semibold text-slate-500',
+    mainBtn:'ease-in duration-200 w-full flex items-center pl-2 mt-3 hover:bg-red-500 hover:text-white py-1 rounded-lg  cursor-pointer bg-white',
+    active:'ease-in duration-200 w-full flex items-center bg-gray-300 pl-5 mt-3 py-1 rounded-lg  cursor-pointer',
+    mainIcon:'mr-2 w-8 h-8 p-1',
+    mainBtnText:'text-md font-bold',
+    rightMain:'col-span-12 md:col-span-8 lg:col-span-9  p-4 rounded-lg h-fit bg-white',
+    infoMain:'flex justify-between items-center border-b pb-2 text-md font-semibold px-3 mb-3',
 }
