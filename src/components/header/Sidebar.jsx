@@ -1,6 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { House, Journal, Book, Person, XLg } from 'react-bootstrap-icons';
+import { House, Journal, Book, Person, XLg, People } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 const Overlay = ({ closeSidebarHandler }) => {
 	return <div className="overlay" onClick={closeSidebarHandler}></div>;
@@ -31,6 +31,11 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
 			name: 'My Assignments',
 			icon: Book,
 			path: '/my-assignments',
+		},
+		{
+			name: 'Community',
+			icon: People,
+			path: '/community',
 		},
 		{
 			name: 'My Profile',
