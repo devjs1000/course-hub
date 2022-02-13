@@ -13,7 +13,7 @@ function Navbar() {
 	const location = useLocation()
 	const path = location.pathname.split('/')[1];
   //add objects in nullpath for hiding object in paths
-  const nullPath=['login', 'signup', 'my-assignments']
+  const nullPath=['login', 'signup']
 	if(nullPath.includes(path)) return null
 
 	const openSidebarHandler = () => {
