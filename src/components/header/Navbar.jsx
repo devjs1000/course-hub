@@ -9,10 +9,12 @@ import useStore from '../../context/useStore'
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
 	const {user}=useStore()
-	//this line of code makes navbar hidden in login and signup
+
 	const location = useLocation()
-  const path = location.pathname.split('/')[1];
-  if(path==='login'||path==='signup')return null;
+	const path = location.pathname.split('/')[1];
+  //add objects in nullpath for hiding object in paths
+  const nullPath=['login', 'signup', 'my-assignments']
+	if(nullPath.includes(path)) return null
 
 	const openSidebarHandler = () => {
 		setOpenSidebar(!openSidebar);

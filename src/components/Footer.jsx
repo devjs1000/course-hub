@@ -6,12 +6,11 @@ import { footerStyles } from "../styles/styleObjects";
 const Footer = () => {
 
   const location = useLocation()
-
   const path = location.pathname.split('/')[1];
+  //add objects in nullpath for hiding object in paths
+  const nullPath=['login', 'signup', 'my-assignments']
+  if(nullPath.includes(path)) return null
 
-  if(path==='login'||path==='signup')return null;
-
-  
   return (
     <div className={footerStyles.mainDiv}>
       <div className={footerStyles.gridDiv}>

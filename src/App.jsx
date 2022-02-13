@@ -6,6 +6,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Navbar from './components/header/Navbar'
 import Profile from './components/Profile';
+import Assignment from './components/Assignment';
 function App() {
 	return (
 		<div className="App overflow-hidden">
@@ -15,6 +16,7 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<Signup />} />
 				<Route path='/my-profile' element={<Profile />} />
+				<Route path='/my-assignments' element={<Assignment />} />
 
 			</Routes>
 			<Footer />
