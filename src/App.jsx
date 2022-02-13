@@ -1,17 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import {getAllAssignmentsOfInstructor, getAssignmentsOfUser} from './fetch/assignmentApi'
 import { Routes, Route } from 'react-router-dom';
-import Footer from './components/Footer';
 import Home from './pages/Home';
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/Signup';
 import Navbar from './components/header/Navbar'
-import Profile from './components/Profile';
-import Assignment from './components/Assignment';
-import MyCourses from './components/MyCourses';
+const Login =lazy(()=> import('./components/Auth/Login'))
+const Signup =lazy(()=> import('./components/Auth/Signup'))
+const Profile =lazy(()=> import('./components/Profile'))
+const Assignment =lazy(()=> import('./components/Assignment'))
+const MyCourses =lazy(()=> import('./components/MyCourses'))
+const Footer=lazy(()=>import('./components/Footer'))
+
 function App() {
+	useEffect(()=>{
+		// getAssignmentsOfUser('61d347889e68ba700bade96b', (data)=>{
+		// 	console.log(data);
+		// })
+
+
+	}, [])
 	return (
 		<div className="App overflow-hidden">
 			<Navbar />
+			<Suspense fallback={'loading'}>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
@@ -22,6 +32,9 @@ function App() {
 
 			</Routes>
 			<Footer />
+
+			</Suspense>
+
 		</div>
 	);
 }

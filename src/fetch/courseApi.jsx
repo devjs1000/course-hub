@@ -20,6 +20,11 @@ export async function allFrontendCourses(func) {
   func(data)
 }
 
+export async function allDatabaseCourses(func) {
+  const { data } = await axios.get("/api/course/allDatabaseCourses");
+  func(data)
+}
+
 export async function allBackendCourses(func) {
   const { data } = await axios.get("/api/course/allBackendCourses");
   func(data)
@@ -40,16 +45,29 @@ export async function allOtherCourses(func) {
   func(data)
 }
 
+export async function allCourses(func) {
+  const { data } = await axios.get("/api/course/allCourses");
+  func(data)
+}
+
 export async function checkIfUserIsEnrolledInCourse(courseId, id, func) {
   const { data } = await axios.get("/api/order/checkIfUserIsEnrolledInCourse",{ courseId, id });
   func(data)
 }
-
-
 
 export async function createCourse(instructorId, name, tagline, type, description, assignmentQuestion, imageLink, func){
   const { data } = await axios.post(
     "/api/course/createCourse",
     {instructorId,name,tagline,type,description,assignmentQuestion,image: imageLink});
     func(data)
+}
+
+export async function createQuiz(id,func) {
+  const { data } = await axios.post(`/api/course/createQuiz/${id}`);
+  func(data)
+}
+
+export async function getQuizByCourse(courseId,func) {
+  const { data } = await axios.get(`/api/course/getQuizByCourse/${courseId}`);
+  func(data)
 }

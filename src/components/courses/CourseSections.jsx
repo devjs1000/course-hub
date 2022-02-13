@@ -1,4 +1,3 @@
-import {Children, useState, useEffect} from 'react'
 import Courses from './Courses'
 import useStore from '../../context/useStore'
 const Section=()=>{
