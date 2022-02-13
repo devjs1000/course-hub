@@ -1,7 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import { House, Journal, Book, Person, XLg } from 'react-bootstrap-icons';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 const Overlay = ({ closeSidebarHandler }) => {
 	return <div className="overlay" onClick={closeSidebarHandler}></div>;
 };
@@ -20,22 +20,22 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
 		{
 			name: 'Home',
 			icon: House,
-			path:'/'
+			path: '/',
 		},
 		{
 			name: 'My Courses',
 			icon: Journal,
-			path:"/my-courses"
+			path: '/my-courses',
 		},
 		{
 			name: 'My Assignments',
 			icon: Book,
-			path:'/my-assignments'
+			path: '/my-assignments',
 		},
 		{
 			name: 'My Profile',
 			icon: Person,
-			path:'/my-profile'
+			path: '/my-profile',
 		},
 	];
 
@@ -51,7 +51,11 @@ function Sidebar({ openSidebar, setOpenSidebar }) {
 				{React.Children.toArray(
 					sideNav.map(sidenav => {
 						return (
-							<Link to={sidenav.path} className="flex items-center gap-2 hover:translate-x-2 hover:text-primary-color-dark transition-all">
+							<Link
+								to={sidenav.path}
+								className="flex items-center gap-2 hover:translate-x-2 hover:text-primary-color-dark transition-all"
+								onClick={closeSidebarHandler}
+							>
 								{<sidenav.icon className="text-lg" />}
 								<span href="#" className="text-lg">
 									{sidenav.name}
