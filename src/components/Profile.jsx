@@ -6,7 +6,7 @@ const Profile = () => {
     const [active,setActive] = useState('profile')
     const {user}=useStore()
 
-    if(!user) return null
+    if(!user.success) return null
 
 const joining=new Date(Date.parse(user.data.createdAt)).toString()
 
