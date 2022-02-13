@@ -39,17 +39,16 @@ useEffect(()=>{
 useEffect(()=>{
   console.log(user.success==undefined);
   try {
-    getAllCoursesOfUser(user.data._id, (data)=>{
-      console.log(data);
-      setMyCourses(data)
-    })
+    // getAllCoursesOfUser(user.data._id, (data)=>{
+    //   setMyCourses(data)
+    // })
 
-    
+
   } catch (error) {
     console.log('eror');
   }
-  
-  
+
+
 },[user])
 
   return {
