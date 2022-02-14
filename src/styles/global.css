@@ -1,8 +1,5 @@
 :root {
 	--color-primary-dark: #9d0000;
-	--gradient-1: linear-gradient(to right bottom, #9d0000, #333);
-	--gradient-2: linear-gradient(to right bottom, #9d0000, #9b003e);
-	--gradient-3: linear-gradient(to right bottom, #9d0000, #b13fa5);
 }
 
 /* BUTTON */
@@ -100,17 +97,4 @@
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.6);
-}
-
-.course-img {
-	clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
-}
-
-.course-heading {
-}
-
-.course-heading span {
-	padding: 0.5rem 1.5rem;
-	box-decoration-break: clone;
-	-webkit-box-decoration-break: clone;
 }
