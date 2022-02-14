@@ -8,8 +8,7 @@ const Button = ({
 	textWhite,
 	onClick,
 }) => {
-	const buttonCommonStyles =
-		'btn font-semibold text-base rounded-md hover:opacity-80 sm:text-lg cursor-pointer';
+	const buttonCommonStyles = `btn font-semibold text-base rounded-md hover:opacity-80 sm:text-lg cursor-pointer`;
 	const primaryBtnStyles = `${buttonCommonStyles} bg-primary-color-dark text-white`;
 	const secondaryBtnStyles = `${buttonCommonStyles} bg-white text-primary-color-dark`;
 	const secondaryOutline = `${buttonCommonStyles} border-2 border-primary-color-dark ${
