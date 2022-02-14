@@ -24,7 +24,7 @@ function App() {
 
 	}, [])
 	return (
-		<div className="App overflow-hidden">
+		<div className="App ">
 			<Navbar />
 			<Suspense fallback={'loading'}>
 			<Routes>

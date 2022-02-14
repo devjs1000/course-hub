@@ -5,6 +5,7 @@ import Search from "../../UI/Search";
 import { Plus } from "react-bootstrap-icons";
 const Category = () => {
   const categories = ["Frontend", "Backend", "Designing", "Database", "Other"];
+
   return (
     <div className="bg-slate-100 h-auto px-4 py-4 w-[10rem]">
       {Children.toArray(

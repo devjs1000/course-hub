@@ -1,5 +1,5 @@
 export const footerStyles={
-  mainDiv:'bg-gray-900 p-3 md:p-8',
+  mainDiv:'bg-gray-900 p-3 md:p-8 relative',
   gridDiv:'md:mx-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4',
   title:'text-3xl font-bold text-white',
   shortDes:'text-lg font-semibold text-white my-8 w-3/4',

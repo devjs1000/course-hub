@@ -1,319 +1,303 @@
 {
-    "data": {
-        "success": true,
-        "data": [
+  "data": {
+    "success": true,
+    "data": [
+      {
+        "_id": "61d440d9d5ff7bc6246bf9f9",
+        "userId": {
+          "_id": "61d347889e68ba700bade96b",
+          "name": "Ram",
+          "email": "ram@gmail.com",
+          "password": "$2a$05$NtVsVdM6CDEqNo0mjCUBkedvEw509b.zwgvWjkkqSDf7.FlsIrWq6",
+          "isInstructor": false,
+          "isAdmin": false,
+          "appliedForInstructor": false,
+          "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
+          "githubLink": "",
+          "linkedInLink": "",
+          "resumeLink": "https://d.novoresume.com/images/doc/functional-resume-template.png",
+          "mobileNumber": 1111111111,
+          "domains": "",
+          "description": "Describe yourself",
+          "createdAt": "2022-01-03T18:59:20.145Z",
+          "updatedAt": "2022-01-03T18:59:20.145Z",
+          "__v": 0
+        },
+        "instructorId": "61d326239e68ba700baddce4",
+        "courseId": {
+          "_id": "61c6fa162561b973f3e80cbf",
+          "instructorId": "61d326239e68ba700baddce4",
+          "name": "HTML Course",
+          "tagline": "Complete HTML A-Z",
+          "type": "frontend",
+          "description": "Course taught by Adnan Sir with 10+ years in IT Industry",
+          "assignmentQuestion": "Build a website having 4 buttons, 3 input fields, a <h1> header and add image and video to the page",
+          "price": 1499,
+          "advantages": [
             {
-                "_id": "61d440d9d5ff7bc6246bf9f9",
-                "userId": {
-                    "_id": "61d347889e68ba700bade96b",
-                    "name": "Ram",
-                    "email": "ram@gmail.com",
-                    "password": "$2a$05$NtVsVdM6CDEqNo0mjCUBkedvEw509b.zwgvWjkkqSDf7.FlsIrWq6",
-                    "isInstructor": false,
-                    "isAdmin": false,
-                    "appliedForInstructor": false,
-                    "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
-                    "githubLink": "",
-                    "linkedInLink": "",
-                    "resumeLink": "https://d.novoresume.com/images/doc/functional-resume-template.png",
-                    "mobileNumber": 1111111111,
-                    "domains": "",
-                    "description": "Describe yourself",
-                    "createdAt": "2022-01-03T18:59:20.145Z",
-                    "updatedAt": "2022-01-03T18:59:20.145Z",
-                    "__v": 0
-                },
-                "instructorId": "61d326239e68ba700baddce4",
-                "courseId": {
-                    "_id": "61c6fa162561b973f3e80cbf",
-                    "instructorId": "61d326239e68ba700baddce4",
-                    "name": "HTML Course",
-                    "tagline": "Complete HTML A-Z",
-                    "type": "frontend",
-                    "description": "Course taught by Adnan Sir with 10+ years in IT Industry",
-                    "assignmentQuestion": "Build a website having 4 buttons, 3 input fields, a <h1> header and add image and video to the page",
-                    "price": 1499,
-                    "advantages": [
-                        {
-                            "advantageName": "Beginner friendly",
-                            "_id": "61c6fa162561b973f3e80cc0"
-                        },
-                        {
-                            "advantageName": "24x7 support",
-                            "_id": "61c6fa162561b973f3e80cc1"
-                        },
-                        {
-                            "advantageName": "Live doubt solving",
-                            "_id": "61c6fa162561b973f3e80cc2"
-                        }
-                    ],
-                    "chapters": [
-                        {
-                            "chapterNumber": 1,
-                            "chapterName": "Introduction to webpages",
-                            "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
-                            "chapterVideoDescription": "This chapter introduces to basic functioning of webpages in the internet",
-                            "chapterStudyMaterial": "Self study",
-                            "_id": "61c6fa162561b973f3e80cc3"
-                        },
-                        {
-                            "chapterNumber": 2,
-                            "chapterName": "Heading tags",
-                            "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
-                            "chapterVideoDescription": "This chapter introduces to basic styling of headers",
-                            "chapterStudyMaterial": "Self study",
-                            "_id": "61c6fa162561b973f3e80cc4"
-                        }
-                    ],
-                    "image": "https://cdn.lynda.com/course/170427/170427-636923997581008095-16x9.jpg",
-                    "createdAt": "2021-12-25T11:01:42.860Z",
-                    "updatedAt": "2021-12-25T11:01:42.860Z",
-                    "__v": 0,
-                    "quiz": [
-                        {
-                            "_id": "620aa40d75b18a7124472b59",
-                            "question": "What tag is used for making text bold?",
-                            "correct": "b",
-                            "incorrect": [
-                                "p",
-                                "h1",
-                                "i"
-                            ]
-                        },
-                        {
-                            "_id": "620aa40d75b18a7124472b5a",
-                            "question": "What tag is used for italic?",
-                            "correct": "i",
-                            "incorrect": [
-                                "p",
-                                "h1",
-                                "b"
-                            ]
-                        },
-                        {
-                            "_id": "620aa40d75b18a7124472b5b",
-                            "question": "What is larger in size?",
-                            "correct": "h1",
-                            "incorrect": [
-                                "h2",
-                                "h3",
-                                "h4"
-                            ]
-                        },
-                        {
-                            "_id": "620aa40d75b18a7124472b5c",
-                            "question": "What does HTML stand for?",
-                            "correct": "Hyper Text Markup Language",
-                            "incorrect": [
-                                "Home Tool Markup Language",
-                                "Hyperlinks and Text Markup Language",
-                                "Home Title Markup Language"
-                            ]
-                        }
-                    ]
-                },
-                "isCertified": true,
-                "assignmentLink": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1641300185/tb1rs9bf0bx8xrusebiu.jpg",
-                "assignmentScreenshotLink": "https://github.com/vidhishpanchal/TFS",
-                "assignmentStatus": "submit",
-                "assignmentComment": "Well done Ram!",
-                "createdAt": "2022-01-04T12:43:05.881Z",
-                "updatedAt": "2022-01-04T12:44:17.300Z",
-                "__v": 0
+              "advantageName": "Beginner friendly",
+              "_id": "61c6fa162561b973f3e80cc0"
             },
             {
-                "_id": "61ed044e1746b93b861f0fec",
-                "userId": {
-                    "_id": "61d347889e68ba700bade96b",
-                    "name": "Ram",
-                    "email": "ram@gmail.com",
-                    "password": "$2a$05$NtVsVdM6CDEqNo0mjCUBkedvEw509b.zwgvWjkkqSDf7.FlsIrWq6",
-                    "isInstructor": false,
-                    "isAdmin": false,
-                    "appliedForInstructor": false,
-                    "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
-                    "githubLink": "",
-                    "linkedInLink": "",
-                    "resumeLink": "https://d.novoresume.com/images/doc/functional-resume-template.png",
-                    "mobileNumber": 1111111111,
-                    "domains": "",
-                    "description": "Describe yourself",
-                    "createdAt": "2022-01-03T18:59:20.145Z",
-                    "updatedAt": "2022-01-03T18:59:20.145Z",
-                    "__v": 0
-                },
-                "instructorId": "61d339be9e68ba700bade401",
-                "courseId": {
-                    "_id": "61c6fcf62561b973f3e80cd4",
-                    "instructorId": "61d339be9e68ba700bade401",
-                    "name": "Javascript Course",
-                    "tagline": "Beginner to Advance Javascript",
-                    "type": "frontend",
-                    "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
-                    "assignmentQuestion": "Create 2 models of user and employee",
-                    "price": 1499,
-                    "advantages": [
-                        {
-                            "advantageName": "Beginner friendly",
-                            "_id": "61c6fcf62561b973f3e80cd5"
-                        },
-                        {
-                            "advantageName": "24x7 support",
-                            "_id": "61c6fcf62561b973f3e80cd6"
-                        },
-                        {
-                            "advantageName": "Live doubt solving",
-                            "_id": "61c6fcf62561b973f3e80cd7"
-                        }
-                    ],
-                    "chapters": [
-                        {
-                            "chapterNumber": 1,
-                            "chapterName": "Introduction to Javascript",
-                            "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
-                            "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
-                            "chapterStudyMaterial": "Self study",
-                            "_id": "61c6fcf62561b973f3e80cd8"
-                        },
-                        {
-                            "chapterNumber": 2,
-                            "chapterName": "Introduction to Javascript and its frameworks",
-                            "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
-                            "chapterVideoDescription": "This chapter introduces to basic features of Javascript",
-                            "chapterStudyMaterial": "Self study",
-                            "_id": "61c6fcf62561b973f3e80cd9"
-                        }
-                    ],
-                    "image": "https://cyberhoot.com/wp-content/uploads/2020/07/Free-Courses-to-learn-JavaScript-768x432.jpg",
-                    "createdAt": "2021-12-25T11:13:58.523Z",
-                    "updatedAt": "2021-12-25T11:13:58.523Z",
-                    "__v": 0,
-                    "quiz": []
-                },
-                "isCertified": true,
-                "assignmentLink": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1642923084/xjxpg0pww5zccejdgpij.jpg",
-                "assignmentScreenshotLink": "https://github.com/vidhishpanchal/redux-slice",
-                "assignmentStatus": "submit",
-                "assignmentComment": "Very nice assignment",
-                "createdAt": "2022-01-23T07:31:26.101Z",
-                "updatedAt": "2022-01-23T07:32:20.057Z",
-                "__v": 0
+              "advantageName": "24x7 support",
+              "_id": "61c6fa162561b973f3e80cc1"
             },
             {
-                "_id": "61ef7b8728c8a1f7e80fc571",
-                "userId": {
-                    "_id": "61d347889e68ba700bade96b",
-                    "name": "Ram",
-                    "email": "ram@gmail.com",
-                    "password": "$2a$05$NtVsVdM6CDEqNo0mjCUBkedvEw509b.zwgvWjkkqSDf7.FlsIrWq6",
-                    "isInstructor": false,
-                    "isAdmin": false,
-                    "appliedForInstructor": false,
-                    "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
-                    "githubLink": "",
-                    "linkedInLink": "",
-                    "resumeLink": "https://d.novoresume.com/images/doc/functional-resume-template.png",
-                    "mobileNumber": 1111111111,
-                    "domains": "",
-                    "description": "Describe yourself",
-                    "createdAt": "2022-01-03T18:59:20.145Z",
-                    "updatedAt": "2022-01-03T18:59:20.145Z",
-                    "__v": 0
-                },
-                "instructorId": "61d339be9e68ba700bade401",
-                "courseId": {
-                    "_id": "61c6ffe82561b973f3e80ce9",
-                    "instructorId": "61d339be9e68ba700bade401",
-                    "name": "Django Course",
-                    "tagline": "Beginner to Advance Django",
-                    "type": "backend",
-                    "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
-                    "assignmentQuestion": "Create 2 models of user and employee using Django Framework",
-                    "price": 1499,
-                    "advantages": [
-                        {
-                            "advantageName": "Beginner friendly",
-                            "_id": "61c6ffe82561b973f3e80cea"
-                        },
-                        {
-                            "advantageName": "24x7 support",
-                            "_id": "61c6ffe82561b973f3e80ceb"
-                        },
-                        {
-                            "advantageName": "Live doubt solving",
-                            "_id": "61c6ffe82561b973f3e80cec"
-                        }
-                    ],
-                    "chapters": [
-                        {
-                            "chapterNumber": 1,
-                            "chapterName": "Introduction to Django",
-                            "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
-                            "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
-                            "chapterStudyMaterial": "Self study",
-                            "_id": "61c6ffe82561b973f3e80ced"
-                        },
-                        {
-                            "chapterNumber": 2,
-                            "chapterName": "Introduction to Django and its frameworks",
-                            "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
-                            "chapterVideoDescription": "This chapter introduces to basic features of Django Framework of python",
-                            "chapterStudyMaterial": "Self study",
-                            "_id": "61c6ffe82561b973f3e80cee"
-                        }
-                    ],
-                    "image": "https://www.edgica.com/wp-content/files/django-logo-big.jpg",
-                    "createdAt": "2021-12-25T11:26:32.952Z",
-                    "updatedAt": "2021-12-25T11:26:32.952Z",
-                    "__v": 0,
-                    "quiz": []
-                },
-                "isCertified": true,
-                "assignmentLink": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1643084682/yi2i6pjxpeuznhgpzchg.jpg",
-                "assignmentScreenshotLink": "github.com",
-                "assignmentStatus": "submit",
-                "assignmentComment": "Very good ram!",
-                "createdAt": "2022-01-25T04:24:39.619Z",
-                "updatedAt": "2022-01-25T04:25:32.837Z",
-                "__v": 0
+              "advantageName": "Live doubt solving",
+              "_id": "61c6fa162561b973f3e80cc2"
             }
-        ]
+          ],
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "chapterName": "Introduction to webpages",
+              "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+              "chapterVideoDescription": "This chapter introduces to basic functioning of webpages in the internet",
+              "chapterStudyMaterial": "Self study",
+              "_id": "61c6fa162561b973f3e80cc3"
+            },
+            {
+              "chapterNumber": 2,
+              "chapterName": "Heading tags",
+              "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+              "chapterVideoDescription": "This chapter introduces to basic styling of headers",
+              "chapterStudyMaterial": "Self study",
+              "_id": "61c6fa162561b973f3e80cc4"
+            }
+          ],
+          "image": "https://cdn.lynda.com/course/170427/170427-636923997581008095-16x9.jpg",
+          "createdAt": "2021-12-25T11:01:42.860Z",
+          "updatedAt": "2021-12-25T11:01:42.860Z",
+          "__v": 0,
+          "quiz": [
+            {
+              "_id": "620aa40d75b18a7124472b59",
+              "question": "What tag is used for making text bold?",
+              "correct": "b",
+              "incorrect": ["p", "h1", "i"]
+            },
+            {
+              "_id": "620aa40d75b18a7124472b5a",
+              "question": "What tag is used for italic?",
+              "correct": "i",
+              "incorrect": ["p", "h1", "b"]
+            },
+            {
+              "_id": "620aa40d75b18a7124472b5b",
+              "question": "What is larger in size?",
+              "correct": "h1",
+              "incorrect": ["h2", "h3", "h4"]
+            },
+            {
+              "_id": "620aa40d75b18a7124472b5c",
+              "question": "What does HTML stand for?",
+              "correct": "Hyper Text Markup Language",
+              "incorrect": [
+                "Home Tool Markup Language",
+                "Hyperlinks and Text Markup Language",
+                "Home Title Markup Language"
+              ]
+            }
+          ]
+        },
+        "isCertified": true,
+        "assignmentLink": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1641300185/tb1rs9bf0bx8xrusebiu.jpg",
+        "assignmentScreenshotLink": "https://github.com/vidhishpanchal/TFS",
+        "assignmentStatus": "submit",
+        "assignmentComment": "Well done Ram!",
+        "createdAt": "2022-01-04T12:43:05.881Z",
+        "updatedAt": "2022-01-04T12:44:17.300Z",
+        "__v": 0
+      },
+      {
+        "_id": "61ed044e1746b93b861f0fec",
+        "userId": {
+          "_id": "61d347889e68ba700bade96b",
+          "name": "Ram",
+          "email": "ram@gmail.com",
+          "password": "$2a$05$NtVsVdM6CDEqNo0mjCUBkedvEw509b.zwgvWjkkqSDf7.FlsIrWq6",
+          "isInstructor": false,
+          "isAdmin": false,
+          "appliedForInstructor": false,
+          "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
+          "githubLink": "",
+          "linkedInLink": "",
+          "resumeLink": "https://d.novoresume.com/images/doc/functional-resume-template.png",
+          "mobileNumber": 1111111111,
+          "domains": "",
+          "description": "Describe yourself",
+          "createdAt": "2022-01-03T18:59:20.145Z",
+          "updatedAt": "2022-01-03T18:59:20.145Z",
+          "__v": 0
+        },
+        "instructorId": "61d339be9e68ba700bade401",
+        "courseId": {
+          "_id": "61c6fcf62561b973f3e80cd4",
+          "instructorId": "61d339be9e68ba700bade401",
+          "name": "Javascript Course",
+          "tagline": "Beginner to Advance Javascript",
+          "type": "frontend",
+          "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
+          "assignmentQuestion": "Create 2 models of user and employee",
+          "price": 1499,
+          "advantages": [
+            {
+              "advantageName": "Beginner friendly",
+              "_id": "61c6fcf62561b973f3e80cd5"
+            },
+            {
+              "advantageName": "24x7 support",
+              "_id": "61c6fcf62561b973f3e80cd6"
+            },
+            {
+              "advantageName": "Live doubt solving",
+              "_id": "61c6fcf62561b973f3e80cd7"
+            }
+          ],
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "chapterName": "Introduction to Javascript",
+              "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+              "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+              "chapterStudyMaterial": "Self study",
+              "_id": "61c6fcf62561b973f3e80cd8"
+            },
+            {
+              "chapterNumber": 2,
+              "chapterName": "Introduction to Javascript and its frameworks",
+              "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+              "chapterVideoDescription": "This chapter introduces to basic features of Javascript",
+              "chapterStudyMaterial": "Self study",
+              "_id": "61c6fcf62561b973f3e80cd9"
+            }
+          ],
+          "image": "https://cyberhoot.com/wp-content/uploads/2020/07/Free-Courses-to-learn-JavaScript-768x432.jpg",
+          "createdAt": "2021-12-25T11:13:58.523Z",
+          "updatedAt": "2021-12-25T11:13:58.523Z",
+          "__v": 0,
+          "quiz": []
+        },
+        "isCertified": true,
+        "assignmentLink": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1642923084/xjxpg0pww5zccejdgpij.jpg",
+        "assignmentScreenshotLink": "https://github.com/vidhishpanchal/redux-slice",
+        "assignmentStatus": "submit",
+        "assignmentComment": "Very nice assignment",
+        "createdAt": "2022-01-23T07:31:26.101Z",
+        "updatedAt": "2022-01-23T07:32:20.057Z",
+        "__v": 0
+      },
+      {
+        "_id": "61ef7b8728c8a1f7e80fc571",
+        "userId": {
+          "_id": "61d347889e68ba700bade96b",
+          "name": "Ram",
+          "email": "ram@gmail.com",
+          "password": "$2a$05$NtVsVdM6CDEqNo0mjCUBkedvEw509b.zwgvWjkkqSDf7.FlsIrWq6",
+          "isInstructor": false,
+          "isAdmin": false,
+          "appliedForInstructor": false,
+          "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
+          "githubLink": "",
+          "linkedInLink": "",
+          "resumeLink": "https://d.novoresume.com/images/doc/functional-resume-template.png",
+          "mobileNumber": 1111111111,
+          "domains": "",
+          "description": "Describe yourself",
+          "createdAt": "2022-01-03T18:59:20.145Z",
+          "updatedAt": "2022-01-03T18:59:20.145Z",
+          "__v": 0
+        },
+        "instructorId": "61d339be9e68ba700bade401",
+        "courseId": {
+          "_id": "61c6ffe82561b973f3e80ce9",
+          "instructorId": "61d339be9e68ba700bade401",
+          "name": "Django Course",
+          "tagline": "Beginner to Advance Django",
+          "type": "backend",
+          "description": "Course taught by Rishi Sir with 20+ years in IT Industry",
+          "assignmentQuestion": "Create 2 models of user and employee using Django Framework",
+          "price": 1499,
+          "advantages": [
+            {
+              "advantageName": "Beginner friendly",
+              "_id": "61c6ffe82561b973f3e80cea"
+            },
+            {
+              "advantageName": "24x7 support",
+              "_id": "61c6ffe82561b973f3e80ceb"
+            },
+            {
+              "advantageName": "Live doubt solving",
+              "_id": "61c6ffe82561b973f3e80cec"
+            }
+          ],
+          "chapters": [
+            {
+              "chapterNumber": 1,
+              "chapterName": "Introduction to Django",
+              "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+              "chapterVideoDescription": "This chapter introduces to basic functioning of server in the internet",
+              "chapterStudyMaterial": "Self study",
+              "_id": "61c6ffe82561b973f3e80ced"
+            },
+            {
+              "chapterNumber": 2,
+              "chapterName": "Introduction to Django and its frameworks",
+              "chapterVideoLink": "https://youtu.be/BsDoLVMnmZs",
+              "chapterVideoDescription": "This chapter introduces to basic features of Django Framework of python",
+              "chapterStudyMaterial": "Self study",
+              "_id": "61c6ffe82561b973f3e80cee"
+            }
+          ],
+          "image": "https://www.edgica.com/wp-content/files/django-logo-big.jpg",
+          "createdAt": "2021-12-25T11:26:32.952Z",
+          "updatedAt": "2021-12-25T11:26:32.952Z",
+          "__v": 0,
+          "quiz": []
+        },
+        "isCertified": true,
+        "assignmentLink": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1643084682/yi2i6pjxpeuznhgpzchg.jpg",
+        "assignmentScreenshotLink": "github.com",
+        "assignmentStatus": "submit",
+        "assignmentComment": "Very good ram!",
+        "createdAt": "2022-01-25T04:24:39.619Z",
+        "updatedAt": "2022-01-25T04:25:32.837Z",
+        "__v": 0
+      }
+    ]
+  },
+  "status": 200,
+  "statusText": "OK",
+  "headers": {
+    "access-control-allow-origin": "*",
+    "connection": "close",
+    "content-length": "7824",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Mon, 14 Feb 2022 18:48:45 GMT",
+    "etag": "W/\"1e90-jkp3gAokcHNR9g4Ec8GOt29OgKQ\"",
+    "server": "Cowboy",
+    "via": "1.1 vegur",
+    "x-powered-by": "Express"
+  },
+  "config": {
+    "transitional": {
+      "silentJSONParsing": true,
+      "forcedJSONParsing": true,
+      "clarifyTimeoutError": false
     },
-    "status": 200,
-    "statusText": "OK",
+    "transformRequest": [null],
+    "transformResponse": [null],
+    "timeout": 0,
+    "xsrfCookieName": "XSRF-TOKEN",
+    "xsrfHeaderName": "X-XSRF-TOKEN",
+    "maxContentLength": -1,
+    "maxBodyLength": -1,
     "headers": {
-        "access-control-allow-origin": "*",
-        "connection": "close",
-        "content-length": "7824",
-        "content-type": "application/json; charset=utf-8",
-        "date": "Mon, 14 Feb 2022 18:48:45 GMT",
-        "etag": "W/\"1e90-jkp3gAokcHNR9g4Ec8GOt29OgKQ\"",
-        "server": "Cowboy",
-        "via": "1.1 vegur",
-        "x-powered-by": "Express"
+      "Accept": "application/json, text/plain, */*"
     },
-    "config": {
-        "transitional": {
-            "silentJSONParsing": true,
-            "forcedJSONParsing": true,
-            "clarifyTimeoutError": false
-        },
-        "transformRequest": [
-            null
-        ],
-        "transformResponse": [
-            null
-        ],
-        "timeout": 0,
-        "xsrfCookieName": "XSRF-TOKEN",
-        "xsrfHeaderName": "X-XSRF-TOKEN",
-        "maxContentLength": -1,
-        "maxBodyLength": -1,
-        "headers": {
-            "Accept": "application/json, text/plain, */*"
-        },
-        "method": "get",
-        "url": "/api/assignment/getAssignmentsOfUser/61d347889e68ba700bade96b"
-    },
-    "request": {}
+    "method": "get",
+    "url": "/api/assignment/getAssignmentsOfUser/61d347889e68ba700bade96b"
+  },
+  "request": {}
 }
