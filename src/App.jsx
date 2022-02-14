@@ -8,6 +8,8 @@ import Profile from './components/Profile';
 import MyCourses from './components/MyCourses';
 import Footer from './components/Footer';
 import Assignment from './components/Assignment';
+import Community from './components/Community/Community'
+
 // const Login =lazy(()=> import('./components/Auth/Login'))
 // const Signup =lazy(()=> import('./components/Auth/Signup'))
 // const Profile =lazy(()=> import('./components/Profile'))
@@ -32,6 +34,7 @@ function App() {
 				<Route path='/my-profile' element={<Profile />} />
 				<Route path='/my-courses' element={<MyCourses />} />
 				<Route path='/my-assignments' element={<Assignment />} />
+					<Route path='/Community' element={<Community />} />
 
 			</Routes>
 			<Footer />

@@ -46,9 +46,9 @@ useEffect(()=>{
     getAllCoursesOfUser(user.data._id, (data)=>{
       setMyCourses(data)
     })
-getAssignmentsOfUser(user.data._id,(data)=>{
-  console.log(data);
-})
+// getAssignmentsOfUser(user.data._id,(data)=>{
+//   console.log(data);
+// })
 
   } catch (error) {
     console.log('eror');
