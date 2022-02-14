@@ -1,34 +1,61 @@
 import React from 'react';
 import { Clock, ArrowRight, Tag } from 'react-bootstrap-icons';
-import {Link} from 'react-router-dom'
-const CourseCard = ({ image, title, description, price, tagline, name, type, enrolled=false }) => {
-	const styles = {
-		backgroundImage: `url(${image})`,
-		backgroundSize: 'cover',
-	};
-	return <div className="overflow-hidden cursor-pointer  hover:bg-[rgba(0,0,0,.5)] h-[14rem] w-[14rem] bg-slate-100 shadow-xl rounded-xl bg-contain bg-top-center bg-no-repeat" style={{backgroundImage:`url(${image}`}}>
-<div className="h-[14rem] flex justify-center opacity-0 hover:opacity-100 items-center flex-wrap p-2 transition-all w-[14rem]  bg-transparent hover:text-slate-50 text-transparent hover:bg-[rgba(0,0,0,.6)] hover:backdrop-blur-[10px]">
-<h1 className='font-bold text-center text-xl w-full'>{title}</h1>
-{
-	enrolled?
-	<Link className='bg-red-700 py-2 text-center font-bold w-full mx-4' to='/'>start course</Link>
-:
-<>
-<div className='flex justify-start w-full mx-4 gap-0 items-center'>
-<span className='bg-red-500 inline-block w-1/2 px-2 py-1'>	{type}
-</span>
-<span className='bg-white text-red-500 inline-block w-1/2 px-2 py-1'>		{price}
+import { Link } from 'react-router-dom';
 
-</span>
+const CourseCard = ({
+	image,
+	title,
+	description,
+	price,
+	tagline,
+	name,
+	type,
+	enrolled = false,
+}) => {
+	return (
+		<div className="rounded-xl shadow-xl">
+			<div className="h-[10rem] rounded-tl-xl rounded-tr-xl overflow-hidden border">
+				<img src={image} alt="course-image" className="object-cover h-full" />
+			</div>
+			<div className="p-4 text-slate-900 flex flex-col items-start gap-4">
+				<span className="bg-slate-800 text-[12px] font-semibold rounded-sm text-white px-2 py-[.1rem] uppercase">
+					{type}
+				</span>
+				<h3 className="leading-6">
+					<span className="text-[1.6rem] font-semibold block">{title}</span>
+					<span className="font-semibold text-slate-800">{tagline}</span>
+				</h3>
 
-
-</div>
-<Link className='bg-red-700 py-2 text-center font-bold w-full mx-4' to='/'>enroll course</Link>
-</>
-
-}
-</div>
+				<p className="text-sm">
+					{description.length > 75
+						? description.slice(0, 75) + '...'
+						: description}
+				</p>
+				<div className="flex-grow"></div>
+				<div className="bg-slate-800 h-[1px] w-full my-2"></div>
+				<div className="flex items-center justify-between w-full">
+					{enrolled ? (
+						<Link
+							to="/"
+							className="block bg-primary-color-dark text-white py-1 px-2 font-semibold rounded-sm hover:px-4 transition-all"
+						>
+							Start Course &#8594;
+						</Link>
+					) : (
+						<>
+							<Link
+								to="/"
+								className="block bg-primary-color-dark text-white py-1 px-2 font-semibold rounded-sm hover:px-4 transition-all"
+							>
+								Enroll &#8594;
+							</Link>
+							<span className="text-xl">₹ {price}/- </span>
+						</>
+					)}
+				</div>
+			</div>
 		</div>
+	);
 };
 
 export default CourseCard;
