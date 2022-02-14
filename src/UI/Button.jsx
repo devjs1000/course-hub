@@ -7,8 +7,12 @@ const Button = ({
 	textPrimary,
 	textWhite,
 	onClick,
+	isWidthFull,
+	type,
 }) => {
-	const buttonCommonStyles = `btn font-semibold text-base rounded-md hover:opacity-80 sm:text-lg cursor-pointer`;
+	const buttonCommonStyles = `${
+		isWidthFull ? 'w-full' : 'w-[10rem]'
+	} h-[3rem] font-semibold text-base rounded-md hover:opacity-80 sm:text-lg cursor-pointer`;
 	const primaryBtnStyles = `${buttonCommonStyles} bg-primary-color-dark text-white`;
 	const secondaryBtnStyles = `${buttonCommonStyles} bg-white text-primary-color-dark`;
 	const secondaryOutline = `${buttonCommonStyles} border-2 border-primary-color-dark ${
@@ -22,7 +26,7 @@ const Button = ({
 		: secondaryBtnStyles;
 
 	return (
-		<button className={btnStyle} onClick={onClick}>
+		<button className={btnStyle} onClick={onClick} type={type || 'button'}>
 			{children}
 		</button>
 	);
