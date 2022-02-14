@@ -1,17 +1,19 @@
-import {Children, useEffect, useState} from 'react';
-import{allFrontendCourses} from '../../fetch/courseApi'
+import { Children, useEffect, useState } from 'react';
+import { allFrontendCourses } from '../../fetch/courseApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
-import courseImg from '../../images/course-img.jpg';
 import CourseCard from './CourseCard';
 
-function Courses({courseArray=[], title}) {
-	if(courseArray==[]) return null
+function Courses({ courseArray = [], title }) {
+	if (courseArray == []) return null;
 
-	return <div className="h-screen bg-slate-50 px-16 py-16 select-none">
-			<h2 className="text-4xl font-semibold w-full text-slate-700 text-center">{title}</h2>
+	return (
+		<div className="bg-slate-50 px-16 pt-8 select-none lg:pt-16">
+			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
+				{title}
+			</h2>
 
 			<Swiper
 				style={{
@@ -30,22 +32,30 @@ function Courses({courseArray=[], title}) {
 					},
 					1024: {
 						slidesPerView: 4,
-						spaceBetween: 50,
+						spaceBetween: 30,
 					},
 				}}
 				navigation={true}
 				modules={[Navigation]}
-				className="mt-16 py-8"
+				className="mt-4 py-8 lg:py-8"
 			>
-			{
-				courseArray.map((course, i)=>{
-					return <SwiperSlide key={course.name+course.type+i}>
-						<CourseCard  image={course.image} title={course.name} tagline={course.tagline} price={course.price}  type={course.type} description={course.description} />
-					</SwiperSlide>
-				})
-			}
+				{courseArray.map((course, i) => {
+					return (
+						<SwiperSlide key={course.name + course.type + i}>
+							<CourseCard
+								image={course.image}
+								title={course.name}
+								tagline={course.tagline}
+								price={course.price}
+								type={course.type}
+								description={course.description}
+							/>
+						</SwiperSlide>
+					);
+				})}
 			</Swiper>
 		</div>
+	);
 }
 
 export default Courses;
