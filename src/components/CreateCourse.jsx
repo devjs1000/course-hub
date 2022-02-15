@@ -59,6 +59,7 @@ const Form = () => {
 		};
 		console.log(data);
 	};
+	const groupClass = 'flex w-full gap-4 sm:gap-6';
 	return (
 		<div className="bg-primary-color-dark flex items-center justify-center py-4">
 			<div className="relative bg-white w-full mx-3 py-16 flex items-center justify-center rounded-xl sm:w-[60rem]">
