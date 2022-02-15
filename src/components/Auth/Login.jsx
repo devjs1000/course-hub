@@ -12,7 +12,10 @@ const Login = () => {
 
 	const getLoginData = e => {
 		const name = e.target.name;
-		const value = e.target.value;
+		let value = e.target.value;
+		if(name==='email'){
+			value = value.toLowerCase()
+		}
 		const newData = { ...loginData };
 		newData[name] = value;
 		setLoginData(newData);

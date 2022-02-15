@@ -17,23 +17,23 @@ const Profile = () => {
   const { user } = useStore();
   const {logout} = useAuthHook();
 
-  // const joining=new Date(Date.parse(user.data.createdAt)).toString()
+  const joining= new Date(Date.parse(user.createdAt)).toString()
 
   return (
     <div className={profileDesign.mainDiv}>
       <div className={profileDesign.leftMain}>
         <img
           className={profileDesign.profileImg}
-          src={user?.data?.profilePicture}
-          alt={user?.data?.name + " profile picture"}
+          src={user.profilePicture}
+          alt={user.name + " profile picture"}
         />
 
-        <p className={profileDesign.profileName}>{user?.data?.name}</p>
+        <p className={profileDesign.profileName}>{user.name}</p>
 
         <p className={profileDesign.intro}>
-          {user?.data?.isInstructor ? "Teacher" : "Student"}
+          {user.isInstructor ? "Teacher" : "Student"}
         </p>
-        {/* <p className={profileDesign.intro}>{joining}</p> */}
+        <p className={profileDesign.intro}>{joining}</p>
 
         <div
           onClick={() => setActive("profile")}
@@ -104,7 +104,7 @@ const Profile = () => {
       <div className={profileDesign.rightMain}>
           {/* Top Part */}
         <div className="mb-5">
-          <h1 className="text-xl font-bold">Welcome back, John!</h1>
+          <h1 className="text-xl font-bold">Welcome back, {user.name}!</h1>
           <p className="text-sm">You're doing great this week.Keep it up!</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 mt-5 gap-3">
             <div className="">
@@ -140,27 +140,27 @@ const Profile = () => {
           {/* Info part */}
         <div className={profileDesign.infoMain}>
           <p>Name</p>
-          <p>{user?.data?.name}</p>
+          <p>{user.name}</p>
         </div>
 
         <div className={profileDesign.infoMain}>
           <p>Email</p>
-          <p>{user?.data?.email}</p>
+          <p>{user.email}</p>
         </div>
 
         <div className={profileDesign.infoMain}>
           <p>Phone</p>
-          <p>{user?.data?.mobileNumber}</p>
+          <p>{user.mobileNumber}</p>
         </div>
 
         <div className={profileDesign.infoMain}>
           <p>Linkedin</p>
-          <p>{user?.data?.linkedInLink}</p>
+          <p>{user.linkedInLink}</p>
         </div>
 
         <div className={profileDesign.infoMain}>
           <p>Github</p>
-          <p>{user?.data?.githubLink}</p>
+          <p>{user.githubLink}</p>
         </div>
       </div>
     </div>

@@ -21,7 +21,10 @@ const Signup = () => {
 
 	const getSignupData = e => {
 		const name = e.target.name;
-		const value = e.target.value;
+		let value = e.target.value;
+		if(name==='email'){
+			value = value.toLowerCase()
+		}
 		const newData = { ...signupData };
 		newData[name] = value;
 		setSignupData(newData);
