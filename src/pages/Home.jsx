@@ -7,7 +7,7 @@ import CreateCourse from '../components/CreateCourse'
 const Home = () => {
     return ( < > < Header / >
 			 < CourseSections / >
-			  < CreateCourse / >
+			 
 				 < />);
     };
     export default Home;

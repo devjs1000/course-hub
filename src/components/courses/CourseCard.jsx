@@ -13,7 +13,7 @@ const CourseCard = ({
 	enrolled = false,
 }) => {
 	return (
-		<div className="rounded-xl shadow-xl">
+		<div className="rounded-xl h-[20rem] shadow-xl overflow-hidden">
 			<div className="h-[10rem] rounded-tl-xl rounded-tr-xl overflow-hidden border">
 				<img src={image} alt="course-image" className="object-cover h-full" />
 			</div>
@@ -22,17 +22,13 @@ const CourseCard = ({
 					{type}
 				</span>
 				<h3 className="leading-6">
-					<span className="text-[1.6rem] font-semibold block">{title}</span>
-					<span className="font-semibold text-slate-800">{tagline}</span>
+					<span className="text-[1.4rem] font-semibold block">{title}</span>
+					<span className="font-semibold text-slate-800 block truncate h-[1.2rem] w-[calc(100%-3rem)] ">{tagline}</span>
 				</h3>
 
-				<p className="text-sm">
-					{description.length > 75
-						? description.slice(0, 75) + '...'
-						: description}
+				<p className="text-sm overflow-auto text-lg absolute opacity h-[50%] w-[100%] top-[0rem] rounded-t-xl hover:text-white p-4 left-[0rem] text-transparent select-none hover:bg-red-700">
+					{description}
 				</p>
-				<div className="flex-grow"></div>
-				<div className="bg-slate-800 h-[1px] w-full my-2"></div>
 				<div className="flex items-center justify-between w-full">
 					{enrolled ? (
 						<Link
