@@ -35,7 +35,7 @@ export async function updateUserDetails(userId , func) {
 
 export async function applyForInstructor( func) {
   try{
-    const { data } = await axios.post(`/api/user/applyForInstructor, {});
+    const { data } = await axios.post(`/api/user/applyForInstructor`, {});
     func(data)
   }catch(err){
     func(data)
