@@ -10,6 +10,7 @@ function FormControl({ type, label, onChange }) {
 				autoComplete="off"
 				placeholder=" "
 				onChange={onChange}
+				name={label}
 				required
 			/>
 			<label
