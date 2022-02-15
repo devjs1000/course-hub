@@ -7,13 +7,13 @@ import {
 	TelephonePlusFill,
 	ArrowLeft,
 } from 'react-bootstrap-icons';
-import useSignup from '../../context/ContextHooks/useSignup';
 import { Link } from 'react-router-dom';
 import FormControl from './FormControl';
 import Button from '../../UI/Button';
+import useAuthHook from '../../hooks/useAuthHook';
 
 const Signup = () => {
-	const { signup } = useSignup();
+	const { signup } = useAuthHook();
 	const [signupData, setSignupData] = useState({
 		isAdmin: false,
 		isInstructor: false,

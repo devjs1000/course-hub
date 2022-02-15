@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Envelope, Lock, ArrowLeft } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
-import useLogin from '../../context/ContextHooks/useLogin';
 import { authDesign } from '../../styles/styleObjects';
 import FormControl from './FormControl';
 import Button from '../../UI/Button';
+import useAuthHook from '../../hooks/useAuthHook';
 
 const Login = () => {
-	const { login } = useLogin();
+	const { login } = useAuthHook();
 	const [loginData, setLoginData] = useState({});
 
 	const getLoginData = e => {

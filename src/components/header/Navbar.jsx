@@ -24,7 +24,9 @@ function Navbar() {
 
 	return (
 		<nav className="flex gap-3 items-center justify-between px-4 py-2 bg-white relative xsm:gap-5 md:flex-row md:px-16">
-			<img src={logoPrimary} alt="primary-logo-img" className="w-36 lg:w-48" />
+			<Link to='/'>
+				<img src={logoPrimary} alt="primary-logo-img" className="w-36 lg:w-48" />
+			</Link>
 
 			<div className="flex items-center gap-4 xsm:gap-6">
 				{!user.token ? (
