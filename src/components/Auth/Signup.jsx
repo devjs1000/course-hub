@@ -31,7 +31,7 @@ const Signup = () => {
 	const submitSignup = e => {
 		e.preventDefault();
 		console.log(signupData);
-		// signup(signupData);
+		signup(signupData);
 		e.target.reset();
 	};
 
@@ -53,7 +53,7 @@ const Signup = () => {
 						/>
 						<FormControl
 							type="number"
-							label="mobile"
+							label="mobileNumber"
 							onChange={getSignupData}
 						/>
 

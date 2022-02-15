@@ -33,7 +33,7 @@ const Login = () => {
 				<form className="w-4/5 h-full" onSubmit={submitLogin}>
 					<h2 className="text-4xl font-semibold mb-12">Login</h2>
 					<div className="flex flex-col items-start gap-6 mb-12">
-						<FormControl type="email" label="email" onChange={getLoginData} />
+						<FormControl type="email" label="email"  onChange={getLoginData} />
 						<FormControl
 							type="password"
 							label="password"
