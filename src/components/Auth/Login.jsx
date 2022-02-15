@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { Envelope, Lock, ArrowLeft } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { authDesign } from '../../styles/styleObjects';
 import FormControl from './FormControl';
 import Button from '../../UI/Button';
 import useAuthHook from '../../hooks/useAuthHook';
+import useStore from '../../context/useStore';
 
 const Login = () => {
+	const {user} = useStore()
 	const { login } = useAuthHook();
 	const [loginData, setLoginData] = useState({});
+	const getlocation = useLocation();
+	const path = getlocation?.state?.location;
 
 	const getLoginData = e => {
 		const name = e.target.name;
@@ -29,6 +33,8 @@ const Login = () => {
 
 	return (
 		<div className="h-screen bg-primary-color-dark flex items-center justify-center">
+			{user._id && path && <Navigate to={path} />}
+      		{user._id && !path && <Navigate to="/" />}
 			<div className="relative bg-white w-[20rem] py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
 				<Link to="/">
 					<ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
