@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Assignment from './components/Assignment';
 import Community from './components/Community/Community';
 import Loading from './UI/Loading';
+import PrivateRoute from './components/PrivateRoute';
 
 // const Login =lazy(()=> import('./components/Auth/Login'))
 // const Signup =lazy(()=> import('./components/Auth/Signup'))
@@ -38,7 +39,7 @@ function App() {
 							<Route path="/" element={<Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />
-							<Route path="/my-profile" element={<Profile />} />
+							<Route path="/my-profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
 							<Route path="/my-courses" element={<MyCourses />} />
 							<Route path="/my-assignments" element={<Assignment />} />
 							<Route path="/Community" element={<Community />} />

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import {useLocation} from 'react-router-dom'
 import {allOtherCourses, allBackendCourses, allFrontendCourses, allDesigningCourses, allFullstackCourses, getAllCoursesOfUser} from '../fetch/courseApi'
 import {getAssignmentsOfUser} from '../fetch/assignmentApi'
-import { authCheck } from "./authCheck";
+import useAuthCheck from "../hooks/useAuthCheck";
 
 const Store = () => {
+  const {authCheck} = useAuthCheck()
   const location = useLocation();
 	const path = location.pathname.split('/')[1];
   const [user, setUser] = useState({});

@@ -8,7 +8,6 @@ const useAuthHook = () => {
 
     /* Signup Function */
     const signup =async (data)=>{
-
         setUserLoading(true)
         try{
             const response= await axios.post('http://management-xcitedu.herokuapp.com/user/userRegister',data)
