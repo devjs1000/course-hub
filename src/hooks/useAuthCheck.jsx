@@ -2,6 +2,7 @@ import axios from "axios";
 import {
 	useJwt
 } from "react-jwt";
+import {userDetails} from '../fetch/userApi'
 
 const useAuthCheck = () => {
 	const token = localStorage.getItem("accessToken");
@@ -11,18 +12,21 @@ const useAuthCheck = () => {
 	} = useJwt(token);
 
 	const authCheck = async (setUser, setUserLoading) => {
-
+console.log('token'+isExpired);
 		if (isExpired) {
 			localStorage.removeItem("accessToken");
 			setUser({});
+			console.log('token expired');
 			return setUserLoading(false);
 		}
 
 		if (!decodedToken?.id) {
 			localStorage.removeItem("accessToken");
 			setUser({});
+			console.log('token not decoded');
 			return setUserLoading(false);
 		}
+
 		try {
 			const response = await axios.get("api link will be here", {
 				headers: {
@@ -30,6 +34,7 @@ const useAuthCheck = () => {
 				},
 			});
 
+			console.log('trying man');
 			if (response?.data?.success) {
 				setUser(response.data.data);
 				localStorage.setItem("accessToken", response.data.token);

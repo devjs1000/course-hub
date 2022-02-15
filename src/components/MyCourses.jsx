@@ -7,7 +7,7 @@ const MyCourses = ({}) => {
 	if (!myCourses.data) return null;
 	console.log(myCourses.data);
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-10 m-6">
+		<div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-10 m-6">
 			{Children.toArray(
 				myCourses.data.map(course => {
 					return (
@@ -15,7 +15,7 @@ const MyCourses = ({}) => {
 							title={course.courseId.name}
 							enrolled={true}
 							image={course.courseId.image}
-							description={''}
+							description={course.courseId.description}
 							tagline={course.courseId.tagline}
 							type={course.courseId.type}
 						/>

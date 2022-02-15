@@ -13,7 +13,7 @@ const CourseCard = ({
 	enrolled = false,
 }) => {
 	return (
-		<div className="rounded-xl h-[20rem] shadow-xl overflow-hidden">
+		<div className="rounded-xl relative h-[20rem] shadow-xl overflow-hidden">
 			<div className="h-[10rem] rounded-tl-xl rounded-tr-xl overflow-hidden border">
 				<img src={image} alt="course-image" className="object-cover h-full" />
 			</div>

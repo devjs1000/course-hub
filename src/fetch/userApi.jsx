@@ -21,7 +21,7 @@ export async function userDetails(userId , func) {
     const { data } = await axios.get(`/api/user/userDetails/${userId}`);
     func(data)
   }catch(err){
-    func(data)
+    func(err)
   }
 }
 export async function updateUserDetails(userId , func) {
