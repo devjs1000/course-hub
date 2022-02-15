@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import logoPrimary from '../../images/logo-primary.png';
 import { List } from 'react-bootstrap-icons';
-import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
 import { Link, useLocation } from 'react-router-dom';
 import useStore from '../../context/useStore';
@@ -47,7 +46,9 @@ function Navbar() {
 							Login?
 						</Link>
 						<Link to="/signup">
-							<Button isPrimary={true}>Register</Button>
+							<button className='bg-red-700 text-white mx-2 px-2 py-1 rounded sm:px-4 sm:py-2'>
+							signup
+							</button>
 						</Link>
 					</>
 				) : (
