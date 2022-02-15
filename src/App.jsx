@@ -24,14 +24,15 @@ function App() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setTimeout(() => setLoading(false), 2000);
+		setTimeout(() => setLoading(false), 3000);
 	}, []);
+
 	return (
 		<>
 			{loading ? (
 				<Loading />
 			) : (
-				<div className="App ">
+				<div>
 					<Navbar />
 					<Suspense fallback={'loading'}>
 						<Routes>

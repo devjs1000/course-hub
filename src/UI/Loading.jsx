@@ -1,9 +1,10 @@
 import React from 'react';
 import loader from '../images/loader.svg';
 
-function Loading() {
+function Loading({className}) {
+	const loadingClasses = `${className} h-screen flex items-center justify-center`;
 	return (
-		<div className="h-screen flex items-center justify-center">
+		<div className={loadingClasses}>
 			<img src={loader} alt="loader animated svg" />
 		</div>
 	);
