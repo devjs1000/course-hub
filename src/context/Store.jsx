@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {useLocation} from 'react-router-dom'
 import {allOtherCourses, allBackendCourses, allFrontendCourses, allDesigningCourses, allFullstackCourses, getAllCoursesOfUser} from '../fetch/courseApi'
 import {getAssignmentsOfUser} from '../fetch/assignmentApi'
+import { authCheck } from "./authCheck";
 
 const Store = () => {
   const location = useLocation();
@@ -15,6 +16,10 @@ const Store = () => {
   const [fullstackCourses, setFullstackCourses]=useState({title:"fullstack courses", data:[]})
   const [myCourses, setMyCourses]=useState({})
   const [first, setFirst]=useState(0)
+  
+  useEffect(()=>{
+    authCheck(setUser,setUserLoading)
+  },[])
 //stoped the course for development process so that it don't hit api so many times
 
 //one time effect at starting of program
@@ -55,6 +60,7 @@ useEffect(()=>{
   } catch (error) {
     console.log('eror');
   }
+
 
 
 },[user])

@@ -17,8 +17,6 @@ const Profile = () => {
   const { user } = useStore();
   const {logout} = useAuthHook();
 
-  // if(!user.success) return null
-
   // const joining=new Date(Date.parse(user.data.createdAt)).toString()
 
   return (
