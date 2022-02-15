@@ -8,7 +8,7 @@ import {
 	ArrowLeft,
 } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
-import FormControl from './FormControl';
+import FormControl from '../../UI/FormControl';
 import Button from '../../UI/Button';
 import useAuthHook from '../../hooks/useAuthHook';
 
@@ -22,8 +22,8 @@ const Signup = () => {
 	const getSignupData = e => {
 		const name = e.target.name;
 		let value = e.target.value;
-		if(name==='email'){
-			value = value.toLowerCase()
+		if (name === 'email') {
+			value = value.toLowerCase();
 		}
 		const newData = { ...signupData };
 		newData[name] = value;
@@ -39,7 +39,7 @@ const Signup = () => {
 
 	return (
 		<div className="bg-primary-color-dark flex items-center justify-center h-[100vh]  py-2">
-			<div className="relative bg-white w-[20rem] py-16 flex items-center h-[95vh] justify-center rounded-xl sm:w-[30rem]">
+			<div className="relative bg-white w-[25rem] mx-2 py-14 flex items-center justify-center rounded-xl sm:w-[30rem]">
 				<Link to="/">
 					<ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
 				</Link>
