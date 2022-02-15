@@ -11,7 +11,7 @@ import Assignment from './components/Assignment';
 import Community from './components/Community/Community';
 import Loading from './UI/Loading';
 import PrivateRoute from './components/PrivateRoute';
-
+import {userDetails} from './fetch/userApi'
 // const Login =lazy(()=> import('./components/Auth/Login'))
 // const Signup =lazy(()=> import('./components/Auth/Signup'))
 // const Profile =lazy(()=> import('./components/Profile'))
@@ -25,7 +25,7 @@ function App() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setTimeout(() => setLoading(false), 3000);
+		setTimeout(() => setLoading(false), 2000);
 	}, []);
 
 	return (

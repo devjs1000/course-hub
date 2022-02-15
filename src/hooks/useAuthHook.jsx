@@ -10,7 +10,7 @@ const useAuthHook = () => {
     const signup =async (data)=>{
         setUserLoading(true)
         try{
-            const response= await axios.post('http://management-xcitedu.herokuapp.com/user/userRegister',data)
+            const response= await axios.post('/api/user/userRegister',data)
             if(response.data.success){
                 setUserLoading(false)
                 navigate('./login')
@@ -28,7 +28,7 @@ const useAuthHook = () => {
     const login =async (data)=>{
         setUserLoading(true)
         try{
-            const response= await axios.post('http://management-xcitedu.herokuapp.com/user/userLogin',data)
+            const response= await axios.post('/api/user/userLogin',data)
             if(response?.data?.success){
                 setUser(response.data.data)
                 localStorage.setItem("accessToken", response.data.token);
