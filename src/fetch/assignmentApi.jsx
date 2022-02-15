@@ -11,7 +11,7 @@ export async function getAssignmentsOfUser(id, func) {
 }
 
 export async function submitAssignment(id, func) {
-    const response=await axios.get(`/api/assignment/submitAssignment/${id}`)
+    const response=await axios.post(`/api/assignment/submitAssignment/${id}`)
     func(response)
 }
 
