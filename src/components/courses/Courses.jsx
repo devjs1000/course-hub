@@ -10,7 +10,7 @@ function Courses({ courseArray = [], title }) {
 	if (courseArray == []) return null;
 
 	return (
-		<div className="bg-slate-50 px-16 pt-8 select-none lg:pt-16">
+		<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
 				{title}
 			</h2>

@@ -5,7 +5,7 @@ import rectDesign from '../../images/rect-design.svg';
 
 function Hero() {
 	return (
-		<section className="section-hero bg-white flex flex-col gap-2 items-center px-4 py-4 relative  sm:px-8 md:flex-row md:pt-0 lg:items-start lg:pt-12 xl:pt-16 xl:px-16">
+		<section className="section-hero h-screen bg-white flex flex-col gap-2 items-center px-4 py-4 relative  sm:px-8 md:flex-row md:pt-0 lg:items-start lg:pt-12 xl:pt-16 xl:px-16">
 			<div className="flex flex-col items-center gap-4 order-2 xsm:gap-6 md:items-start md:w-1/2 lg:gap-10">
 				<h1 className="text-4xl text-center md:text-left lg:text-6xl xl:text-7xl">
 					Lorem ipsum la casa de papel.
