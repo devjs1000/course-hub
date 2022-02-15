@@ -37,8 +37,8 @@ function Navbar() {
 				/>
 			</Link>
 
-			<div className="flex items-center gap-4 ml-auto xsm:gap-6">
-				{!user.token ? (
+			<div className="flex items-center gap-4 xsm:gap-6">
+				{!user._id ? (
 					<>
 						<Link
 							to="/login"
@@ -52,7 +52,7 @@ function Navbar() {
 					</>
 				) : (
 					<div>
-						<span className="text-red-800 text-xl">{user.data.name}</span>
+						<span className="text-red-800 text-xl">{user.name}</span>
 					</div>
 				)}
 
