@@ -37,7 +37,7 @@ function Navbar() {
 				/>
 			</Link>
 
-			<div className="flex items-center gap-4 xsm:gap-6">
+			<div className="flex items-center gap-4 ml-auto xsm:gap-6">
 				{!user._id ? (
 					<>
 						<Link
