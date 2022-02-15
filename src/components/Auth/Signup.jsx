@@ -27,24 +27,16 @@ const Signup = () => {
 		setSignupData(newData);
 	};
 
-	const getChecks = e => {
-		const name = e.target.name;
-		const value = e.target.checked;
-		const newData = { ...signupData };
-		newData[name] = value;
-		setSignupData(newData);
-	};
-
 	const submitSignup = e => {
 		e.preventDefault();
-		// console.log(signupData);
-		signup(signupData);
+		console.log(signupData);
+		// signup(signupData);
 		e.target.reset();
 	};
 
 	return (
-		<div className="bg-primary-color-dark flex items-center justify-center py-2">
-			<div className="relative bg-white w-[20rem] py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
+		<div className="bg-primary-color-dark flex items-center justify-center h-[100vh]  py-2">
+			<div className="relative bg-white w-[20rem] py-16 flex items-center h-[95vh] justify-center rounded-xl sm:w-[30rem]">
 				<Link to="/">
 					<ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
 				</Link>
@@ -63,28 +55,6 @@ const Signup = () => {
 							label="mobile"
 							onChange={getSignupData}
 						/>
-						<div className="flex items-center gap-10">
-							<div className="flex items-center gap-2">
-								<input
-									type="radio"
-									name="for_whome"
-									id="student"
-									value="student"
-									className="accent-primary-color-dark"
-								/>
-								<label htmlFor="student">Student</label>
-							</div>
-							<div className="flex items-center gap-2">
-								<input
-									type="radio"
-									name="for_whome"
-									id="instructor"
-									value="instructor"
-									className="accent-primary-color-dark"
-								/>
-								<label htmlFor="instructor">Instuctor</label>
-							</div>
-						</div>
 					</div>
 					<Button isPrimary={true} isWidthFull={true} type="submit">
 						Sign up
