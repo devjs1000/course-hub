@@ -13,9 +13,9 @@ const CourseCard = ({
 	enrolled = false,
 }) => {
 	return (
-		<div className="rounded-xl relative h-[20rem] shadow-xl overflow-hidden">
-			<div className="h-[10rem] rounded-tl-xl rounded-tr-xl overflow-hidden border">
-				<img src={image} alt="course-image" className="object-cover h-full" />
+		<div className="rounded-xl relative h-[20rem] max-w-[18rem]  shadow-xl overflow-hidden">
+			<div className="h-[10rem] rounded-t-xl   overflow-hidden border">
+				<img src={image} alt="course-image" className="object-cover w-full h-full" />
 			</div>
 			<div className="p-4 text-slate-900 flex flex-col items-start gap-4">
 				<span className="bg-slate-800 text-[12px] font-semibold rounded-sm text-white px-2 py-[.1rem] uppercase">

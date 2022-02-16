@@ -3,6 +3,7 @@ import axios from "axios";
 export async function oneCourse(courseId, func) {
   const { data } = await axios.get(`/api/course/oneCourse/${courseId}`);
   func(data)
+
 }
 
 export async function allInstructorCourses(id, func) {

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {Children} from 'react';
 import CountButton from '../UI/CountButton'
 import Search from '../UI/Search'
 import {ArrowClockwise} from 'react-bootstrap-icons';
+import useStore from '../context/useStore'
 const Assignment = ({}) => {
+
+  const {assignments}=useStore()
+  console.log(assignments);
   return (
     <div className='bg-slate-100 h-[85vh]'>
       <h1 className='p-4 text-4xl sm:text-6xl font-bold text-center text-slate-700 '>My Assignments</h1>
@@ -18,62 +22,32 @@ const Assignment = ({}) => {
 
       <div className='h-[70vh] overflow-y-scroll'>
 <div className='flex justify-between bg-white my-1 py-2 px-4 w-full items-center text-slate-700'>
-<div>Name of Task</div>
-<div>Course</div>
-  <div>Status</div>
+<div>Program Code</div>
+<div>Course Name</div>
+  <div>Course Code</div>
+  <div>Last Date</div>
+  <div>Actions</div>
 
 </div>
 
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
+{Children.toArray(
+assignments.data.map(a=>{
+
+  return (
+    <div className='flex justify-between bg-white my-1 py-2 px-4 w-full items-center text-slate-700'>
+      <div><img src={a.courseId.image} className='h-12 w-12 rounded-full object-cover' /></div>
+<div><a href={a.assignmentLink} className='text-blue-700'>link</a></div>
+<div><a href={a.assignmentLink} className='text-blue-700'>git repository link</a></div>
+<div>{a.courseId.name}</div>
+  <div></div>
+  <div>Last Date</div>
+  <div>Actions</div>
+
 </div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
-<div className='flex justify-between bg-white  py-2 my-1 px-4 w-full items-center text-slate-600'>
-  <div>Name of Task</div>
-  <div>Course</div>
-    <div>Status</div>
-</div>
+
+  )
+}))
+}
 
       </div>
     </div>
