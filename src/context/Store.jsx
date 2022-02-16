@@ -38,7 +38,7 @@ const Store = () => {
     data: [],
   });
   const [myCourses, setMyCourses] = useState({});
-  const [first, setFirst] = useState(0);
+  const [first, setFirst] = useState(1);
   const [assignments, setAssignments] = useState({});
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const Store = () => {
       __v: 0,
     };
     if (isMount) {
-      setUser(studentData.data);
+      // setUser(studentData.data);
       setUserLoading(false);
     }
     return () => {
@@ -156,7 +156,6 @@ const Store = () => {
       isMount = false;
     };
   }, [user]);
-
 
   //returning for global access
   return {
