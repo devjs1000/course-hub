@@ -1,0 +1,21 @@
+{
+  "asset_id": "64b29e8d246821f9c615c295122069f4",
+  "public_id": "j2ikqf72mrcmwkb25sxc",
+  "version": 1645043743,
+  "version_id": "b27fe256552ba4601b13b633f52bc4ff",
+  "signature": "8e8fc313b5ab98f3de1738798e3d3aa11aaf713f",
+  "width": 287,
+  "height": 176,
+  "format": "png",
+  "resource_type": "image",
+  "created_at": "2022-02-16T20:35:43Z",
+  "tags": [],
+  "bytes": 7839,
+  "type": "upload",
+  "etag": "4399ddb4b31b1f9f0e86bd07040741a4",
+  "placeholder": false,
+  "url": "http://res.cloudinary.com/dizvyn9b5/image/upload/v1645043743/j2ikqf72mrcmwkb25sxc.png",
+  "secure_url": "https://res.cloudinary.com/dizvyn9b5/image/upload/v1645043743/j2ikqf72mrcmwkb25sxc.png",
+  "access_mode": "public",
+  "original_filename": "seo"
+}

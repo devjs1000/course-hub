@@ -56,10 +56,10 @@ export async function checkIfUserIsEnrolledInCourse(courseId, id, func) {
   func(data)
 }
 
-export async function createCourse(instructorId, name, tagline, type, description, assignmentQuestion, imageLink, func){
+export async function createCourse(instructorId, name, tagline, type, description, assignmentQuestion, image, func){
   const { data } = await axios.post(
     "/api/course/createCourse",
-    {instructorId,name,tagline,type,description,assignmentQuestion,image: imageLink});
+    {instructorId,name,tagline,type,description,assignmentQuestion,image});
     func(data)
 }
 

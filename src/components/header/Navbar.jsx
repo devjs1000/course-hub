@@ -15,6 +15,9 @@ function Navbar() {
   //add objects in nullpath for hiding object in paths
   const nullPath = ["login", "signup"];
   if (nullPath.includes(path)) return null;
+  
+  console.log(Object.keys(user).length);
+  if(Object.keys(user).length==0) return null;
 
   const openSidebarHandler = () => {
     setOpenSidebar(!openSidebar);
@@ -37,7 +40,7 @@ function Navbar() {
       </Link>
 
       <div className="flex items-center gap-4 ml-auto xsm:gap-6">
-        {!user._id ? (
+        {!user._id  ? (
           <>
             <Link
               to="/login"

@@ -38,7 +38,7 @@ const Store = () => {
     data: [],
   });
   const [myCourses, setMyCourses] = useState({});
-  const [first, setFirst] = useState(1);
+  const [first, setFirst] = useState(0);
   const [assignments, setAssignments] = useState({});
 
   useEffect(() => {
@@ -97,6 +97,8 @@ const Store = () => {
     };
     if (isMount) {
       // setUser(studentData.data);
+            setUser(teacherData);
+
       setUserLoading(false);
     }
     return () => {

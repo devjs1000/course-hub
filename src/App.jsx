@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/header/Navbar';
 import Loading from './UI/Loading';
 import PrivateRoute from './components/PrivateRoute';
+import CreateCourse from './components/CreateCourse';
 
 import Home from './pages/Home';
 import Login from './components/Auth/Login';
@@ -47,6 +48,8 @@ function App() {
 							<Route path="/my-courses" element={<MyCourses />} />
 							<Route path="/my-assignments" element={<Assignment />} />
 							<Route path="/Community" element={<Community />} />
+							<Route path="/create-course" element={<CreateCourse />} />
+
 						</Routes>
 						<Footer />
 					</Suspense>
