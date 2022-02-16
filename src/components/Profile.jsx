@@ -5,6 +5,7 @@ import {
   CaretRight,
   FileEarmark,
   Moon,
+  Pen,
   PersonCircle,
   Phone,
 } from "react-bootstrap-icons";
@@ -17,7 +18,7 @@ const Profile = () => {
 
   const joining = new Date(Date.parse(user.createdAt)).toString();
   const img1 =
-    "https://jooinn.com/images/silhouette-of-a-boy-during-sunset.jpg";
+    "https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg";
 
   return (
     <div className={profileDesign.mainDiv}>
@@ -92,7 +93,46 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className={profileDesign.rightMain}></div>
+      <div className={profileDesign.rightMain}>
+        <div className="hidden md:block">
+         <div className="relative">
+         <img className="h-52 w-full" src={img1} alt="" />
+         <Pen className="absolute bottom-3 right-3 h-6 w-6 text-white cursor-pointer"/>
+         </div>
+          <div className="ml-5 border-b-2 border-red-500 pb-4">
+            <h1 className="my-5 text-xl text-red-600 font-bold">
+              Detective Duche
+            </h1>
+            <p className="text-sm text-red-600 font-medium">
+              Date of Birth <span className="ml-5">01.01.2000 (22Y)</span>
+            </p>
+          </div>
+        </div>
+        <div className="m-3 md:ml-5">
+          <h2 className="text-xl font-semibold text-gray-700 md:mt-4">Courses Enrolled</h2>
+          <div className="bg-gray-200 flex items-center p-3 mt-4">
+            <h1 className="w-3/6 text-xl font-semibold text-red-700">Data Sceince</h1>
+            <div className="flex items-center justify-between w-3/6">
+              <p className="text-xs font-semibold">Completed</p>
+              <p className="text-xs font-semibold underline text-red-700 cursor-pointer ml-3">Download Certificate</p>
+            </div>
+          </div>
+          <div className="bg-gray-200 flex items-center p-3 mt-4">
+            <h1 className="w-3/6 text-xl font-semibold text-red-700">Artificial Intelligance</h1>
+            <div className="flex items-center justify-between w-3/6">
+              <p className="text-xs font-semibold">Completed</p>
+              <p className="text-xs font-semibold underline text-red-700 cursor-pointer ml-3">Download Certificate</p>
+            </div>
+          </div>
+          <div className="bg-gray-200 flex items-center p-3 mt-4">
+            <h1 className="w-3/6 text-xl font-semibold text-red-700">Frontend Developer</h1>
+            <div className="flex items-center justify-between w-3/6">
+              <p className="text-xs font-semibold">Completed</p>
+              <p className="text-xs font-semibold underline text-red-700 cursor-pointer ml-3">Download Certificate</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
