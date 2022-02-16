@@ -35,7 +35,7 @@ export const profileDesign={
     leftMain:'col-span-12 md:col-span-5 lg:col-span-3 h-fit mx-3 md:pt-7',
     person:'h-56 md:h-auto relative bg-white pb-2 rounded-bl-2xl rounded-br-2xl',
     leftPersonBg:'md:hidden h-3/6 w-full',
-    profileImg:'absolute w-20 h-20 top-1/4 left-0 right-0 md:static md:w-40 md:h-40 rounded-full block mx-auto',
+    profileImg:'absolute w-20 h-20 hover:p-2 transition-all object-cover bg-slate-200 p-1 top-1/4 left-0 right-0 md:static md:w-40 md:h-40 rounded-full block mx-auto',
     leftInfoMain:'absolute bottom-2 left-0 right-0 md:static',
     profileName:'text-lg font-bold text-center mt-2 text-slate-700',
     intro:'text-center text-sm font-semibold text-slate-500',
