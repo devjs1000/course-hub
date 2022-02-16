@@ -17,7 +17,7 @@ const Store = () => {
   const [fullstackCourses, setFullstackCourses]=useState({title:"fullstack courses", data:[]})
   const [myCourses, setMyCourses]=useState({})
   const [first, setFirst]=useState(0)
-  const [assignments, setAssignments]=useState()
+  const [assignments, setAssignments]=useState({})
 
   useEffect(()=>{
     let isMount=true
