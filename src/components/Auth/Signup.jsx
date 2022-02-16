@@ -46,16 +46,28 @@ const Signup = () => {
 				<form className="w-4/5 h-full" onSubmit={submitSignup}>
 					<h2 className="text-4xl font-semibold mb-12">Sign up</h2>
 					<div className="flex flex-col items-start gap-6 mb-12">
-						<FormControl type="text" label="name" onChange={getSignupData} />
-						<FormControl type="email" label="email" onChange={getSignupData} />
+						<FormControl
+							type="text"
+							label="name"
+							icon="PERSON"
+							onChange={getSignupData}
+						/>
+						<FormControl
+							type="email"
+							label="email"
+							icon="EMAIL"
+							onChange={getSignupData}
+						/>
 						<FormControl
 							type="password"
 							label="password"
+							icon="LOCK"
 							onChange={getSignupData}
 						/>
 						<FormControl
 							type="number"
 							label="mobileNumber"
+							icon="PHONE"
 							onChange={getSignupData}
 						/>
 					</div>
