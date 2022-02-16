@@ -14,6 +14,9 @@ import {
 	Check2Circle,
 	XOctagon,
 	JournalText,
+	Lock,
+	Envelope,
+	Telephone,
 } from 'react-bootstrap-icons';
 
 function FormControl({ type, label, onChange, icon }) {
@@ -34,6 +37,9 @@ function FormControl({ type, label, onChange, icon }) {
 	if (icon === 'CORRECT') iconImg = <Check2Circle className={iconClass} />;
 	if (icon === 'INCORRECT') iconImg = <XOctagon className={iconClass} />;
 	if (icon === 'DESC') iconImg = <JournalText className={iconClass} />;
+	if (icon === 'LOCK') iconImg = <Lock className={iconClass} />;
+	if (icon === 'EMAIL') iconImg = <Envelope className={iconClass} />;
+	if (icon === 'PHONE') iconImg = <Telephone className={iconClass} />;
 
 	return (
 		<div className="relative top-0 left-0 w-full">
