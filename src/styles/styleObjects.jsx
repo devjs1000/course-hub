@@ -32,10 +32,10 @@ bottomIn:'ml-2 text-red-500 cursor-pointer',
 
 export const profileDesign={
     mainDiv:'grid grid-cols-12 gap-3 md:p-3 md:my-3 text-slate-800 md:mx-12 bg-red-700 md:bg-white',
-    leftMain:'col-span-12 md:col-span-5 lg:col-span-3 h-fit mx-3',
+    leftMain:'col-span-12 md:col-span-5 lg:col-span-3 h-fit mx-3 md:pt-7',
     person:'h-56 md:h-auto relative bg-white pb-2 rounded-bl-2xl rounded-br-2xl',
     leftPersonBg:'md:hidden h-3/6 w-full',
-    profileImg:'absolute w-20 h-20 top-1/4 left-0 right-0 md:static md:w-24 md:h-24 rounded-full block mx-auto',
+    profileImg:'absolute w-20 h-20 top-1/4 left-0 right-0 md:static md:w-40 md:h-40 rounded-full block mx-auto',
     leftInfoMain:'absolute bottom-2 left-0 right-0 md:static',
     profileName:'text-lg font-bold text-center mt-2 text-slate-700',
     intro:'text-center text-sm font-semibold text-slate-500',
@@ -46,6 +46,5 @@ export const profileDesign={
     active:'ease-in duration-200 flex items-center bg-gray-300 pl-5 mt-3 py-1 rounded-lg  cursor-pointer',
     mainIcon:'mr-2 w-8 h-8 p-1',
     mainBtnText:'text-md font-bold',
-    rightMain:'col-span-12 md:col-span-7 lg:col-span-9  p-4 rounded-lg h-fit bg-white',
-    infoMain:'flex justify-between items-center border-b pb-2 text-md font-semibold px-3 mb-3',
+    rightMain:'col-span-12 md:col-span-7 lg:col-span-9  rounded-lg h-fit bg-white m-3',
 }
