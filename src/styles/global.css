@@ -2,42 +2,6 @@
 	--color-primary-dark: #9d0000;
 }
 
-/* BUTTON */
-.btn {
-	height: 2.5rem;
-	width: 6rem;
-	cursor: pointer;
-}
-
-@media (min-width: 500px) {
-	.btn {
-		width: 8rem;
-	}
-}
-
-@media (min-width: 1024px) {
-	.btn {
-		height: 3rem;
-		width: 10rem;
-	}
-}
-
-/* LINK */
-.link::after {
-	position: absolute;
-	content: '';
-	height: 2px;
-	width: 100%;
-	bottom: -0.3rem;
-	left: 0;
-	background-color: currentColor;
-}
-
-/* sectio-hero */
-.section-hero {
-	z-index: 1;
-}
-
 .section-hero::before {
 	position: absolute;
 	content: '';
@@ -48,18 +12,6 @@
 	z-index: -1;
 	background: var(--color-primary-dark);
 	clip-path: polygon(100% 0, 100% 100%, 50% 50%, 0 100%, 0 0);
-}
-
-.section-hero-svg {
-	position: absolute;
-	bottom: 0;
-	visibility: hidden;
-}
-
-@media (min-width: 500px) {
-	.section-hero::before {
-		height: 40%;
-	}
 }
 
 @media (min-width: 768px) {
@@ -73,20 +25,6 @@
 		transform: rotateZ(180deg);
 		transform-origin: right;
 		clip-path: polygon(0 100%, 100% 0, 0 0);
-	}
-}
-
-@media (min-width: 1024px) {
-	.section-hero-svg {
-		width: 15rem;
-		visibility: visible;
-	}
-}
-
-@media (min-width: 1280px) {
-	.section-hero-svg {
-		width: 20rem;
-		left: 5rem;
 	}
 }
 
