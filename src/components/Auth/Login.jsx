@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Envelope, Lock, ArrowLeft } from 'react-bootstrap-icons';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { authDesign } from '../../styles/styleObjects';
 import FormControl from '../../UI/FormControl';
 import Button from '../../UI/Button';
 import useAuthHook from '../../hooks/useAuthHook';

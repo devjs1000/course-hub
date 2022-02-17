@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
-import { authDesign } from '../../styles/styleObjects';
-import {
-	Envelope,
-	Lock,
-	Person,
-	TelephonePlusFill,
-	ArrowLeft,
-} from 'react-bootstrap-icons';
+
+import { ArrowLeft } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import FormControl from '../../UI/FormControl';
 import Button from '../../UI/Button';
