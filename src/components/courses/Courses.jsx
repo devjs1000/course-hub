@@ -19,6 +19,18 @@ function Courses({ courseArray = [], title }) {
         style={{
           "--swiper-navigation-color": "#000",
         }}
+        breakpoints={{
+    // when window width is >= 640px
+    640: {
+      width: 640,
+      slidesPerView: 1,
+    },
+    // when window width is >= 768px
+    768: {
+      width: 768,
+      slidesPerView: 2,
+    },
+  }}
         spaceBetween={20}
         navigation={true}
         modules={[Navigation]}
