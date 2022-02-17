@@ -9,7 +9,7 @@ function HeroSection() {
 
 	return (
 		<section
-			className="h-screen text-white px-16 bg-no-repeat bg-center"
+			className="h-[90vh] text-white px-16 bg-no-repeat bg-center"
 			style={sectionStyles}
 		>
 			<div className="flex flex-col items-start gap-2 pt-24">
