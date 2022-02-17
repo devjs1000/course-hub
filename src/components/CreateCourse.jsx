@@ -32,6 +32,8 @@ const Form = () => {
       });
     }
   };
+
+
   const getBasic = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -41,6 +43,8 @@ const Form = () => {
     newData[name] = value;
     setBasic(newData);
   };
+
+
   const getAdvantage = (e) => {
     const name = e.target.name;
     const value = e.target.value;
