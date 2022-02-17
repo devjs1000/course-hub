@@ -1,7 +1,7 @@
 import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/header/Navbar';
-import Loading from './UI/Loading';
+import Loading from './UI/PenLoading';
 import PrivateRoute from './components/PrivateRoute';
 import CreateCourse from './components/CreateCourse';
 
