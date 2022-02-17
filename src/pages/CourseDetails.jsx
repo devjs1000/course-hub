@@ -1,3 +1,4 @@
+import AuthorIntro from '../components/courseDetailsPage/AuthorIntro';
 import HeroSection from '../components/courseDetailsPage/HeroSection';
 import RelatedCourses from '../components/courseDetailsPage/RelatedCourses';
 import WhatYouGet from '../components/courseDetailsPage/WhatYouGet';
@@ -8,6 +9,7 @@ const CourseDetails = () => {
 			<HeroSection />
 			<RelatedCourses />
 			<WhatYouGet />
+			<AuthorIntro />
 		</>
 	);
 };
