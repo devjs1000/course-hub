@@ -13,7 +13,7 @@ import MyCourses from './components/MyCourses';
 import Footer from './components/Footer';
 import Assignment from './components/Assignment';
 import Community from './components/Community/Community';
-import CourseDetails from './components/courseDetails/CourseDetails';
+import CourseDetails from './pages/CourseDetails';
 
 // const Login =lazy(()=> import('./components/Auth/Login'))
 // const Signup =lazy(()=> import('./components/Auth/Signup'))
