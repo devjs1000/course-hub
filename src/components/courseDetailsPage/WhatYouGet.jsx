@@ -61,7 +61,7 @@ function WhatYouGet() {
 		},
 	];
 	return (
-		<section className="pt-40 px-8 mb-16 text-center text-gray-500 mt-[-5rem]">
+		<section className="pt-40 px-16 mb-16 text-center text-gray-500 mt-[-5rem]">
 			<h2 className="font-bold mb-12 text-3xl sm:text-4xl md:text-5xl">
 				What will you get?
 			</h2>
