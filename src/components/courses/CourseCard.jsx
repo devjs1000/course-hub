@@ -13,7 +13,7 @@ const CourseCard = ({
 	const toPath = `coursedetails/${title}`;
 
 	return (
-		<div className="rounded-xl relative h-[20rem] max-w-[18rem]  shadow-xl overflow-hidden">
+		<div className="rounded-xl relative h-[20rem] max-w-[18rem] shadow-xl overflow-hidden">
 			<div className="h-[10rem] rounded-t-xl   overflow-hidden border">
 				<img
 					src={image}
@@ -21,7 +21,7 @@ const CourseCard = ({
 					className="object-cover w-full h-full"
 				/>
 			</div>
-			<div className="p-4 text-slate-900 flex flex-col items-start gap-4">
+			<div className="p-4 bg-white text-slate-900 flex flex-col items-start gap-4">
 				<span className="bg-slate-800 text-[12px] font-semibold rounded-sm text-white px-2 py-[.1rem] uppercase">
 					{type}
 				</span>
@@ -32,7 +32,7 @@ const CourseCard = ({
 					</span>
 				</h3>
 
-				<p className="text-sm overflow-auto text-lg absolute opacity h-[50%] w-[100%] top-[0rem] rounded-t-xl hover:text-white p-4 left-[0rem] text-transparent select-none hover:bg-red-700">
+				<p className="text-lg overflow-auto absolute opacity h-[50%] w-[100%] top-[0rem] rounded-t-xl hover:text-white p-4 left-[0rem] text-transparent select-none hover:bg-red-700">
 					{description}
 				</p>
 				<div className="flex items-center justify-between w-full">
