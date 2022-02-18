@@ -3,7 +3,7 @@ import useStore from '../../context/useStore';
 
 function RelatedCourses() {
 	// for testing purpose api data
-	// const { frontendCourses } = useStore();
+	const { frontendCourses } = useStore();
 	return (
 		<section className="section-related-course h-screen bg-primary-color-dark skew-y-[-5deg] mt-[-5rem] flex flex-col justify-center items-center px-16">
 			<h2 className="text-white skew-y-[5deg] font-bold mb-12 text-3xl sm:text-4xl md:text-5xl">
