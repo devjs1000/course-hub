@@ -1,16 +1,12 @@
 import React, { Children } from "react";
 import {
   Envelope,
-  Facebook,
   Geo,
-  Google,
   Telephone,
-  Twitter,
-  Youtube,
 } from "react-bootstrap-icons";
 import { useLocation } from "react-router-dom";
 import { footerStyles } from "../styles/styleObjects";
-
+import {footerPrint} from '../bluePrint/footerPrint'
 const Footer = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
@@ -19,46 +15,17 @@ const Footer = () => {
   const nullPath = ["login", "signup", "my-assignments"];
   if (nullPath.includes(path)) return null;
 
-  const bluePrint = {
-    brandName: "XcitEducation",
-    description: "",
-    lists: [
-      [
-        { title: "Our Projects" },
-        { title: "Medical & Health" },
-        { title: "Our Projects" },
-        { title: "Medical & Health" },
-        { title: "Our Projects" },
-        { title: "Medical & Health" },
-      ],
-      [
-        { title: "Our Projects" },
-        { title: "Medical & Health" },
-        { title: "Our Projects" },
-        { title: "Medical & Health" },
-        { title: "Our Projects" },
-        { title: "Medical & Health" },
-      ],
-    ],
-
-    socialIcons: [
-      <Facebook className={footerStyles.socialIcon} />,
-      <Twitter className={footerStyles.socialIcon} />,
-      <Youtube className={footerStyles.socialIcon} />,
-      <Google className={footerStyles.socialIcon} />,
-    ],
-  };
 
   return (
     <div className={footerStyles.mainDiv}>
       <div className={footerStyles.gridDiv}>
         <div>
-          <h1 className={footerStyles.title}>{bluePrint.brandName}</h1>
-          <p className={footerStyles.shortDes}>{bluePrint.description}</p>
+          <h1 className={footerStyles.title}>{footerPrint.brandName}</h1>
+          <p className={footerStyles.shortDes}>{footerPrint.description}</p>
         </div>
 
         {Children.toArray(
-          bluePrint.lists.map((list) => {
+          footerPrint.lists.map((list) => {
             return (
               <div>
                 {Children.toArray(
@@ -116,7 +83,7 @@ const Footer = () => {
 
         <div className={footerStyles.socialMain}>
           {Children.toArray(
-            bluePrint.socialIcons.map((icon) => {
+            footerPrint.socialIcons.map((icon) => {
               return icon;
             })
           )}

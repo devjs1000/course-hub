@@ -1,7 +1,7 @@
 import React from 'react';
 import { Search } from 'react-bootstrap-icons';
 
-const Assignment = ({ value, placeholder, onChange, onSearch }) => {
+export default ({ value, placeholder, onChange, onSearch }) => {
 	return (
 		<div className="flex border items-center text-red-700 bg-white w-[16.5rem] hover:text-white hover:bg-red-700">
 			<input
@@ -18,4 +18,3 @@ const Assignment = ({ value, placeholder, onChange, onSearch }) => {
 	);
 };
 
-export default Assignment;
