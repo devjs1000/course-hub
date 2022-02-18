@@ -26,6 +26,7 @@ const Community = () => {
             posts.map((a) => {
               return (
                 <Post
+                  id={a.id}
                   question={a.question}
                   category="Frontend"
                   answers={a.answers}
