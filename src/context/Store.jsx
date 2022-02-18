@@ -1,11 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
-	// allOtherCourses,
-	// allBackendCourses,
-	// allFrontendCourses,
-	// allDesigningCourses,
-	// allFullstackCourses,
 	allCourses,
 	getAllCoursesOfUser,
 } from '../fetch/courseApi';
@@ -70,26 +65,6 @@ const Store = () => {
 			answers: ['yes good', 'right man keep it up', 'wow woooh'],
 		},
 	]);
-	// const [otherCourses, setOtherCourses] = useState({
-	//   title: "other courses",
-	//   data: [],
-	// });
-	// const [frontendCourses, setFrontendCourses] = useState({
-	//   title: "frontend courses",
-	//   data: [],
-	// });
-	// const [backendCourses, setBackendCourses] = useState({
-	//   title: "backend courses",
-	//   data: [],
-	// });
-	// const [designingCourses, setDesigningCourses] = useState({
-	//   title: "design courses",
-	//   data: [],
-	// });
-	// const [fullstackCourses, setFullstackCourses] = useState({
-	//   title: "fullstack courses",
-	//   data: [],
-	// });
 	const [myCourses, setMyCourses] = useState({});
 	const [first, setFirst] = useState(0);
 	const [assignments, setAssignments] = useState({});
@@ -167,34 +142,6 @@ const Store = () => {
 	}, []);
 	//stoped the course for development process so that it don't hit api so many times
 
-	//one time effect at starting of program
-	// useEffect(() => {
-	//   let isMount = true;
-	//   if (path == "" && first == 0) {
-	//     if (isMount) {
-	//       setFirst(1);
-
-	//       allOtherCourses((data) => {
-	//         setOtherCourses({ ...otherCourses, data });
-	//       });
-	//       allFrontendCourses((data) => {
-	//         setFrontendCourses({ ...frontendCourses, data });
-	//       });
-	//       allBackendCourses((data) => {
-	//         setBackendCourses({ ...backendCourses, data });
-	//       });
-	//       allDesigningCourses((data) => {
-	//         setDesigningCourses({ ...designingCourses, data });
-	//       });
-	//       allFullstackCourses((data) => {
-	//         setFullstackCourses({ ...fullstackCourses, data });
-	//       });
-	//     }
-	//   }
-	//   return () => {
-	//     isMount = false;
-	//   };
-	// }, [path]);
 
 	//after user registered it will render and called
 	useEffect(() => {
@@ -233,21 +180,6 @@ const Store = () => {
 
 		posts,
 		setPosts,
-
-		// otherCourses,
-		// setOtherCourses,
-
-		// frontendCourses,
-		// setFrontendCourses,
-
-		// backendCourses,
-		// setBackendCourses,
-
-		// designingCourses,
-		// setDesigningCourses,
-
-		// fullstackCourses,
-		// setFullstackCourses,
 
 		myCourses,
 		setMyCourses,
