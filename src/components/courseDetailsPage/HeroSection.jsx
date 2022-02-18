@@ -13,9 +13,9 @@ function HeroSection({course}) {
 			style={sectionStyles}
 		>
 			<div className="flex flex-col items-start gap-2 pt-24">
-				<h1 className="font-bold text-4xl xsm:text-5xl md:text-6xl">{course.title}</h1>
+				<h1 className="font-bold text-4xl xsm:text-5xl md:text-6xl">{course?.title}</h1>
 				<p className="font-semibold tracking-wide xsm:text-xl xsm:tracking-wider md:text-2xl md:tracking-wide">
-				{course.tagline}
+				{course?.tagline}
 				</p>
 				<div className="flex flex-col items-center gap-4 mt-8 xsm:flex-row lg:mt-10">
 					<Button isPrimary={true}>enroll now</Button>

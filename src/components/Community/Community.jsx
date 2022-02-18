@@ -4,50 +4,11 @@ import Search from "../../UI/Search";
 import Category from "./Category";
 import { Plus } from "react-bootstrap-icons";
 import Post from "./Post";
+import useStore from '../../context/useStore'
 
 const Community = () => {
-  const posts = [
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-    {
-      category: "Frontend",
-      question: "life is full of fun when you enjoy it fully",
-      answers: ["yes good", "right man keep it up", "wow woooh"],
-    },
-  ];
+  const {posts} = useStore()
+
   return (
     <div className="bg-slate-100 min-h-screen ">
       <div className="bg-white  px-4 flex sticky top-0">

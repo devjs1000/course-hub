@@ -20,6 +20,56 @@ const Store = () => {
   const [userLoading, setUserLoading] = useState(true);
   const [allCoursesData,setAllCoursesData] = useState([])
   const [allCoursesLoading,setAllCoursesLoading] = useState(true)
+  const [posts,setPosts]= useState([
+    {
+      id:1,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:2,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:3,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:4,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:5,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:6,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:7,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+    {
+      id:8,
+      category: "Frontend",
+      question: "life is full of fun when you enjoy it fully",
+      answers: ["yes good", "right man keep it up", "wow woooh"],
+    },
+  ])
   // const [otherCourses, setOtherCourses] = useState({
   //   title: "other courses",
   //   data: [],
@@ -181,6 +231,9 @@ const Store = () => {
 
     allCoursesData,
     allCoursesLoading,
+
+    posts,
+    setPosts,
 
     // otherCourses,
     // setOtherCourses,
