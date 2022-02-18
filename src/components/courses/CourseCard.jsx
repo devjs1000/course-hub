@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const CourseCard = ({
+	courseId,
 	image,
 	title,
 	description,
@@ -9,15 +10,14 @@ const CourseCard = ({
 	type,
 	enrolled = false,
 }) => {
-	const toPath = `coursedetails/${title}`;
+	const toPath = `coursedetails/${courseId}`;
 
-	
-	const bluePrint={
-		enterline:{
-			enrolled:'Start Course',
-			noEnrolled:'enroll'
-		}
-	}
+	const bluePrint = {
+		enterline: {
+			enrolled: 'Start Course',
+			noEnrolled: 'enroll',
+		},
+	};
 
 	return (
 		<div className="rounded-xl relative h-[20rem] max-w-[18rem] shadow-xl overflow-hidden">
