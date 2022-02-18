@@ -2,7 +2,7 @@ import  {  Children } from "react";
 import CourseCard from "./courses/CourseCard";
 import useStore from "../context/useStore";
 import { Link } from "react-router-dom";
-
+import BoxLoading from '../UI/BoxLoading'
 const MyCourses = ({}) => {
   const { myCourses, user } = useStore();
 
@@ -28,6 +28,7 @@ const MyCourses = ({}) => {
                   <CourseCard
                     title={course.courseId.name}
                     enrolled={true}
+                    drill={true}
                     image={course.courseId.image}
                     description={course.courseId.description}
                     tagline={course.courseId.tagline}
@@ -39,7 +40,7 @@ const MyCourses = ({}) => {
           </div>
         </div>
       ) : (
-        ""
+        <BoxLoading />
       )}
     </>
   );
