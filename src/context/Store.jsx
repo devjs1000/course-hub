@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
-	allOtherCourses,
-	allBackendCourses,
-	allFrontendCourses,
-	allDesigningCourses,
-	allFullstackCourses,
+	// allOtherCourses,
+	// allBackendCourses,
+	// allFrontendCourses,
+	// allDesigningCourses,
+	// allFullstackCourses,
+	allCourses,
 	getAllCoursesOfUser,
 } from '../fetch/courseApi';
 import { getAssignmentsOfUser } from '../fetch/assignmentApi';
@@ -17,29 +18,88 @@ const Store = () => {
 	const path = location.pathname.split('/')[1];
 	const [user, setUser] = useState({});
 	const [userLoading, setUserLoading] = useState(true);
-	const [otherCourses, setOtherCourses] = useState({
-		title: 'other courses',
-		data: [],
-	});
-	const [frontendCourses, setFrontendCourses] = useState({
-		title: 'frontend courses',
-		data: [],
-	});
-	const [backendCourses, setBackendCourses] = useState({
-		title: 'backend courses',
-		data: [],
-	});
-	const [designingCourses, setDesigningCourses] = useState({
-		title: 'design courses',
-		data: [],
-	});
-	const [fullstackCourses, setFullstackCourses] = useState({
-		title: 'fullstack courses',
-		data: [],
-	});
-	const [myCourses, setMyCourses] = useState([]);
+	const [allCoursesData, setAllCoursesData] = useState([]);
+	const [allCoursesLoading, setAllCoursesLoading] = useState(true);
+	const [posts, setPosts] = useState([
+		{
+			id: 1,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 2,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 3,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 4,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 5,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 6,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 7,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+		{
+			id: 8,
+			category: 'Frontend',
+			question: 'life is full of fun when you enjoy it fully',
+			answers: ['yes good', 'right man keep it up', 'wow woooh'],
+		},
+	]);
+	// const [otherCourses, setOtherCourses] = useState({
+	//   title: "other courses",
+	//   data: [],
+	// });
+	// const [frontendCourses, setFrontendCourses] = useState({
+	//   title: "frontend courses",
+	//   data: [],
+	// });
+	// const [backendCourses, setBackendCourses] = useState({
+	//   title: "backend courses",
+	//   data: [],
+	// });
+	// const [designingCourses, setDesigningCourses] = useState({
+	//   title: "design courses",
+	//   data: [],
+	// });
+	// const [fullstackCourses, setFullstackCourses] = useState({
+	//   title: "fullstack courses",
+	//   data: [],
+	// });
+	const [myCourses, setMyCourses] = useState({});
 	const [first, setFirst] = useState(0);
 	const [assignments, setAssignments] = useState({});
+
+	useEffect(() => {
+		allCourses(data => {
+			setAllCoursesData(data);
+			setAllCoursesLoading(false);
+		});
+	}, []);
 
 	useEffect(() => {
 		let isMount = true;
@@ -108,32 +168,33 @@ const Store = () => {
 	//stoped the course for development process so that it don't hit api so many times
 
 	//one time effect at starting of program
-	useEffect(() => {
-		let isMount = true;
-		if (path == '' && first == 0) {
-			if (isMount) {
-				setFirst(1);
-				allOtherCourses(data => {
-					setOtherCourses({ ...otherCourses, data });
-				});
-				allFrontendCourses(data => {
-					setFrontendCourses({ ...frontendCourses, data });
-				});
-				allBackendCourses(data => {
-					setBackendCourses({ ...backendCourses, data });
-				});
-				allDesigningCourses(data => {
-					setDesigningCourses({ ...designingCourses, data });
-				});
-				allFullstackCourses(data => {
-					setFullstackCourses({ ...fullstackCourses, data });
-				});
-			}
-		}
-		return () => {
-			isMount = false;
-		};
-	}, [path]);
+	// useEffect(() => {
+	//   let isMount = true;
+	//   if (path == "" && first == 0) {
+	//     if (isMount) {
+	//       setFirst(1);
+
+	//       allOtherCourses((data) => {
+	//         setOtherCourses({ ...otherCourses, data });
+	//       });
+	//       allFrontendCourses((data) => {
+	//         setFrontendCourses({ ...frontendCourses, data });
+	//       });
+	//       allBackendCourses((data) => {
+	//         setBackendCourses({ ...backendCourses, data });
+	//       });
+	//       allDesigningCourses((data) => {
+	//         setDesigningCourses({ ...designingCourses, data });
+	//       });
+	//       allFullstackCourses((data) => {
+	//         setFullstackCourses({ ...fullstackCourses, data });
+	//       });
+	//     }
+	//   }
+	//   return () => {
+	//     isMount = false;
+	//   };
+	// }, [path]);
 
 	//after user registered it will render and called
 	useEffect(() => {
@@ -145,7 +206,7 @@ const Store = () => {
 						setMyCourses(courses.data);
 					});
 					getAssignmentsOfUser(user._id, data => {
-						// console.log(data);
+						console.log(data);
 						setAssignments(data.data);
 					});
 				}
@@ -167,20 +228,26 @@ const Store = () => {
 		userLoading,
 		setUserLoading,
 
-		otherCourses,
-		setOtherCourses,
+		allCoursesData,
+		allCoursesLoading,
 
-		frontendCourses,
-		setFrontendCourses,
+		posts,
+		setPosts,
 
-		backendCourses,
-		setBackendCourses,
+		// otherCourses,
+		// setOtherCourses,
 
-		designingCourses,
-		setDesigningCourses,
+		// frontendCourses,
+		// setFrontendCourses,
 
-		fullstackCourses,
-		setFullstackCourses,
+		// backendCourses,
+		// setBackendCourses,
+
+		// designingCourses,
+		// setDesigningCourses,
+
+		// fullstackCourses,
+		// setFullstackCourses,
 
 		myCourses,
 		setMyCourses,

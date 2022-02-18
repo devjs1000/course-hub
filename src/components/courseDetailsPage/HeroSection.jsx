@@ -2,7 +2,7 @@ import { Children } from 'react';
 import Button from '../../UI/Button';
 import sectionHeroImg from '../../images/course-details-hero.jpg';
 
-function HeroSection({ name, tagline, type, price, advantages }) {
+function HeroSection({ course }) {
 	const sectionStyles = {
 		backgroundImage: `linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,.7)) ,url(${sectionHeroImg})`,
 		backgroundSize: 'cover',
@@ -14,9 +14,11 @@ function HeroSection({ name, tagline, type, price, advantages }) {
 			style={sectionStyles}
 		>
 			<div className="flex flex-col items-start gap-2 pt-24">
-				<h1 className="font-bold text-4xl xsm:text-5xl md:text-6xl">{name}</h1>
+				<h1 className="font-bold text-4xl xsm:text-5xl md:text-6xl">
+					{course?.title}
+				</h1>
 				<p className="font-semibold tracking-wide xsm:text-xl xsm:tracking-wider md:text-2xl md:tracking-wide">
-					{tagline}
+					{course?.tagline}
 				</p>
 				<div>
 					{/* {Object.keys(advantages).map(adv => {

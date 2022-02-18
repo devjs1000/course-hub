@@ -16,8 +16,7 @@ const SkillBadge = ({ tags }) => {
 	);
 };
 
-function CourseSkills() {
-	// temporary data for testing - later will come from props
+function CourseSkills(courses) {
 	const tags = [
 		'Spreadsheet',
 		'Questioning',

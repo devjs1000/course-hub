@@ -3,11 +3,22 @@ import Button from "../../UI/Button";
 import CountButton from "../../UI/CountButton";
 import Search from "../../UI/Search";
 import { Plus, Chat } from "react-bootstrap-icons";
-const Category = ({ question, answers, category }) => {
+import useStore from "../../context/useStore";
+const Category = ({ question, answers, category,id }) => {
+  const {posts,setPosts} = useStore()
   const [show, setShow] = useState(false);
   const handleShow = () => {
     show ? setShow(false) : setShow(true);
   };
+
+  const addPost = e=>{
+    e.preventDefault()
+    const post = posts.find(single=>single.id===id)
+    post.answers.push(e.target[0].value)
+    const merged = posts.filter(single=>single.id!==id||post)
+    setPosts(merged)
+    e.target.reset()
+  }
   return (
     <div className="bg-white py-2 px-4 my-2">
       <div className="text-slate-800 font-semibold">{question}</div>
@@ -19,10 +30,13 @@ const Category = ({ question, answers, category }) => {
         <div className="m-2">
           {show && (
             <>
+              <form onSubmit={addPost}>
               <input
+              required
                 className="bg-slate-50 py-1 px-2"
                 placeholder="answer the question"
               />
+              </form>
               {Children.toArray(
                 answers.map((a) => {
                   return (
