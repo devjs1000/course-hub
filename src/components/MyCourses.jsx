@@ -1,36 +1,47 @@
-import React, { useState, useEffect, Children } from "react";
+import  {  Children } from "react";
 import CourseCard from "./courses/CourseCard";
 import useStore from "../context/useStore";
 import { Link } from "react-router-dom";
 
 const MyCourses = ({}) => {
   const { myCourses, user } = useStore();
-  if (Object.keys(myCourses).length==0) return null;
 
-  console.log(myCourses.data);
   return (
-	  <div>
-		        <div className="shadow-md px-2 py-1 ">
-        {user.isInstructor && <Link className='bg-red-700 text-white px-3 py-1' to='/create-course'>Create Course</Link>}
-      </div>
+    <>
+      {myCourses.length ? (
+        <div>
+          <div className="shadow-md px-2 py-1 ">
+            {user.isInstructor && (
+              <Link
+                className="bg-red-700 text-white px-3 py-1"
+                to="/create-course"
+              >
+                Create Course
+              </Link>
+            )}
+          </div>
 
-    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-10 m-6">
-      {Children.toArray(
-        myCourses.data.map((course) => {
-          return (
-            <CourseCard
-              title={course.courseId.name}
-              enrolled={true}
-              image={course.courseId.image}
-              description={course.courseId.description}
-              tagline={course.courseId.tagline}
-              type={course.courseId.type}
-            />
-          );
-        })
+          <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-10 m-6">
+            {Children.toArray(
+              myCourses.map((course) => {
+                return (
+                  <CourseCard
+                    title={course.courseId.name}
+                    enrolled={true}
+                    image={course.courseId.image}
+                    description={course.courseId.description}
+                    tagline={course.courseId.tagline}
+                    type={course.courseId.type}
+                  />
+                );
+              })
+            )}
+          </div>
+        </div>
+      ) : (
+        ""
       )}
-    </div>
-	</div>
+    </>
   );
 };
 

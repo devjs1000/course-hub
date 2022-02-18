@@ -6,11 +6,18 @@ const CourseCard = ({
 	description,
 	price,
 	tagline,
-	name,
 	type,
 	enrolled = false,
 }) => {
 	const toPath = `coursedetails/${title}`;
+
+	
+	const bluePrint={
+		enterline:{
+			enrolled:'Start Course',
+			noEnrolled:'enroll'
+		}
+	}
 
 	return (
 		<div className="rounded-xl relative h-[20rem] max-w-[18rem]  shadow-xl overflow-hidden">
@@ -41,7 +48,7 @@ const CourseCard = ({
 							to="/"
 							className="block bg-primary-color-dark text-white py-1 px-2 font-semibold rounded-sm hover:px-4 transition-all"
 						>
-							Start Course &#8594;
+							{bluePrint.enterline.enrolled} &#8594;
 						</Link>
 					) : (
 						<>
@@ -49,7 +56,7 @@ const CourseCard = ({
 								to={toPath}
 								className="block bg-primary-color-dark text-white py-1 px-2 font-semibold rounded-sm hover:px-4 transition-all"
 							>
-								Enroll &#8594;
+								{bluePrint.enterline.noEnrolled} &#8594;
 							</Link>
 							<span className="text-xl">₹ {price}/- </span>
 						</>
