@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Tags = () => {
+const Tags = ({func}) => {
   const [tags, setTags] = useState([]);
 
   const tagStyles = {
@@ -21,6 +21,8 @@ const Tags = () => {
     newData.push(e.target[0].value);
     setTags(newData);
     e.target.reset();
+    console.log(tags);
+    func(tags)
   };
   const removeTags = (id) => {
     const newTags = tags.filter((tag) => tag !== id);

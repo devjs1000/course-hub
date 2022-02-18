@@ -13,7 +13,7 @@ const CourseCard = ({enrolled = false,id}) => {
 	},[id])
 
 	return (
-		<div className="rounded-xl relative h-[20rem] max-w-[18rem]  shadow-xl overflow-hidden">
+		<div className="rounded-xl relative h-[20rem] max-w-[18rem] shadow-xl overflow-hidden">
 			<div className="h-[10rem] rounded-t-xl   overflow-hidden border">
 				<img
 					src={current.image}
@@ -21,7 +21,7 @@ const CourseCard = ({enrolled = false,id}) => {
 					className="object-cover w-full h-full"
 				/>
 			</div>
-			<div className="p-4 text-slate-900 flex flex-col items-start gap-4">
+			<div className="p-4 bg-white text-slate-900 flex flex-col items-start gap-4">
 				<span className="bg-slate-800 text-[12px] font-semibold rounded-sm text-white px-2 py-[.1rem] uppercase">
 					{current.type}
 				</span>
@@ -41,7 +41,7 @@ const CourseCard = ({enrolled = false,id}) => {
 							to="/"
 							className="block bg-primary-color-dark text-white py-1 px-2 font-semibold rounded-sm hover:px-4 transition-all"
 						>
-							Start Course &#8594;
+							{bluePrint.enterline.enrolled} &#8594;
 						</Link>
 					) : (
 						<>
@@ -49,7 +49,7 @@ const CourseCard = ({enrolled = false,id}) => {
 								to={`coursedetails/${id}`}
 								className="block bg-primary-color-dark text-white py-1 px-2 font-semibold rounded-sm hover:px-4 transition-all"
 							>
-								Enroll &#8594;
+								{bluePrint.enterline.noEnrolled} &#8594;
 							</Link>
 							<span className="text-xl">₹ {current.price}/- </span>
 						</>

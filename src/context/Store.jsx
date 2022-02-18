@@ -18,6 +18,7 @@ const Store = () => {
   const path = location.pathname.split("/")[1];
   const [user, setUser] = useState({});
   const [userLoading, setUserLoading] = useState(true);
+<<<<<<< HEAD
   const [allCoursesData,setAllCoursesData] = useState([])
   const [allCoursesLoading,setAllCoursesLoading] = useState(true)
   // const [otherCourses, setOtherCourses] = useState({
@@ -41,6 +42,29 @@ const Store = () => {
   //   data: [],
   // });
   const [myCourses, setMyCourses] = useState({});
+=======
+  const [otherCourses, setOtherCourses] = useState({
+    title: "other courses",
+    data: [],
+  });
+  const [frontendCourses, setFrontendCourses] = useState({
+    title: "frontend courses",
+    data: [],
+  });
+  const [backendCourses, setBackendCourses] = useState({
+    title: "backend courses",
+    data: [],
+  });
+  const [designingCourses, setDesigningCourses] = useState({
+    title: "design courses",
+    data: [],
+  });
+  const [fullstackCourses, setFullstackCourses] = useState({
+    title: "fullstack courses",
+    data: [],
+  });
+  const [myCourses, setMyCourses] = useState([]);
+>>>>>>> a42a6726b42581c04165f0f1bc2e06bf13dea02b
   const [first, setFirst] = useState(0);
   const [assignments, setAssignments] = useState({});
 
@@ -153,8 +177,8 @@ const Store = () => {
     if (isMount) {
       try {
         if (user._id.length > 8) {
-          getAllCoursesOfUser(user._id, (data) => {
-            setMyCourses(data);
+          getAllCoursesOfUser(user._id, (courses) => {
+            setMyCourses(courses.data);
           });
           getAssignmentsOfUser(user._id, (data) => {
             console.log(data);
