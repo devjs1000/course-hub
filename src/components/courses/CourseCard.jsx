@@ -8,9 +8,15 @@ const CourseCard = ({enrolled = false,id}) => {
 
 	useEffect(()=>{
 		const data = allCoursesData.find(course=>course._id===id)
-		console.log(data)
 		setCurrent(data)
 	},[id])
+
+	const bluePrint = {
+		enterline: {
+			enrolled: 'Start Course',
+			noEnrolled: 'enroll',
+		},
+	};
 
 	return (
 		<div className="rounded-xl relative h-[20rem] max-w-[18rem] shadow-xl overflow-hidden">

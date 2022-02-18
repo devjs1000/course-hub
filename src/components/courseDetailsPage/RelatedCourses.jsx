@@ -1,5 +1,5 @@
-// import CourseCard from '../courses/CourseCard';
-// import useStore from '../../context/useStore';
+import CourseCard from '../courses/CourseCard';
+import useStore from '../../context/useStore';
 
 function RelatedCourses() {
 	// for testing purpose api data
