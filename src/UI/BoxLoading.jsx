@@ -1,4 +1,4 @@
-import '../styles/PenLoading.css';
+import '../styles/boxLoading.css';
 
 const BoxLoading = () => {
 	return (

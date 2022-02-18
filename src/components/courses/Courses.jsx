@@ -3,11 +3,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 import CourseCard from './CourseCard';
-
+import BoxLoading from '../../UI/BoxLoading'
 function Courses({ courseArray = [], title }) {
-	if (courseArray == []) return null;
 
 	return (
+	<>
+	{courseArray.length? 
 		<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
 				{title}
@@ -49,7 +50,10 @@ function Courses({ courseArray = [], title }) {
 					);
 				})}
 			</Swiper>
-		</div>
+		</div>: 
+		<BoxLoading />
+		}
+		</>
 	);
 }
 

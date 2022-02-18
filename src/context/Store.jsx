@@ -37,7 +37,7 @@ const Store = () => {
     title: "fullstack courses",
     data: [],
   });
-  const [myCourses, setMyCourses] = useState({});
+  const [myCourses, setMyCourses] = useState([]);
   const [first, setFirst] = useState(0);
   const [assignments, setAssignments] = useState({});
 
@@ -141,8 +141,8 @@ const Store = () => {
     if (isMount) {
       try {
         if (user._id.length > 8) {
-          getAllCoursesOfUser(user._id, (data) => {
-            setMyCourses(data);
+          getAllCoursesOfUser(user._id, (courses) => {
+            setMyCourses(courses.data);
           });
           getAssignmentsOfUser(user._id, (data) => {
             console.log(data);
