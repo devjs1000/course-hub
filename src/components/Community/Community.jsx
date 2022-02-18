@@ -52,7 +52,7 @@ const Community = () => {
     <div className="bg-slate-100 min-h-screen ">
       <div className="bg-white  px-4 flex sticky top-0">
         <Search placeholder="search your answers" />
-        <button className="flex items-center text-slate-700 border border-[2px] border-slate-100 px-2 bg-white">
+        <button className="flex items-center text-slate-700  border-[2px] border-slate-100 px-2 bg-white">
           <Plus className="text-red-700   mx-2" size={30} />
           Ask<span className="text-red-700 mx-1">?</span>
         </button>

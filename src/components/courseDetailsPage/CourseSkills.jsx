@@ -16,7 +16,7 @@ const SkillBadge = ({ tags }) => {
 	);
 };
 
-function CourseSkills() {
+function CourseSkills(courses) {
 	const tags = [
 		'Spreadsheet',
 		'Questioning',
