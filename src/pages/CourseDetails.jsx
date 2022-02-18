@@ -8,21 +8,21 @@ import WhatYouGet from '../components/courseDetailsPage/WhatYouGet';
 import useStore from '../context/useStore';
 
 const CourseDetails = () => {
-	const {allCoursesData} = useStore()
-	const [current,setCurrent] = useState({})
-	const {id} = useParams()
+	const { allCoursesData } = useStore();
+	const [current, setCurrent] = useState({});
+	const { id } = useParams();
 
-	useEffect(()=>{
-		const data = allCoursesData.find(course=>course._id===id)
-		setCurrent(data)
-	})
+	useEffect(() => {
+		const data = allCoursesData.find(course => course._id === id);
+		setCurrent(data);
+	});
 	return (
 		<>
-			<HeroSection course={current}/>
+			<HeroSection course={current} />
 			{/* <RelatedCourses course={current}/> */}
-			<WhatYouGet course={current}/>
-			<CourseSkills course={current}/>
-			<AuthorIntro course={current}/>
+			<WhatYouGet course={current} />
+			<CourseSkills course={current} />
+			<AuthorIntro course={current} />
 		</>
 	);
 };
