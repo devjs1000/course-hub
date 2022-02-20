@@ -12,8 +12,13 @@ export async function allInstructorCourses(id, func) {
 }
 
 export async function getAllCoursesOfUser(id, func) {
-  const { data } = await axios.get(`/api/order/getAllCoursesOfUser/${id}`);
-  func(data)
+  try{
+    const { data } = await axios.get(`/api/order/getAllCoursesOfUser/${id}`);
+    func(data)
+
+  }catch(err){
+    func(data)
+  }
 }
 
 export async function allFrontendCourses(func) {

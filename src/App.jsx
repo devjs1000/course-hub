@@ -5,6 +5,7 @@ import Loading from './UI/BoxLoading';
 import PrivateRoute from './components/PrivateRoute';
 import CreateCourse from './components/CreateCourse';
 import  CreateQuiz  from './components/CreateQuiz';
+import NotFound from './pages/NotFound';
 
 import Home from './pages/Home';
 import Login from './components/Auth/Login';
@@ -59,6 +60,7 @@ function App() {
 							<Route path="/Community" element={<Community />} />
 							<Route path="/create-course" element={<CreateCourse />} />
 							<Route path="/create-quiz" element={<CreateQuiz />} />
+							<Route path="/*" element={<NotFound />} />
 
 							<Route
 								path="/coursedetails/:id"

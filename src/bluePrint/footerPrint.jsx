@@ -4,7 +4,7 @@ import { footerStyles } from "../styles/styleObjects";
 
 export const footerPrint = {
     brandName: "XcitEducation",
-    description: "",
+    description: "Building a strong foundation, across the nation at XcitEducation!",
     lists: [
       [
         { title: "Our Projects" },

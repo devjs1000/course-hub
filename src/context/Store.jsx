@@ -25,7 +25,7 @@ const Store = () => {
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [allCoursesLoading, setAllCoursesLoading] = useState(true);
   const [posts, setPosts] = useState(postPrint);
-  const [myCourses, setMyCourses] = useState({});
+  const [myCourses, setMyCourses] = useState([]);
   const [first, setFirst] = useState(0);
   const [assignments, setAssignments] = useState({});
 

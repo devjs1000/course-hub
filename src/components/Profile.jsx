@@ -11,15 +11,17 @@ const Profile = () => {
   console.log(myCourses);
   const { logout } = useAuthHook();
   const joining = new Date(Date.parse(user.createdAt)).toDateString();
+
   useEffect(() => {
     setIsTeacher(user.isInstructor);
   }, [user]);
+
   const img1 =
     "https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg";
 
   return (
     <>
-      {user._id !== undefined ? (
+      {user._id !== undefined  ? (
         <div className={profileDesign.mainDiv}>
           <div className={profileDesign.leftMain}>
             <div className={profileDesign.person}>
@@ -64,7 +66,7 @@ const Profile = () => {
               </div>
               <div className="ml-5 border-b-2 border-red-500 pb-4">
                 <h1 className="my-5 text-xl text-red-600 font-bold">
-                  {user.name}
+                  {user?.name}
                 </h1>
                 <p className="text-sm text-slate-800 font-medium">
                   Date of joining
@@ -77,12 +79,12 @@ const Profile = () => {
                 Courses Enrolled
               </h2>
               <div className="h-[20rem] overflow-auto">
-                {myCourses.length != 0
+                {(myCourses.length != 0 && myCourses!==undefined)
                   ? Children.toArray(
                       myCourses.map((a) => {
                         return (
                           <h1 className="w-full bg-slate-100 flex items-center p-3 mt-4 text-xl hover:opacity-[50%] cursor-pointer  text-slate-700">
-                            {isTeacher ? a.name : a.courseId.name}
+                            {isTeacher ? a?.name : a?.courseId?.name}
                           </h1>
                         );
                       })

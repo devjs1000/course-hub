@@ -12,7 +12,7 @@ const MyCourses = ({}) => {
   console.log(myCourses);
   return (
     <>
-      {(myCourses.length &&  user._id) ? (
+      {(myCourses.length &&  user._id!==undefined) ? (
         <div>
           <div className="shadow-md px-2 py-1 ">
             {teacher && (
@@ -35,25 +35,25 @@ const MyCourses = ({}) => {
             )}
           </div>
 
-          {user._id ? (
+          {user._id!==undefined ? (
             <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-10 m-6">
               {Children.toArray(
                 myCourses.map((course) => {
                   return (
                     <CourseCard
-                      title={teacher ? course.name : course.courseId.name}
+                      title={teacher ? course?.name : course?.courseId?.name}
                       enrolled={true}
                       drill={true}
-                      image={teacher ? course.image : course.courseId.image}
+                      image={teacher ? course?.image : course?.courseId?.image}
                       description={
                         teacher
-                          ? course.description
-                          : course.courseId.description
+                          ? course?.description
+                          : course?.courseId?.description
                       }
                       tagline={
-                        teacher ? course.tagline : course.courseId.tagline
+                        teacher ? course?.tagline : course?.courseId?.tagline
                       }
-                      type={teacher ? course.type : course.courseId.type}
+                      type={teacher ? course?.type : course?.courseId?.type}
                     />
                   );
                 })
