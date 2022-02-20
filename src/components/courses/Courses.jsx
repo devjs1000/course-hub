@@ -4,12 +4,15 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 import CourseCard from './CourseCard';
 import useStore from '../../context/useStore';
+import BoxLoading from '../../UI/BoxLoading';
 
 function Courses() {
-	const {allCoursesData,allCoursesLoading} = useStore();
-	  if(allCoursesLoading)return <h1>Loading...</h1>
+	const {allCoursesData} = useStore();
 
 	return (
+		<>
+		{
+(allCoursesData.length!==0 && allCoursesData!==undefined)?
 		<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
 				Laitest Courses
@@ -44,7 +47,9 @@ function Courses() {
 					);
 				})}
 			</Swiper>
-		</div>
+		</div>:<BoxLoading />
+}
+		</>
 	);
 }
 
