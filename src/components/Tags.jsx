@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-
-const Tags = ({func}) => {
-  const [tags, setTags] = useState([]);
+import { Tag } from "react-bootstrap-icons";
+const Tags = ({tags, setTags, placeholder, icon}) => {
 
   const tagStyles = {
-    main: "w-96 flex items-center flex-wrap bg-white p-2 rounded-xl",
+    main: " whitespace-nowrap w-full  bg-white p-2 relative rounded-lg py-3 border border-[1px] border-red-400 hover:border-red-800 ",
     tagMain:
-      "mr-1 mb-1 flex items-center pl-2 bg-gray-500 text-white rounded-3xl",
+      "mr-1 mb-1 flex items-center pl-12 bg-red-400 text-white  rounded py-1",
     tagBtn:
-      "ml-2 px-1 h-fit bg-red-300 text-white hover:bg-red-600 font-bold cursor-pointer",
+      "ml-2 px-1 h-fit bg-red-300  absolute right-[5rem] text-white hover:bg-red-400 font-bold cursor-pointer",
     tagForm: "w-full",
-    tagInput: "w-full border border-red-600 outline-none rounded-md pl-2",
+    tagInput: "w-full  outline-none rounded-md pl-12",
   };
 
   const addTags = (e) => {
@@ -21,8 +20,6 @@ const Tags = ({func}) => {
     newData.push(e.target[0].value);
     setTags(newData);
     e.target.reset();
-    console.log(tags);
-    func(tags)
   };
   const removeTags = (id) => {
     const newTags = tags.filter((tag) => tag !== id);
@@ -30,6 +27,9 @@ const Tags = ({func}) => {
   };
   return (
     <div className={tagStyles.main}>
+      <div className="bg-white absolute top-[50%] translate-y-[-50%] left-[2px] w-[3rem] h-[calc(100%-2px)] flex items-center justify-center rounded-tl-md rounded-bl-md border-r-[1px]">
+     {icon}
+			</div>
       {tags.map((tag) => (
         <div className={tagStyles.tagMain} key={tag}>
           <p>{tag}</p>
@@ -41,7 +41,7 @@ const Tags = ({func}) => {
       <form className={tagStyles.tagForm} onSubmit={addTags}>
         <input
           required
-          placeholder="Type your tag"
+          placeholder={placeholder}
           className={tagStyles.tagInput}
           type="text"
         />

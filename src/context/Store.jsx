@@ -1,94 +1,111 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import {postPrint, teacherPrint, studentPrint}  from '../bluePrint/contextPrint'
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
-	allCourses,
-	getAllCoursesOfUser,
-} from '../fetch/courseApi';
-import { getAssignmentsOfUser } from '../fetch/assignmentApi';
+  postPrint,
+  teacherPrint,
+  studentPrint,
+} from "../bluePrint/contextPrint";
+import {
+  allCourses,
+  getAllCoursesOfUser,
+  allInstructorCourses,
+} from "../fetch/courseApi";
+import {
+  getAssignmentsOfUser,
+  getAllAssignmentsOfInstructor,
+} from "../fetch/assignmentApi";
 // import useAuthCheck from "../hooks/useAuthCheck";
 
 const Store = () => {
-	// const {authCheck} = useAuthCheck()
-	const location = useLocation();
-	const path = location.pathname.split('/')[1];
-	const [user, setUser] = useState({});
-	const [userLoading, setUserLoading] = useState(true);
-	const [allCoursesData, setAllCoursesData] = useState([]);
-	const [allCoursesLoading, setAllCoursesLoading] = useState(true);
-	const [posts, setPosts] = useState(postPrint);
-	const [myCourses, setMyCourses] = useState({});
-	const [first, setFirst] = useState(0);
-	const [assignments, setAssignments] = useState({});
+  // const {authCheck} = useAuthCheck()
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const [user, setUser] = useState({});
+  const [userLoading, setUserLoading] = useState(true);
+  const [allCoursesData, setAllCoursesData] = useState([]);
+  const [allCoursesLoading, setAllCoursesLoading] = useState(true);
+  const [posts, setPosts] = useState(postPrint);
+  const [myCourses, setMyCourses] = useState({});
+  const [first, setFirst] = useState(0);
+  const [assignments, setAssignments] = useState({});
 
-	useEffect(() => {
-		allCourses(data => {
-			setAllCoursesData(data);
-			setAllCoursesLoading(false);
-		});
-	}, []);
+  useEffect(() => {
+    allCourses((data) => {
+      setAllCoursesData(data);
+      setAllCoursesLoading(false);
+    });
+  }, []);
 
-	useEffect(() => {
-		let isMount = true;
+  useEffect(() => {
+    let isMount = true;
 
-		// authCheck(setUser,setUserLoading)
-		if (isMount) {
-			// setUser(studentData.data);
-			setUser(teacherPrint);
+    // authCheck(setUser,setUserLoading)
+    if (isMount) {
+      // setUser(studentData.data);
+      setUser(teacherPrint);
 
-			setUserLoading(false);
-		}
-		return () => {
-			isMount = false;
-		};
-	}, []);
-	//stoped the course for development process so that it don't hit api so many times
+      setUserLoading(false);
+    }
+    return () => {
+      isMount = false;
+    };
+  }, []);
+  //stoped the course for development process so that it don't hit api so many times
 
+  //after user registered it will render and called
+  useEffect(() => {
+    let isMount = true;
+    if (isMount) {
+      try {
+        if (!user.isInstructor && user._id!==undefined) {
+          getAllCoursesOfUser(user._id, (courses) => {
+            setMyCourses(courses.data);
+          });
 
-	//after user registered it will render and called
-	useEffect(() => {
-		let isMount = true;
-		if (isMount) {
-			try {
-				if (user._id.length > 8) {
-					getAllCoursesOfUser(user._id, courses => {
-						setMyCourses(courses.data);
-					});
-					getAssignmentsOfUser(user._id, data => {
-						console.log(data);
-						setAssignments(data.data);
-					});
-				}
-			} catch (error) {
-				console.log('eror');
-			}
-		}
+          getAssignmentsOfUser(user._id, (data) => {
+            console.log(data);
+            setAssignments(data.data);
+          });
+        } else if (user.isInstructor  && user._id!==undefined) {
+          allInstructorCourses(user._id, (courses) => {
+            setMyCourses(courses.data);
+          });
 
-		return () => {
-			isMount = false;
-		};
-	}, [user]);
+          getAllAssignmentsOfInstructor(user._id, (data) => {
+            console.log(data);
+            setAssignments(data.data);
+          });
+        }
+      } catch (error) {
+        console.log("eror");
+      }
+    }
 
-	//returning for global access
-	return {
-		user,
-		setUser,
+    return () => {
+      isMount = false;
+    };
+  }, [user]);
 
-		userLoading,
-		setUserLoading,
+  //returning for global access
+  return {
+    user,
+    setUser,
 
-		allCoursesData,
-		allCoursesLoading,
+    userLoading,
+    setUserLoading,
 
-		posts,
-		setPosts,
+    allCoursesData,
+    allCoursesLoading,
 
-		myCourses,
-		setMyCourses,
+    posts,
+    setPosts,
 
-		assignments,
-		setAssignments,
-	};
+    myCourses,
+    setMyCourses,
+
+    assignments,
+    setAssignments,
+  };
 };
 
 export default Store;

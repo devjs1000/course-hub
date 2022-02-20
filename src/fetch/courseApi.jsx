@@ -63,8 +63,8 @@ export async function createCourse(instructorId, name, tagline, type, descriptio
     func(data)
 }
 
-export async function createQuiz(id,func) {
-  const { data } = await axios.post(`/api/course/createQuiz/${id}`);
+export async function createQuiz(id,question, correct, incorrect, func) {
+  const { data } = await axios.post(`/api/course/createQuiz/${id}`, {question, correct, incorrect});
   func(data)
 }
 
