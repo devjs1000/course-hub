@@ -12,7 +12,7 @@ const MyCourses = ({}) => {
   console.log(myCourses);
   return (
     <>
-      {myCourses.length ? (
+      {(myCourses.length &&  user._id) ? (
         <div>
           <div className="shadow-md px-2 py-1 ">
             {teacher && (
@@ -30,8 +30,8 @@ const MyCourses = ({}) => {
                 Create Quiz
               </Link>
               </>
-              
-              
+
+
             )}
           </div>
 
