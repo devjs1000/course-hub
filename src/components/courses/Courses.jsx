@@ -5,7 +5,7 @@ import { Navigation } from 'swiper';
 import CourseCard from './CourseCard';
 import useStore from '../../context/useStore';
 import BoxLoading from '../../UI/BoxLoading';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Children } from 'react';
 
 function Courses() {
 	const {allCoursesData} = useStore();
@@ -29,7 +29,7 @@ function Courses() {
 
 	return (
 		<>
-		{
+		{Children.toArray(
 			coursesByType.map(eachType=>
 				<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
@@ -57,16 +57,17 @@ function Courses() {
 				modules={[Navigation]}
 				className="mt-4 py-8 lg:py-8"
 			>
-				{eachType?.data.map((course) => {
+				{Children.toArray(
+					eachType?.data.map((course) => {
 					return (
 						<SwiperSlide key={course._id}>
 							<CourseCard id={course._id}/>
 						</SwiperSlide>
 					);
-				})}
+				}))}
 			</Swiper>
 		</div> )
-		}
+	)}
 		</>
 	);
 }

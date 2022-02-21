@@ -7,6 +7,7 @@ import {
 import { useLocation } from "react-router-dom";
 import { footerStyles } from "../styles/styleObjects";
 import {footerPrint} from '../bluePrint/footerPrint'
+import logo from '../images/theLogo.jpeg'
 const Footer = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
@@ -20,7 +21,10 @@ const Footer = () => {
     <div className={footerStyles.mainDiv}>
       <div className={footerStyles.gridDiv}>
         <div>
+        <div className='flex'>
+        <img src={logo} className='h-[2rem] mx-2 rounded-full opacity-[90%] hover:animate-bounce' />
           <h1 className={footerStyles.title}>{footerPrint.brandName}</h1>
+          </div>
           <p className={footerStyles.shortDes}>{footerPrint.description}</p>
         </div>
 
@@ -49,7 +53,7 @@ const Footer = () => {
             </div>
             <div>
               <p className={footerStyles.contactMethod}>Phone Number</p>
-              <p className={footerStyles.contactInfo}>+012(345) 78 93</p>
+              <p className={footerStyles.contactInfo}>{footerPrint.phone}</p>
             </div>
           </div>
 
@@ -59,7 +63,7 @@ const Footer = () => {
             </div>
             <div>
               <p className={footerStyles.contactMethod}>Email Address</p>
-              <p className={footerStyles.contactInfo}>support@gmail.com</p>
+              <p className={footerStyles.contactInfo}>{footerPrint.email}</p>
             </div>
           </div>
 
@@ -69,7 +73,7 @@ const Footer = () => {
             </div>
             <div>
               <p className={footerStyles.contactMethod}>Locations</p>
-              <p className={footerStyles.contactInfo}>59 Main Street, USA</p>
+              <p className={footerStyles.contactInfo}>{footerPrint.address}</p>
             </div>
           </div>
         </div>
@@ -77,7 +81,7 @@ const Footer = () => {
 
       <div className={footerStyles.bottomMain}>
         <p className={footerStyles.copyright}>
-          © 2022 <span className={footerStyles.name}>XcitEducation</span> All
+          © {new Date().getFullYear()} <span className={footerStyles.name}>XcitEducation</span> All
           Rights Reserved
         </p>
 

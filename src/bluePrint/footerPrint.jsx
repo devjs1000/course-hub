@@ -30,4 +30,7 @@ export const footerPrint = {
       <Youtube className={footerStyles.socialIcon} />,
       <Google className={footerStyles.socialIcon} />,
     ],
+    address:'office address 010',
+    phone:'0100100100',
+    email:'0101@0101.com'
   };
