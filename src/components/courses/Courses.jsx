@@ -5,17 +5,35 @@ import { Navigation } from 'swiper';
 import CourseCard from './CourseCard';
 import useStore from '../../context/useStore';
 import BoxLoading from '../../UI/BoxLoading';
+import { useEffect, useState } from 'react';
 
 function Courses() {
 	const {allCoursesData} = useStore();
+	const [coursesByType,setCoursesByType] = useState([])
+
+	useEffect(()=>{
+		let tempType = []
+		let tempData=[]
+		if(allCoursesData.length===0) return
+		allCoursesData.forEach(course=>{
+			if(!tempType.includes(course.type)){
+				tempType.push(course.type)
+			}
+		})
+		tempType.forEach(type=>{
+			const data = allCoursesData.filter(course=>course.type===type)
+			tempData =[...tempData,{type,data}]
+		})
+		setCoursesByType(tempData)
+	},[allCoursesData])
 
 	return (
 		<>
 		{
-(allCoursesData.length!==0 && allCoursesData!==undefined)?
-		<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
+			coursesByType.map(eachType=> <div className="">
+				<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
-				Laitest Courses
+				{eachType.type}
 			</h2>
 
 			<Swiper
@@ -39,7 +57,7 @@ function Courses() {
 				modules={[Navigation]}
 				className="mt-4 py-8 lg:py-8"
 			>
-				{allCoursesData.map((course) => {
+				{eachType.data.map((course) => {
 					return (
 						<SwiperSlide key={course._id}>
 							<CourseCard id={course._id}/>
@@ -47,8 +65,9 @@ function Courses() {
 					);
 				})}
 			</Swiper>
-		</div>:<BoxLoading />
-}
+		</div>
+			</div> )
+		}
 		</>
 	);
 }

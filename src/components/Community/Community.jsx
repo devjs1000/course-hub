@@ -1,13 +1,31 @@
-import { Children } from "react";
+import { Children, useEffect, useState } from "react";
 import CountButton from "../../UI/CountButton";
 import Search from "../../UI/Search";
 import Category from "./Category";
 import { Plus } from "react-bootstrap-icons";
 import Post from "./Post";
 import useStore from '../../context/useStore'
+import axios from "axios";
 
 const Community = () => {
+  const {allCoursesData} = useStore()
   const {posts} = useStore()
+  const [answers,setAnswers] = useState([])
+
+  // useEffect(()=>{
+  //   if(allCoursesData.length===0) return
+  //   const token = localStorage.getItem('accessToken')
+  //   const getAnswers=async()=>{
+  //     for(const course of allCoursesData){
+  //      try{
+  //       const response = await axios.get(`https://management-xcitedu.herokuapp.com/discussRoutes/getAllQuestionsAnswers/${course._id}`,{headers:{'authorization':`Bearer ${token}`}})
+  //      }catch(error){
+  //       console.log(error)
+  //      }
+  //     }
+  //   }
+  //   getAnswers()
+  // },[allCoursesData])
 
   return (
     <div className="bg-slate-100 min-h-screen ">
