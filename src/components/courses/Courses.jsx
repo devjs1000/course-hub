@@ -30,7 +30,7 @@ function Courses() {
 	return (
 		<>
 		{
-			coursesByType.map(eachType=> <div className="">
+			coursesByType.map(eachType=>
 				<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
 				{eachType.type}
@@ -57,7 +57,7 @@ function Courses() {
 				modules={[Navigation]}
 				className="mt-4 py-8 lg:py-8"
 			>
-				{eachType.data.map((course) => {
+				{eachType?.data.map((course) => {
 					return (
 						<SwiperSlide key={course._id}>
 							<CourseCard id={course._id}/>
@@ -65,8 +65,7 @@ function Courses() {
 					);
 				})}
 			</Swiper>
-		</div>
-			</div> )
+		</div> )
 		}
 		</>
 	);
