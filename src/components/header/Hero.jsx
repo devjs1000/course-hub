@@ -6,10 +6,8 @@ import rectDesign from "../../images/rect-design.svg";
 function Hero() {
   const bluePrint = {
     heading:
-      "With our specialized and unparalleled training, get industry-ready with hands-on experience.",
-    subHeading:
-      "Learn and be proficient with in-demand skills on the go with our short-term (interesting short videos) online trainings. Get certified to enhance your CV which increases your chance to impress a potential employer. Specialize in industry-oriented programs that gets you ready to take on the professional world.",
-  };
+"Hold our hand on the path of your career.",    subHeading:
+"Take on the professional world by learning and practicing in-demand skills with us."  };
   return (
     <section className="section-hero z-10 bg-white flex flex-col gap-2 items-center px-4 py-4 relative sm:px-8 md:flex-row md:pt-0 lg:items-start lg:pt-12 xl:pt-16 xl:px-16">
       <div className="flex flex-col items-center gap-4 order-2 xsm:gap-6 md:items-start md:w-1/2 lg:gap-10">

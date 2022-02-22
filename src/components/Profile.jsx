@@ -5,6 +5,8 @@ import useStore from "../context/useStore";
 import useAuthHook from "../hooks/useAuthHook";
 import { profileDesign } from "../styles/styleObjects";
 import BoxLoading from "../UI/BoxLoading";
+import cover from '../images/profileCover.svg'
+
 const Profile = () => {
   const { user, myCourses } = useStore();
   const [isTeacher, setIsTeacher] = useState(user.isInstructor);
@@ -16,16 +18,13 @@ const Profile = () => {
     setIsTeacher(user.isInstructor);
   }, [user]);
 
-  const img1 =
-    "https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?size=626&ext=jpg";
-
   return (
     <>
       {user._id !== undefined  ? (
         <div className={profileDesign.mainDiv}>
           <div className={profileDesign.leftMain}>
             <div className={profileDesign.person}>
-              <img className={profileDesign.leftPersonBg} src={img1} alt="" />
+              <img className={profileDesign.leftPersonBg} src={cover} alt="" />
 
               <img
                 className={profileDesign.profileImg}
@@ -61,7 +60,7 @@ const Profile = () => {
           <div className={profileDesign.rightMain}>
             <div className="hidden md:block">
               <div className="relative">
-                <img className="h-52 w-full" src={img1} alt="" />
+                <img className="h-52 w-full" src={cover} alt="" />
                 <Pen className="absolute bottom-3 right-3 h-6 w-6 text-white cursor-pointer" />
               </div>
               <div className="ml-5 border-b-2 border-red-500 pb-4">

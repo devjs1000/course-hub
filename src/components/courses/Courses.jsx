@@ -29,7 +29,7 @@ function Courses() {
 
 	return (
 		<>
-		{Children.toArray(
+		{allCoursesData.length !==0 ? Children.toArray(
 			coursesByType.map(eachType=>
 				<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
@@ -67,7 +67,7 @@ function Courses() {
 				}))}
 			</Swiper>
 		</div> )
-	)}
+	): <BoxLoading />}
 		</>
 	);
 }

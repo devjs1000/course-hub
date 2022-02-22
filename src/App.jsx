@@ -6,7 +6,6 @@ import PrivateRoute from './components/PrivateRoute';
 import CreateCourse from './components/CreateCourse';
 import  CreateQuiz  from './components/CreateQuiz';
 import NotFound from './pages/NotFound';
-
 import Home from './pages/Home';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
@@ -16,7 +15,6 @@ import Footer from './components/Footer';
 import Assignment from './components/Assignment';
 import Community from './components/Community/Community';
 import CourseDetails from './pages/CourseDetails';
-
 // const Login =lazy(()=> import('./components/Auth/Login'))
 // const Signup =lazy(()=> import('./components/Auth/Signup'))
 // const Profile =lazy(()=> import('./components/Profile'))
@@ -30,7 +28,7 @@ import CourseDetails from './pages/CourseDetails';
 
 function App() {
 	const [loading, setLoading] = useState(true);
-
+console.log(import.meta.env);
 	useLayoutEffect(() => {
 		setTimeout(() => setLoading(false), 1500);
 	}, []);
