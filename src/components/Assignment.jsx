@@ -69,7 +69,6 @@ const submitAssignment = e =>{
       <form className="bg-red-300 p-5 flex flex-col items-center justify-between" onSubmit={submitAssignment}>
         <input className="w-full my-2 px-2 py-1 rounded-md outline-none" required onChange={getAssignmentData} placeholder="Assignment Link" name="assignmentLink"  type="text" />
         <input className="w-full my-2 px-2 py-1 rounded-md outline-none" required onChange={getAssignmentData} placeholder="Assignment Screenshot Link" name="assignmentScreenshotLink"  type="text" />
-        <input className="w-full my-2 px-2 py-1 rounded-md outline-none" onChange={getAssignmentData} placeholder="Assignment Status" name="assignmentStatus"  type="text" />
         <input className="w-full my-2 px-2 py-1 rounded-md outline-none" onChange={getAssignmentData} placeholder="Assignment Comment" name="assignmentComment"  type="text" />
         <select onChange={getSelected} className="w-3/6 my-2 outline-none rounded-md text-gray-500 p-1">
           <option>None</option>
@@ -77,7 +76,7 @@ const submitAssignment = e =>{
             myCourses.map(course=> <option key={course._id}>{course.name}</option> )
           }
         </select>
-        <button className="border-2 px-3 mt-2 font-bold text-white" type="submit">Submit</button>
+        <button className="m-btn border-2 px-3 py-1 mt-2 font-bold text-white" type="submit">Submit</button>
       </form>
      </div>
     </>
