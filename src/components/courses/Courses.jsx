@@ -14,8 +14,8 @@ function Courses() {
 	useEffect(()=>{
 		let tempType = []
 		let tempData=[]
-		if(allCoursesData.length===0) return
-		allCoursesData.forEach(course=>{
+		if(allCoursesData?.length===0) return
+		allCoursesData?.forEach(course=>{
 			if(!tempType.includes(course.type)){
 				tempType.push(course.type)
 			}
@@ -29,7 +29,7 @@ function Courses() {
 
 	return (
 		<>
-		{allCoursesData.length !==0 ? Children.toArray(
+		{allCoursesData?.length !==0 ? Children.toArray(
 			coursesByType.map(eachType=>
 				<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">

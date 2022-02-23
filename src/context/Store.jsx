@@ -5,8 +5,9 @@ import {
   teacherPrint,
   studentPrint,
 } from "../bluePrint/contextPrint";
+import useBetterFetch from "../hooks/useBetterFetch";
 import {
-  allCourses,
+  // allCourses,
   getAllCoursesOfUser,
   allInstructorCourses,
 } from "../fetch/courseApi";
@@ -28,17 +29,27 @@ const Store = () => {
   const [myCourses, setMyCourses] = useState([]);
   const [first, setFirst] = useState(0);
   const [assignments, setAssignments] = useState({});
+  const [betterFetch] = useBetterFetch();
 
   useEffect(() => {
-    allCourses((data) => {
-      setAllCoursesData(data);
-      setAllCoursesLoading(false);
-    });
+    // allCourses((data) => {
+    //   setAllCoursesData(data);
+    //   setAllCoursesLoading(false);
+    // });
+    betterFetch(
+      "/api/course/allCourses",
+      10000,
+      "GET",
+      "still",
+      (data) => {
+        console.log(data, 'better');
+        setAllCoursesData(data);
+      }
+    );
   }, []);
 
   useEffect(() => {
     let isMount = true;
-
     // authCheck(setUser,setUserLoading)
     if (isMount) {
       // setUser(studentData.data);
@@ -57,7 +68,8 @@ const Store = () => {
     let isMount = true;
     if (isMount) {
       try {
-        if (!user.isInstructor && user._id!==undefined) {
+        if (!user.isInstructor && user._id !== undefined) {
+         
           getAllCoursesOfUser(user._id, (courses) => {
             setMyCourses(courses.data);
           });
@@ -66,7 +78,7 @@ const Store = () => {
             console.log(data);
             setAssignments(data.data);
           });
-        } else if (user.isInstructor  && user._id!==undefined) {
+        } else if (user.isInstructor && user._id !== undefined) {
           allInstructorCourses(user._id, (courses) => {
             setMyCourses(courses.data);
           });
@@ -77,7 +89,7 @@ const Store = () => {
           });
         }
       } catch (error) {
-        console.log("eror");
+        console.log("error");
       }
     }
 

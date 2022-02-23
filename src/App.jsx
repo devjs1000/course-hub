@@ -28,7 +28,7 @@ import CourseDetails from './pages/CourseDetails';
 
 function App() {
 	const [loading, setLoading] = useState(true);
-console.log(import.meta.env);
+console.log(import.meta.env.VITE_DB);
 	useLayoutEffect(() => {
 		setTimeout(() => setLoading(false), 1500);
 	}, []);

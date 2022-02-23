@@ -12,21 +12,6 @@ const Community = () => {
   const {posts} = useStore()
   const [answers,setAnswers] = useState([])
 
-  // useEffect(()=>{
-  //   if(allCoursesData.length===0) return
-  //   const token = localStorage.getItem('accessToken')
-  //   const getAnswers=async()=>{
-  //     for(const course of allCoursesData){
-  //      try{
-  //       const response = await axios.get(`https://management-xcitedu.herokuapp.com/discussRoutes/getAllQuestionsAnswers/${course._id}`,{headers:{'authorization':`Bearer ${token}`}})
-  //      }catch(error){
-  //       console.log(error)
-  //      }
-  //     }
-  //   }
-  //   getAnswers()
-  // },[allCoursesData])
-
   return (
     <div className="bg-slate-100 min-h-screen ">
       <div className="bg-white  px-4 flex sticky top-0">
