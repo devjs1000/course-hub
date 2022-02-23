@@ -1,37 +1,37 @@
-import { Children } from 'react';
-import Button from '../../UI/Button';
-import sectionHeroImg from '../../images/course-details-hero.jpg';
+import { Children } from "react";
+import Button from "../../UI/Button";
+import sectionHeroImg from "../../images/course-details-hero.jpg";
 
 function HeroSection({ course }) {
-	const sectionStyles = {
-		backgroundImage: `linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,.7)) ,url(${sectionHeroImg})`,
-		backgroundSize: 'cover',
-	};
+  console.log(course);
 
-	return (
-		<section
-			className="h-[90vh] text-white px-16 bg-no-repeat bg-center"
-			style={sectionStyles}
-		>
-			<div className="flex flex-col items-start gap-2 pt-24">
-				<h1 className="font-bold text-4xl xsm:text-5xl md:text-6xl">
-					{course?.title}
-				</h1>
-				<p className="font-semibold tracking-wide xsm:text-xl xsm:tracking-wider md:text-2xl md:tracking-wide">
-					{course?.tagline}
-				</p>
-				<div>
-					{/* {Object.keys(advantages).map(adv => {
-						return <div>{advantages[adv].advantageName}</div>;
-					})} */}
-				</div>
-				<div className="flex flex-col items-center gap-4 mt-8 xsm:flex-row lg:mt-10">
-					<Button isPrimary={true}>Enroll Now</Button>
-					<Button>Learn More</Button>
-				</div>
-			</div>
-		</section>
-	);
+  return (
+    <div
+      className="relative  h-auto   w-full overflow-hidden bg-center bg-fixed bg-no-repeat bg-cover flex justify-center items-center"
+      style={{ backgroundImage: `url(${course?.image})` }}
+    >
+      <div className="flex flex-wrap w-[30rem]  items-end h-[60vh] sm:w-full backdrop-blur-[100px] px-5 py-8  sm:rounded-xl ">
+        <div className="w-full">
+		<h1 className="text-4xl  w-full font-bold text-white px-4">
+          {course.name}
+        </h1>
+        <h2 className="text-xl  w-full text-white px-4">{course.tagline}</h2>
+
+		</div>
+
+        <div className=" gap-2 mx-4 ">
+          <Button isPrimary={true}>enroll</Button>
+          <Button>learn more</Button>
+		  <div className=" my-4 w-full">
+			{Children.toArray(course?.advantages?.map(a=>{
+				return <button className="bg-white m-1 px-2 text-slate-700">{a.advantageName}</button>
+			}))}
+		</div>
+
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default HeroSection;

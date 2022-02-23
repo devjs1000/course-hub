@@ -1,39 +1,15 @@
 import React, { Children, useState } from "react";
 import CountButton from "../UI/CountButton";
 import Search from "../UI/Search";
-import { ArrowClockwise } from "react-bootstrap-icons";
+import { ArrowClockwise} from "react-bootstrap-icons";
 import useStore from "../context/useStore";
 import BoxLoading from "../UI/BoxLoading";
 import AssignmentCard from "../UI/AssignmentCard";
+import { Link } from "react-router-dom";
 const Assignment = ({}) => {
-  const { assignments,user,myCourses } = useStore();
-  const [assignmentData,setAssignmentData] = useState({})
-  const [courseInfo,setCourseInfo] = useState(null)
+  const { assignments, user } = useStore();
 const assignmentPrint={
   title:'My Assignments'
-}
-
-const getAssignmentData=e=>{
-  const name = e.target.name
-  const value = e.target.value
-  const newData = {...assignmentData}
-  newData[name]=value
-  setAssignmentData(newData)
-}
-
-const getSelected=e=>{
-  if(e.target.value==='None')return setCourseInfo(null)
-  const exact = myCourses.find(data=>data.name===e.target.value)
-  setCourseInfo({instructorId:exact.instructorId,courseId:exact._id,userId:user._id})
-}
-
-const submitAssignment = e =>{
-  e.preventDefault()
-  if(!courseInfo) return alert('Select the course for assignment')
-  const finalData = {...assignmentData,...courseInfo}
-  // Post request here
-  e.target.reset()
-  setCourseInfo(null)
 }
 
   return (
@@ -48,9 +24,14 @@ const submitAssignment = e =>{
             <CountButton title={"Un Checked"} count={0} />
             <CountButton title={"Checked"} count={0} />
           </div>
-          <div className="my-4 flex justify-center bg-white py-3">
+          <div className="my-4 flex px-4 bg-white py-3">
             <Search placeholder="Search your tasks" />
-            <ArrowClockwise className="bg-red-700 text-white w-[2rem] mx-1 hover:text-red-700 hover:bg-white transition-all h-[2rem] p-1" />
+            <ArrowClockwise className="bg-red-700 text-white h-auto w-[2rem] mx-1 hover:text-red-700 hover:bg-white transition-all h-[2rem] p-1" />
+            {
+              user?.isInstructor && <Link className="bg-red-700 text-white hover:bg-white hover:text-red-700 px-4 grid place-items-center" to='/create-assignment'>
+                Create Assignment
+              </Link>
+            }
           </div>
 
           <div className="h-[70vh]  overflow-auto">
@@ -64,21 +45,6 @@ const submitAssignment = e =>{
       ) : (
         <BoxLoading />
       )}
-     <div className="w-2/6 mx-auto bg-red-300 p-3 rounded-lg my-3">
-     <h1 className="text-2xl font-bold text-center text-white">Create Assignment</h1>
-      <form className="bg-red-300 p-5 flex flex-col items-center justify-between" onSubmit={submitAssignment}>
-        <input className="w-full my-2 px-2 py-1 rounded-md outline-none" required onChange={getAssignmentData} placeholder="Assignment Link" name="assignmentLink"  type="text" />
-        <input className="w-full my-2 px-2 py-1 rounded-md outline-none" required onChange={getAssignmentData} placeholder="Assignment Screenshot Link" name="assignmentScreenshotLink"  type="text" />
-        <input className="w-full my-2 px-2 py-1 rounded-md outline-none" onChange={getAssignmentData} placeholder="Assignment Comment" name="assignmentComment"  type="text" />
-        <select onChange={getSelected} className="w-3/6 my-2 outline-none rounded-md text-gray-500 p-1">
-          <option>None</option>
-          {
-            myCourses.map(course=> <option key={course._id}>{course.name}</option> )
-          }
-        </select>
-        <button className="m-btn border-2 px-3 py-1 mt-2 font-bold text-white" type="submit">Submit</button>
-      </form>
-     </div>
     </>
   );
 };
