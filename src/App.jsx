@@ -15,16 +15,8 @@ import Footer from './components/Footer';
 import Assignment from './components/Assignment';
 import Community from './components/Community/Community';
 import CourseDetails from './pages/CourseDetails';
-// const Login =lazy(()=> import('./components/Auth/Login'))
-// const Signup =lazy(()=> import('./components/Auth/Signup'))
-// const Profile =lazy(()=> import('./components/Profile'))
-// const Assignment =lazy(()=> import('./components/Assignment'))
-// const MyCourses =lazy(()=> import('./components/MyCourses'))
-// const Footer=lazy(()=>import('./components/Footer'))
-// const Community =lazy(()=> import('./components/Community/Community'))
-// const Home =lazy(()=> import('./pages/Home'))
+import CreateAssignment from './components/CreateAssignment';
 
-//dont delete the lazy loding it is disabled for accessing hot reloading at the time of development
 
 function App() {
 	const [loading, setLoading] = useState(true);
@@ -58,6 +50,8 @@ console.log(import.meta.env.VITE_DB);
 							<Route path="/Community" element={<Community />} />
 							<Route path="/create-course" element={<CreateCourse />} />
 							<Route path="/create-quiz" element={<CreateQuiz />} />
+							<Route path="/create-assignment" element={<CreateAssignment />} />
+
 							<Route path="/*" element={<NotFound />} />
 
 							<Route

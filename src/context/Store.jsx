@@ -32,18 +32,14 @@ const Store = () => {
   const [betterFetch] = useBetterFetch();
 
   useEffect(() => {
-    // allCourses((data) => {
-    //   setAllCoursesData(data);
-    //   setAllCoursesLoading(false);
-    // });
     betterFetch(
       "/api/course/allCourses",
-      10000,
+      1000*60*60*24,
       "GET",
       "still",
       (data) => {
         console.log(data, 'better');
-        setAllCoursesData(data);
+        setAllCoursesData(data.data);
       }
     );
   }, []);

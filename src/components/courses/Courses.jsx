@@ -16,8 +16,8 @@ function Courses() {
 		let tempData=[]
 		if(allCoursesData?.length===0) return
 		allCoursesData?.forEach(course=>{
-			if(!tempType.includes(course.type)){
-				tempType.push(course.type)
+			if(!tempType.includes(course?.type)){
+				tempType.push(course?.type)
 			}
 		})
 		tempType.forEach(type=>{
