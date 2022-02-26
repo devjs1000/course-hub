@@ -19,33 +19,33 @@ const AccordionIcon = ({ className }) => {
 };
 
 function Accordion() {
-	const [isActive, setIsActive] = useState('bg-gray-100');
+	const [isActive, setIsActive] = useState('bg-gray-50');
 	const [initialHeight, setInitialHeight] = useState('0px');
 
 	const answerContent = useRef(null);
 
 	const toggleAccordion = () => {
-		setIsActive(isActive === 'bg-gray-100' ? 'bg-gray-200' : 'bg-gray-100');
+		setIsActive(isActive === 'bg-gray-50' ? 'bg-gray-100' : 'bg-gray-50');
 		setInitialHeight(
-			isActive === 'bg-gray-100'
+			isActive === 'bg-gray-50'
 				? `${answerContent.current.scrollHeight}px`
 				: '0px',
 		);
 		console.log(answerContent.current.scrollHeight);
 	};
 
-	const buttonClass = `w-full text-left border-none p-2 font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex justify-between ${isActive}`;
+	const buttonClass = `w-full text-left border-none p-2 font-semibold text-lg hover:bg-gray-100 transition-all duration-200 flex justify-between ${isActive}`;
 
-	const iconClass = `${isActive === 'bg-gray-100' ? 'rotate-0' : 'rotate-90'}`;
+	const iconClass = `${isActive === 'bg-gray-50' ? 'rotate-0' : 'rotate-90'}`;
 
 	return (
-		<div className="border">
+		<div className="border rounded-md">
 			<button className={buttonClass} onClick={toggleAccordion}>
 				<p>Question 1</p>
 				<AccordionIcon className={iconClass} />
 			</button>
 			<div
-				className="overflow-hidden max-h-0 transition-all duration-300 ease-in"
+				className="overflow-hidden max-h-0 transition-all duration-200 ease-in"
 				ref={answerContent}
 				style={{ maxHeight: `${initialHeight}` }}
 			>
