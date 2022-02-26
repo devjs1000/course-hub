@@ -33,7 +33,7 @@ function HeroSection({ course }) {
 				</div>
 			</div>
 			<div
-				className="h-[80%] w-full bg-cover bg-no-repeat bg-center rounded-md relative after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75"
+				className="h-[80%] w-full bg-cover bg-no-repeat bg-center rounded-md relative overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75"
 				style={{ backgroundImage: `url(${course?.image})` }}
 			></div>
 		</div>
