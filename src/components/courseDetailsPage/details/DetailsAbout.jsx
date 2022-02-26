@@ -1,10 +1,8 @@
 import CourseSkills from '../CourseSkills';
 
-function DetailsAbout({ className }) {
-	const aboutClasses = `${className}`;
-
+function DetailsAbout() {
 	return (
-		<section className={aboutClasses} id="about">
+		<section id="about">
 			<h2 className="uppercase font-semibold text-lg">About this course</h2>
 			<p className="mt-2 ">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
