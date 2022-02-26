@@ -2,6 +2,10 @@
 	--color-primary-dark: #9d0000;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 .section-hero::before {
 	position: absolute;
 	content: '';
