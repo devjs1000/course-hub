@@ -1,7 +1,7 @@
 import CourseSkills from '../CourseSkills';
 
 function DetailsAbout({ className }) {
-	const aboutClasses = `${className} text-gray-600`;
+	const aboutClasses = `${className}`;
 	return (
 		<section className={aboutClasses} id="about">
 			<h2 className="uppercase font-semibold text-lg">About this course</h2>
