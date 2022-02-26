@@ -2,11 +2,11 @@ import { Children } from 'react';
 
 const SkillBadge = ({ tags }) => {
 	return (
-		<div className="border rounded-xl mt-8 flex items-center justify-center gap-4 flex-wrap py-8 px-2">
+		<div className="flex items-center justify-center gap-4 flex-wrap py-4">
 			{Children.toArray(
 				tags.map(tag => {
 					return (
-						<span className="bg-gray-300 py-2 px-4 rounded-full text-gray-800 text-sm md:text-base">
+						<span className="bg-gray-300 py-1 px-3 rounded-full text-gray-800 text-sm">
 							{tag}
 						</span>
 					);
@@ -30,8 +30,8 @@ function CourseSkills(courses) {
 	];
 
 	return (
-		<section className="text-center px-16">
-			<h2 className="font-bold text-3xl sm:text-4xl md:text-5xl text-gray-500">
+		<section className="text-center border rounded-md p-2 mt-6">
+			<h2 className="font-semibold text-md uppercase text-left">
 				Skills you will gain
 			</h2>
 			<SkillBadge tags={tags} />
