@@ -6,7 +6,7 @@ const SkillBadge = ({ tags }) => {
 			{Children.toArray(
 				tags.map(tag => {
 					return (
-						<span className="bg-gray-300 py-1 px-3 rounded-full text-gray-800 text-sm">
+						<span className="bg-slate-200 py-1 px-3 rounded-full text-gray-800 text-sm">
 							{tag}
 						</span>
 					);
