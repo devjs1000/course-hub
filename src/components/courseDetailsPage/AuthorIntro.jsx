@@ -1,27 +1,31 @@
-import Button from '../../UI/Button';
-import authorImg from '../../images/author.png';
+import author from '../../images/author.jpg';
 
 function AuthorIntro() {
+	const backgroundImage = `h-28 w-28 border rounded-full bg-no-repeat bg-cover bg-center outline-offset-2 outline outline-slate-300`;
+
 	return (
-		<section className="section-step mt-16 pb-16 px-16 flex flex-col items-start gap-10 sm:items-center lg:flex-row">
-			<img
-				src={authorImg}
-				alt="people sitting and laughing"
-				className="rounded-md  min-w-[30vw]"
-			/>
-			<div className="flex flex-col sm:items-center lg:order-2 lg:items-start">
-				<h3 className="heading-gradient text-2xl font-semibold mb-2 xsm:text-3xl sm:text-center lg:text-left lg:text-4xl">
-					“Take the next step toward your personal and professional goals with
-					XcitEducation”
-				</h3>
-				<span className="italic text-gray-600">&#8212;Arundhati Roy</span>
-				<div className="text-white flex items-center gap-4 mt-8 lg:mt-16">
-					<Button isPrimary={true}>Enroll</Button>
-					<Button isOutline={true} textPrimary={true}>
-						Learn More
-					</Button>
+		<section className="mt-24 h-" id="instructor">
+			<h2 className="uppercase font-semibold text-lg">Instructor</h2>
+
+			<div className="my-4 flex items-center gap-6">
+				<div
+					className={backgroundImage}
+					style={{ backgroundImage: `url(${author})` }}
+				>
+					&nbsp;
+				</div>
+				<div className="outline-o">
+					<h6 className="text-lg font-semibold">John Wick</h6>
+					<p className="text-sm">Professional Killer, dog lover</p>
 				</div>
 			</div>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+				provident? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+				Quia, cumque. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				Molestias, nam! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				Vitae, distinctio.
+			</p>
 		</section>
 	);
 }
