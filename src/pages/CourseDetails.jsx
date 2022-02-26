@@ -6,6 +6,7 @@ import WhatYouGet from '../components/courseDetailsPage/details/WhatYouGet';
 import DetailsAbout from '../components/courseDetailsPage/details/DetailsAbout';
 import useStore from '../context/useStore';
 import AuthorIntro from '../components/courseDetailsPage/AuthorIntro';
+import DetailsReview from '../components/courseDetailsPage/details/DetailsReview';
 
 const CourseDetails = () => {
 	const { allCoursesData } = useStore();
@@ -25,6 +26,7 @@ const CourseDetails = () => {
 				<div className="col-span-4">
 					<DetailsAbout />
 					<AuthorIntro />
+					<DetailsReview />
 				</div>
 				<WhatYouGet className="lg:col-start-5 lg:col-end-[-1]" />
 			</div>
