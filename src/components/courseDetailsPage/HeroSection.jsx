@@ -5,7 +5,7 @@ function HeroSection({ course }) {
 	console.log(course);
 	// { backgroundImage: `url(${course?.image})` }
 	return (
-		<div className="details-hero h-[60vh] overflow-hidden bg-center bg-fixed bg-no-repeat bg-cover flex justify-between items-center px-16">
+		<div className="details-hero h-auto overflow-hidden bg-center bg-fixed bg-no-repeat bg-cover flex flex-col justify-between items-center px-16 md:flex-row md:h-[60vh] md:gap-4">
 			<div className="flex flex-col items-start sm:w-full backdrop-blur-[100px] py-8 sm:rounded-xl ">
 				<div className="mb-7">
 					<h1 className="text-4xl font-bold text-white uppercase tracking-wide">
@@ -15,7 +15,7 @@ function HeroSection({ course }) {
 				</div>
 
 				<div className="">
-					<div className="my-4 flex items-center gap-2">
+					<div className="my-4 flex flex-wrap items-center gap-2">
 						{Children.toArray(
 							course?.advantages?.map(a => {
 								return (
@@ -33,7 +33,7 @@ function HeroSection({ course }) {
 				</div>
 			</div>
 			<div
-				className="h-[80%] w-full bg-cover bg-no-repeat bg-center rounded-md relative overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75"
+				className="bg-cover bg-no-repeat bg-center rounded-md relative overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
 				style={{ backgroundImage: `url(${course?.image})` }}
 			></div>
 		</div>
