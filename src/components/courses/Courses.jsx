@@ -6,7 +6,7 @@ import CourseCard from './CourseCard';
 import useStore from '../../context/useStore';
 import BoxLoading from '../../UI/BoxLoading';
 import { useEffect, useState, Children } from 'react';
-
+import { ErrorBoundary } from 'react-error-boundary';
 function Courses() {
 	const {allCoursesData} = useStore();
 	const [coursesByType,setCoursesByType] = useState([])
@@ -14,13 +14,14 @@ function Courses() {
 	useEffect(()=>{
 		let tempType = []
 		let tempData=[]
-		if(allCoursesData?.length===0) return
+		if(!allCoursesData.length ) return
+
 		allCoursesData?.forEach(course=>{
 			if(!tempType.includes(course?.type)){
 				tempType.push(course?.type)
 			}
 		})
-		tempType.forEach(type=>{
+		tempType?.forEach(type=>{
 			const data = allCoursesData.filter(course=>course.type===type)
 			tempData =[...tempData,{type,data}]
 		})
@@ -29,11 +30,12 @@ function Courses() {
 
 	return (
 		<>
+		<ErrorBoundary fallback={'error in course page'}>
 		{allCoursesData?.length !==0 ? Children.toArray(
 			coursesByType.map(eachType=>
 				<div className="bg-slate-50 px-16 h-[100%] pt-8 select-none lg:pt-16">
 			<h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
-				{eachType.type}
+				{eachType?.type}
 			</h2>
 
 			<Swiper
@@ -60,14 +62,15 @@ function Courses() {
 				{Children.toArray(
 					eachType?.data.map((course) => {
 					return (
-						<SwiperSlide key={course._id}>
-							<CourseCard id={course._id}/>
+						<SwiperSlide key={course?._id}>
+							<CourseCard id={course?._id}/>
 						</SwiperSlide>
 					);
 				}))}
 			</Swiper>
 		</div> )
 	): <BoxLoading />}
+	</ErrorBoundary>
 		</>
 	);
 }

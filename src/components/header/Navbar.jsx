@@ -5,6 +5,7 @@ import { List } from 'react-bootstrap-icons';
 import Sidebar from './Sidebar';
 import { Link, useLocation } from 'react-router-dom';
 import useStore from '../../context/useStore';
+import { ErrorBoundary } from 'react-error-boundary';
 
 const Overlay = ({ openSidebarHandler }) => {
 	return <div className="overlay" onClick={openSidebarHandler}></div>;
@@ -26,6 +27,8 @@ function Navbar() {
 	};
 
 	return (
+		<ErrorBoundary fallback={'error in course page'}>
+
 		<nav className="flex gap-3 items-center  px-4 py-2 bg-white relative xsm:gap-5 md:flex-row md:px-16">
 			<List
 				className="w-8 cursor-pointer text-7xl"
@@ -79,6 +82,7 @@ function Navbar() {
 					document.getElementById('overlay'),
 				)}
 		</nav>
+		</ErrorBoundary>
 	);
 }
 
