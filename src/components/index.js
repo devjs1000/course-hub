@@ -8,7 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import Profile from './Profile';
 import Tags from './Tags';
 
-export default {
+export {
 	Assignment,
 	CreateAssignment,
 	CreateCourse,
