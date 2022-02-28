@@ -26,7 +26,7 @@ function Navbar() {
 	};
 
 	return (
-		<nav className="flex gap-3 items-center  px-4 py-2 bg-white relative xsm:gap-5 md:flex-row md:px-16">
+		<nav className="flex gap-3 items-center px-4 bg-white relative xsm:gap-5 md:flex-row md:px-16">
 			<List
 				className="w-8 cursor-pointer text-7xl"
 				onClick={openSidebarHandler}
