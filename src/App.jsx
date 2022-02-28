@@ -17,11 +17,9 @@ import Navbar from './components/header/Navbar';
 import Loading from './UI/BoxLoading';
 import Community from './components/Community/Community';
 
-// import Login from './components/Auth/Login';
-// import Signup from './components/Auth/Signup';
-
 function App() {
 	const [loading, setLoading] = useState(true);
+
 	console.log(import.meta.env.VITE_DB);
 	useLayoutEffect(() => {
 		setTimeout(() => setLoading(false), 1500);
