@@ -1,23 +1,24 @@
 import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
-	Footer,
 	Assignment,
 	CreateAssignment,
 	CreateCourse,
 	CreateQuiz,
+	Footer,
 	MyCourses,
 	PrivateRoute,
 	Profile,
 } from './components';
+import { Home, CourseDetails, NotFound } from './pages';
+import { Login, Signup } from './components/Auth';
+
 import Navbar from './components/header/Navbar';
 import Loading from './UI/BoxLoading';
-import NotFound from './pages/NotFound';
-import Home from './pages/Home';
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/Signup';
 import Community from './components/Community/Community';
-import CourseDetails from './pages/CourseDetails';
+
+// import Login from './components/Auth/Login';
+// import Signup from './components/Auth/Signup';
 
 function App() {
 	const [loading, setLoading] = useState(true);
