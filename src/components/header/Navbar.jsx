@@ -5,6 +5,7 @@ import { List } from 'react-bootstrap-icons';
 import Sidebar from './Sidebar';
 import { Link, useLocation } from 'react-router-dom';
 import useStore from '../../context/useStore';
+import { ErrorBoundary } from 'react-error-boundary';
 
 const Overlay = ({ openSidebarHandler }) => {
 	return <div className="overlay" onClick={openSidebarHandler}></div>;
@@ -56,12 +57,14 @@ function Navbar() {
 		: `${initialNavClasses} sticky top-0 left-0 w-full h-16 bg-white shadow-md z-50 opacity-95 transition-all duration-500`;
 
 	return (
+
 		<>
 			<nav className={navClasses}>
 				<List
 					className="w-8 cursor-pointer text-7xl"
 					onClick={openSidebarHandler}
 				></List>
+
 
 				<Link to="/">
 					<img
@@ -104,6 +107,7 @@ function Navbar() {
 					/>,
 					document.getElementById('sidebar'),
 				)}
+
 				{openSidebar &&
 					createPortal(
 						<Overlay closeSidebarHandler={openSidebarHandler} />,
@@ -112,6 +116,7 @@ function Navbar() {
 			</nav>
 			<div className="h-1 bg-transparent" ref={target}></div>
 		</>
+
 	);
 }
 

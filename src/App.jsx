@@ -15,7 +15,6 @@ import { Login, Signup } from './components/Auth';
 
 import Navbar from './components/header/Navbar';
 import Loading from './UI/BoxLoading';
-import Community from './components/Community/Community';
 
 function App() {
 	const [loading, setLoading] = useState(true);

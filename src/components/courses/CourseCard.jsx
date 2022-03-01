@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 import useStore from "../../context/useStore";
 
@@ -29,6 +30,8 @@ const CourseCard = ({
   };
 
   return (
+    <ErrorBoundary fallback={'error in course page'}>
+
     <div className="rounded-xl relative h-[20rem] max-w-[18rem] shadow-xl overflow-hidden">
       <div className="h-[10rem] rounded-t-xl   overflow-hidden border">
         <img
@@ -77,6 +80,7 @@ const CourseCard = ({
         </div>
       </div>
     </div>
+    </ErrorBoundary>
   );
 };
 
