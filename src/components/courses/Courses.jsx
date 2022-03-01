@@ -12,6 +12,7 @@ function Courses() {
 	const [coursesByType,setCoursesByType] = useState([])
 
 	useEffect(()=>{
+		try{
 		let tempType = []
 		let tempData=[]
 		if(!allCoursesData.length ) return
@@ -26,6 +27,9 @@ function Courses() {
 			tempData =[...tempData,{type,data}]
 		})
 		setCoursesByType(tempData)
+	}catch(err){
+		console.log(err);
+	}
 	},[allCoursesData])
 
 	return (

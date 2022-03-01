@@ -10,6 +10,8 @@ import {
 	PrivateRoute,
 	Profile,
 } from './components';
+
+import Community from './components/Community/Community'
 import { Home, CourseDetails, NotFound } from './pages';
 import { Login, Signup } from './components/Auth';
 
