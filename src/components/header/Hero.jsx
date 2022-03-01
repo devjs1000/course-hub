@@ -7,6 +7,7 @@ function Hero() {
 		heading: 'Hold our hand on the path of your career.',
 		subHeading:
 			'Take on the professional world by learning and practicing in-demand skills with us.',
+			callToAction:"Enroll Now"
 	};
 
 	return (
@@ -20,7 +21,7 @@ function Hero() {
 						className="border-none inline-block px-6 py-3 bg-violet-700 font-semibold text-lg text-white rounded
           "
 					>
-						Enroll Now
+						{bluePrint.callToAction}
 					</button>
 					<button className='bg-[rgba(255,200,200,.5)] backdrop-blur-[10px] py-3 font-semibold  rounded '>Learn More</button>
 				</div>
