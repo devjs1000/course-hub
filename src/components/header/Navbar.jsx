@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import logoPrimary from '../../images/logo-primary.png';
 import { List } from 'react-bootstrap-icons';
@@ -27,6 +27,8 @@ function Navbar() {
 	const location = useLocation();
 	const path = location.pathname.split('/')[1];
 
+	console.log(path);
+
 	//add objects in nullpath for hiding object in paths
 	const nullPath = ['login', 'signup'];
 	if (nullPath.includes(path)) return null;
@@ -43,6 +45,14 @@ function Navbar() {
 	const navClasses = isVisible
 		? `${commonClasses}`
 		: `${commonClasses} ${stickyNav}`;
+
+	// const commonClasses = `flex gap-3 items-center px-4 transition-all duration-300 top-0 left-0 w-full z-50 xsm:gap-5 md:flex-row md:px-16`;
+
+	// const initialNavClasses = `absolute`;
+
+	// const navClasses = isVisible
+	// 	? `${initialNavClasses} ${commonClasses}`
+	// 	: `${commonClasses} sticky h-16 bg-white shadow-md z-50 opacity-95 transition-all duration-300`;
 
 	return (
 		<>
