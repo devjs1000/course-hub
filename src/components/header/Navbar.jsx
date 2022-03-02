@@ -5,7 +5,7 @@ import { List } from 'react-bootstrap-icons';
 import Sidebar from './Sidebar';
 import { Link, useLocation } from 'react-router-dom';
 import useStore from '../../context/useStore';
-import { ErrorBoundary } from 'react-error-boundary';
+import useIntersection from '../../UI/useIntersection';
 
 const Overlay = ({ openSidebarHandler }) => {
 	return <div className="overlay" onClick={openSidebarHandler}></div>;
@@ -13,30 +13,16 @@ const Overlay = ({ openSidebarHandler }) => {
 
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
-	const [isVisible, setIsVisible] = useState();
 	const { user } = useStore();
-	const target = useRef();
 
-	console.log('navbar visibility', isVisible);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			entries => {
-				const entry = entries[0];
-				setIsVisible(entry.isIntersecting);
-			},
-			{
-				root: null,
-				threshold: 0,
-				rootMargin: '64px',
-			},
-		);
-		observer.observe(target.current);
-
-		return () => {
-			observer.unobserve(target.current);
-		};
-	}, [isVisible]);
+	// sticky nav start
+	const target = useRef(null);
+	const isVisible = useIntersection(target, {
+		root: null,
+		threshold: 1,
+		rootMargin: '0px',
+	});
+	// sticky nav end
 
 	const location = useLocation();
 	const path = location.pathname.split('/')[1];
@@ -50,21 +36,21 @@ function Navbar() {
 		document.getElementById('root').style.filter = 'blur(3px)';
 	};
 
-	const initialNavClasses = `flex gap-3 items-center px-4 bg-white relative xsm:gap-5 md:flex-row md:px-16 transition-all duration-500`;
+	const commonClasses = `flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16`;
+
+	const stickyNav = `sticky top-0 left-0 bg-white shadow-md opacity-95`;
 
 	const navClasses = isVisible
-		? `${initialNavClasses}`
-		: `${initialNavClasses} sticky top-0 left-0 w-full h-16 bg-white shadow-md z-50 opacity-95 transition-all duration-500`;
+		? `${commonClasses}`
+		: `${commonClasses} ${stickyNav}`;
 
 	return (
-
 		<>
 			<nav className={navClasses}>
 				<List
 					className="w-8 cursor-pointer text-7xl"
 					onClick={openSidebarHandler}
 				></List>
-
 
 				<Link to="/">
 					<img
@@ -116,7 +102,6 @@ function Navbar() {
 			</nav>
 			<div className="h-1 bg-transparent" ref={target}></div>
 		</>
-
 	);
 }
 
