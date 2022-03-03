@@ -19,7 +19,7 @@ function Hero() {
 					</h6>
 					<h1 className="text-7xl font-bold">{bluePrint.heading}</h1>
 					<p className="text-xl">{bluePrint.subHeading}</p>
-					<Button isPrimary={true}>Enroll</Button>
+					<Button isPrimary={true}>Enroll Now</Button>
 				</div>
 				<div className="object-cover">
 					<img src={hero} alt="" className="block w-full" />

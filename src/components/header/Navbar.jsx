@@ -1,6 +1,7 @@
 import { useState, useRef, Children } from 'react';
 import { createPortal } from 'react-dom';
 import { List } from 'react-bootstrap-icons';
+import Button from '../../UI/Button';
 import Sidebar from './Sidebar';
 import Overlay from '../../UI/Overlay';
 import { Link, useLocation } from 'react-router-dom';
@@ -80,14 +81,12 @@ function Navbar() {
 						<>
 							<Link
 								to="/login"
-								className="link relative text-sm text-primary-color-dark font-semibold xsm:text-base"
+								className="link relative text-lg text-white font-semibold xsm:text-base"
 							>
 								Login?
 							</Link>
 							<Link to="/signup">
-								<button className="bg-red-700 text-white mx-2 px-2 py-1 rounded sm:px-4 sm:py-2">
-									Signup
-								</button>
+								<Button isPrimary={true}>Get Started</Button>
 							</Link>
 						</>
 					) : (
