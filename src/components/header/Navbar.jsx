@@ -2,13 +2,10 @@ import { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { List } from 'react-bootstrap-icons';
 import Sidebar from './Sidebar';
+import Overlay from '../../UI/Overlay';
 import { Link, useLocation } from 'react-router-dom';
 import useStore from '../../context/useStore';
 import useIntersection from '../../UI/useIntersection';
-
-const Overlay = ({ openSidebarHandler }) => {
-	return <div className="overlay" onClick={openSidebarHandler}></div>;
-};
 
 function Navbar() {
 	const [openSidebar, setOpenSidebar] = useState(false);
