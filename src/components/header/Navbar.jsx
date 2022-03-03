@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, Children } from 'react';
 import { createPortal } from 'react-dom';
 import { List } from 'react-bootstrap-icons';
 import Sidebar from './Sidebar';
@@ -34,7 +34,7 @@ function Navbar() {
 		document.getElementById('root').style.filter = 'blur(3px)';
 	};
 
-	const commonClasses = `flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16`;
+	const commonClasses = `py-2 flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16`;
 
 	const stickyNav = `sticky top-0 left-0 bg-white shadow-md opacity-95`;
 
@@ -42,25 +42,38 @@ function Navbar() {
 		? `${commonClasses}`
 		: `${commonClasses} ${stickyNav}`;
 
-	// const commonClasses = `flex gap-3 items-center px-4 transition-all duration-300 top-0 left-0 w-full z-50 xsm:gap-5 md:flex-row md:px-16`;
-
-	// const initialNavClasses = `absolute`;
-
-	// const navClasses = isVisible
-	// 	? `${initialNavClasses} ${commonClasses}`
-	// 	: `${commonClasses} sticky h-16 bg-white shadow-md z-50 opacity-95 transition-all duration-300`;
+	const navLinks = ['Home', 'About', 'Courses', 'Teachers'];
 
 	return (
 		<>
 			<nav className={navClasses}>
-				<List
+				{/* <List
 					className="w-8 cursor-pointer text-7xl"
 					onClick={openSidebarHandler}
-				></List>
+				></List> */}
 
 				<Link to="/">
 					<h2 className="text-3xl text-white font-semibold">XcitEducation</h2>
 				</Link>
+
+				{/* navlinks start */}
+				<ul className="flex items-center justify-center gap-8 w-[40%]">
+					{Children.toArray(
+						navLinks.map(link => {
+							return (
+								<li>
+									<a
+										href="#"
+										className="text-lg text-white font-medium hover:font-semibold"
+									>
+										{link}
+									</a>
+								</li>
+							);
+						}),
+					)}
+				</ul>
+				{/* navlinks end */}
 
 				<div className="flex items-center gap-4 ml-auto xsm:gap-6">
 					{user == undefined || !user._id ? (
@@ -73,7 +86,7 @@ function Navbar() {
 							</Link>
 							<Link to="/signup">
 								<button className="bg-red-700 text-white mx-2 px-2 py-1 rounded sm:px-4 sm:py-2">
-									signup
+									Signup
 								</button>
 							</Link>
 						</>
@@ -87,6 +100,7 @@ function Navbar() {
 						</Link>
 					)}
 				</div>
+
 				{createPortal(
 					<Sidebar
 						openSidebar={openSidebar}
