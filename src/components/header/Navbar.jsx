@@ -35,13 +35,17 @@ function Navbar() {
 		document.getElementById('root').style.filter = 'blur(3px)';
 	};
 
-	const commonClasses = `py-2 flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16`;
+	const commonClasses = `text-white py-2 flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16`;
 
-	const stickyNav = `sticky top-0 left-0 bg-white shadow-md opacity-95`;
+	const stickyNav = `text-black sticky top-0 left-0 bg-white shadow-md opacity-95`;
 
 	const navClasses = isVisible
 		? `${commonClasses}`
 		: `${commonClasses} ${stickyNav}`;
+
+	const navLinkClasses = `text-lg ${
+		isVisible ? 'text-white' : 'text-black'
+	} font-medium hover:font-semibold`;
 
 	const navLinks = ['Home', 'About', 'Courses', 'Teachers'];
 
@@ -54,7 +58,7 @@ function Navbar() {
 				></List> */}
 
 				<Link to="/">
-					<h2 className="text-3xl text-white font-semibold">XcitEducation</h2>
+					<h2 className="text-3xl font-semibold">XcitEducation</h2>
 				</Link>
 
 				{/* navlinks start */}
@@ -63,10 +67,7 @@ function Navbar() {
 						navLinks.map(link => {
 							return (
 								<li>
-									<a
-										href="#"
-										className="text-lg text-white font-medium hover:font-semibold"
-									>
+									<a href="#" className={navLinkClasses}>
 										{link}
 									</a>
 								</li>
@@ -81,7 +82,7 @@ function Navbar() {
 						<>
 							<Link
 								to="/login"
-								className="link relative text-lg text-white font-semibold xsm:text-base"
+								className="link relative text-lg font-semibold xsm:text-base"
 							>
 								Login?
 							</Link>
