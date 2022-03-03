@@ -7,29 +7,24 @@ function Hero() {
 		heading: 'Hold our hand on the path of your career.',
 		subHeading:
 			'Take on the professional world by learning and practicing in-demand skills with us.',
-			callToAction:"Enroll Now"
+		callToAction: 'Enroll Now',
 	};
 
 	return (
-		<section className="h-[150vh] sm:h-[100vh] flex flex-col gap-2 items-center px-4 py-4 relative sm:px-8 md:flex-row md:pt-0  lg:pt-12 xl:pt-16 xl:px-16">
-			<div className="hero-inner absolute top-0 left-0 w-full h-full bg-red-400 z-[-1]"></div>
-			<div className="flex flex-col sm:w-[80%] lg:w-[50%] gap-6">
-				<h1 className="text-7xl font-bold">{bluePrint.heading}</h1>
-				<p className="text-xl">{bluePrint.subHeading}</p>
-				<div className='grid gap-2 '>
-					<button
-						className="border-none inline-block px-6 py-3 bg-violet-700 font-semibold text-lg text-white rounded
-          "
-					>
-						{bluePrint.callToAction}
-					</button>
-					<button className='bg-[rgba(255,200,200,.5)] backdrop-blur-[10px] py-3 font-semibold  rounded '>Learn More</button>
+		<section className="flex py-8 flex-col gap-2 items-center px-4 sm:px-8 md:flex-row xl:px-16">
+			<div className="flex items-center">
+				<div className="text-white w-[50%] flex flex-col items-start gap-6">
+					<h6 className="text-primary-color-light relative uppercase font-semibold text-lg after:absolute after:right-[-55%] after:top-[50%] after:translate-y-[-50%] after:h-[2px] after:bg-current after:w-[50%]">
+						Path to your future
+					</h6>
+					<h1 className="text-7xl font-bold">{bluePrint.heading}</h1>
+					<p className="text-xl">{bluePrint.subHeading}</p>
+					<Button isPrimary={true}>Enroll</Button>
+				</div>
+				<div className="object-cover">
+					<img src={hero} alt="" className="block w-full" />
 				</div>
 			</div>
-			<div
-				className="h-full  sm:w-[50%] bg-cover"
-				style={{ backgroundImage: `url(${hero})` }}
-			></div>
 		</section>
 	);
 }
