@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import logoPrimary from '../../images/logo-primary.png';
 import { List } from 'react-bootstrap-icons';
 import Sidebar from './Sidebar';
 import { Link, useLocation } from 'react-router-dom';
@@ -63,11 +62,7 @@ function Navbar() {
 				></List>
 
 				<Link to="/">
-					<img
-						src={logoPrimary}
-						alt="primary-logo-img"
-						className="w-36 lg:w-48"
-					/>
+					<h2 className="text-3xl text-white font-semibold">XcitEducation</h2>
 				</Link>
 
 				<div className="flex items-center gap-4 ml-auto xsm:gap-6">
