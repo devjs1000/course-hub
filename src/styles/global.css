@@ -1,9 +1,14 @@
 :root {
 	--color-primary-dark: #9d0000;
+	--color-primary-light: #d94749;
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+body {
+	background: linear-gradient(107.72deg, #490000 -16.77%, #b13fa5 138.29%);
 }
 
 .section-hero::before {
