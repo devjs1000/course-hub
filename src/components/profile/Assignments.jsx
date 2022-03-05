@@ -27,7 +27,7 @@ const AssignmentCard = ({ title, tag }) => {
 					consequatur placeat officia cupiditate ea eius, praesentium dolorum?
 					Cum, molestias in!
 				</p>
-				<div className="grid grid-cols-2 text-xs mt-4 text-gray-500">
+				<div className="w-[70%] grid grid-cols-2 text-xs mt-4 text-gray-500">
 					<span>Assignment Progress</span>
 					<span className="text-right">40%</span>
 					<progress
@@ -81,7 +81,7 @@ const Assignments = ({}) => {
 
 	return (
 		<>
-			<div className="px-16 pb-8 flex flex-col gap-8 items-start">
+			<div className="px-4 pb-8 flex flex-col gap-8 items-start lg:px-16">
 				<div className="assignment-navigation border-b-2 border-gray-500 relative py-1">
 					{Children.toArray(
 						assignmentNav.map(item => (
@@ -92,7 +92,7 @@ const Assignments = ({}) => {
 					)}
 					<div className="animated-border absolute bottom-[-0.15rem] left-0 w[3rem] h-[2px] bg-primary-color-dark"></div>
 				</div>
-				<div className="grid grid-cols-3 gap-4">
+				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					<AssignmentCard title="Figma" tag="design" />
 					<AssignmentCard title="HTML" tag="frontend" />
 					<AssignmentCard title="NodeJS" tag="backend" />

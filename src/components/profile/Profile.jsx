@@ -9,6 +9,7 @@ import {
 	Speedometer,
 	Search,
 	BoxArrowLeft,
+	List,
 } from 'react-bootstrap-icons';
 import { Link, Outlet } from 'react-router-dom';
 import useStore from '../../context/useStore';
@@ -16,6 +17,7 @@ import useAuthHook from '../../hooks/useAuthHook';
 import { profileDesign } from '../../styles/styleObjects';
 
 const Profile = () => {
+	const [openAside, setOpenAside] = useState(false);
 	const { user, myCourses } = useStore();
 	const [isTeacher, setIsTeacher] = useState(user.isInstructor);
 	console.log(myCourses);
@@ -25,6 +27,10 @@ const Profile = () => {
 	useEffect(() => {
 		setIsTeacher(user.isInstructor);
 	}, [user]);
+
+	const toggleAsideHandler = () => {
+		setOpenAside(!openAside);
+	};
 
 	const sidebarItems = [
 		{ name: 'Dashboard', icon: <Speedometer />, path: '/my-profile/dashboard' },
@@ -43,10 +49,14 @@ const Profile = () => {
 		{ name: 'Logout', icon: <BoxArrowLeft />, path: '/' },
 	];
 
+	const asideClasses = `text-gray-600 shadow-xl h-screen ${
+		openAside ? 'px-4 py-2 w-[30vh]' : 'w-0'
+	} bg-[#ffffff] transition-all duration-300`;
+
 	return (
 		<>
 			<div className="bg-white flex">
-				<aside className="text-gray-600 shadow-xl h-screen w-[18vw] bg-[#ffffff] py-2 px-6 sticky top-0">
+				<aside className={asideClasses}>
 					<Link to="/">
 						<h4 className="text-2xl font-semibold cursor-pointer">
 							XcitEducation
@@ -69,7 +79,11 @@ const Profile = () => {
 				</aside>
 
 				<main className="w-full flex flex-col gap-6 bg-[#fff8f4]">
-					<nav className="h-14 bg-white flex items-center justify-between px-12 border-l">
+					<nav className="h-14 bg-white flex items-center justify-between px-4 border-l lg:px-16">
+						<List
+							className="text-4xl cursor-pointer"
+							onClick={toggleAsideHandler}
+						/>
 						<div className="border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden bg-gray-50">
 							<input
 								type="search"

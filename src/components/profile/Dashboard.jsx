@@ -6,8 +6,8 @@ import NextVideo from './byte-components/NextVideo';
 
 function Dashboard() {
 	return (
-		<div className="px-12 w-full">
-			<div className="relative bg-[#FFBF98] w-[90%] rounded-lg flex flex-col items-start justify-center gap-4 px-12 py-8">
+		<div className="px-4 w-full lg:px-16">
+			<div className="relative bg-[#FFBF98] w-full rounded-lg flex flex-col items-start justify-center gap-4 px-4 py-8 lg:px-16">
 				<h2 className="text-4xl text-primary-color-light">
 					Welcome back, Adnan
 				</h2>
@@ -18,15 +18,15 @@ function Dashboard() {
 				<img
 					src={dashboard}
 					alt="dashboard svg"
-					className="absolute w-[35%] right-0 top-[50%] translate-y-[-50%]"
+					className="opacity-0 absolute w-[35%] right-0 top-[50%] translate-y-[-50%] lg:opacity-100"
 				/>
 			</div>
-			<div className="w-[90%] flex gap-6 mt-6 mb-4">
-				<div className="w-[40%]">
+			<div className="w-full flex flex-col gap-6 mt-6 md:flex-row">
+				<div className="w-full lg:w-[40%]">
 					<h4 className="text-xl mb-3 font-semibold">Currently Watching</h4>
 					<div className="rounded-lg p-2 bg-white shadow-md">
 						<div
-							className="h-[10rem] bg-cover rounded-lg mb-2"
+							className="h-[10rem] bg-cover bg-center rounded-lg mb-2"
 							style={{ backgroundImage: `url(${currentCourseImg})` }}
 						></div>
 						<h6 className="font-semibold">1.1 Introduction to ReactJs</h6>
@@ -34,9 +34,9 @@ function Dashboard() {
 						<progress className="h-2 rounded"></progress>
 					</div>
 				</div>
-				<div className="w-[60%]">
+				<div className="w-full lg:w-[60%]">
 					<h4 className="text-xl mb-3 font-semibold">Next Videos</h4>
-					<div className="rounded-md overflow-y-scroll flex flex-col gap-4 p-2 h-[16rem] bg-white shadow-md">
+					<div className="rounded-md overflow-y-scroll flex flex-col gap-4 p-2 bg-white shadow-md md:h-[16rem]">
 						<NextVideo
 							lesson="Lesson1"
 							title="History of ReactJS"
