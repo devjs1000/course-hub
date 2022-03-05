@@ -1,11 +1,13 @@
-import React from 'react';
-import OngoingCourseCard from './OngoingCourseCard';
+import currentCourseImg from '../../images/course-current.jpeg';
 import Button from '../../UI/Button';
+import dashboard from '../../images/dashboard.svg';
+
+import NextVideo from './byte-components/NextVideo';
 
 function Dashboard() {
 	return (
 		<div className="px-12 w-full">
-			<div className="bg-[#FFBF98] w-[90%] rounded-lg flex flex-col items-start justify-center gap-4 px-12 py-8">
+			<div className="relative bg-[#FFBF98] w-[90%] rounded-lg flex flex-col items-start justify-center gap-4 px-12 py-8">
 				<h2 className="text-4xl text-primary-color-light">
 					Welcome back, Adnan
 				</h2>
@@ -13,16 +15,59 @@ function Dashboard() {
 					Education is the passport to the future So, Learn more & more
 				</p>
 				<Button isPrimary={true}>Browse</Button>
+				<img
+					src={dashboard}
+					alt="dashboard svg"
+					className="absolute w-[35%] right-0 top-[50%] translate-y-[-50%]"
+				/>
 			</div>
-			<div className="w-[90%] mt-6">
-				<h4 className="text-xl mb-3 font-semibold">Ongoing Courses</h4>
-				<div className="rounded-lg flex items-center gap-4">
-					{/* start */}
-					<OngoingCourseCard
-						tag="frontend"
-						title="Beginner to Advance ReactJS"
-					/>
-					{/* end */}
+			<div className="w-[90%] flex gap-6 mt-6 mb-4">
+				<div className="w-[40%] ">
+					<h4 className="text-xl mb-3 font-semibold">Currently Watching</h4>
+					<div className="border rounded-lg p-2">
+						<div
+							className="h-[10rem] bg-cover rounded-lg"
+							style={{ backgroundImage: `url(${currentCourseImg})` }}
+						></div>
+						<h6 className="font-semibold">1.1 Introduction to ReactJs</h6>
+						<p>Name of Author</p>
+						<progress className="h-2 rounded"></progress>
+					</div>
+				</div>
+				<div className="w-[60%]">
+					<h4 className="text-xl mb-3 font-semibold">Next Videos</h4>
+					<div className="rounded-md border overflow-y-scroll flex flex-col gap-4 p-2 h-[16rem]">
+						<NextVideo
+							lesson="Lesson1"
+							title="History of ReactJS"
+							length="10:00"
+						/>
+						<NextVideo
+							lesson="Lesson1"
+							title="History of ReactJS"
+							length="10:00"
+						/>
+						<NextVideo
+							lesson="Lesson1"
+							title="History of ReactJS"
+							length="10:00"
+						/>
+						<NextVideo
+							lesson="Lesson1"
+							title="History of ReactJS"
+							length="10:00"
+						/>
+						<NextVideo
+							lesson="Lesson1"
+							title="History of ReactJS"
+							length="10:00"
+						/>
+						<NextVideo
+							lesson="Lesson1"
+							title="History of ReactJS"
+							length="10:00"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
