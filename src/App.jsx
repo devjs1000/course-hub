@@ -1,7 +1,6 @@
 import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
-	Assignment,
 	CreateAssignment,
 	CreateCourse,
 	CreateQuiz,
@@ -67,7 +66,7 @@ function App() {
 								<Route path="/my-profile/settings" element={<Settings />} />
 							</Route>
 							<Route path="/my-courses" element={<MyCourses />} />
-							<Route path="/my-assignments" element={<Assignment />} />
+
 							<Route path="/Community" element={<Community />} />
 							<Route path="/create-course" element={<CreateCourse />} />
 							<Route path="/create-quiz" element={<CreateQuiz />} />
