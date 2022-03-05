@@ -1,4 +1,3 @@
-import Assignment from './Assignment';
 import CreateAssignment from './CreateAssignment';
 import CreateCourse from './CreateCourse';
 import CreateQuiz from './CreateQuiz';
@@ -9,7 +8,6 @@ import PrivateRoute from './PrivateRoute';
 import Tags from './Tags';
 
 export {
-	Assignment,
 	CreateAssignment,
 	CreateCourse,
 	CreateQuiz,
