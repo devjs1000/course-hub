@@ -9,7 +9,15 @@ import {
 	MyCourses,
 	PrivateRoute,
 } from './components';
-import Profile from './components/profile/Profile';
+
+import {
+	Profile,
+	Dashboard,
+	Courses,
+	Assignments,
+	Notifications,
+	Settings,
+} from './components/profile';
 
 import Community from './components/Community/Community';
 import { Home, CourseDetails, NotFound } from './pages';
@@ -45,7 +53,19 @@ function App() {
 										<Profile />
 									</PrivateRoute>
 								}
-							/>
+							>
+								<Route path="/my-profile/dashboard" element={<Dashboard />} />
+								<Route path="/my-profile/courses" element={<Courses />} />
+								<Route
+									path="/my-profile/assignments"
+									element={<Assignments />}
+								/>
+								<Route
+									path="/my-profile/notifications"
+									element={<Notifications />}
+								/>
+								<Route path="/my-profile/settings" element={<Settings />} />
+							</Route>
 							<Route path="/my-courses" element={<MyCourses />} />
 							<Route path="/my-assignments" element={<Assignment />} />
 							<Route path="/Community" element={<Community />} />
