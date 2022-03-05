@@ -24,8 +24,6 @@ function Navbar() {
 	const location = useLocation();
 	const path = location.pathname.split('/')[1];
 
-	console.log(path);
-
 	//add objects in nullpath for hiding object in paths
 	const nullPath = ['login', 'signup'];
 	if (nullPath.includes(path)) return null;
@@ -35,7 +33,11 @@ function Navbar() {
 		document.getElementById('root').style.filter = 'blur(3px)';
 	};
 
-	const commonClasses = `text-white py-2 flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16`;
+	const commonClasses = `${
+		path === 'my-profile'
+			? 'hidden'
+			: 'text-white py-2 flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16'
+	}`;
 
 	const stickyNav = `text-black sticky top-0 left-0 bg-white shadow-md opacity-95`;
 
@@ -46,6 +48,10 @@ function Navbar() {
 	const navLinkClasses = `text-lg ${
 		isVisible ? 'text-white' : 'text-black'
 	} font-medium hover:font-semibold`;
+
+	const targetDivClasses = ` ${
+		path === 'my-profile' ? 'hidden' : 'h-1 bg-transparent'
+	}`;
 
 	const navLinks = ['Home', 'About', 'Courses', 'Teachers'];
 
@@ -116,7 +122,7 @@ function Navbar() {
 						document.getElementById('overlay'),
 					)}
 			</nav>
-			<div className="h-1 bg-transparent" ref={target}></div>
+			<div className={targetDivClasses} ref={target}></div>
 		</>
 	);
 }
