@@ -97,8 +97,11 @@ function Navbar() {
 							</Link>
 						</>
 					) : (
-						<Link to="/my-profile" className="flex gap-3 items-center">
-							<span className="text-red-800 text-xl">{user.name}</span>
+						<Link
+							to="/my-profile/dashboard"
+							className="flex gap-3 items-center"
+						>
+							<span className="text-white text-xl">{user.name}</span>
 							<img
 								src={user.profilePicture}
 								className="h-10 w-10 p-1 object-cover rounded-full"
