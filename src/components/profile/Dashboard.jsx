@@ -22,11 +22,11 @@ function Dashboard() {
 				/>
 			</div>
 			<div className="w-[90%] flex gap-6 mt-6 mb-4">
-				<div className="w-[40%] ">
+				<div className="w-[40%]">
 					<h4 className="text-xl mb-3 font-semibold">Currently Watching</h4>
-					<div className="border rounded-lg p-2">
+					<div className="rounded-lg p-2 bg-white shadow-md">
 						<div
-							className="h-[10rem] bg-cover rounded-lg"
+							className="h-[10rem] bg-cover rounded-lg mb-2"
 							style={{ backgroundImage: `url(${currentCourseImg})` }}
 						></div>
 						<h6 className="font-semibold">1.1 Introduction to ReactJs</h6>
@@ -36,7 +36,7 @@ function Dashboard() {
 				</div>
 				<div className="w-[60%]">
 					<h4 className="text-xl mb-3 font-semibold">Next Videos</h4>
-					<div className="rounded-md border overflow-y-scroll flex flex-col gap-4 p-2 h-[16rem]">
+					<div className="rounded-md overflow-y-scroll flex flex-col gap-4 p-2 h-[16rem] bg-white shadow-md">
 						<NextVideo
 							lesson="Lesson1"
 							title="History of ReactJS"
