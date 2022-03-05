@@ -5,7 +5,7 @@ import CreateQuiz from './CreateQuiz';
 import Footer from './Footer';
 import MyCourses from './MyCourses';
 import PrivateRoute from './PrivateRoute';
-import Profile from './Profile';
+
 import Tags from './Tags';
 
 export {
@@ -16,6 +16,5 @@ export {
 	Footer,
 	MyCourses,
 	PrivateRoute,
-	Profile,
 	Tags,
 };
