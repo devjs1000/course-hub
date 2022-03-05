@@ -64,15 +64,15 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-	background-color: #ccc;
+	background-color: #ff6e6e;
 }
 
 progress::-webkit-progress-value {
-	background-color: rgb(16, 148, 12);
+	background-color: #ff6e6e;
 }
 
 progress::-moz-progress-bar {
-	background-color: rgb(16, 148, 12);
+	background-color: #ff6e6e;
 }
 
 /* assignment navigation */
