@@ -9,10 +9,13 @@ import {
 	Speedometer,
 	Search,
 } from 'react-bootstrap-icons';
+import { Link, Outlet } from 'react-router-dom';
 import useStore from '../../context/useStore';
 import useAuthHook from '../../hooks/useAuthHook';
 import { profileDesign } from '../../styles/styleObjects';
 import Button from '../../UI/Button';
+import OngoingCourseCard from './OngoingCourseCard';
+import Dashboard from './Dashboard';
 
 const Profile = () => {
 	const { user, myCourses } = useStore();
@@ -26,27 +29,39 @@ const Profile = () => {
 	}, [user]);
 
 	const sidebarItems = [
-		{ name: 'Dashboard', icon: <Speedometer /> },
-		{ name: 'Courses', icon: <Journal /> },
-		{ name: 'Assignments', icon: <JournalCode /> },
-		{ name: 'Notifications', icon: <Bell /> },
-		{ name: 'Settings', icon: <Gear /> },
+		{ name: 'Dashboard', icon: <Speedometer />, path: '/my-profile/dashboard' },
+		{ name: 'Courses', icon: <Journal />, path: '/my-profile/courses' },
+		{
+			name: 'Assignments',
+			icon: <JournalCode />,
+			path: '/my-profile/assignments',
+		},
+		{
+			name: 'Notifications',
+			icon: <Bell />,
+			path: '/my-profile/notifications',
+		},
+		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
 	];
 
 	return (
 		<>
 			<div className="bg-white flex">
-				<aside className=" h-screen w-[18vw] bg-slate-300 px-6 sticky top-0">
-					<h4 className="text-2xl font-semibold">XcitEducation</h4>
-					<ul className="mt-10 flex flex-col gap-10">
+				<aside className="text-gray-600 shadow-xl h-screen w-[18vw] bg-[#ffffff] py-2 px-6 sticky top-0">
+					<Link to="/">
+						<h4 className="text-2xl font-semibold cursor-pointer">
+							XcitEducation
+						</h4>
+					</Link>
+					<ul className="mt-10 flex flex-col gap-12">
 						{Children.toArray(
 							sidebarItems.map(item => {
 								return (
 									<li className="flex items-center gap-3">
 										<span className="text-2xl">{item.icon}</span>
-										<a href="#" className="text-xl">
+										<Link to={item.path} className="text-xl">
 											{item.name}
-										</a>
+										</Link>
 									</li>
 								);
 							}),
@@ -55,7 +70,7 @@ const Profile = () => {
 				</aside>
 
 				<main className="w-full flex flex-col gap-6 bg-[#fff8f4]">
-					<nav className="h-14 bg-white flex items-center justify-between px-12">
+					<nav className="h-14 bg-white flex items-center justify-between px-12 border-l">
 						<div className="border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden bg-gray-50">
 							<input
 								type="search"
@@ -72,32 +87,7 @@ const Profile = () => {
 							></div>
 						</div>
 					</nav>
-					<div className="px-12 w-full">
-						<div className="bg-[#FFBF98] w-[90%] rounded-lg flex flex-col items-start justify-center gap-4 px-12 py-8">
-							<h2 className="text-4xl text-primary-color-light">
-								Welcome back, Adnan
-							</h2>
-							<p className="text-lg">
-								Education is the passport to the future So, Learn more & more
-							</p>
-							<Button isPrimary={true}>Browse</Button>
-						</div>
-						<div className="w-[90%] mt-6">
-							<h4 className="text-xl mb-3 font-semibold">Ongoing Courses</h4>
-							<div className="rounded-lg flex items-center gap-4">
-								{/* start */}
-								<div className="border h-[10rem] py-2 px-4">
-									<div className="text-center bg-orange-500 rounded-md text-white">
-										Frontend
-									</div>
-									<h4 className="text-md font-semibold">
-										Beginner to Advance ReactJS
-									</h4>
-								</div>
-								{/* end */}
-							</div>
-						</div>
-					</div>
+					<Outlet />
 				</main>
 			</div>
 			{/*  */}
