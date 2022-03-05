@@ -3,7 +3,7 @@ import useStore from '../../context/useStore';
 
 const AssignmentCard = () => {
 	return (
-		<div className="border border-slate-300 shadow-md p-4 rounded-md">
+		<div className="bg-white shadow-md p-4 rounded-md">
 			<h4 className="text-primary-color-dark font-semibold text-xl">
 				Data Science
 			</h4>
