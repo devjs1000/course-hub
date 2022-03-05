@@ -8,14 +8,12 @@ import {
 	Bell,
 	Speedometer,
 	Search,
+	BoxArrowLeft,
 } from 'react-bootstrap-icons';
 import { Link, Outlet } from 'react-router-dom';
 import useStore from '../../context/useStore';
 import useAuthHook from '../../hooks/useAuthHook';
 import { profileDesign } from '../../styles/styleObjects';
-import Button from '../../UI/Button';
-import OngoingCourseCard from './OngoingCourseCard';
-import Dashboard from './Dashboard';
 
 const Profile = () => {
 	const { user, myCourses } = useStore();
@@ -42,6 +40,7 @@ const Profile = () => {
 			path: '/my-profile/notifications',
 		},
 		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
+		{ name: 'Logout', icon: <BoxArrowLeft />, path: '/' },
 	];
 
 	return (
