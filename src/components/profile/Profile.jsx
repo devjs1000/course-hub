@@ -81,7 +81,7 @@ const Profile = () => {
 				<main className="w-full flex flex-col gap-6 bg-[#fff8f4]">
 					<nav className="h-14 bg-white flex items-center justify-between px-4 border-l lg:px-16">
 						<List
-							className="visible opacity-100 text-4xl cursor-pointer lg:hidden opacity-0"
+							className="visible opacity-100 text-4xl cursor-pointer lg:hidden lg:opacity-0"
 							onClick={toggleAsideHandler}
 						/>
 						<div className="border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden bg-gray-50">
