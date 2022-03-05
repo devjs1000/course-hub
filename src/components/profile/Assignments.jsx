@@ -1,34 +1,41 @@
 import { Children, useState } from 'react';
 import useStore from '../../context/useStore';
 
-const AssignmentCard = () => {
-	return (
-		<div className="bg-white shadow-md p-4 rounded-md">
-			<h4 className="text-primary-color-dark font-semibold text-xl">
-				Data Science
-			</h4>
-			<p className="text-sm mt-3">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. In consequatur
-				placeat officia cupiditate ea eius, praesentium dolorum? Cum, molestias
-				in!
-			</p>
-			<div className="grid grid-cols-2 text-xs mt-4 text-gray-500">
-				<span>Assignment Progress</span>
-				<span className="text-right">40%</span>
-				<progress
-					value="40"
-					max="100"
-					className="w-full appearance-none border-none h-2 rounded-full overflow-hidden col-span-2 mt-1"
-				></progress>
-			</div>
+const AssignmentCard = ({ title, tag }) => {
+	let borderColor;
+	if (tag === 'backend') {
+		borderColor = 'before:from-emerald-500 before:to-emerald-300';
+	} else if (tag === 'frontend') {
+		borderColor = 'before:from-yellow-500 before:to-yellow-300';
+	} else if (tag === 'database') {
+		borderColor = 'before:from-orange-500 before:to-orange-300';
+	} else if (tag === 'design') {
+		borderColor = 'before:from-indigo-500 before:to-indigo-300';
+	}
 
-			<div className="text-right text-sm mt-6">
-				<a
-					href="#"
-					className="text-primary-color-dark font-semibold px-2 py-1 hover:bg-primary-color-dark hover:text-white transition-all duration-300"
-				>
-					Visit Course &rarr;
-				</a>
+	const cardClasses = `relative overflow-hidden bg-white shadow-md p-4 rounded-md flex flex-col gap-4 before:absolute before:top-0 before:left-0 before:h-full before:w-2 before:bg-gradient-to-b ${borderColor}`;
+
+	return (
+		<div className={cardClasses}>
+			<div>
+				<h4 className="text-slate-900 font-semibold text-xl">{title}</h4>
+				<span>{tag}</span>
+			</div>
+			<div>
+				<p className="text-sm mt-3">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+					consequatur placeat officia cupiditate ea eius, praesentium dolorum?
+					Cum, molestias in!
+				</p>
+				<div className="grid grid-cols-2 text-xs mt-4 text-gray-500">
+					<span>Assignment Progress</span>
+					<span className="text-right">40%</span>
+					<progress
+						value="40"
+						max="100"
+						className="w-full appearance-none border-none h-2 rounded-full overflow-hidden col-span-2 mt-1"
+					></progress>
+				</div>
 			</div>
 		</div>
 	);
@@ -85,12 +92,12 @@ const Assignments = ({}) => {
 					)}
 					<div className="animated-border absolute bottom-[-0.15rem] left-0 w[3rem] h-[2px] bg-primary-color-dark"></div>
 				</div>
-				<div className="grid grid-cols-4 gap-4">
-					<AssignmentCard />
-					<AssignmentCard />
-					<AssignmentCard />
-					<AssignmentCard />
-					<AssignmentCard />
+				<div className="grid grid-cols-3 gap-4">
+					<AssignmentCard title="Figma" tag="design" />
+					<AssignmentCard title="HTML" tag="frontend" />
+					<AssignmentCard title="NodeJS" tag="backend" />
+					<AssignmentCard title="ReactJS" tag="frontend" />
+					<AssignmentCard title="MongoDB" tag="database" />
 				</div>
 			</div>
 		</>
