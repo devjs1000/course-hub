@@ -49,7 +49,7 @@ const Profile = () => {
 		{ name: 'Logout', icon: <BoxArrowLeft />, path: '/' },
 	];
 
-	const asideClasses = `text-gray-600 shadow-xl h-screen ${
+	const asideClasses = `sticky top-0 text-gray-600 shadow-xl h-screen ${
 		openAside ? 'px-4 py-2 w-[35vh]' : 'w-0'
 	} bg-[#ffffff] transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
 
