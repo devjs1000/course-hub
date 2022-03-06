@@ -121,7 +121,7 @@ function Navbar() {
 
 				{openSidebar &&
 					createPortal(
-						<Overlay closeSidebarHandler={openSidebarHandler} />,
+						<Overlay clickHandler={openSidebarHandler} />,
 						document.getElementById('overlay'),
 					)}
 			</nav>
