@@ -51,7 +51,10 @@ function HeroSection({ course }) {
 				></div>
 			</div>
 			{openCourse &&
-				createPortal(<CourseVideo />, document.getElementById('video-section'))}
+				createPortal(
+					<CourseVideo clickHandler={closeCourseHandler} />,
+					document.getElementById('video-section'),
+				)}
 			{openCourse &&
 				createPortal(
 					<Overlay clickHandler={closeCourseHandler} />,
