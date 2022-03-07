@@ -25,6 +25,7 @@ import { Login, Signup } from './components/Auth';
 import Navbar from './components/header/Navbar';
 import Loading from './UI/BoxLoading';
 import Contact from './components/ContactUs/ContactUs';
+import About from './components/AboutUs/AboutUs';
 
 function App() {
 	const [loading, setLoading] = useState(true);
@@ -47,6 +48,7 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />
 							<Route path="/contactus" element={<Contact />} />
+							<Route path="/aboutus" element={<About />} />
 							<Route
 								path="/my-profile"
 								element={

@@ -53,7 +53,7 @@ function Navbar() {
 		path === 'my-profile' ? 'hidden' : 'h-1 bg-transparent'
 	}`;
 
-	const navLinks = ['Home', 'About', 'Courses', 'Teachers'];
+	const navLinks = ['Home', 'About','Courses', 'Teachers'];
 	const usernameClasses = `text-xl ${isVisible ? 'text-white' : 'text-black'}`;
 	return (
 		<>
