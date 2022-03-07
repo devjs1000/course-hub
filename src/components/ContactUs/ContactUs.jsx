@@ -13,6 +13,7 @@ import {
 
 const Contact = () => {
   const contactStyles = {
+      main:'bg-white',
     header:
       "text-white text-4xl font-bold tracking-widest relative bg-red-700 h-40 flex flex-col justify-center items-center",
     findUs: "text-4xl font-bold text-red-600 text-center",
@@ -40,7 +41,7 @@ const Contact = () => {
     infoSpan: "font-bold ml-2 text-white",
   };
   return (
-    <div>
+    <div className={contactStyles.main}>
       <div className={contactStyles.header}>
         <h1>Stuck With Issues?</h1>
         <h1>Here We Are</h1>
