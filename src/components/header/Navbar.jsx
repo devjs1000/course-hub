@@ -54,10 +54,10 @@ function Navbar() {
 	}`;
 
 	const navLinks = [
-		{ name: 'Home', href: '#' },
-		{ name: 'About', href: '#about' },
-		{ name: 'Courses', href: '#courses' },
-		{ name: 'Teachers', href: '#teachers' },
+		{ name: 'Home', path: '/' },
+		{ name: 'About', path: '/about-us' },
+		{ name: 'Courses', path: '/all-courses' },
+		{ name: 'Blogs', path: '/blog' },
 	];
 	const usernameClasses = `text-xl ${isVisible ? 'text-white' : 'text-black'}`;
 	return (
@@ -78,9 +78,9 @@ function Navbar() {
 						navLinks.map(link => {
 							return (
 								<li>
-									<a href={link.href} className={navLinkClasses}>
+									<Link to={link.path} className={navLinkClasses}>
 										{link.name}
-									</a>
+									</Link>
 								</li>
 							);
 						}),
