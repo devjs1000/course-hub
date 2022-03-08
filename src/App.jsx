@@ -80,7 +80,10 @@ function App() {
 
 							<Route path="/*" element={<NotFound />} />
 
-							<Route path="/coursedetails/:id" element={<CourseDetails />} />
+							<Route
+								path="all-courses/coursedetails/:id"
+								element={<CourseDetails />}
+							/>
 						</Routes>
 						<Footer />
 					</Suspense>
