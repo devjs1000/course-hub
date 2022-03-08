@@ -53,7 +53,12 @@ function Navbar() {
 		path === 'my-profile' ? 'hidden' : 'h-1 bg-transparent'
 	}`;
 
-	const navLinks = ['Home', 'About','Courses', 'Teachers'];
+	const navLinks = [
+		{ name: 'Home', href: '#' },
+		{ name: 'About', href: '#about' },
+		{ name: 'Courses', href: '#courses' },
+		{ name: 'Teachers', href: '#teachers' },
+	];
 	const usernameClasses = `text-xl ${isVisible ? 'text-white' : 'text-black'}`;
 	return (
 		<>
@@ -73,8 +78,8 @@ function Navbar() {
 						navLinks.map(link => {
 							return (
 								<li>
-									<a href="#" className={navLinkClasses}>
-										{link}
+									<a href={link.href} className={navLinkClasses}>
+										{link.name}
 									</a>
 								</li>
 							);
