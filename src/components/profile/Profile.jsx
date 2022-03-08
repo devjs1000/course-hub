@@ -34,7 +34,7 @@ const Profile = () => {
 
 	const sidebarItems = [
 		{ name: 'Dashboard', icon: <Speedometer />, path: '/my-profile/dashboard' },
-		{ name: 'Courses', icon: <Journal />, path: '/my-profile/courses' },
+		{ name: 'My Courses', icon: <Journal />, path: '/my-profile/courses' },
 		{
 			name: 'Assignments',
 			icon: <JournalCode />,
