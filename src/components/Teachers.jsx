@@ -8,7 +8,10 @@ import SectionHeading from '../UI/SectionHeading';
 
 const InstructorCard = ({ image }) => {
 	return (
-		<div className="shadow-md flex items-start h-[14rem] rounded-sm overflow-hidden">
+		<div
+			className="shadow-md flex items-start h-[14rem] rounded-sm overflow-hidden"
+			id="teachers"
+		>
 			<div
 				className="flex-[0.4] h-full bg-cover bg-top relative after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,.2)]"
 				style={{ backgroundImage: `url(${image})` }}

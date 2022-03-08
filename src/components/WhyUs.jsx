@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../UI/Button';
 import SectionHeading from '../UI/SectionHeading';
 import { Check } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 const WhyFeature = ({ title }) => {
 	return (
@@ -20,7 +21,10 @@ const WhyFeature = ({ title }) => {
 
 function WhyUs() {
 	return (
-		<section className="h-screen about-section py-8 px-16 flex items-center gap-10">
+		<section
+			className="h-screen about-section py-8 px-16 flex items-center gap-10"
+			id="about"
+		>
 			<div className="flex-[0.5] flex flex-col items-start gap-4">
 				<SectionHeading subHeading="WhyUs?" heading="Why Learn Here?" />
 				<p className="w-[90%] text-slate-700">
@@ -30,7 +34,9 @@ function WhyUs() {
 					reprehenderit fuga quo saepe sint nisi commodi totam asperiores odit
 					beatae!
 				</p>
-				<Button isPrimary={true}>Discover More</Button>
+				<Link to="/about-us">
+					<Button isPrimary={true}>Discover More</Button>
+				</Link>
 			</div>
 
 			<div className="flex-[0.5] flex flex-col gap-6 bor border-l pl-12">
