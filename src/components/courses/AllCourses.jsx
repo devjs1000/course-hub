@@ -34,7 +34,8 @@ function AllCourses() {
 	}, [allCoursesData]);
 
 	return (
-		<>
+		<section>
+			{/* modified code */}
 			<ErrorBoundary fallback={'error in course page'}>
 				{allCoursesData?.length !== 0 ? (
 					Children.toArray(
@@ -60,10 +61,9 @@ function AllCourses() {
 											slidesPerView: 2,
 										},
 									}}
-									spaceBetween={20}
 									navigation={true}
 									modules={[Navigation]}
-									className="mt-4 py-8 lg:py-8"
+									className="py-4 lg:py-8"
 								>
 									{Children.toArray(
 										eachType?.data.map(course => {
@@ -82,7 +82,7 @@ function AllCourses() {
 					<BoxLoading />
 				)}
 			</ErrorBoundary>
-		</>
+		</section>
 	);
 }
 
