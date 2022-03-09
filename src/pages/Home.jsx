@@ -1,12 +1,15 @@
 import Header from '../components/header/Header';
-import Courses from '../components/courses/Courses';
+
 import Teachers from '../components/Teachers';
+import WhyUs from '../components/WhyUs';
+import PopularCourses from '../components/PopularCourses';
 
 const Home = () => {
 	return (
 		<>
 			<Header />
-			<Courses />
+			<WhyUs />
+			<PopularCourses />
 			<Teachers />
 		</>
 	);

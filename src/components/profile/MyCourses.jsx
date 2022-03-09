@@ -1,7 +1,7 @@
 import React from 'react';
 import OngoingCourseCard from './OngoingCourseCard';
 
-function Courses() {
+function MyCourses() {
 	return (
 		<div className="px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16">
 			<OngoingCourseCard tag="frontend" title="Beginner to Advanced ReactJS" />
@@ -12,4 +12,4 @@ function Courses() {
 	);
 }
 
-export default Courses;
+export default MyCourses;

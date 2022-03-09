@@ -5,14 +5,14 @@ import {
 	CreateCourse,
 	CreateQuiz,
 	Footer,
-	MyCourses,
+	Courses,
 	PrivateRoute,
 } from './components';
 
 import {
 	Profile,
 	Dashboard,
-	Courses,
+	MyCourses,
 	Assignments,
 	Notifications,
 	Settings,
@@ -26,6 +26,7 @@ import Navbar from './components/header/Navbar';
 import Loading from './UI/BoxLoading';
 import Contact from './components/ContactUs/ContactUs';
 import About from './components/AboutUs/AboutUs';
+import AllCourses from './components/courses/AllCourses';
 
 function App() {
 	const [loading, setLoading] = useState(true);
@@ -48,7 +49,8 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />
 							<Route path="/contactus" element={<Contact />} />
-							<Route path="/aboutus" element={<About />} />
+							<Route path="/about-us" element={<About />} />
+							<Route path="/all-courses" element={<AllCourses />} />
 							<Route
 								path="/my-profile"
 								element={
@@ -58,7 +60,7 @@ function App() {
 								}
 							>
 								<Route path="/my-profile/dashboard" element={<Dashboard />} />
-								<Route path="/my-profile/courses" element={<Courses />} />
+								<Route path="/my-profile/courses" element={<MyCourses />} />
 								<Route
 									path="/my-profile/assignments"
 									element={<Assignments />}
@@ -69,7 +71,7 @@ function App() {
 								/>
 								<Route path="/my-profile/settings" element={<Settings />} />
 							</Route>
-							<Route path="/my-courses" element={<MyCourses />} />
+							{/* <Route path="/my-courses" element={<MyCourses />} /> */}
 
 							<Route path="/Community" element={<Community />} />
 							<Route path="/create-course" element={<CreateCourse />} />
@@ -78,7 +80,10 @@ function App() {
 
 							<Route path="/*" element={<NotFound />} />
 
-							<Route path="/coursedetails/:id" element={<CourseDetails />} />
+							<Route
+								path="all-courses/coursedetails/:id"
+								element={<CourseDetails />}
+							/>
 						</Routes>
 						<Footer />
 					</Suspense>

@@ -2,7 +2,7 @@ import CreateAssignment from './CreateAssignment';
 import CreateCourse from './CreateCourse';
 import CreateQuiz from './CreateQuiz';
 import Footer from './Footer';
-import MyCourses from './MyCourses';
+import Courses from './Courses';
 import PrivateRoute from './PrivateRoute';
 
 import Tags from './Tags';
@@ -12,7 +12,7 @@ export {
 	CreateCourse,
 	CreateQuiz,
 	Footer,
-	MyCourses,
+	Courses,
 	PrivateRoute,
 	Tags,
 };

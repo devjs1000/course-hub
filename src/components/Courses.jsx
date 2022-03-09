@@ -4,7 +4,7 @@ import useStore from '../context/useStore';
 import { Link } from 'react-router-dom';
 import BoxLoading from '../UI/BoxLoading';
 
-const MyCourses = ({}) => {
+const Courses = ({}) => {
 	const { myCourses, user } = useStore();
 	const [teacher, setTeacher] = useState(user._idInstructor);
 	useEffect(() => {
@@ -69,4 +69,4 @@ const MyCourses = ({}) => {
 	);
 };
 
-export default MyCourses;
+export default Courses;

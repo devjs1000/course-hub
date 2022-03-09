@@ -7,7 +7,8 @@ import useStore from '../../context/useStore';
 import BoxLoading from '../../UI/BoxLoading';
 import { useEffect, useState, Children } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-function Courses() {
+
+function AllCourses() {
 	const { allCoursesData } = useStore();
 	const [coursesByType, setCoursesByType] = useState([]);
 
@@ -85,4 +86,4 @@ function Courses() {
 	);
 }
 
-export default Courses;
+export default AllCourses;
