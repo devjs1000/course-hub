@@ -26,7 +26,7 @@ const About = () => {
     topGridHead: "font-bold my-3",
     topGridShort: "leading-7",
     whyMain: "p-10 md:px-12 lg:px-24 relative overflow-hidden",
-    whyBg: "absolute top-0 left-0 opacity-80",
+    whyBg: "absolute top-0 left-0 opacity-80 w-full",
     whyHead: "text-4xl font-medium relative -top-5 text-center text-white",
     whyGrid: "grid grid-cols-12 mt-5 gap-6",
     whyGridItem:
