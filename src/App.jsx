@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, lazy, Suspense } from 'react';
+import { useState, useEffect,  lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
 	CreateAssignment,
@@ -27,12 +27,24 @@ import Loading from './UI/BoxLoading';
 import Contact from './components/ContactUs/ContactUs';
 import About from './components/AboutUs/AboutUs';
 import AllCourses from './components/courses/AllCourses';
+import axios from 'axios';
 
 function App() {
 	const [loading, setLoading] = useState(true);
 
 	console.log(import.meta.env.VITE_DB);
-	useLayoutEffect(() => {
+	useEffect(() => {
+		const qry=`
+		query Query{
+			users{
+				id
+				name
+			}
+		}
+		`
+		 axios.post('https://xciteserver.herokuapp.com/xcite', {query:qry}).then(res=>{
+			console.log(res);
+		 })
 		setTimeout(() => setLoading(false), 1500);
 	}, []);
 
