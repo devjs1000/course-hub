@@ -18,7 +18,7 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
     >
       <div onClick={() => setShowNavside(false)} className="w-full"></div>
       <div className="bg-red-800">
-        <div className="flex items-center gap-5 px-4">
+        <div className="flex items-center gap-5 px-4 py-2">
           <h2 className="text-2xl font-bold">XcitEducation</h2>
           <ArrowRight
             onClick={() => setShowNavside(false)}
