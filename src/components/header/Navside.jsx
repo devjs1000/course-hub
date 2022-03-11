@@ -59,12 +59,13 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
       )}
 
       {navLinks.map((item) => (
-        <div
+        <Link
+          className="block pl-3 py-1  font-bold hover:bg-red-700 hover:pl-2 ease-linear duration-300"
           onClick={() => setShowNavside(false)}
-          className="w-full pl-3 py-1  font-bold hover:bg-red-700 hover:pl-2 ease-linear duration-300"
+          to={item.path}
         >
-          <Link to={item.path}>{item.name}</Link>
-        </div>
+          {item.name}
+        </Link>
       ))}
     </div>
   );
