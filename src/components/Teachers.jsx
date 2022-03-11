@@ -9,11 +9,11 @@ import SectionHeading from '../UI/SectionHeading';
 const InstructorCard = ({ image }) => {
 	return (
 		<div
-			className="shadow-md flex items-start h-[14rem] rounded-sm overflow-hidden"
+			className="shadow-md flex items-start rounded-sm overflow-hidden"
 			id="teachers"
 		>
 			<div
-				className="flex-[0.4] h-full bg-cover bg-top relative after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,.2)]"
+				className="flex-[0.5] h-full bg-cover bg-top relative after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,.2)]"
 				style={{ backgroundImage: `url(${image})` }}
 			>
 				&nbsp;
@@ -40,12 +40,12 @@ const InstructorCard = ({ image }) => {
 
 function Teachers() {
 	return (
-		<div className="bg-[#fffdfd] text-slate-900 flex flex-col items-start px-16 py-16">
+		<div className="bg-[#fffdfd] px-8 py-8 text-slate-900 flex flex-col items-start lg:px-16 md:py-16 lg:py-20">
 			<SectionHeading
 				subHeading="Instructors"
 				heading="Our professional & Expert Course Instructors"
 			/>
-			<div className="w-full grid grid-cols-2 gap-6 mt-16">
+			<div className="w-full grid grid-cols-1 gap-4 mt-16 md:grid-cols-2">
 				<InstructorCard image={instOneImage} />
 				<InstructorCard image={instTwoImage} />
 				<InstructorCard image={instThreeImage} />

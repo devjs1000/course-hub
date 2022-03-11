@@ -5,16 +5,21 @@ import { Link } from 'react-router-dom';
 
 function PopularCourses() {
 	return (
-		<section className=" bg-white px-16 py-8" id="courses">
+		<section
+			className=" bg-white px-8 py-8 md:py-16 lg:py-20 lg:px-16"
+			id="courses"
+		>
 			<SectionHeading
 				subHeading="Popular"
 				heading="Our Most Popular & Trending Online Courses"
 			/>
-			<div className="pt-16 grid grid-cols-4">
-				<div className="h-80 w-64 border bg-gray-300"></div>
-				<div className="h-80 w-64 border bg-gray-300"></div>
-				<div className="h-80 w-64 border bg-gray-300"></div>
-				<div className="h-80 w-64 border bg-gray-300"></div>
+			<div className="pt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+				<div className="h-80 border bg-gray-300"></div>
+				<div className="h-80 border bg-gray-300"></div>
+				<div className="h-80 border bg-gray-300"></div>
+				<div className="h-80 border bg-gray-300"></div>
+				<div className="h-80 border bg-gray-300"></div>
+				<div className="h-80 border bg-gray-300"></div>
 			</div>
 			<div className="text-center pt-8">
 				<Link to="/all-courses">

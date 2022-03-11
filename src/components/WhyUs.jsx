@@ -22,12 +22,12 @@ const WhyFeature = ({ title }) => {
 function WhyUs() {
 	return (
 		<section
-			className="h-screen about-section py-8 px-16 flex items-center gap-10"
+			className="about-section py-8 px-8 flex flex-col items-center gap-10 lg:flex-row md:py-16 lg:py-20"
 			id="about"
 		>
-			<div className="flex-[0.5] flex flex-col items-start gap-4">
+			<div className="flex-1 flex flex-col items-start gap-4 lg:flex-[0.5]">
 				<SectionHeading subHeading="WhyUs?" heading="Why Learn Here?" />
-				<p className="w-[90%] text-slate-700">
+				<p className="w-full text-slate-700 lg:w-[90%]">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eius
 					est ducimus eos, pariatur labore, necessitatibus explicabo repudiandae
 					ipsam cumque quo hic porro, enim at? Corporis, eum quaerat ea

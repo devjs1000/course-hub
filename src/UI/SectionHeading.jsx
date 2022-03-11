@@ -2,7 +2,7 @@ import React from 'react';
 
 function SectionHeading({ subHeading, heading }) {
 	return (
-		<div className="w-[50%] flex flex-col gap-10">
+		<div className="w-full flex flex-col gap-10 lg:w-[50%]">
 			<h4 className="max-w-min text-slate-400 text-2xl font-semibold relative after:absolute after:bottom-[-1rem] after:left-0 after:h-1 after:w-[40%] after:bg-primary-color-light uppercase">
 				{subHeading}
 			</h4>
