@@ -8,7 +8,7 @@ export default ()=>{
   server: {
     proxy: {
       "/api": {
-        target: "http://management-xcitedu.herokuapp.com",
+        target: "https://management-xcitedu.herokuapp.com",
         changeOrigin: true,
         secure: false,
         ws: true,

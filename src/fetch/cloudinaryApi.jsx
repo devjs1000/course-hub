@@ -7,7 +7,7 @@ export const uploadImage=(selectedImage, func)=>{
 
 
     axios
-      .post("https://api.cloudinary.com/v1_1/dizvyn9b5/image/upload", formData)
+      .post("https:/https://management-xcitedu.herokuapp.com.cloudinary.com/v1_1/dizvyn9b5/image/upload", formData)
       .then((response) => {
         console.log(response);
         const url=response.data.secure_url

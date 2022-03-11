@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function userRegister(name, email, isInstructor, isAdmin, mobileNumber, password , func) {
   try{
-    const { data } = await axios.post(`/api/user/registerUser`, {name, email, isInstructor,password, isAdmin, mobileNumber});
+    const { data } = await axios.post(`https://management-xcitedu.herokuapp.com/user/registerUser`, {name, email, isInstructor,password, isAdmin, mobileNumber});
     func(data)
   }catch(err){
     func(data)
@@ -10,7 +10,7 @@ export async function userRegister(name, email, isInstructor, isAdmin, mobileNum
 }
 export async function userLogin(email, password , func) {
   try{
-    const { data } = await axios.post(`/api/user/userLogin`, {email, password});
+    const { data } = await axios.post(`https://management-xcitedu.herokuapp.com/user/userLogin`, {email, password});
     func(data)
   }catch(err){
     func(data)
@@ -18,7 +18,7 @@ export async function userLogin(email, password , func) {
 }
 export async function userDetails(userId , func) {
   try{
-    const { data } = await axios.get(`/api/user/userDetails/${userId}`);
+    const { data } = await axios.get(`https://management-xcitedu.herokuapp.com/user/userDetails/${userId}`);
     func(data)
   }catch(err){
     func(err)
@@ -26,7 +26,7 @@ export async function userDetails(userId , func) {
 }
 export async function updateUserDetails(userId , func) {
   try{
-    const { data } = await axios.post(`/api/user/userUpdate/${userId}`, {});
+    const { data } = await axios.post(`https://management-xcitedu.herokuapp.com/user/userUpdate/${userId}`, {});
     func(data)
   }catch(err){
     func(data)
@@ -35,7 +35,7 @@ export async function updateUserDetails(userId , func) {
 
 export async function applyForInstructor( func) {
   try{
-    const { data } = await axios.post(`/api/user/applyForInstructor`, {});
+    const { data } = await axios.post(`https://management-xcitedu.herokuapp.com/user/applyForInstructor`, {});
     func(data)
   }catch(err){
     func(data)

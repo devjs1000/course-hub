@@ -5,7 +5,7 @@ const AccordionIcon = ({ className }) => {
 
 	return (
 		<svg
-			xmlns="http://www.w3.org/2000/svg"
+			xmlns="https://www.w3.org/2000/svg"
 			className={iconClasses}
 			viewBox="0 0 20 20"
 		>

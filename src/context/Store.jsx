@@ -33,7 +33,7 @@ const Store = () => {
 
   useEffect(() => {
     betterFetch(
-      "/api/course/allCourses",
+      "https://management-xcitedu.herokuapp.com/course/allCourses",
       1000*60*60*24,
       "GET",
       "still",
