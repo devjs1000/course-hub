@@ -5,17 +5,16 @@ import useStore from "../../context/useStore";
 
 const Navside = ({ navLinks, showNavside, setShowNavside }) => {
   const { user } = useStore();
-  console.log(user);
-  const [navSlide, setNavSlide] = useState("left-full");
+  const [navSlide, setNavSlide] = useState("-right-full");
 
   useEffect(() => {
-    if (showNavside) return setNavSlide("left-0");
-    setNavSlide("left-full");
+    if (showNavside) return setNavSlide("right-0");
+    setNavSlide("-right-full");
   }, [showNavside]);
 
   return (
     <div
-      className={`fixed inset-y-0 ${navSlide}  w-screen ease-out duration-300 text-white lg:hidden flex`}
+      className={`fixed inset-y-0 ${navSlide} w-full  ease-out duration-300 text-white lg:hidden flex`}
     >
       <div onClick={() => setShowNavside(false)} className="w-full"></div>
       <div className="bg-red-800">
@@ -34,14 +33,14 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
           >
             <img
               className="w-12 h-12 rounded-full"
-              src={user.profilePicture}
+              src={user?.profilePicture}
               alt=""
             />
-            <p>{user.name}</p>
+            <p>{user?.name}</p>
           </Link>
         )}
 
-        {!user._id && (
+        {!user?._id && (
           <div className="flex items-center justify-center gap-3 my-3">
             <Link
               onClick={() => setShowNavside(false)}
