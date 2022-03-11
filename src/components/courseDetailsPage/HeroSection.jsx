@@ -1,7 +1,7 @@
-import { useState, Children } from 'react';
+import { useState, Children , useEffect} from 'react';
 import { createPortal } from 'react-dom';
 import Button from '../../UI/Button';
-import CourseVideo from '../CourseVideo';
+import CourseVideo from '../chapter/CourseVideo';
 import Overlay from '../../UI/Overlay';
 
 function HeroSection({ course }) {
@@ -14,6 +14,15 @@ function HeroSection({ course }) {
 	const closeCourseHandler = () => {
 		setOpenCourse(false);
 	};
+
+	useEffect(()=>{
+		if(openCourse){
+			document.body.style='overflow:hidden;'
+		}else{
+			document.body.style='overflow:auto;'
+
+		}
+	},[openCourse])
 
 	console.log(course);
 	// { backgroundImage: `url(${course?.image})` }
@@ -52,7 +61,7 @@ function HeroSection({ course }) {
 			</div>
 			{openCourse &&
 				createPortal(
-					<CourseVideo clickHandler={closeCourseHandler} />,
+					<CourseVideo closeModal={closeCourseHandler} />,
 					document.getElementById('video-section'),
 				)}
 			{openCourse &&
