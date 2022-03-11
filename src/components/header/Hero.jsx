@@ -12,13 +12,15 @@ function Hero() {
 
 	return (
 		<section className="flex py-8 flex-col gap-2 items-center px-4 sm:px-8 md:flex-row xl:px-16">
-			<div className="flex items-center">
-				<div className="text-white w-[50%] flex flex-col items-start gap-6">
-					<h6 className="text-primary-color-light relative uppercase font-semibold text-lg after:absolute after:right-[-55%] after:top-[50%] after:translate-y-[-50%] after:h-[2px] after:bg-current after:w-[50%]">
+			<div className="flex flex-col items-center">
+				<div className="w-full text-white  flex flex-col items-start gap-6 lg:w-[50%]">
+					<h6 className="text-primary-color-light relative uppercase font-semibold text-base after:absolute after:right-[-55%] after:top-[50%] after:translate-y-[-50%] after:h-[2px] after:bg-current after:w-[50%] lg:text-lg">
 						Path to your future
 					</h6>
-					<h1 className="text-7xl font-bold">{bluePrint.heading}</h1>
-					<p className="text-xl">{bluePrint.subHeading}</p>
+					<h1 className="text-5xl font-bold lg:text-7xl">
+						{bluePrint.heading}
+					</h1>
+					<p className="text-lg lg:text-xl">{bluePrint.subHeading}</p>
 					<Button isPrimary={true}>Enroll Now</Button>
 				</div>
 				<div className="object-cover">
