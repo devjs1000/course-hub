@@ -14,7 +14,7 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
 
   return (
     <div
-      className={`fixed inset-y-0 ${navSlide} w-full  ease-out duration-300 text-white lg:hidden flex`}
+      className={`fixed z-50 inset-y-0 ${navSlide} w-full  ease-out duration-300 text-white lg:hidden flex`}
     >
       <div onClick={() => setShowNavside(false)} className="w-full"></div>
       <div className="bg-red-800">
