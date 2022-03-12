@@ -34,17 +34,39 @@ function App() {
 
 	console.log(import.meta.env.VITE_DB);
 	useEffect(() => {
-		const qry=`
-		query Query{
-			users{
-				id
-				name
-			}
-		}
-		`
-		 axios.post('https://xciteserver.herokuapp.com/xcite', {query:qry}).then(res=>{
-			console.log(res);
-		 })
+		// const qry=`
+		// query Query{
+		// 	users{
+		// 		id
+		// 		name
+		// 	}
+		// }
+		// `
+		//  axios.post('https://xciteserver.herokuapp.com/xcite', {query:qry}).then(res=>{
+		// 	console.log(res);
+		//  })
+
+
+const queryMutation=`
+mutation CreateQuestion($courseId: String!, $userId: String!, $question: String!) {
+  createQuestion(courseId: $courseId, userId: $userId, question: $question) {
+    id
+    courseId
+    userId
+    question
+  }
+}`
+
+axios.post('https://xciteserver.herokuapp.com/xcite', {
+	query:queryMutation,
+	variables:{  "courseId":"621a25a9b0f96bf78296172f" ,
+  "userId": "62193d9f3c9111dffd05791b",
+  "question": "what is gql?"
+}
+}).then(res=>{
+	console.log(res);
+})
+
 		setTimeout(() => setLoading(false), 1500);
 	}, []);
 
