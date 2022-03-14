@@ -86,7 +86,7 @@ function Navbar() {
         {/* navlinks end */}
 
         <div className="hidden lg:flex items-center gap-2 ml-auto xsm:gap-6">
-          {user == undefined || !user._id ? (
+          {user == undefined || !user.id ? (
             <>
               <Link
                 to="/login"
@@ -105,7 +105,7 @@ function Navbar() {
             >
               <span className={usernameClasses}>{user.name}</span>
               <img
-                src={user.profilePicture}
+                src={user.image}
                 className="h-10 w-10 p-1 object-cover rounded-full"
               />
             </Link>

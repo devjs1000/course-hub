@@ -31,8 +31,8 @@ const Login = () => {
 
   return (
     <div className="h-screen bg-primary-color-dark flex items-center justify-center">
-      {user._id && path && <Navigate to={path} />}
-      {user._id && !path && <Navigate to="/" />}
+      {user.id && path && <Navigate to={path} />}
+      {user.id && !path && <Navigate to="/" />}
       <div className="relative bg-white w-[25rem] mx-2 py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
         <Link to="/">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />

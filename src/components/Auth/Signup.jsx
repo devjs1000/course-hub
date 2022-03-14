@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormControl from "../../UI/FormControl";
 import Button from "../../UI/Button";
 import useAuthHook from "../../hooks/useAuthHook";
+import useStore from "../../context/useStore";
 
 const Signup = () => {
+  const { user } = useStore();
   const { signup } = useAuthHook();
   const [signupData, setSignupData] = useState({});
+  const navigate = useNavigate();
 
   const getSignupData = (e) => {
     const name = e.target.name;
@@ -24,6 +27,12 @@ const Signup = () => {
     e.preventDefault();
     signup(signupData);
   };
+
+  useEffect(() => {
+    if (user?.id) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="bg-primary-color-dark flex items-center justify-center h-[100vh]  py-2">

@@ -11,6 +11,7 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
     if (showNavside) return setNavSlide("right-0");
     setNavSlide("-right-full");
   }, [showNavside]);
+  console.log(user);
 
   return (
     <div
@@ -25,22 +26,18 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
             className="text-2xl cursor-pointer"
           />
         </div>
-        {user?._id && (
+        {user?.id && (
           <Link
             onClick={() => setShowNavside(false)}
             to="/my-profile/dashboard"
             className="flex flex-col items-center my-5 w-fit mx-auto"
           >
-            <img
-              className="w-12 h-12 rounded-full"
-              src={user?.profilePicture}
-              alt=""
-            />
+            <img className="w-12 h-12 rounded-full" src={user?.image} alt="" />
             <p>{user?.name}</p>
           </Link>
         )}
 
-        {!user?._id && (
+        {!user?.id && (
           <div className="flex items-center justify-center gap-3 my-3">
             <Link
               onClick={() => setShowNavside(false)}

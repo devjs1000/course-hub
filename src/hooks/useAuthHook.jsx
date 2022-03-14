@@ -57,8 +57,14 @@ const useAuthHook = () => {
     setUserLoading(true);
     try {
       const response = await signupFunction({ variables: inputs });
-      console.log(response);
-      setUserLoading(false);
+      if (response.data) {
+        setUser(response.data.createUser);
+        localStorage.setItem("accessToken", response.data.createUser.token);
+        setUserLoading(false);
+      } else {
+        setUserLoading(false);
+        console.log("something went wrong");
+      }
     } catch (err) {
       console.log(err);
       setUserLoading(false);
@@ -70,8 +76,14 @@ const useAuthHook = () => {
     setUserLoading(true);
     try {
       const response = await loginFunction({ variables: inputs });
-      console.log(response);
-      setUserLoading(false);
+      if (response?.data) {
+        setUser(response.data.createLogin.userData);
+        localStorage.setItem("accessToken", response.data.createLogin.token);
+        setUserLoading(false);
+      } else {
+        setUserLoading(false);
+        console.log("something went wrong");
+      }
     } catch (err) {
       console.log(err);
       setUserLoading(false);
