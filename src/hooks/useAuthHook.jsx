@@ -1,55 +1,90 @@
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import useStore from '../context/useStore';
+import useStore from "../context/useStore";
+import { gql, useMutation } from "@apollo/client";
+
+const signupMutation = gql`
+  mutation CreateUser(
+    $name: String!
+    $email: String!
+    $password: String!
+    $description: String!
+    $phone: String!
+    $image: String!
+  ) {
+    createUser(
+      name: $name
+      email: $email
+      password: $password
+      description: $description
+      phone: $phone
+      image: $image
+    ) {
+      name
+      id
+      image
+      email
+      description
+      phone
+      token
+    }
+  }
+`;
+
+const loginMutation = gql`
+  mutation CreateLogin($email: String!, $password: String!) {
+    createLogin(email: $email, password: $password) {
+      token
+      userData {
+        name
+        id
+        image
+        email
+        password
+        description
+        phone
+        token
+      }
+    }
+  }
+`;
 
 const useAuthHook = () => {
-    const {setUser,setUserLoading} = useStore()
-    const navigate = useNavigate()
+  const [signupFunction] = useMutation(signupMutation);
+  const [loginFunction] = useMutation(loginMutation);
+  const { setUser, setUserLoading } = useStore();
 
-    /* Signup Function */
-    const signup =async (data)=>{
-        setUserLoading(true)
-        try{
-            const response= await axios.post('https://management-xcitedu.herokuapp.com/user/userRegister',data)
-            if(response.data.success){
-                setUserLoading(false)
-                navigate('./login')
-            }else{
-                /* do something */
-                setUserLoading(false)
-            }
-          }catch(error){
-              /* do something */
-            setUserLoading(false)
-          }
+  /* Signup Function */
+  const signup = async (inputs) => {
+    setUserLoading(true);
+    try {
+      const response = await signupFunction({ variables: inputs });
+      console.log(response);
+      setUserLoading(false);
+    } catch (err) {
+      console.log(err);
+      setUserLoading(false);
     }
+  };
 
-    /* Login Function */
-    const login =async (data)=>{
-        setUserLoading(true)
-        try{
-            const response= await axios.post('https://management-xcitedu.herokuapp.com/user/userLogin',data)
-            if(response?.data?.success){
-                setUser(response.data.data)
-                localStorage.setItem("accessToken", response.data.token);
-                setUserLoading(false)
-            }else{
-                /* do something */
-                setUserLoading(false)
-            }
-          }catch(error){
-              /* do something */
-            setUserLoading(false)
-          }
+  /* Login Function */
+  const login = async (inputs) => {
+    setUserLoading(true);
+    try {
+      const response = await loginFunction({ variables: inputs });
+      console.log(response);
+      setUserLoading(false);
+    } catch (err) {
+      console.log(err);
+      setUserLoading(false);
     }
+  };
 
-    /* Logout Function */
-    const logout = ()=>{
-        setUser({})
-        localStorage.removeItem("accessToken");
-    }
+  /* Logout Function */
+  const logout = () => {
+    setUser({});
+    localStorage.removeItem("accessToken");
+  };
 
-    return {signup,login,logout}
+  return { signup, login, logout };
 };
 
 export default useAuthHook;

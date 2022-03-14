@@ -34,11 +34,11 @@ const Store = () => {
   useEffect(() => {
     betterFetch(
       "https://management-xcitedu.herokuapp.com/course/allCourses",
-      1000*60*60*24,
+      1000 * 60 * 60 * 24,
       "GET",
       "still",
       (data) => {
-        console.log(data, 'better');
+        console.log(data, "better");
         setAllCoursesData(data.data);
       }
     );
@@ -49,7 +49,8 @@ const Store = () => {
     // authCheck(setUser,setUserLoading)
     if (isMount) {
       // setUser(studentData.data);
-      setUser(teacherPrint);
+      // setUser(teacherPrint);
+      setUser({});
 
       setUserLoading(false);
     }
@@ -65,7 +66,6 @@ const Store = () => {
     if (isMount) {
       try {
         if (!user.isInstructor && user._id !== undefined) {
-         
           getAllCoursesOfUser(user._id, (courses) => {
             setMyCourses(courses.data);
           });
