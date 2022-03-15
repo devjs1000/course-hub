@@ -11,7 +11,6 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
     if (showNavside) return setNavSlide("right-0");
     setNavSlide("-right-full");
   }, [showNavside]);
-  console.log(user);
 
   return (
     <div
@@ -58,6 +57,7 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
 
         {navLinks.map((item) => (
           <Link
+            key={item.name}
             className="block pl-2 py-1  font-bold hover:bg-red-700 hover:pl-3 ease-linear duration-300"
             onClick={() => setShowNavside(false)}
             to={item.path}
