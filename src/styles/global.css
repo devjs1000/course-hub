@@ -138,3 +138,7 @@ progress::-moz-progress-bar {
   background-attachment: fixed;
   background-size: cover;
 }
+
+.p-btn-light{
+  @apply font-semibold bg-white px-5 py-1 text-red-700 hover:bg-red-700 hover:text-white rounded-full;
+}

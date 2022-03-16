@@ -19,7 +19,7 @@ import { profileDesign } from '../../styles/styleObjects';
 const Profile = () => {
 	const [openAside, setOpenAside] = useState(false);
 	const [showNotificationCard, setShowNotificationCard] = useState(false);
-	const { user, myCourses } = useStore();
+	const { user, myCourses, setUser } = useStore();
 	const [isTeacher, setIsTeacher] = useState(user.isInstructor);
 	console.log(myCourses);
 	const { logout } = useAuthHook();
@@ -36,6 +36,9 @@ const Profile = () => {
 	const notificationToggleHandler = () => {
 		setShowNotificationCard(!showNotificationCard);
 	};
+	const handleLogout=()=>{
+		setUser({})
+	}
 
 	const sidebarItems = [
 		{ name: 'Dashboard', icon: <Speedometer />, path: '/my-profile/dashboard' },
@@ -51,7 +54,6 @@ const Profile = () => {
 			path: '/my-profile/notifications',
 		},
 		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
-		{ name: 'Logout', icon: <BoxArrowLeft />, path: '/' },
 	];
 
 	const asideClasses = `sticky top-0 text-gray-600 shadow-xl h-screen ${
@@ -84,6 +86,13 @@ const Profile = () => {
 								);
 							}),
 						)}
+							<li className="flex items-center gap-3">
+										<span className="text-2xl"><BoxArrowLeft /></span>
+										<button onClick={handleLogout} className="text-xl">
+											Logout?
+										</button>
+									</li>
+						
 					</ul>
 				</aside>
 

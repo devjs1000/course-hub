@@ -1,7 +1,11 @@
-import { Children, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import useStore from '../../context/useStore';
+import { useQuery } from '@apollo/client';
+import { myProjectsQuery } from '../../graphql/Queries';
 
 const AssignmentCard = ({ title, tag }) => {
+
+
 	let borderColor;
 	if (tag === 'backend') {
 		borderColor = 'before:from-emerald-500 before:to-emerald-300';
@@ -23,9 +27,7 @@ const AssignmentCard = ({ title, tag }) => {
 			</div>
 			<div>
 				<p className="text-sm mt-3">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. In
-					consequatur placeat officia cupiditate ea eius, praesentium dolorum?
-					Cum, molestias in!
+					teacher comment
 				</p>
 				<div className="w-[70%] grid grid-cols-2 text-xs mt-4 text-gray-500">
 					<span>Assignment Progress</span>
@@ -42,7 +44,14 @@ const AssignmentCard = ({ title, tag }) => {
 };
 
 const Assignments = ({}) => {
-	const { assignments, user, myCourses } = useStore();
+	const { user, myCourses } = useStore();
+	const {loading,error, data}=useQuery(myProjectsQuery, {
+		variables:{
+			"userId": user.id
+		}
+	})
+
+	console.log(data);
 	const [assignmentData, setAssignmentData] = useState({});
 	const [courseInfo, setCourseInfo] = useState(null);
 	const [isActive, setActive] = useState(false);
@@ -50,35 +59,12 @@ const Assignments = ({}) => {
 		title: 'My Assignments',
 	};
 
-	const getAssignmentData = e => {
-		const name = e.target.name;
-		const value = e.target.value;
-		const newData = { ...assignmentData };
-		newData[name] = value;
-		setAssignmentData(newData);
-	};
-
-	const getSelected = e => {
-		if (e.target.value === 'None') return setCourseInfo(null);
-		const exact = myCourses.find(data => data.name === e.target.value);
-		setCourseInfo({
-			instructorId: exact.instructorId,
-			courseId: exact._id,
-			userId: user._id,
-		});
-	};
-
-	const submitAssignment = e => {
-		e.preventDefault();
-		if (!courseInfo) return alert('Select the course for assignment');
-		const finalData = { ...assignmentData, ...courseInfo };
-		// Post request here
-		e.target.reset();
-		setCourseInfo(null);
-	};
+	
 
 	const assignmentNav = ['All', 'Pending', 'Submitted'];
 
+if(loading) return 'loading...'
+if(error) return 'error'
 	return (
 		<>
 			<div className="px-4 pb-8 flex flex-col gap-8 items-start lg:px-16">
@@ -93,11 +79,12 @@ const Assignments = ({}) => {
 					<div className="animated-border absolute bottom-[-0.15rem] left-0 w[3rem] h-[2px] bg-primary-color-dark"></div>
 				</div>
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-					<AssignmentCard title="Figma" tag="design" />
-					<AssignmentCard title="HTML" tag="frontend" />
-					<AssignmentCard title="NodeJS" tag="backend" />
-					<AssignmentCard title="ReactJS" tag="frontend" />
-					<AssignmentCard title="MongoDB" tag="database" />
+					{Children.toArray(data.map(a=>{
+						return <AssignmentCard title={a?.projects?.projectLink} tag="design" />
+					}))}
+					
+					
+				
 				</div>
 			</div>
 		</>

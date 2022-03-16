@@ -14,12 +14,12 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
 
   return (
     <div
-      className={`fixed z-50 inset-y-0 ${navSlide} w-full  ease-out duration-300 text-white lg:hidden flex`}
+      className={`fixed z-50 inset-y-0 ${navSlide} w-full   ease-out duration-300 text-white lg:hidden flex`}
     >
       <div onClick={() => setShowNavside(false)} className="w-full"></div>
-      <div className="bg-red-800">
+      <div className="bg-primary-color-dark w-full px-10 sm:w-1/2">
         <div className="flex items-center gap-5 px-4 py-2">
-          <h2 className="text-2xl font-bold">XcitEducation</h2>
+          {/* <h2 className="text-2xl font-bold">XcitEducation</h2> */}
           <ArrowRight
             onClick={() => setShowNavside(false)}
             className="text-2xl cursor-pointer"
@@ -41,14 +41,14 @@ const Navside = ({ navLinks, showNavside, setShowNavside }) => {
             <Link
               onClick={() => setShowNavside(false)}
               to="/login"
-              className="font-semibold bg-red-500 px-5 py-1 hover:bg-red-600 rounded-md"
+              className="p-btn-light"
             >
               Login
             </Link>
             <Link
               onClick={() => setShowNavside(false)}
               to="/signup"
-              className="font-semibold bg-red-500 px-5 py-1 hover:bg-red-600 rounded-md"
+              className="p-btn-light"
             >
               Signup
             </Link>

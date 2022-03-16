@@ -33,39 +33,7 @@ const Store = () => {
     }
   }, [getAllCourses?.data]);
 
-  // useEffect(() => {
-  //   let isMount = true;
-  //   if (isMount) {
-  //     try {
-  //       if (!user.isInstructor && user._id !== undefined) {
-  //         getAllCoursesOfUser(user._id, (courses) => {
-  //           setMyCourses(courses.data);
-  //         });
-
-  //         getAssignmentsOfUser(user._id, (data) => {
-  //           console.log(data);
-  //           setAssignments(data.data);
-  //         });
-  //       } else if (user.isInstructor && user._id !== undefined) {
-  //         allInstructorCourses(user._id, (courses) => {
-  //           setMyCourses(courses.data);
-  //         });
-
-  //         getAllAssignmentsOfInstructor(user._id, (data) => {
-  //           console.log(data);
-  //           setAssignments(data.data);
-  //         });
-  //       }
-  //     } catch (error) {
-  //       console.log("error");
-  //     }
-  //   }
-
-  //   return () => {
-  //     isMount = false;
-  //   };
-  // }, [user]);
-
+ 
   //returning for global access
   return {
     user,
