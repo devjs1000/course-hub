@@ -30,7 +30,7 @@ const About = () => {
     whyHead: "text-4xl font-medium relative -top-5 text-center text-white",
     whyGrid: "grid grid-cols-12 mt-5 gap-6",
     whyGridItem:
-      "h-48 relative col-span-12 md:col-span-6 lg:col-span-4 bg-white text-black p-5 shadow-2xl rounded-b-2xl rounded-tl-2xl hover:bg-gradient-to-b from-red-500 to-pink-500 hover:text-white",
+      "h-48 cursor-pointer hover:scale-105 transition relative col-span-12 md:col-span-6 lg:col-span-4 bg-white text-black p-5 shadow-2xl rounded-b-2xl rounded-tl-2xl hover:bg-gradient-to-b from-red-500 to-pink-500 hover:text-white",
     whyIcon:
       "absolute top-0 right-0 w-10 h-10 text-2xl flex items-center justify-center bg-pink-500 text-white rounded-bl-2xl",
     whyItemHead: "text-2xl font-medium mb-2",
@@ -39,7 +39,7 @@ const About = () => {
     <div>
       <div className={styles.topDiv}>
         <h1 className={styles.topHead}>About Us</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         <p>Culpa commodi, fugit suscipit ut</p>
       </div>
       <div className={styles.topGridMain}>

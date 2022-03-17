@@ -11,7 +11,7 @@ export const footerStyles = {
 	contactMethod: 'text-gray-500 text-base font-medium mb-1',
 	contactInfo: 'text-md font-bold text-slate-400 cursor-pointer',
 	bottomMain:
-		'bg-slate-400 text-white md:mx-14 mt-8 flex flex-col-reverse justify-center md:flex-row md:justify-between items-center p-4 sm:p-7',
+		'bg-black text-white md:mx-14 mt-8 flex flex-col-reverse justify-center md:flex-row md:justify-between items-center p-4 sm:p-7',
 	copyright: 'my-5 md:my-0 text-gray-100 text-base font-medium',
 	name: 'text-gray-700 font-bold cursor-pointer',
 	socialMain: 'flex items-center',

@@ -20,7 +20,7 @@ const CourseCard = ({
 	return (
 		<ErrorBoundary fallback={'error in course page'}>
 			<Link to={`coursedetails/${id}`}>
-				<div className="rounded-sm relative w-[21rem] shadow-md overflow-hidden cursor-pointer">
+				<div className="rounded-sm relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
 					<div className="h-[12rem] rounded-t-sm overflow-hidden relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[rgba(255,118,118,0.09)]">
 						<img
 							src={current?.image}
