@@ -34,7 +34,6 @@ function Navbar() {
     setOpenSidebar(!openSidebar);
     document.getElementById("root").style.filter = "blur(3px)";
   };
-
   const commonClasses = `${
     path === "my-profile"
       ? "hidden"
@@ -48,8 +47,8 @@ function Navbar() {
     : `${commonClasses} ${stickyNav}`;
 
   const navLinkClasses = `text-lg ${
-    isVisible ? "text-white" : "text-black"
-  } font-medium hover:font-semibold`;
+    isVisible ? "text-white hover:bg-rose-800" : "text-black hover:bg-black hover:text-white"
+  } font-medium hover:font-semibold p-2 px-2 rounded-md`;
 
   const targetDivClasses = ` ${
     path === "my-profile" ? "hidden" : "h-1 bg-transparent"

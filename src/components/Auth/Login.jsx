@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen bg-primary-color-dark flex items-center justify-center">
+    <div className="h-screen bg-gradient-to-r from-red-400 to-pink-300 flex items-center justify-center">
       {user.id && path && <Navigate to={path} />}
       {user.id && !path && <Navigate to="/" />}
       <div className="relative bg-white w-[25rem] mx-2 py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
@@ -54,7 +54,7 @@ const Login = () => {
             />
             <a
               href="#"
-              className="relative text-gray-700 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-current hover:text-gray-800 hover:font-semibold transition-all duration-200"
+              className="relative text-gray-700 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:scale-x-0  after:bg-current hover:text-gray-800 hover:font-semibold transition-all duration-200 after:transition-all hover:after:scale-x-100"
             >
               Forgot password
             </a>
