@@ -35,6 +35,15 @@ const About = () => {
       "absolute top-0 right-0 w-10 h-10 text-2xl flex items-center justify-center bg-pink-500 text-white rounded-bl-2xl",
     whyItemHead: "text-2xl font-medium mb-2",
   };
+  /*
+  //Styles
+  topDiv : the whole page
+  topHead : the Heading of the page
+  topGridMain : the section after Heading. Contains 3 cards
+  topGridWrapper : wrapper div for all the cards inside topGrid
+  topGridItem: the card inside grid wrapper
+  topIconDiv : the icon inside grid card
+  */
   return (
     <div>
       <div className={styles.topDiv}>
@@ -44,6 +53,7 @@ const About = () => {
       </div>
       <div className={styles.topGridMain}>
         <div className={styles.topGridWrapper}>
+      {/*Clean Design Card*/}
           <div className={styles.topGridItem}>
             <div className="p-2 rounded-full bg-red-200">
               <div className="p-2 rounded-full bg-red-300">
@@ -62,6 +72,7 @@ const About = () => {
               commodi, fugit suscipit ut
             </p>
           </div>
+        {/*Secure Data Card*/}
           <div className={styles.topGridItem}>
             <div className="p-2 rounded-full bg-blue-200">
               <div className="p-2 rounded-full bg-blue-300">
@@ -80,6 +91,7 @@ const About = () => {
               commodi, fugit suscipit ut
             </p>
           </div>
+        {/*Retina Ready Card*/}
           <div className={styles.topGridItem}>
             <div className="p-2 rounded-full bg-green-200">
               <div className="p-2 rounded-full bg-green-300">

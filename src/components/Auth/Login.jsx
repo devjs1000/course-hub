@@ -59,7 +59,7 @@ const Login = () => {
             />
             <a
               href="#"
-              className="relative text-gray-700 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:bg-current hover:text-gray-800 hover:font-semibold transition-all duration-200"
+              className="relative text-gray-700 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:scale-x-0  after:bg-current hover:text-gray-800 hover:font-semibold transition-all duration-200 after:transition-all hover:after:scale-x-100"
             >
               Forgot password
             </a>
