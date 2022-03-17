@@ -28,6 +28,7 @@ const Signup = () => {
     signup(signupData);
   };
 
+//if the id is available, redirect to homepage
   useEffect(() => {
     if (user?.id) {
       navigate("/");
@@ -35,9 +36,9 @@ const Signup = () => {
   }, [user]);
 
   return (
-    <div className="bg-primary-color-dark flex items-center justify-center h-[100vh]  py-2">
+    <div className="bg-gradient-to-r from-red-400 to-pink-300  flex items-center justify-center h-[100vh]  py-2">
       <div className="relative bg-white w-[25rem] mx-2 py-14 flex items-center justify-center rounded-xl sm:w-[30rem]">
-        <Link to="/">
+        <Link to="/login">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
         </Link>
         <form className="w-4/5 h-full" onSubmit={submitSignup}>

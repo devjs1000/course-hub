@@ -20,7 +20,7 @@ const About = () => {
     topGridMain: "bg-gray-100",
     topGridWrapper: "grid grid-cols-12 gap-6 mx-5 md:mx-14 lg:mx-36 py-8",
     topGridItem:
-      "col-span-12 md:col-span-4  p-10 flex flex-col justify-center items-center text-center rounded-2xl bg-gray-200",
+      "col-span-12 md:col-span-4 p-10 flex flex-col justify-center items-center text-center rounded-2xl bg-gray-200 border-slate-300 cursor-pointer border-2 hover:-translate-y-4 transition-transform",
     topIconDiv:
       "w-10 h-10 flex items-center justify-center text-white rounded-full text-2xl",
     topGridHead: "font-bold my-3",
