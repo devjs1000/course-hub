@@ -42,7 +42,7 @@ const Signup = () => {
         className='hidden lg:block h-3/5 mr-20'
       />
       <div className="relative bg-white w-[25rem] mx-2 py-14 flex items-center justify-center rounded-xl sm:w-[30rem]">
-        <Link to="/login">
+        <Link to="/">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
         </Link>
         <form className="w-4/5 h-full" onSubmit={submitSignup}>
