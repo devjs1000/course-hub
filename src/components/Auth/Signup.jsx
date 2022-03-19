@@ -65,7 +65,7 @@ const Signup = () => {
             <FormControl
               type="text"
               label="description"
-              icon="PHONE"
+              icon="DESCRIPTION"
               onChange={getSignupData}
             />
             <FormControl
@@ -77,7 +77,7 @@ const Signup = () => {
             <FormControl
               type="text"
               label="image"
-              icon="PHONE"
+              icon="IMAGE"
               onChange={getSignupData}
             />
           </div>
