@@ -7,7 +7,7 @@ import {
   Footer,
   Courses,
   PrivateRoute,
-} from "./components";
+} from "./presentation/components";
 
 import {
   Profile,
@@ -16,17 +16,17 @@ import {
   Assignments,
   Notifications,
   Settings,
-} from "./components/profile";
+} from "./presentation/components/profile";
 
-import Community from "./components/Community/Community";
-import { Home, CourseDetails, NotFound } from "./pages";
-import { Login, Signup } from "./components/Auth";
+import Community from "./presentation/components/Community/Community";
+import { Home, CourseDetails, NotFound } from "./presentation/pages";
+import { Login, Signup } from "./presentation/components/Auth";
 
-import Navbar from "./components/header/Navbar";
-import Loading from "./UI/BoxLoading";
-import Contact from "./components/ContactUs/ContactUs";
-import About from "./components/AboutUs/AboutUs";
-import AllCourses from "./components/courses/AllCourses";
+import Navbar from "./presentation/components/header/Navbar";
+import Loading from "./presentation/UI/BoxLoading";
+import Contact from "./presentation/components/ContactUs/ContactUs";
+import About from "./presentation/components/AboutUs/AboutUs";
+import AllCourses from "./presentation/components/courses/AllCourses";
 import axios from "axios";
 
 function App() {

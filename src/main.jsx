@@ -1,9 +1,8 @@
 import { StrictMode } from "react";
 import { render } from "react-dom";
 import App from "./App";
-import "./styles/tailwind.css";
-import "./styles/global.css";
-import StoreProvider from "./context/StoreProvider";
+import "./assets/styles/global.css";
+import StoreProvider from "./service/context/StoreProvider";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
