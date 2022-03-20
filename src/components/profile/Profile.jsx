@@ -1,4 +1,4 @@
-import { useState, useEffect, Children } from 'react';
+import { useState, useEffect, Children, useContext } from 'react';
 import LongButton from '../../UI/LongButton';
 import {
 	Pen,
@@ -15,6 +15,8 @@ import { Link, Outlet } from 'react-router-dom';
 import useStore from '../../context/useStore';
 import useAuthHook from '../../hooks/useAuthHook';
 import { profileDesign } from '../../styles/styleObjects';
+import {GlobalContext} from '../../components/DarkMode/ThemeContext'
+
 
 const Profile = () => {
 	const [openAside, setOpenAside] = useState(false);
@@ -24,7 +26,11 @@ const Profile = () => {
 	console.log(myCourses);
 	const { logout } = useAuthHook();
 	const joining = new Date(Date.parse(user.createdAt)).toDateString();
-
+	//added variables here - cjreads665
+	const {theme} = useContext(GlobalContext)
+	const navBarClasses = `relative h-14 ${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'} flex items-center justify-between px-4 border-l lg:px-16`
+	const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`
+	const containerClasses = `${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'} flex`
 	useEffect(() => {
 		setIsTeacher(user.isInstructor);
 	}, [user]);
@@ -55,18 +61,20 @@ const Profile = () => {
 		},
 		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
 	];
+{/*added conditional here - cjreads665*/}
 
-	const asideClasses = `sticky top-0 text-gray-600 shadow-xl h-screen ${
+	const asideClasses = `sticky top-0  shadow-xl h-screen ${
 		openAside ? 'px-4 py-2 w-[35vh]' : 'w-0'
-	} bg-[#ffffff] transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
+	} ${theme? 'bg-slate-800 text-white' : 'bg-white text-gray-600'} transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
 
 	const notificationCardClasses = `absolute overflow-hidden right-[5rem] top-[4rem] w-[20rem] rounded-md shadow-xl bg-white ${
 		showNotificationCard ? 'opacity-100' : 'opacity-0'
 	} z-50 transition-all duration-300`;
-
+//bg-white flex
 	return (
 		<>
-			<div className="bg-white flex">
+	{/*the right section with the real content*/}
+			<div className={containerClasses}>
 				<aside className={asideClasses}>
 					<Link to="/">
 						<h4 className="text-2xl font-semibold cursor-pointer">
@@ -96,13 +104,15 @@ const Profile = () => {
 					</ul>
 				</aside>
 
-				<main className="w-full flex flex-col gap-6 bg-[#fff8f4]">
-					<nav className="relative h-14 bg-white flex items-center justify-between px-4 border-l lg:px-16">
+
+				<main className="w-full flex flex-col gap-6" >
+			{/*the navbar --cjreads665 */}
+					<nav className={navBarClasses}>
 						<List
 							className="visible opacity-100 text-4xl cursor-pointer lg:hidden lg:opacity-0"
 							onClick={toggleAsideHandler}
 						/>
-						<div className="border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden bg-gray-50">
+						<div className={searchBarClasses}>
 							<input
 								type="search"
 								className="flex-[0.9] h-full px-4 border-r bg-gray-50 hover:bg-white focus:bg-white focus:outline-none"

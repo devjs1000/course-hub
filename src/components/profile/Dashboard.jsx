@@ -1,10 +1,15 @@
 import currentCourseImg from '../../images/course-current.jpeg';
 import Button from '../../UI/Button';
 import dashboard from '../../images/dashboard.svg';
-
+import React, {useContext} from 'react';
+import {GlobalContext} from '../../components/DarkMode/ThemeContext'
 import NextVideo from './byte-components/NextVideo';
 
 function Dashboard() {
+	//styling for dark mode --cjreads665
+	const {theme} = useContext(GlobalContext)
+	const h4Style = `text-xl mb-3 font-semibold`
+	const courseTitle = `font-semibold text-black`
 	return (
 		<div className="px-4 w-full lg:px-16">
 			<div className="relative bg-[#FFBF98] w-full rounded-lg flex flex-col items-start justify-center gap-4 px-4 py-8 lg:px-16">
@@ -23,14 +28,14 @@ function Dashboard() {
 			</div>
 			<div className="w-full flex flex-col gap-6 mt-6 md:flex-row">
 				<div className="w-full lg:w-[40%]">
-					<h4 className="text-xl mb-3 font-semibold">Currently Watching</h4>
+					<h4 className={h4Style}>Currently Watching</h4>
 					<div className="rounded-lg p-2 bg-white shadow-md">
 						<div
 							className="h-[10rem] bg-cover bg-center rounded-lg mb-2"
 							style={{ backgroundImage: `url(${currentCourseImg})` }}
 						></div>
-						<h6 className="font-semibold">1.1 Introduction to ReactJs</h6>
-						<p>Name of Author</p>
+						<h6 className={courseTitle}>1.1 Introduction to ReactJs</h6>
+						<p className='text-black'>Name of Author</p>
 						<progress className="h-2 rounded"></progress>
 					</div>
 				</div>

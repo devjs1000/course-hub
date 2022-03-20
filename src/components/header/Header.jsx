@@ -3,7 +3,7 @@ import Hero from './Hero';
 
 function Header() {
 	return (
-		<header>
+		<header className='dark'>
 			<Hero />
 		</header>
 	);

@@ -1,5 +1,7 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
+import {GlobalProvider, GlobalContext} from './components/DarkMode/ThemeContext'
+
 import {
   CreateAssignment,
   CreateCourse,
@@ -31,7 +33,8 @@ import axios from "axios";
 
 function App() {
   const [loading, setLoading] = useState(true);
-
+  const {theme}= useContext(GlobalContext)
+  let stylesForProfile = 'bg-red-800'
   useEffect(() => {
     // const qry=`
     // query Query{
@@ -69,6 +72,7 @@ mutation CreateQuestion($courseId: String!, $userId: String!, $question: String!
     setTimeout(() => setLoading(false), 1500);
   }, []);
 
+//18 Mar 2022 - added Global Context from ThemeContext
   return (
     <>
       {loading ? (
@@ -87,9 +91,11 @@ mutation CreateQuestion($courseId: String!, $userId: String!, $question: String!
               <Route
                 path="/my-profile"
                 element={
-                  <PrivateRoute>
+                  <GlobalProvider>
+                  <PrivateRoute className="text-7xl ">
                     <Profile />
                   </PrivateRoute>
+                  </GlobalProvider>
                 }
               >
                 <Route path="/my-profile/dashboard" element={<Dashboard />} />
