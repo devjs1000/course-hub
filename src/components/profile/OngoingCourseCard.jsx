@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {GlobalContext} from '../../components/DarkMode/ThemeContext'
+
 
 function OngoingCourseCard({ tag, title }) {
 	let tagGradient;
-
+	const {theme} = useContext(GlobalContext)
 	if (tag === 'frontend') {
 		tagGradient = 'from-yellow-500 to-yellow-300';
 	} else if (tag === 'backend') {
@@ -14,9 +16,9 @@ function OngoingCourseCard({ tag, title }) {
 	}
 
 	const tagClasses = `text-center bg-gradient-to-r ${tagGradient} rounded-md text-white p-1`;
-
+	const cardClasses = `shadow-md p-4 rounded-md ${theme ? 'bg-slate-700': 'bg-white'} flex flex-col gap-4 h-[13rem]`
 	return (
-		<div className="shadow-md p-4 rounded-md bg-white flex flex-col gap-4 h-[13rem]">
+		<div className={cardClasses}>
 			<div className={tagClasses}>{tag}</div>
 			<h4 className="text-md font-semibold">{title}</h4>
 			<div className="flex items-center gap-4 mt-auto">
