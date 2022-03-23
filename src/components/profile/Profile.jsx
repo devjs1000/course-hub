@@ -15,20 +15,18 @@ import { Link, Outlet } from 'react-router-dom';
 import useStore from '../../context/useStore';
 import useAuthHook from '../../hooks/useAuthHook';
 import { profileDesign } from '../../styles/styleObjects';
-import {GlobalContext} from '../../components/DarkMode/ThemeContext'
-
-
 const Profile = () => {
 	const [openAside, setOpenAside] = useState(false);
 	const [showNotificationCard, setShowNotificationCard] = useState(false);
 	const { user, myCourses, setUser } = useStore();
 	const [isTeacher, setIsTeacher] = useState(user.isInstructor);
 	console.log(myCourses);
+	const {theme, setTheme} = useStore()
 	const { logout } = useAuthHook();
 	const joining = new Date(Date.parse(user.createdAt)).toDateString();
-	//added variables here - cjreads665
-	const {theme} = useContext(GlobalContext)
-	const navBarClasses = `relative h-14 ${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'} flex items-center justify-between px-4 border-l lg:px-16`
+	//added variables here - cjreads665 
+	// ${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'}
+	const navBarClasses = `relative h-14  flex items-center justify-between px-4 border-l lg:px-16`
 	const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`
 	const containerClasses = `${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'} flex`
 	useEffect(() => {
@@ -61,11 +59,11 @@ const Profile = () => {
 		},
 		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
 	];
-{/*added conditional here - cjreads665*/}
+{/*added conditional here - cjreads665 ${theme? 'bg-slate-800 text-white' : }*/}
 
 	const asideClasses = `sticky top-0  shadow-xl h-screen ${
 		openAside ? 'px-4 py-2 w-[35vh]' : 'w-0'
-	} ${theme? 'bg-slate-800 text-white' : 'bg-white text-gray-600'} transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
+	}  'bg-white text-gray-600' transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
 
 	const notificationCardClasses = `absolute overflow-hidden right-[5rem] top-[4rem] w-[20rem] rounded-md shadow-xl bg-white ${
 		showNotificationCard ? 'opacity-100' : 'opacity-0'

@@ -1,13 +1,13 @@
 import currentCourseImg from '../../images/course-current.jpeg';
 import Button from '../../UI/Button';
 import dashboard from '../../images/dashboard.svg';
-import React, {useContext} from 'react';
-import {GlobalContext} from '../../components/DarkMode/ThemeContext'
+import React from 'react';
+import useStore from '../../context/useStore'
 import NextVideo from './byte-components/NextVideo';
 
 function Dashboard() {
 	//styling for dark mode --cjreads665
-	const {theme} = useContext(GlobalContext)
+	const {theme} = useStore()
 	const h4Style = `text-xl mb-3 font-semibold`
 	const courseTitle = `font-semibold text-black`
 	return (
