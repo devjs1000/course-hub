@@ -13,6 +13,7 @@ const Store = () => {
   const [posts, setPosts] = useState(postPrint);
   const [myCourses, setMyCourses] = useState([]);
   const [assignments, setAssignments] = useState({});
+  const [theme, setTheme] = useState(false)
 
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
@@ -49,6 +50,8 @@ const Store = () => {
 
     assignments,
     setAssignments,
+    
+    theme, setTheme,
   };
 };
 

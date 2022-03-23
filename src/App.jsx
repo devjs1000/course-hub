@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import {GlobalProvider, GlobalContext} from './components/DarkMode/ThemeContext'
+import useStore from './context/useStore'
 
 import {
   CreateAssignment,
@@ -33,7 +33,6 @@ import axios from "axios";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const {theme}= useContext(GlobalContext)
   let stylesForProfile = 'bg-red-800'
   useEffect(() => {
     // const qry=`
@@ -91,11 +90,9 @@ mutation CreateQuestion($courseId: String!, $userId: String!, $question: String!
               <Route
                 path="/my-profile"
                 element={
-                  <GlobalProvider>
                   <PrivateRoute className="text-7xl ">
                     <Profile />
                   </PrivateRoute>
-                  </GlobalProvider>
                 }
               >
                 <Route path="/my-profile/dashboard" element={<Dashboard />} />

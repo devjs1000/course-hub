@@ -1,18 +1,11 @@
 import React from 'react';
-import { useState, useEffect , useContext} from "react";
-import {GlobalContext} from '../../components/DarkMode/ThemeContext'
-
+import { useState, useEffect } from "react";
+import useStore from '../../context/useStore'
 
 function Settings() {
 	const [btnText, setText] = useState('Off')
 	// const [theme, setTheme] = useState(false)
-	const {theme,setTheme} = useContext(GlobalContext)
-
-	/* for testing dark mode*/
-	// useEffect(() => {
-	// console.log(theme)
-	// console.log(btnText)
-	// }, [theme])
+const {theme, setTheme} = useStore()
 
 	return (
 		<div className='p-8'>

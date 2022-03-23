@@ -1,10 +1,9 @@
-import React, {useContext} from 'react';
-import {GlobalContext} from '../../components/DarkMode/ThemeContext'
-
+import React, {useContext} from 'react';	
+import useStore from '../../context/useStore'
 
 function OngoingCourseCard({ tag, title }) {
 	let tagGradient;
-	const {theme} = useContext(GlobalContext)
+	const {theme} = useStore()
 	if (tag === 'frontend') {
 		tagGradient = 'from-yellow-500 to-yellow-300';
 	} else if (tag === 'backend') {

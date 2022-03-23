@@ -58,7 +58,6 @@ function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about-us" },
     { name: "Courses", path: "/all-courses" },
-    { name: "Blogs", path: "/blog" },
   ];
   const usernameClasses = `text-xl ${isVisible ? "text-white" : "text-black"}`;
   return (

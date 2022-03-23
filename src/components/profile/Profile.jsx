@@ -1,23 +1,36 @@
 import { useState, Children, useContext } from "react";
 import {
-  Journal,
-  JournalCode,
-  Gear,
-  Bell,
-  Speedometer,
-  Search,
-  BoxArrowLeft,
-  List,
-} from "react-bootstrap-icons";
-import { Link, Outlet } from "react-router-dom";
-import useStore from "../../context/useStore";
-import useAuthHook from "../../hooks/useAuthHook";
-import { GlobalContext } from "../../components/DarkMode/ThemeContext";
-
+	Pen,
+	Journal,
+	JournalCode,
+	Gear,
+	Bell,
+	Speedometer,
+	Search,
+	BoxArrowLeft,
+	List,
+} from 'react-bootstrap-icons';
+import { Link, Outlet } from 'react-router-dom';
+import useStore from '../../context/useStore';
+import useAuthHook from '../../hooks/useAuthHook';
+import { profileDesign } from '../../styles/styleObjects';
 const Profile = () => {
-  const [openAside, setOpenAside] = useState(false);
-  const [showNotificationCard, setShowNotificationCard] = useState(false);
-  const { user, myCourses } = useStore();
+	const [openAside, setOpenAside] = useState(false);
+	const [showNotificationCard, setShowNotificationCard] = useState(false);
+	const { user, myCourses, setUser } = useStore();
+	const [isTeacher, setIsTeacher] = useState(user.isInstructor);
+	console.log(myCourses);
+	const {theme, setTheme} = useStore()
+	const { logout } = useAuthHook();
+	const joining = new Date(Date.parse(user.createdAt)).toDateString();
+	//added variables here - cjreads665 
+	// ${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'}
+	const navBarClasses = `relative h-14  flex items-center justify-between px-4 border-l lg:px-16`
+	const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`
+	const containerClasses = `${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'} flex`
+	useEffect(() => {
+		setIsTeacher(user.isInstructor);
+	}, [user]);
 
   console.log(myCourses);
   const { logout } = useAuthHook();
@@ -36,6 +49,28 @@ const Profile = () => {
     setOpenAside(!openAside);
   };
 
+// <<<<<<< cjreads665
+// 	const sidebarItems = [
+// 		{ name: 'Dashboard', icon: <Speedometer />, path: '/my-profile/dashboard' },
+// 		{ name: 'My Courses', icon: <Journal />, path: '/my-profile/courses' },
+// 		{
+// 			name: 'Assignments',
+// 			icon: <JournalCode />,
+// 			path: '/my-profile/assignments',
+// 		},
+// 		{
+// 			name: 'Notifications',
+// 			icon: <Bell />,
+// 			path: '/my-profile/notifications',
+// 		},
+// 		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
+// 	];
+// {/*added conditional here - cjreads665 ${theme? 'bg-slate-800 text-white' : }*/}
+
+	const asideClasses = `sticky top-0  shadow-xl h-screen ${
+		openAside ? 'px-4 py-2 w-[35vh]' : 'w-0'
+	}  'bg-white text-gray-600' transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
+// =======
   const notificationToggleHandler = () => {
     setShowNotificationCard(!showNotificationCard);
   };
@@ -58,6 +93,7 @@ const Profile = () => {
   {
     /*added conditional here - cjreads665*/
   }
+// >>>>>>> master
 
   const asideClasses = `sticky top-0  shadow-xl h-screen ${
     openAside ? "px-4 py-2 w-[35vh]" : "w-0"
