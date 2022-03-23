@@ -68,7 +68,7 @@ function AllCourses() {
 									{Children.toArray(
 										eachType?.data.map(course => {
 											return (
-												<SwiperSlide key={course?._id}>
+												<SwiperSlide key={course?.id}>
 													<CourseCard id={course?._id} />
 												</SwiperSlide>
 											);
