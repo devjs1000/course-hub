@@ -9,10 +9,11 @@ import AuthorIntro from '../components/courseDetailsPage/AuthorIntro';
 import DetailsReview from '../components/courseDetailsPage/details/DetailsReview';
 import FAQ from '../components/courseDetailsPage/FAQ';
 
-const CourseDetails = () => {
+const CourseDetails = ({id}) => {
 	const { allCoursesData } = useStore();
 	const [current, setCurrent] = useState({});
-	const { id } = useParams();
+	// const { id } = useParams();
+	console.log(id);
 
 	useEffect(() => {
 		const data = allCoursesData.find(course => course._id === id);

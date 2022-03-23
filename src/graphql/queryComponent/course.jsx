@@ -15,3 +15,21 @@ export const allCoursesQuery = gql`
     }
   }
 `;
+
+export const allPopularCoursesQuery = gql`
+query {
+  popularCourses{
+      id
+      name
+      tagline
+      about
+      price
+      image
+      category
+      tags
+      teacherId
+      subscribers
+      noOfSubscribers
+  }
+}
+`;
