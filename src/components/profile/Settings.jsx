@@ -6,12 +6,6 @@ function Settings() {
 	const [btnText, setText] = useState('Off')
 	// const [theme, setTheme] = useState(false)
 const {theme, setTheme} = useStore()
-console.log(theme, setTheme)
-	/* for testing dark mode*/
-	// useEffect(() => {
-	// console.log(theme)
-	// console.log(btnText)
-	// }, [theme])
 
 	return (
 		<div className='p-8'>
