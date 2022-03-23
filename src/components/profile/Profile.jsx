@@ -1,4 +1,4 @@
-import { useState, Children, useContext } from "react";
+import { useState, Children, useContext, useEffect } from "react";
 import {
 	Pen,
 	Journal,
@@ -17,17 +17,9 @@ import { profileDesign } from '../../styles/styleObjects';
 const Profile = () => {
 	const [openAside, setOpenAside] = useState(false);
 	const [showNotificationCard, setShowNotificationCard] = useState(false);
-	const { user, myCourses, setUser } = useStore();
+	const { user, myCourses, setUser, theme, setTheme } = useStore();
 	const [isTeacher, setIsTeacher] = useState(user.isInstructor);
 	console.log(myCourses);
-	const {theme, setTheme} = useStore()
-	const { logout } = useAuthHook();
-	const joining = new Date(Date.parse(user.createdAt)).toDateString();
-	//added variables here - cjreads665 
-	// ${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'}
-	const navBarClasses = `relative h-14  flex items-center justify-between px-4 border-l lg:px-16`
-	const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`
-	const containerClasses = `${theme ? 'bg-slate-800  text-white' : 'bg-white text-gray-600'} flex`
 	useEffect(() => {
 		setIsTeacher(user.isInstructor);
 	}, [user]);
@@ -36,7 +28,6 @@ const Profile = () => {
   const { logout } = useAuthHook();
   const joining = new Date(Date.parse(user.createdAt)).toDateString();
   //added variables here - cjreads665
-  const { theme } = useContext(GlobalContext);
   const navBarClasses = `relative h-14 ${
     theme ? "bg-slate-800  text-white" : "bg-white text-gray-600"
   } flex items-center justify-between px-4 border-l lg:px-16`;
@@ -50,22 +41,6 @@ const Profile = () => {
   };
 
 // <<<<<<< cjreads665
-// 	const sidebarItems = [
-// 		{ name: 'Dashboard', icon: <Speedometer />, path: '/my-profile/dashboard' },
-// 		{ name: 'My Courses', icon: <Journal />, path: '/my-profile/courses' },
-// 		{
-// 			name: 'Assignments',
-// 			icon: <JournalCode />,
-// 			path: '/my-profile/assignments',
-// 		},
-// 		{
-// 			name: 'Notifications',
-// 			icon: <Bell />,
-// 			path: '/my-profile/notifications',
-// 		},
-// 		{ name: 'Settings', icon: <Gear />, path: '/my-profile/settings' },
-// 	];
-// {/*added conditional here - cjreads665 ${theme? 'bg-slate-800 text-white' : }*/}
 
 	const asideClasses = `sticky top-0  shadow-xl h-screen ${
 		openAside ? 'px-4 py-2 w-[35vh]' : 'w-0'
@@ -93,14 +68,6 @@ const Profile = () => {
   {
     /*added conditional here - cjreads665*/
   }
-// >>>>>>> master
-
-  const asideClasses = `sticky top-0  shadow-xl h-screen ${
-    openAside ? "px-4 py-2 w-[35vh]" : "w-0"
-  } ${
-    theme ? "bg-slate-800 text-white" : "bg-white text-gray-600"
-  } transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
-
   const notificationCardClasses = `absolute overflow-auto max-h-[10rem] right-[5rem] top-[4rem] w-[20rem] rounded-md shadow-xl bg-white ${
     showNotificationCard ? "opacity-100" : "opacity-0"
   } z-50 transition-all duration-300`;
