@@ -65,12 +65,13 @@ const Assignments = ({}) => {
 
 if(loading) return 'loading...'
 if(error) return 'error'
+console.log('assignment',data);
 	return (
 		<>
 			<div className="px-4 pb-8 flex flex-col gap-8 items-start lg:px-16">
 				<div className="assignment-navigation border-b-2 border-gray-500 relative py-1">
 					{Children.toArray(
-						assignmentNav.map(item => (
+						assignmentNav?.map(item => (
 							<span className="text-center inline-block cursor-pointer">
 								{item}
 							</span>
@@ -79,8 +80,8 @@ if(error) return 'error'
 					<div className="animated-border absolute bottom-[-0.15rem] left-0 w[3rem] h-[2px] bg-primary-color-dark"></div>
 				</div>
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-					{Children.toArray(data.map(a=>{
-						return <AssignmentCard title={a?.projects?.projectLink} tag="design" />
+					{Children.toArray(data.projects.map(a=>{
+						return <AssignmentCard title={a?.projectLink} tag="design" />
 					}))}
 					
 					

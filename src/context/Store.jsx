@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { postPrint } from "../bluePrint/contextPrint";
-// import { getAllCoursesOfUser, allInstructorCourses } from "../fetch/courseApi";
-// import {
-//   getAssignmentsOfUser,
-//   getAllAssignmentsOfInstructor,
-// } from "../fetch/assignmentApi";
+
 import { useQuery } from "@apollo/client";
 import { allCoursesQuery } from "../graphql/Queries";
 
