@@ -13,7 +13,7 @@ const CourseCard = ({
 	const [current, setCurrent] = useState({});
 	useEffect(() => {
 		if (drill) return;
-		const data = allCoursesData.find(course => course._id === id);
+		const data = allCoursesData.find(course => course.id === id);
 		setCurrent(data);
 	}, [id]);
 

@@ -69,7 +69,7 @@ function AllCourses() {
 										eachType?.data.map(course => {
 											return (
 												<SwiperSlide key={course?.id}>
-													<CourseCard id={course?._id} />
+													<CourseCard id={course?.id} />
 												</SwiperSlide>
 											);
 										}),
