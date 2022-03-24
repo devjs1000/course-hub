@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { allCoursesQuery } from "../graphql/Queries";
 
 const Store = () => {
+  
   /* Define All States */
   const [user, setUser] = useState({});
   const [userLoading, setUserLoading] = useState(true);

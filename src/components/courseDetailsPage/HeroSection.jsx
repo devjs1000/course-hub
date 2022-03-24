@@ -6,6 +6,7 @@ import Overlay from '../../UI/Overlay';
 
 function HeroSection({ course }) {
 	const [openCourse, setOpenCourse] = useState(false);
+	const [isNotSubcribed,setNotSubcribed] = useState(false);
 
 	const openCourseHandler = () => {
 		setOpenCourse(true);
@@ -49,9 +50,15 @@ function HeroSection({ course }) {
 								}),
 							)}
 						</div>
-						<Button isPrimary={true} onClick={openCourseHandler}>
-							Enroll
-						</Button>
+						{ isNotSubcribed ?
+							<Button isPrimary={true} onClick={openCourseHandler}>
+								Get started
+							</Button>
+							:
+							<Button isPrimary={true}>
+								Enroll
+							</Button>
+						}
 					</div>
 				</div>
 				<div

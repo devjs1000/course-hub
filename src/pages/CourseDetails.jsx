@@ -9,14 +9,16 @@ import AuthorIntro from '../components/courseDetailsPage/AuthorIntro';
 import DetailsReview from '../components/courseDetailsPage/details/DetailsReview';
 import FAQ from '../components/courseDetailsPage/FAQ';
 
-const CourseDetails = ({id}) => {
+const CourseDetails = () => {
 	const { allCoursesData } = useStore();
 	const [current, setCurrent] = useState({});
-	// const { id } = useParams();
+	const { id } = useParams();
 	console.log(id);
 
 	useEffect(() => {
-		const data = allCoursesData.find(course => course._id === id);
+		console.log(allCoursesData);
+		const data = allCoursesData.find(course => course.id == id);
+		console.log(data);
 		setCurrent(data);
 	});
 
