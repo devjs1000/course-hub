@@ -12,7 +12,7 @@ import Navside from "./Navside";
 function Navbar() {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [showNavside, setShowNavside] = useState(false);
-  const { user } = useStore();
+  const { user, theme } = useStore();
 
   // sticky nav start
   const target = useRef(null);
@@ -40,26 +40,26 @@ function Navbar() {
       : "text-white py-2 flex gap-3 items-center px-4 transition-all duration-300 z-50 xsm:gap-5 md:flex-row md:px-16"
   }`;
 
-  const stickyNav = `text-black sticky top-0 left-0 bg-white shadow-md opacity-95`;
+  const stickyNav = ` sticky top-0 left-0 ${theme? 'bg-slate-800' : 'bg-white text-black'} shadow-md opacity-95`;
 
   const navClasses = isVisible
     ? `${commonClasses}`
     : `${commonClasses} ${stickyNav}`;
 
   const navLinkClasses = `text-lg ${
-    isVisible ? "text-white hover:bg-rose-800" : "text-black hover:bg-black hover:text-white"
+    isVisible ? "text-white hover:bg-rose-800" : theme? 'text-white hover:bg-white hover:text-black': "text-black hover:bg-black hover:text-white"
   } font-medium hover:font-semibold p-2 px-2 rounded-md`;
 
   const targetDivClasses = ` ${
     path === "my-profile" ? "hidden" : "h-1 bg-transparent"
-  }`;
+  } `;
 
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about-us" },
     { name: "Courses", path: "/all-courses" },
   ];
-  const usernameClasses = `text-xl ${isVisible ? "text-white" : "text-black"}`;
+  const usernameClasses = `text-xl ${isVisible ? "text-white" : theme ? 'text-white' : "text-black"}`;
   return (
     <>
       <nav className={navClasses}>
