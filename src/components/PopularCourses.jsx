@@ -6,8 +6,10 @@ import useStore from '../context/useStore';
 import { useEffect, useState, Children } from 'react';
 
 function PopularCourses() {
-	const { allPopularCoursesData } = useStore();
+	const { allPopularCoursesData, theme } = useStore();
 	const [allPopularCourses, setallPopularCourses] = useState([]);
+	const sectionStyles = `bg-${theme?'slate-800' : 'white'} px-8 py-8 md:py-16 lg:py-20 lg:px-16`
+
 	useEffect(()=>{
 		try {
 			if (!allPopularCoursesData.length) return;
@@ -18,7 +20,7 @@ function PopularCourses() {
 	},[allPopularCoursesData])
 	return (
 		<section
-			className=" bg-white px-8 py-8 md:py-16 lg:py-20 lg:px-16"
+			className={sectionStyles}
 			id="courses"
 		>
 			<SectionHeading

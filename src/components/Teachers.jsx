@@ -5,7 +5,7 @@ import instTwoImage from '../images/instructors/Inst-2.jpg';
 import instThreeImage from '../images/instructors/Inst-3.jpg';
 import instFourImage from '../images/instructors/Inst-4.jpg';
 import SectionHeading from '../UI/SectionHeading';
-
+import useStore from '../context/useStore'
 const InstructorCard = ({ image }) => {
 	return (
 		<div
@@ -39,8 +39,10 @@ const InstructorCard = ({ image }) => {
 };
 
 function Teachers() {
+	const {theme} = useStore()
+	const teachersStyles = ` ${theme? 'bg-slate-800 text-white' : 'text-slate-900 bg-white'} px-8 py-8 flex flex-col items-start lg:px-16 md:py-16 lg:py-20`
 	return (
-		<div className="bg-[#fffdfd] px-8 py-8 text-slate-900 flex flex-col items-start lg:px-16 md:py-16 lg:py-20">
+		<div className={teachersStyles} >
 			<SectionHeading
 				subHeading="Instructors"
 				heading="Our professional & Expert Course Instructors"
