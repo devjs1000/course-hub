@@ -11,13 +11,13 @@ function Dashboard() {
 	//styling for dark mode --cjreads665
 
 	const {theme, user} = useStore()
-
+	let mainContainerStyles = ` px-4 w-full bg-${theme? 'slate-800' : 'white'} h-full py-8 lg:px-16 `
 	const h4Style = `text-xl mb-3 font-semibold`
 	const courseTitle = `font-semibold text-black`
 	console.log(dashboardImg);
 
 	return (
-		<div className="px-4 w-full lg:px-16">
+		<div className={mainContainerStyles}>
 			<div className="relative bg-[#FFBF98] w-full rounded-lg flex flex-col items-start justify-center gap-4 px-4 py-8 lg:px-16">
 				<h2 className="text-4xl text-primary-color-light">
 					Welcome back, {user?.name}

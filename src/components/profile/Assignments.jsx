@@ -44,7 +44,7 @@ const AssignmentCard = ({ title, tag }) => {
 };
 
 const Assignments = ({}) => {
-	const { user, myCourses } = useStore();
+	const { user, myCourses, theme } = useStore();
 	const {loading,error, data}=useQuery(myProjectsQuery, {
 		variables:{
 			"userId": user.id
@@ -66,9 +66,10 @@ const Assignments = ({}) => {
 if(loading) return 'loading...'
 if(error) return 'error'
 console.log('assignment',data);
+const mainContainerStyles = `px-4 pb-8 flex flex-col gap-8 items-start lg:px-16 bg-${theme?'slate-800' : 'white'} h-full`
 	return (
 		<>
-			<div className="px-4 pb-8 flex flex-col gap-8 items-start lg:px-16">
+			<div className={mainContainerStyles} >
 				<div className="assignment-navigation border-b-2 border-gray-500 relative py-1">
 					{Children.toArray(
 						assignmentNav?.map(item => (

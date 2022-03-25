@@ -1,24 +1,16 @@
 import React from 'react';
-import { useState, useEffect } from "react";
 import useStore from '../../context/useStore'
 import Button from './Button'
 function Settings() {
-	const [btnText, setText] = useState('Off')
-	// const [theme, setTheme] = useState(false)
-const {theme, setTheme} = useStore()
-
+	const {theme, setTheme} = useStore()
+	const mainContainerStyles = `p-8 ${theme? 'bg-slate-800 text-white' : 'white text-black'} h-full`
 	return (
-		<div className='p-8'>
-		
-	{/*content container --cjreads665*/}
-		
-			<span className='text-2xl' >Dark Mode:</span>
-			{/*<button className='bg-sky-800 rounded text-white w-1/12 h-10 ml-2' onClick={()=>{
-				setTheme(!theme)
-				setText(()=> btnText=='Off'? 'On': 'Off')
-			}}>{btnText}</button>
-			<Button/>*/}
+		<div className={mainContainerStyles}>
+			<div className=' w-3/4 flex flex-row'>
+				<span className='text-2xl' >Dark Mode:</span>
 			<Button/>
+			</div>
+			
 		</div>)
 }
 
