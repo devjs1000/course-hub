@@ -5,13 +5,13 @@ import Button from "../UI/Button";
 import { uploadImage } from "../fetch/cloudinaryApi";
 import { Upload } from "react-bootstrap-icons";
 import useStore from "../context/useStore";
-import { createProjectMutation } from "../graphql/Mutations";
+import { createCourseMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 
 export default () => {
   const {user}=useStore()
   const [formData, setFormData] = useState({});
-  const [createCourse] = useMutation(createProjectMutation);
+  const [createCourse] = useMutation(createCourseMutation);
   const handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
