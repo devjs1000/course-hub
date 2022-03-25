@@ -1,5 +1,6 @@
+
 export const footerStyles = {
-	mainDiv: `bg-${theme?'black' : white} border border-t-[1px] p-3 md:p-8 relative`,
+	mainDiv: `bg-white border border-t-[1px] p-3 md:p-8 relative`,
 	gridDiv: 'md:mx-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4',
 	title: 'text-3xl font-bold text-slate-700',
 	shortDes: 'text-sm truncate font-semibold text-gray-400 my-8 w-3/4',

@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 import { footerStyles } from "../styles/styleObjects";
 import {footerPrint} from '../bluePrint/footerPrint'
 import logo from '../images/theLogo.jpeg'
+import useStore from '../context/useStore'
+
 const Footer = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
@@ -15,10 +17,12 @@ const Footer = () => {
   //add objects in nullpath for hiding object in paths
   const nullPath = ["login", "signup", "my-assignments"];
   if (nullPath.includes(path)) return null;
-
+  const {theme} = useStore()
+  //removed border from mainDiv and extracted the styles from stylesObject to here
+  const mainDiv = `bg-${theme ? 'slate-800' : 'white'} p-3 md:p-8 relative`
 
   return (
-    <div className={footerStyles.mainDiv}>
+    <div className={mainDiv}>
       <div className={footerStyles.gridDiv}>
         <div>
         <div className='flex'>
