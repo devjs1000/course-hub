@@ -4,6 +4,7 @@ import { userOrdersQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
 import { Link } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 function MyCourses() {
   const { user, setMyCourses } = useStore();
   const { data, error, loading } = useQuery(userOrdersQuery, {
@@ -13,7 +14,8 @@ function MyCourses() {
   });
 
   useEffect(() => {
-    setMyCourses(data.getUserOrders);
+    console.log(data,'courses');
+    // setMyCourses(data.getUserOrders);
   }, [data]);
 
   if (loading) return "loading";
@@ -22,6 +24,7 @@ function MyCourses() {
   console.log(data);
   return (
     <>
+    <ErrorBoundary>
       <nav className="shadow px-4 py-2 inline-block">
         <Link className="bg-red-700 text-white px-4 py-1" to="/create-course">
           create course
@@ -36,6 +39,7 @@ function MyCourses() {
           })
         )}
       </div>
+      </ErrorBoundary>
     </>
   );
 }
