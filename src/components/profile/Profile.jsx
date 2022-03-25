@@ -106,7 +106,7 @@ const Profile = () => {
           </ul>
         </aside>
 
-        <main className="w-full flex flex-col gap-6">
+        <main className="w-full flex flex-col gap-x-6">
           {/*the navbar --cjreads665 */}
           <nav className={navBarClasses}>
             <List
@@ -150,7 +150,10 @@ const Profile = () => {
               </div>
             </div>
           </nav>
+          <div className='bg-white  lg:m-3 h-full w-full  z-[1000]'>
           <Outlet />
+
+          </div>
         </main>
       </div>
       {/*  */}
