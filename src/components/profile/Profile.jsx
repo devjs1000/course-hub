@@ -1,28 +1,28 @@
 import { useState, Children, useContext, useEffect } from "react";
 import {
-	Pen,
-	Journal,
-	JournalCode,
-	Gear,
-	Bell,
-	Speedometer,
-	Search,
-	BoxArrowLeft,
-	List,
-} from 'react-bootstrap-icons';
-import { Link, Outlet } from 'react-router-dom';
-import useStore from '../../context/useStore';
-import useAuthHook from '../../hooks/useAuthHook';
-import { profileDesign } from '../../styles/styleObjects';
+  Pen,
+  Journal,
+  JournalCode,
+  Gear,
+  Bell,
+  Speedometer,
+  Search,
+  BoxArrowLeft,
+  List,
+} from "react-bootstrap-icons";
+import { Link, Outlet } from "react-router-dom";
+import useStore from "../../context/useStore";
+import useAuthHook from "../../hooks/useAuthHook";
+import { profileDesign } from "../../styles/styleObjects";
 const Profile = () => {
-	const [openAside, setOpenAside] = useState(false);
-	const [showNotificationCard, setShowNotificationCard] = useState(false);
-	const { user, myCourses, setUser, theme, setTheme } = useStore();
-	const [isTeacher, setIsTeacher] = useState(user.isInstructor);
-	console.log(myCourses);
-	useEffect(() => {
-		setIsTeacher(user.isInstructor);
-	}, [user]);
+  const [openAside, setOpenAside] = useState(false);
+  const [showNotificationCard, setShowNotificationCard] = useState(false);
+  const { user, myCourses, setUser, theme, setTheme } = useStore();
+  const [isTeacher, setIsTeacher] = useState(user.isInstructor);
+  console.log(myCourses);
+  useEffect(() => {
+    setIsTeacher(user.isInstructor);
+  }, [user]);
 
   console.log(myCourses);
   const { logout } = useAuthHook();
@@ -40,12 +40,12 @@ const Profile = () => {
     setOpenAside(!openAside);
   };
 
-// <<<<<<< cjreads665
+  // <<<<<<< cjreads665
 
-	const asideClasses = `sticky top-0  shadow-xl h-screen ${
-		openAside ? 'px-4 py-2 w-[35vh]' : 'w-0'
-	}  'bg-white text-gray-600' transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
-// =======
+  const asideClasses = `sticky top-0  shadow-xl h-screen ${
+    openAside ? "px-4 py-2 w-[35vh]" : "w-0"
+  }  'bg-white text-gray-600' transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
+  // =======
   const notificationToggleHandler = () => {
     setShowNotificationCard(!showNotificationCard);
   };
@@ -150,9 +150,8 @@ const Profile = () => {
               </div>
             </div>
           </nav>
-          <div className='bg-white  lg:m-3 h-full w-full  z-[1000]'>
-          <Outlet />
-
+          <div className="bg-white  lg:m-3 h-full w-full  z-[1000]">
+            <Outlet />
           </div>
         </main>
       </div>
