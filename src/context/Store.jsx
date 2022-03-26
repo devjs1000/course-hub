@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { postPrint } from "../bluePrint/contextPrint";
 
 import { useQuery } from "@apollo/client";
-import { allCoursesQuery } from "../graphql/Queries";
+import { allCoursesQuery, userByEmailQuery } from "../graphql/Queries";
+
+import {
+	useJwt
+} from "react-jwt";
 
 const Store = () => {
   
@@ -19,6 +23,7 @@ const Store = () => {
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
 
+
   /* Get All Courses Data */
   useEffect(() => {
     if (getAllCourses?.data?.courses) {
@@ -29,9 +34,28 @@ const Store = () => {
       console.log(getAllCourses.error.message);
       setAllCoursesLoading(false);
     }
+    if (localStorage.getItem("accessToken") != null &&
+        localStorage.getItem("accessToken") != undefined ) {
+          const token = localStorage.getItem("accessToken");
+          console.log('cache available');
+          const {
+            decodedToken,
+            isExpired
+          } = useJwt(token);
+          console.log(decodedToken,isExpired);
+          if(decodedToken.email != nul && !isExpired) {
+            console.log('valid cache');
+            const userByEmail = useQuery(userByEmailQuery,{
+              variables: {
+                email: user.email,
+              },
+            });
+            setUser(userByEmail);
+            console.log('cuser',userByEmail);
+          }
+    }
   }, [getAllCourses?.data]);
 
- 
   //returning for global access
   return {
     user,
