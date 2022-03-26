@@ -11,9 +11,11 @@ function PopularCourses() {
 	const sectionStyles = `bg-${theme?'slate-800' : 'white'} px-8 py-8 md:py-16 lg:py-20 lg:px-16`
 
 	useEffect(()=>{
+		console.log('Popular courses from store:',allPopularCoursesData);
 		try {
 			if (!allPopularCoursesData.length) return;
 			setallPopularCourses(allPopularCoursesData);
+			console.log('Popular courses:',allPopularCourses);
 		} catch(err) {
 			console.log(err);
 		}

@@ -4,8 +4,10 @@ import Button from "../../UI/Button";
 import CourseVideo from "../chapter/CourseVideo";
 import Overlay from "../../UI/Overlay";
 import { showRazorpay } from "./Razorpay";
+import useStore from "../../context/useStore";
 
 function HeroSection({ course }) {
+  const { myCourses } = useStore();
   const [openCourse, setOpenCourse] = useState(false);
   const [isNotSubcribed, setNotSubcribed] = useState(false);
 
@@ -23,8 +25,16 @@ function HeroSection({ course }) {
     } else {
       document.body.style = "overflow:auto;";
     }
+    const currentOrder = myCourses.find(eachCourse => eachCourse.courseId == course.id);
+    if(myCourses != null &&  currentOrder!= null ) {
+      setNotSubcribed(true);
+    }
   }, [openCourse]);
-
+  console.log('Eval: 0 ',myCourses[0]);
+  console.log('Eval: 1 ',myCourses[1]);
+  console.log('Eval: ',myCourses.find(eachCourse => eachCourse.courseId == course.id));
+console.log('myCourses',myCourses);
+console.log('isNotSubcribed',isNotSubcribed);
   // { backgroundImage: `url(${course?.image})` }
   return (
     <>

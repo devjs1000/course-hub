@@ -10,6 +10,7 @@ const Store = () => {
   const [user, setUser] = useState({});
   const [userLoading, setUserLoading] = useState(true);
   const [allCoursesData, setAllCoursesData] = useState([]);
+  const [allPopularCoursesData, setAllPopularCoursesData] = useState([]);
   const [allCoursesLoading, setAllCoursesLoading] = useState(true);
   const [posts, setPosts] = useState(postPrint);
   const [myCourses, setMyCourses] = useState([]);
@@ -39,6 +40,9 @@ const Store = () => {
 
     userLoading,
     setUserLoading,
+
+    allPopularCoursesData,
+    setAllPopularCoursesData,
 
     allCoursesData,
     allCoursesLoading,

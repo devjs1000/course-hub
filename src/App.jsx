@@ -120,6 +120,10 @@ mutation CreateQuestion($courseId: String!, $userId: String!, $question: String!
                 path="all-courses/coursedetails/:id"
                 element={<CourseDetails />}
               />
+              <Route
+                path="my-profile/courses/coursedetails/:id"
+                element={<CourseDetails />}
+              />
             </Routes>
             <Footer />
           </Suspense>
