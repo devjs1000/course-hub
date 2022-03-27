@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const createProjectMutation = gql`
+export const createCourseMutation = gql`
   mutation CreateCourse(
     $tagline: String!
     $tags: [String]!

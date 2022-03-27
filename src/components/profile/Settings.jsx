@@ -1,3 +1,4 @@
+
 import React from 'react';
 import useStore from '../../context/useStore'
 import Button from './Button'
@@ -12,6 +13,7 @@ function Settings() {
 			</div>
 			
 		</div>)
+
 }
 
 export default Settings;

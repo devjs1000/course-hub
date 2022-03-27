@@ -1,14 +1,14 @@
-import currentCourseImg from '../../images/course-current.jpeg';
-import Button from '../../UI/Button';
+import currentCourseImg from "../../images/course-current.jpeg";
+import Button from "../../UI/Button";
 
-import useStore from '../../context/useStore'
+import useStore from "../../context/useStore";
 
-import dashboardImg from '../../images/dashboard.svg';
-import NextVideo from './byte-components/NextVideo';
-
+import dashboardImg from "../../images/dashboard.svg";
+import NextVideo from "./byte-components/NextVideo";
 
 function Dashboard() {
-	//styling for dark mode --cjreads665
+  //styling for dark mode --cjreads665
+
 
 	const {theme, user} = useStore()
 	let mainContainerStyles = ` px-4 w-full bg-${theme? 'slate-800' : 'white'} h-full py-8 lg:px-16 `
@@ -83,6 +83,7 @@ function Dashboard() {
 			</div>
 		</div>
 	);
+
 }
 
 export default Dashboard;

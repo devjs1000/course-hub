@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen bg-red-800 flex items-center justify-center">
+    <div className="min-h-screen bg-red-800 flex items-center justify-center">
       {user.id && path && <Navigate to={path} />}
       {user.id && !path && <Navigate to="/" />}
       <div className="relative bg-white w-[25rem] mx-2 py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
