@@ -15,7 +15,7 @@ function MyCourses() {
 
   useEffect(() => {
     console.log(data,'courses');
-    // setMyCourses(data.getUserOrders);
+    setMyCourses(data?.getUserOrders);
   }, [data]);
 
   if (loading) return "loading";
