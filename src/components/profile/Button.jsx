@@ -3,7 +3,6 @@ import useStore from "../../context/useStore";
 import { useState, useEffect } from "react";
 
 const Button = () => {
-  const [btnText, setText] = useState(false);
   const { theme, setTheme } = useStore();
   function toggleTheme() {
     setTheme((val) => !val);
@@ -12,6 +11,7 @@ const Button = () => {
   const toggleClass = " transform translate-x-5";
 
   return (
+
     <div
       className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer"
       onClick={toggleTheme}
@@ -22,6 +22,7 @@ const Button = () => {
           (theme ? toggleClass : null)
         }
       ></div>
+
     </div>
   );
 };

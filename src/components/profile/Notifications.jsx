@@ -1,5 +1,7 @@
-import React from "react";
-import author from "../../images/author.jpg";
+
+import React from 'react';
+import author from '../../images/author.jpg';
+import useStore from '../../context/useStore'
 
 const Notification = () => {
   return (
@@ -23,16 +25,20 @@ const Notification = () => {
 };
 
 function Notifications() {
-  return (
-    <div className="px-4">
-      <h2 className="text-xl font-semibold lg:text-3xl">Notifications</h2>
-      <div className="h-60vh shadow-md mt-12 bg-white py-4 px-6 flex flex-col gap-4 ">
-        <Notification />
-        <Notification />
-        <Notification />
-      </div>
-    </div>
-  );
+
+	const {theme} = useStore()
+	const mainContainerStyles = `p-8 bg-${theme? 'slate-800' : 'white'} h-full`
+	return (
+		<div className={mainContainerStyles} >
+			<h2 className="text-xl font-semibold lg:text-3xl">Notifications</h2>
+			<div className="h-60vh shadow-md mt-12 bg-white py-4 px-6 flex flex-col gap-4 ">
+				<Notification />
+				<Notification />
+				<Notification />
+			</div>
+		</div>
+	);
+
 }
 
 export default Notifications;

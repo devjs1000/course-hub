@@ -15,6 +15,7 @@ import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 import { profileDesign } from "../../styles/styleObjects";
 const Profile = () => {
+
   const [openAside, setOpenAside] = useState(false);
   const [showNotificationCard, setShowNotificationCard] = useState(false);
   const { user, myCourses, setUser, theme, setTheme } = useStore();
@@ -25,6 +26,7 @@ const Profile = () => {
   }, [user]);
 
   // console.log(myCourses);
+
   const { logout } = useAuthHook();
   const joining = new Date(Date.parse(user.createdAt)).toDateString();
   //added variables here - cjreads665
@@ -33,7 +35,7 @@ const Profile = () => {
   } flex items-center justify-between px-4 border-l lg:px-16`;
   const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`;
   const containerClasses = `${
-    theme ? "bg-slate-800  text-white" : "bg-white text-gray-600"
+    theme ? "bg-slate-800 text-white" : "bg-white text-gray-600"
   } flex`;
 
   const toggleAsideHandler = () => {

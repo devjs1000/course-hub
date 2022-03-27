@@ -21,7 +21,21 @@ const Card = ({ name, image, id }) => {
   );
 };
 
-export default () => {
+
+export default ({}) => {
+// 	const { user, myCourses, theme } = useStore();
+// 	const {loading,error, data}=useQuery(myProjectsQuery, {
+// 		variables:{
+// 			"userId": user.id
+// 		}
+// 	})
+
+// 	console.log(data);
+	
+// if(loading) return 'loading...'
+// if(error) return 'error'
+// console.log('assignment',data);
+
   const { myCourses } = useStore();
 
   console.log(myCourses, "assignment");
@@ -36,4 +50,5 @@ export default () => {
       </ErrorBoundary>
     </div>
   );
+
 };
