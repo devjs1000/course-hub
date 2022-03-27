@@ -19,6 +19,7 @@ import {
   Telephone,
   CardText,
   PersonSquare,
+  TagsFill,
 } from "react-bootstrap-icons";
 
 function FormControl({ type, label, onChange, icon }) {
@@ -44,6 +45,7 @@ function FormControl({ type, label, onChange, icon }) {
   if (icon === "PHONE") iconImg = <Telephone className={iconClass} />;
   if (icon === "DESCRIPTION") iconImg = <CardText className={iconClass} />;
   if (icon === "IMAGE") iconImg = <PersonSquare className={iconClass} />;
+  if (icon === "TAGS") iconImg = <TagsFill className={iconClass} />;
 
   return (
     <div className="relative top-0 left-0 w-full">
