@@ -3,10 +3,8 @@ import { createPortal } from "react-dom";
 import Button from "../../UI/Button";
 import CourseVideo from "../chapter/CourseVideo";
 import Overlay from "../../UI/Overlay";
-import { showRazorpay } from "./Razorpay";
 import useStore from "../../context/useStore";
 import useRazor from "./useRazor";
-import useStore from "../../context/useStore";
 import { Navigate } from "react-router-dom";
 function HeroSection({ course }) {
   const { myCourses } = useStore();
