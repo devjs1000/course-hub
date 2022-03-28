@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://xciteserver.herokuapp.com/xcite",
+  uri: "http://localhost:6900/xcite",
   cache: new InMemoryCache(),
 });
 

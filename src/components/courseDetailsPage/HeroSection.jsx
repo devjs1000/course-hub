@@ -3,16 +3,18 @@ import { createPortal } from "react-dom";
 import Button from "../../UI/Button";
 import CourseVideo from "../chapter/CourseVideo";
 import Overlay from "../../UI/Overlay";
-import { showRazorpay } from "./Razorpay";
-
+import useRazor from "./useRazor";
+import useStore from "../../context/useStore";
+import { Navigate } from "react-router-dom";
 function HeroSection({ course }) {
   const [openCourse, setOpenCourse] = useState(false);
   const [isNotSubcribed, setNotSubcribed] = useState(false);
-
+  const { showRazorpay } = useRazor();
   const openCourseHandler = () => {
     setOpenCourse(true);
   };
-
+const {user}=useStore()
+  
   const closeCourseHandler = () => {
     setOpenCourse(false);
   };
@@ -25,6 +27,11 @@ function HeroSection({ course }) {
     }
   }, [openCourse]);
 
+  const handleRazor = () => {
+    if(user.id){
+      showRazorpay(course.id, user.id);
+    }
+  };
   // { backgroundImage: `url(${course?.image})` }
   return (
     <>
@@ -54,10 +61,7 @@ function HeroSection({ course }) {
                 Get started
               </Button>
             ) : (
-              <Button
-                isPrimary={true}
-                onClick={() => showRazorpay(course.price)}
-              >
+              <Button isPrimary={true} onClick={handleRazor}>
                 Enroll
               </Button>
             )}

@@ -11,6 +11,7 @@ import { CardImage } from "react-bootstrap-icons";
 
 export default () => {
   const { user } = useStore();
+
   const [formData, setFormData] = useState({});
   const [createCourse] = useMutation(createCourseMutation);
   const [isImageSelected, setImageSelected] = useState(false);
