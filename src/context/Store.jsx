@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { postPrint } from "../bluePrint/contextPrint";
 
 import { useQuery } from "@apollo/client";
-import { allCoursesQuery } from "../graphql/Queries";
+import { allCoursesQuery,getUserById } from "../graphql/Queries";
+import jwt_decode from "jwt-decode";
 
 const Store = () => {
   
@@ -17,6 +18,18 @@ const Store = () => {
   const [assignments, setAssignments] = useState({});
   const [theme, setTheme] = useState(false)
 
+  let decoded = {id:null};
+  const token = localStorage.getItem("accessToken");
+  if(token){
+    decoded = jwt_decode(token, "anandpandit");
+  }
+
+  const { loading, error, data } = useQuery(getUserById,{
+    variables: {
+      getUserByIdId:decoded.id
+    } 
+  });
+       
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
 
@@ -29,6 +42,13 @@ const Store = () => {
     if (getAllCourses?.error?.message) {
       console.log(getAllCourses.error.message);
       setAllCoursesLoading(false);
+    }
+    if (data && data.getUserById) {
+      setUser(data.getUserById);
+      setUserLoading(false);
+    }
+    if (error) {
+      setUserLoading(false);
     }
   }, [getAllCourses?.data]);
 

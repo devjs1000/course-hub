@@ -25,7 +25,7 @@ function HeroSection({ course }) {
     } else {
       document.body.style = "overflow:auto;";
     }
-    const currentOrder = myCourses.find(eachCourse => eachCourse.courseId == course.id);
+    const currentOrder = myCourses.find(order => order.courseId == course.id);
     if(myCourses != null &&  currentOrder!= null ) {
       setNotSubcribed(true);
     }
