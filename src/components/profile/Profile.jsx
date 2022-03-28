@@ -15,11 +15,12 @@ import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 import { profileDesign } from "../../styles/styleObjects";
 const Profile = () => {
+
   const [openAside, setOpenAside] = useState(false);
   const [showNotificationCard, setShowNotificationCard] = useState(false);
   const { user, myCourses, setUser, theme, setTheme } = useStore();
   const [isTeacher, setIsTeacher] = useState(user.isInstructor);
-  
+
   useEffect(() => {
     setIsTeacher(user.isInstructor);
   }, [user]);
@@ -32,7 +33,7 @@ const Profile = () => {
   } flex items-center justify-between px-4 border-l lg:px-16`;
   const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`;
   const containerClasses = `${
-    theme ? "bg-slate-800  text-white" : "bg-white text-gray-600"
+    theme ? "bg-slate-800 text-white" : "bg-white text-gray-600"
   } flex`;
 
   const toggleAsideHandler = () => {
@@ -46,7 +47,7 @@ const Profile = () => {
   }  'bg-white text-gray-600' transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
   // =======
   const notificationToggleHandler = () => {
-    setShowNotificationCard(!showNotificationCard);
+    setShowNotificationCard(val=>!val);
   };
 
   const sidebarItems = [
@@ -67,9 +68,8 @@ const Profile = () => {
   {
     /*added conditional here - cjreads665*/
   }
-  const notificationCardClasses = `absolute overflow-auto max-h-[10rem] right-[5rem] top-[4rem] w-[20rem] rounded-md shadow-xl bg-white ${
-    showNotificationCard ? "opacity-100" : "opacity-0"
-  } z-50 transition-all duration-300`;
+  const notificationCardClasses = `absolute overflow-auto max-h-[10rem] right-[5rem] top-[4rem] w-[20rem] rounded-md shadow-xl bg-white 
+   z-50 transition-all duration-300`;
   //bg-white flex
   return (
     <>
@@ -130,7 +130,8 @@ const Profile = () => {
                 style={{ backgroundImage: `url(${user.image})` }}
               ></div>
             </div>
-            <div className={notificationCardClasses}>
+
+            <div className={notificationCardClasses}>f
               <h4 className="bg-gray-50 p-2 font-semibold text-center">
                 Notifications
               </h4>
@@ -148,6 +149,7 @@ const Profile = () => {
                 {/* notification end */}
               </div>
             </div>
+
           </nav>
           <div className="bg-white  lg:m-3 h-full w-full  z-[1000]">
             <Outlet />
