@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { postPrint } from "../bluePrint/contextPrint";
 
 import { useQuery } from "@apollo/client";
-import { allCoursesQuery,getUserById } from "../graphql/Queries";
+import { allCoursesQuery,getUserById,allPopularCoursesQuery } from "../graphql/Queries";
 import jwt_decode from "jwt-decode";
 
 const Store = () => {
@@ -13,6 +13,7 @@ const Store = () => {
   const [allCoursesData, setAllCoursesData] = useState([]);
   const [allPopularCoursesData, setAllPopularCoursesData] = useState([]);
   const [allCoursesLoading, setAllCoursesLoading] = useState(true);
+  const [allPopularCoursesLoading, setAllPopularCoursesLoading] = useState(true);
   const [posts, setPosts] = useState(postPrint);
   const [myCourses, setMyCourses] = useState([]);
   const [assignments, setAssignments] = useState({});
@@ -32,23 +33,36 @@ const Store = () => {
        
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
-
+  const getAllPopularCourses = useQuery(allPopularCoursesQuery);
+  
   /* Get All Courses Data */
   useEffect(() => {
     if (getAllCourses?.data?.courses) {
       setAllCoursesData(getAllCourses?.data?.courses);
       setAllCoursesLoading(false);
     }
-    if (getAllCourses?.error?.message) {
-      console.log(getAllCourses.error.message);
-      setAllCoursesLoading(false);
-    }
     if (data && data.getUserById) {
       setUser(data.getUserById);
       setUserLoading(false);
     }
+    if (getAllPopularCourses?.data?.popularCourses) {
+      let popularCourses = getAllPopularCourses.data.popularCourses;
+      if(popularCourses.length >6) {
+        popularCourses = popularCourses.slice(0,6);
+      }
+      console.log("popularCourses",popularCourses);
+      setAllPopularCoursesData(popularCourses);
+      setAllPopularCoursesLoading(false);
+    }
+    else {
+      setAllPopularCoursesLoading(false);
+    }
     if (error) {
       setUserLoading(false);
+    }
+    if (getAllCourses?.error?.message) {
+      console.log(getAllCourses.error.message);
+      setAllCoursesLoading(false);
     }
   }, [getAllCourses?.data]);
 
@@ -62,7 +76,8 @@ const Store = () => {
     setUserLoading,
 
     allPopularCoursesData,
-    setAllPopularCoursesData,
+    allPopularCoursesLoading,
+    setAllPopularCoursesLoading,
 
     allCoursesData,
     allCoursesLoading,
