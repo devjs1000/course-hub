@@ -1,0 +1,14 @@
+.swiper-wrapper {
+    width: 90%;
+    margin-right: 5%;
+}
+@media (min-width:1000px) {
+    .swiper-wrapper {
+        width: 70%;
+        margin-right: 5%;
+    }
+    .res-1048 {
+        width: 70%;
+        margin-right: 5%;
+    }
+}

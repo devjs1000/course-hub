@@ -3,10 +3,13 @@ import { createPortal } from "react-dom";
 import Button from "../../UI/Button";
 import CourseVideo from "../chapter/CourseVideo";
 import Overlay from "../../UI/Overlay";
+import { showRazorpay } from "./Razorpay";
+import useStore from "../../context/useStore";
 import useRazor from "./useRazor";
 import useStore from "../../context/useStore";
 import { Navigate } from "react-router-dom";
 function HeroSection({ course }) {
+  const { myCourses } = useStore();
   const [openCourse, setOpenCourse] = useState(false);
   const [isNotSubcribed, setNotSubcribed] = useState(false);
   const { showRazorpay } = useRazor();
@@ -25,7 +28,16 @@ const {user}=useStore()
     } else {
       document.body.style = "overflow:auto;";
     }
+    const currentOrder = myCourses.find(order => order.courseId == course.id);
+    if(myCourses != null &&  currentOrder!= null ) {
+      setNotSubcribed(true);
+    }
   }, [openCourse]);
+  console.log('Eval: 0 ',myCourses[0]);
+  console.log('Eval: 1 ',myCourses[1]);
+  console.log('Eval: ',myCourses.find(eachCourse => eachCourse.courseId == course.id));
+console.log('myCourses',myCourses);
+console.log('isNotSubcribed',isNotSubcribed);
 
   const handleRazor = () => {
     if(user.id){

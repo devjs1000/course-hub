@@ -20,12 +20,10 @@ const Profile = () => {
   const [showNotificationCard, setShowNotificationCard] = useState(false);
   const { user, myCourses, setUser, theme, setTheme } = useStore();
   const [isTeacher, setIsTeacher] = useState(user.isInstructor);
-  // console.log(myCourses);
+
   useEffect(() => {
     setIsTeacher(user.isInstructor);
   }, [user]);
-
-  // console.log(myCourses);
 
   const { logout } = useAuthHook();
   const joining = new Date(Date.parse(user.createdAt)).toDateString();
