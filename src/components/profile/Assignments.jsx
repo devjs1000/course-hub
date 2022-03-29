@@ -4,23 +4,8 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-
-const Card = ({ name, image, id }) => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/create-assignment");
-  };
-  return (
-    <div
-      onClick={handleClick}
-      className="shadow p-5 h-[20rem] w-[20rem]  rounded"
-    >
-      <img src={image} />
-      <div>{name}</div>
-    </div>
-  );
-};
-
+import {userOrdersQuery} from '../../graphql/queryComponent/order'
+import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
 // 	const { user, myCourses, theme } = useStore();
@@ -28,6 +13,11 @@ export default ({}) => {
 // 		variables:{
 // 			"userId": user.id
 // 		}
+ // {Children.toArray(
+ //          myCourses.map((a) => {
+ //            return a.id
+ //          })
+ //        )}
 // 	})
 
 // 	console.log(data);
@@ -36,18 +26,31 @@ export default ({}) => {
 // if(error) return 'error'
 // console.log('assignment',data);
 
-  const { myCourses } = useStore();
+  const { myCourses,user } = useStore();
+  const {data:projects} = useQuery(userOrdersQuery, {
+    variables: {
+      userId: user.id,
+    },
+  })
+  const {data:allCourses} = useQuery(allCoursesQuery, {
+    variables: {
+      userId: user.id,
+    },
+  })
 
-  console.log(myCourses, "assignment");
+  let projectArray = projects.getUserOrders
+  //get only the courses users is enrolled in
+  let courseIds =projectArray.map(a=>a.courseId)
+  // console.log(allCourses)
+  let allCoursesId = allCourses.courses.concat(projectArray)
+  allCoursesId.forEach(obj=>{
+    
+  })
+  console.log(allCoursesId)
+
   return (
     <div>
-      <ErrorBoundary FallbackComponent={"err"}>
-        {Children.toArray(
-          myCourses.map((a) => {
-            return <Card name={a?.id} image={a?.image} id={a?.id} />;
-          })
-        )}
-      </ErrorBoundary>
+     {user.id}
     </div>
   );
 
