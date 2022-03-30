@@ -10,12 +10,22 @@ import {allCoursesQuery} from '../../graphql/queryComponent/course'
 export default ({}) => {
 
   function makeCard(name,category,tagline,image){
-    return <div className='w-1/4 border border-4 border-gray-300 rounded h-48 cursor-pointer'>
+    return <div className='w-1/4 rounded h-96 cursor-pointer'>
     <Link to='/projects'>
-       <img src={image} alt="" className='h-16' className='object-cover w-full h-2/4' />
-        <h2 className='text-2xl text-center'>{name}</h2>
-        <p className='text-center'>{tagline}</p>
+      <div class="rounded overflow-hidden shadow-2xl h-full">
+      <img class="w-full" src={image} alt="course-image" className='h-2/4 w-full object-cover' />
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{name}</div>
+        <p class="text-gray-700 text-base">
+          {tagline}
+        </p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
+      </div>
+    </div>
     </Link>
+
     </div>
   }
 
