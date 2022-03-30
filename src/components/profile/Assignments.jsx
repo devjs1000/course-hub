@@ -8,32 +8,12 @@ import {userOrdersQuery} from '../../graphql/queryComponent/order'
 import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
-// 	const { user, myCourses, theme } = useStore();
-// 	const {loading,error, data}=useQuery(myProjectsQuery, {
-// 		variables:{
-// 			"userId": user.id
-// 		}
- // {Children.toArray(
- //          myCourses.map((a) => {
- //            return a.id
- //          })
- //        )}
-// 	})
 
-// 	console.log(data);
-	
-// if(loading) return 'loading...'
-// if(error) return 'error'
-// console.log('assignment',data);
-
-  const Card = (name)=>{
-    return <div>
-      {name}
-    </div>
+  function makeCard(name){
+    return <div>{name}</div>
   }
-  
 
-
+  const [enrolledCourses, setEnrolledCourses]=useState([])
   const { myCourses,user } = useStore();
   const {data:projects} = useQuery(userOrdersQuery, {
     variables: {
@@ -45,29 +25,57 @@ export default ({}) => {
       userId: user.id,
     },
   })
-  // console.log(projects)
-let myCourseId
-let dataToBeShown
-  async function runQueries(){
- myCourseId= await projects.getUserOrders.map(obj=>obj.courseId)
- dataToBeShown= await allCourses.courses.filter(eachObj=>{
+
+ async function runQueries(){
+ let myCourseId= await  projects.getUserOrders.map(obj=>obj.courseId)
+ let dataToBeShown= await allCourses.courses.filter(eachObj=>{
   return myCourseId.includes(eachObj.id) 
   })
-  return dataToBeShown
+ let k=dataToBeShown.map(obj=>makeCard(obj.name))
+  console.log(k)
+  setEnrolledCourses(k)
   }
- runQueries().then(dataToBeShown=>{
-  
- })
- 
+//run after redering
+useEffect(runQueries, [enrolledCourses])
+
  
   return (
     <div>
   {/* the cards*/}
      <section>
-       {
-       }
+      {enrolledCourses}
      </section>
     </div>
   );
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  const { user, myCourses, theme } = useStore();
+//  const {loading,error, data}=useQuery(myProjectsQuery, {
+//    variables:{
+//      "userId": user.id
+//    }
+ // {Children.toArray(
+ //          myCourses.map((a) => {
+ //            return a.id
+ //          })
+ //        )}
+//  })
+
+//  console.log(data);
+  
+// if(loading) return 'loading...'
+// if(error) return 'error'
+// console.log('assignment',data);
