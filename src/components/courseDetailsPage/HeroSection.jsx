@@ -78,10 +78,15 @@ console.log('isNotSubcribed',isNotSubcribed);
           </div>
         </div>
         <div
-          className="bg-cover bg-no-repeat bg-center rounded-md relative overflow-hidden after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
+          className="bg-cover bg-no-repeat bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
           style={{ backgroundImage: `url(${course?.image})` }}
-        ></div>
+        >
+          <span className="absolute z-10 top-[16rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
+            ₹ {course?.price}/-{" "}
+          </span>
+        </div>
       </div>
+
       {openCourse &&
         createPortal(
           <CourseVideo closeModal={closeCourseHandler} />,
