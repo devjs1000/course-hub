@@ -9,8 +9,14 @@ import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
 
-  function makeCard(name){
-    return <div>{name}</div>
+  function makeCard(name,category,tagline,image){
+    return <div className='w-1/4 border border-4 border-gray-300 rounded h-48 cursor-pointer'>
+    <Link to='/projects'>
+       <img src={image} alt="" className='h-16' className='object-cover w-full h-2/4' />
+        <h2 className='text-2xl text-center'>{name}</h2>
+        <p className='text-center'>{tagline}</p>
+    </Link>
+    </div>
   }
 
   const [enrolledCourses, setEnrolledCourses]=useState([])
@@ -31,18 +37,20 @@ export default ({}) => {
  let dataToBeShown= await allCourses.courses.filter(eachObj=>{
   return myCourseId.includes(eachObj.id) 
   })
- let k=dataToBeShown.map(obj=>makeCard(obj.name))
+ console.log(dataToBeShown)
+ let k=dataToBeShown.map(obj=>makeCard(obj.name, obj.category,obj.tagline, obj.image))
   console.log(k)
   setEnrolledCourses(k)
   }
+  let dummyVal=1
 //run after redering
-useEffect(runQueries, [enrolledCourses])
+useEffect(runQueries, [dummyVal])
 
  
   return (
     <div>
   {/* the cards*/}
-     <section>
+     <section className='flex flex-row justify-around'>
       {enrolledCourses}
      </section>
     </div>
