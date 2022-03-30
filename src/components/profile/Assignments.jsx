@@ -12,16 +12,16 @@ export default ({}) => {
   function makeCard(name,category,tagline,image){
     return <div className='w-1/4 rounded h-96 cursor-pointer'>
     <Link to='/projects'>
-      <div class="rounded overflow-hidden shadow-2xl h-full">
-      <img class="w-full" src={image} alt="course-image" className='h-2/4 w-full object-cover' />
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{name}</div>
-        <p class="text-gray-700 text-base">
+      <div className="rounded overflow-hidden shadow-2xl h-full">
+      <img src={image} alt="course-image" className='h-2/4 w-full object-cover' />
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{name}</div>
+        <p className="text-gray-700 text-base">
           {tagline}
         </p>
       </div>
-      <div class="px-6 pt-4 pb-2">
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
+      <div className="px-6 pt-4 pb-2">
+        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
       </div>
     </div>
     </Link>
@@ -43,7 +43,8 @@ export default ({}) => {
   })
 
  async function runQueries(){
- let myCourseId= await  projects.getUserOrders.map(obj=>obj.courseId)
+  try{
+    let myCourseId= await  projects.getUserOrders.map(obj=>obj.courseId)
  let dataToBeShown= await allCourses.courses.filter(eachObj=>{
   return myCourseId.includes(eachObj.id) 
   })
@@ -52,11 +53,14 @@ export default ({}) => {
   console.log(k)
   setEnrolledCourses(k)
   }
+ catch{
+  setEnrolledCourses('loading......')
+ }
+  }
   let dummyVal=1
 //run after redering
-useEffect(runQueries, [dummyVal])
+useEffect(runQueries, [projects || allCourses])
 
- 
   return (
     <div>
   {/* the cards*/}
