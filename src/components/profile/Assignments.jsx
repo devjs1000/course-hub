@@ -26,6 +26,14 @@ export default ({}) => {
 // if(error) return 'error'
 // console.log('assignment',data);
 
+  const Card = (name)=>{
+    return <div>
+      {name}
+    </div>
+  }
+  
+
+
   const { myCourses,user } = useStore();
   const {data:projects} = useQuery(userOrdersQuery, {
     variables: {
@@ -37,20 +45,28 @@ export default ({}) => {
       userId: user.id,
     },
   })
-
-  let projectArray = projects.getUserOrders
-  //get only the courses users is enrolled in
-  let courseIds =projectArray.map(a=>a.courseId)
-  // console.log(allCourses)
-  let allCoursesId = allCourses.courses.concat(projectArray)
-  allCoursesId.forEach(obj=>{
-    
+  // console.log(projects)
+let myCourseId
+let dataToBeShown
+  async function runQueries(){
+ myCourseId= await projects.getUserOrders.map(obj=>obj.courseId)
+ dataToBeShown= await allCourses.courses.filter(eachObj=>{
+  return myCourseId.includes(eachObj.id) 
   })
-  console.log(allCoursesId)
-
+  return dataToBeShown
+  }
+ runQueries().then(dataToBeShown=>{
+  
+ })
+ 
+ 
   return (
     <div>
-     {user.id}
+  {/* the cards*/}
+     <section>
+       {
+       }
+     </section>
     </div>
   );
 
