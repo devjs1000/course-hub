@@ -4,51 +4,96 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import {userOrdersQuery} from '../../graphql/queryComponent/order'
+import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
-const Card = ({ name, image, id }) => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/create-assignment");
-  };
+export default ({}) => {
+
+  function makeCard(name,category,tagline,image){
+    return <div className='w-1/4 rounded h-96 cursor-pointer'>
+    <Link to='/projects'>
+      <div class="rounded overflow-hidden shadow-2xl h-full">
+      <img class="w-full" src={image} alt="course-image" className='h-2/4 w-full object-cover' />
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{name}</div>
+        <p class="text-gray-700 text-base">
+          {tagline}
+        </p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
+      </div>
+    </div>
+    </Link>
+
+    </div>
+  }
+
+  const [enrolledCourses, setEnrolledCourses]=useState([])
+  const { myCourses,user } = useStore();
+  const {data:projects} = useQuery(userOrdersQuery, {
+    variables: {
+      userId: user.id,
+    },
+  })
+  const {data:allCourses} = useQuery(allCoursesQuery, {
+    variables: {
+      userId: user.id,
+    },
+  })
+
+ async function runQueries(){
+ let myCourseId= await  projects.getUserOrders.map(obj=>obj.courseId)
+ let dataToBeShown= await allCourses.courses.filter(eachObj=>{
+  return myCourseId.includes(eachObj.id) 
+  })
+ console.log(dataToBeShown)
+ let k=dataToBeShown.map(obj=>makeCard(obj.name, obj.category,obj.tagline, obj.image))
+  console.log(k)
+  setEnrolledCourses(k)
+  }
+  let dummyVal=1
+//run after redering
+useEffect(runQueries, [dummyVal])
+
+ 
   return (
-    <div
-      onClick={handleClick}
-      className="shadow p-5 h-[20rem] w-[20rem]  rounded"
-    >
-      <img src={image} />
-      <div>{name}</div>
+    <div>
+  {/* the cards*/}
+     <section className='flex flex-row justify-around'>
+      {enrolledCourses}
+     </section>
     </div>
   );
+
 };
 
 
-export default ({}) => {
-// 	const { user, myCourses, theme } = useStore();
-// 	const {loading,error, data}=useQuery(myProjectsQuery, {
-// 		variables:{
-// 			"userId": user.id
-// 		}
-// 	})
 
-// 	console.log(data);
-	
+
+
+
+
+
+
+
+
+
+
+//  const { user, myCourses, theme } = useStore();
+//  const {loading,error, data}=useQuery(myProjectsQuery, {
+//    variables:{
+//      "userId": user.id
+//    }
+ // {Children.toArray(
+ //          myCourses.map((a) => {
+ //            return a.id
+ //          })
+ //        )}
+//  })
+
+//  console.log(data);
+  
 // if(loading) return 'loading...'
 // if(error) return 'error'
 // console.log('assignment',data);
-
-  const { myCourses } = useStore();
-
-  console.log(myCourses, "assignment");
-  return (
-    <div>
-      <ErrorBoundary FallbackComponent={"err"}>
-        {Children.toArray(
-          myCourses.map((a) => {
-            return <Card name={a?.id} image={a?.image} id={a?.id} />;
-          })
-        )}
-      </ErrorBoundary>
-    </div>
-  );
-
-};
