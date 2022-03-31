@@ -1,18 +1,20 @@
-import CreateAssignment from './CreateAssignment';
-import CreateCourse from './CreateCourse';
-import CreateQuiz from './CreateQuiz';
-import Footer from './Footer';
-import Courses from './Courses';
-import PrivateRoute from './PrivateRoute';
+import CreateAssignment from "./CreateAssignment";
+import CreateCourse from "./CreateCourse";
+import CreateQuiz from "./CreateQuiz";
+import CreateChapter from "./CreateChapter";
+import Footer from "./Footer";
+import Courses from "./Courses";
+import PrivateRoute from "./PrivateRoute";
 
-import Tags from './Tags';
+import Tags from "./Tags";
 
 export {
-	CreateAssignment,
-	CreateCourse,
-	CreateQuiz,
-	Footer,
-	Courses,
-	PrivateRoute,
-	Tags,
+  CreateAssignment,
+  CreateCourse,
+  CreateQuiz,
+  CreateChapter,
+  Footer,
+  Courses,
+  PrivateRoute,
+  Tags,
 };

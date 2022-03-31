@@ -49,12 +49,13 @@ export default () => {
   return (
     <>
       <div className="bg-white py-8 px-16">
+        <h1 className="mb-4 font-bold text-lg">New Course</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormControl
             onChange={handleChange}
             type="text"
             label="name"
-            icon=""
+            icon="BOOK"
           />
           <FormControl
             onChange={handleChange}

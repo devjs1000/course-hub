@@ -1,11 +1,12 @@
 import { useState, useEffect, lazy, Suspense, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import useStore from './context/useStore'
+import useStore from "./context/useStore";
 
 import {
   CreateAssignment,
   CreateCourse,
   CreateQuiz,
+  CreateChapter,
   Footer,
   Courses,
   PrivateRoute,
@@ -32,12 +33,12 @@ import AllCourses from "./components/courses/AllCourses";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  let stylesForProfile = 'bg-red-800';
-  useEffect( () => {
+  let stylesForProfile = "bg-red-800";
+  useEffect(() => {
     setLoading(false);
   }, []);
 
-//18 Mar 2022 - added Global Context from ThemeContext
+  //18 Mar 2022 - added Global Context from ThemeContext
   return (
     <>
       {loading ? (
@@ -77,6 +78,7 @@ function App() {
 
               <Route path="/Community" element={<Community />} />
               <Route path="/create-course" element={<CreateCourse />} />
+              <Route path="/create-chapter" element={<CreateChapter />} />
               <Route path="/create-quiz" element={<CreateQuiz />} />
               <Route path="/create-assignment" element={<CreateAssignment />} />
 
