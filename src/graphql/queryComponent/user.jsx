@@ -11,6 +11,7 @@ query GetUserById($getUserByIdId: ID!) {
       password
       phone
       token
+      role
     }
   }
 `;
@@ -26,6 +27,7 @@ query GetUserByEmail($email: String) {
       description
       phone
       token
+      role
     }
   }
 `;
