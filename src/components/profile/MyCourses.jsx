@@ -20,6 +20,7 @@ function MyCourses() {
     },
   });
 
+  console.log(user)
   useEffect(() => {
     console.log(user);
     if (data != null && data != undefined) {
@@ -36,7 +37,7 @@ function MyCourses() {
     <>
       <ErrorBoundary>
         {user.role === "teacher" && (
-          <nav className="shadow my-4  mx - 2 inline-block m2">
+          <nav className="px-2 h-[3rem] flex items-center my-4">
             <Link
               className="bg-red-700 text-white px-4 py-2 rounded-sm"
               to="/create-course"
@@ -45,45 +46,21 @@ function MyCourses() {
             </Link>
           </nav>
         )}
-        {/* <div className="px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16"> */}
-        <Swiper
-          style={{
-            "--swiper-navigation-color": "#000",
-          }}
-          breakpoints={{
-            // when window width is >= 640px
-            640: {
-              width: 640,
-              slidesPerView: 1,
-            },
-            // when window width is >= 768px
-            768: {
-              width: 768,
-              slidesPerView: 2,
-            },
-            // when window width is >= 1480px
-            1480: {
-              width: 1480,
-              slidesPerView: 3,
-            },
-          }}
-          navigation={true}
-          modules={[Navigation]}
-          className="py-4 lg:py-8"
-        >
-          {data?.getUserOrders.map((a) => {
+        <div className="flex flex-wrap gap-6 justify-around">
+
+          {Children.toArray(data?.getUserOrders.map((a) => {
             return (
-              <SwiperSlide key={a.courseId}>
+            
                 <CourseCard
                   id={a.courseId}
                   enrolled={true}
                   userRole={user.role}
                 />
-              </SwiperSlide>
+            
             );
-          })}
-        </Swiper>
-        {/* </div> */}
+          }))}
+       
+        </div>
       </ErrorBoundary>
     </>
   );

@@ -151,7 +151,7 @@ const Profile = () => {
             </div>
 
           </nav>
-          <div className="bg-white  lg:m-3 h-full w-full  z-[1000]">
+          <div className="bg-white  lg:m-3 h-full   z-[1000]">
             <Outlet />
           </div>
         </main>
