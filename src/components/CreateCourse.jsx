@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import FormControl from "../UI/FormControl";
 import Button from "../UI/Button";
 // import { createCourse } from "../fetch/courseApi";
-import { uploadImage } from "../fetch/cloudinaryApi";
-import { Upload } from "react-bootstrap-icons";
 import useStore from "../context/useStore";
 import { createCourseMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
@@ -49,12 +47,13 @@ export default () => {
   return (
     <>
       <div className="bg-white py-8 px-16">
+        <h1 className="mb-4 font-bold text-lg">New Course</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormControl
             onChange={handleChange}
             type="text"
             label="name"
-            icon=""
+            icon="BOOK"
           />
           <FormControl
             onChange={handleChange}
@@ -78,7 +77,7 @@ export default () => {
             type="text"
             onChange={handleChange}
             label="about"
-            icon=""
+            icon="ABOUT"
           />
           <FormControl
             type="number"

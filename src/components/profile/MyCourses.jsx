@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import CourseCard from "../courses/CourseCard";
-import OngoingCourseCard from "./OngoingCourseCard";
 import { userOrdersQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
@@ -13,7 +12,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import "./mycourses.css";
 
 function MyCourses() {
-
   const { user, setMyCourses } = useStore();
 
   const { data, error, loading } = useQuery(userOrdersQuery, {
@@ -22,9 +20,9 @@ function MyCourses() {
     },
   });
 
-
   useEffect(() => {
-    if(data != null && data != undefined){
+    console.log(user);
+    if (data != null && data != undefined) {
       setMyCourses(data.getUserOrders);
     }
   }, [data]);
@@ -33,21 +31,24 @@ function MyCourses() {
   if (error) return "error";
 
   console.log(data);
-  const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`
+  const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`;
   return (
-
     <>
-    <ErrorBoundary>
-      <nav className="shadow px-4 py-2 inline-block m2">
-        <Link className="bg-red-700 text-white px-4 py-1" to="/create-course">
-          create course
-        </Link>
-      </nav>
-      {/* <div className="px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16"> */}
+      <ErrorBoundary>
+        {user.role === "teacher" && (
+          <nav className="shadow my-4  mx - 2 inline-block m2">
+            <Link
+              className="bg-red-700 text-white px-4 py-2 rounded-sm"
+              to="/create-course"
+            >
+              create course
+            </Link>
+          </nav>
+        )}
+        {/* <div className="px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16"> */}
         <Swiper
           style={{
             "--swiper-navigation-color": "#000",
-
           }}
           breakpoints={{
             // when window width is >= 640px
@@ -70,21 +71,21 @@ function MyCourses() {
           modules={[Navigation]}
           className="py-4 lg:py-8"
         >
-          {
-          data?.getUserOrders.map((a) => {
+          {data?.getUserOrders.map((a) => {
             return (
               <SwiperSlide key={a.courseId}>
-                <CourseCard id={a.courseId} enrolled={true}/>
+                <CourseCard
+                  id={a.courseId}
+                  enrolled={true}
+                  userRole={user.role}
+                />
               </SwiperSlide>
             );
-          })
-        }
-        
+          })}
         </Swiper>
-      {/* </div> */}
+        {/* </div> */}
       </ErrorBoundary>
     </>
-
   );
 }
 

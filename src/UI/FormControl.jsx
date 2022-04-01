@@ -20,6 +20,9 @@ import {
   CardText,
   PersonSquare,
   TagsFill,
+  Book,
+  PlusSquareFill,
+  Receipt,
 } from "react-bootstrap-icons";
 
 function FormControl({ type, label, onChange, icon }) {
@@ -46,6 +49,9 @@ function FormControl({ type, label, onChange, icon }) {
   if (icon === "DESCRIPTION") iconImg = <CardText className={iconClass} />;
   if (icon === "IMAGE") iconImg = <PersonSquare className={iconClass} />;
   if (icon === "TAGS") iconImg = <TagsFill className={iconClass} />;
+  if (icon === "BOOK") iconImg = <Book className={iconClass} />;
+  if (icon === "ABOUT") iconImg = <PlusSquareFill className={iconClass} />;
+  if (icon === "PROJECT") iconImg = <Receipt className={iconClass} />;
 
   return (
     <div className="relative top-0 left-0 w-full">
