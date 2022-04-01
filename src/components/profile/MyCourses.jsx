@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import CourseCard from "../courses/CourseCard";
-import OngoingCourseCard from "./OngoingCourseCard";
 import { userOrdersQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
@@ -22,7 +21,7 @@ function MyCourses() {
   });
 
   useEffect(() => {
-    console.log(user, "teacher");
+    console.log(user);
     if (data != null && data != undefined) {
       setMyCourses(data.getUserOrders);
     }

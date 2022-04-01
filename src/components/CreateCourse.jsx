@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import FormControl from "../UI/FormControl";
 import Button from "../UI/Button";
 // import { createCourse } from "../fetch/courseApi";
-import { uploadImage } from "../fetch/cloudinaryApi";
-import { Upload } from "react-bootstrap-icons";
 import useStore from "../context/useStore";
 import { createCourseMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
@@ -79,7 +77,7 @@ export default () => {
             type="text"
             onChange={handleChange}
             label="about"
-            icon=""
+            icon="ABOUT"
           />
           <FormControl
             type="number"

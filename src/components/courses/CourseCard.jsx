@@ -19,7 +19,7 @@ const CourseCard = ({ id, drill = false, userRole }) => {
       <Link
         to={
           userRole === "teacher"
-            ? "/create-chapter"
+            ? `/create-chapter/${current?.id}`
             : `coursedetails/${current?.id}`
         }
       >

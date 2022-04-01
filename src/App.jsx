@@ -78,7 +78,7 @@ function App() {
 
               <Route path="/Community" element={<Community />} />
               <Route path="/create-course" element={<CreateCourse />} />
-              <Route path="/create-chapter" element={<CreateChapter />} />
+              <Route path="/create-chapter/:id" element={<CreateChapter />} />
               <Route path="/create-quiz" element={<CreateQuiz />} />
               <Route path="/create-assignment" element={<CreateAssignment />} />
 

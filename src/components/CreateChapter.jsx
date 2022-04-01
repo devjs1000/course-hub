@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import FormControl from "../UI/FormControl";
 import Button from "../UI/Button";
 import useStore from "../context/useStore";
-import { createCourseMutation } from "../graphql/Mutations";
+import { createChapterMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
+import { useParams } from "react-router-dom";
 
 const CreateChapter = () => {
   const { user } = useStore();
+  const { id } = useParams();
 
   const [formData, setFormData] = useState({});
-  const [createCourse] = useMutation(createCourseMutation);
-  const [isImageSelected, setImageSelected] = useState(false);
+  const [createChapter] = useMutation(createChapterMutation);
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -20,12 +21,11 @@ const CreateChapter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createCourse({
+    createChapter({
       variables: {
         ...formData,
         teacherId: user.id,
-        // image:
-        //   "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+        courseId: id,
       },
     });
   };
@@ -39,31 +39,25 @@ const CreateChapter = () => {
             onChange={handleChange}
             type="text"
             label="name"
-            icon=""
+            icon="BOOK"
           />
           <FormControl
             onChange={handleChange}
             type="text"
-            label="description"
-            icon="TAGLINE"
-          />
-          <FormControl
-            type="text"
-            onChange={handleChange}
-            label="tags"
-            icon="TAGS"
-          />
-          <FormControl
-            type="text"
-            onChange={handleChange}
-            label="category"
-            icon=""
+            label="video"
+            icon="VIDEO"
           />
           <FormControl
             type="text"
             onChange={handleChange}
             label="about"
-            icon=""
+            icon="ABOUT"
+          />
+          <FormControl
+            type="text"
+            onChange={handleChange}
+            label="project"
+            icon="PROJECT"
           />
 
           <Button type="submit" isWidthFull={true} isPrimary={true}>
