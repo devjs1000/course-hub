@@ -18,7 +18,7 @@ const InstructorCard = ({ image }) => {
 			>
 				&nbsp;
 			</div>
-			<div className="flex-[0.8] p-4 flex flex-col items-start gap-4">
+			<div className="flex-[0.8] p-4 flex flex-col items-start gap-4 h-[275px]">
 				<div>
 					<h6 className="text-2xl font-semibold">John Doe</h6>
 					<span>Professional React Developer</span>
@@ -32,7 +32,9 @@ const InstructorCard = ({ image }) => {
 					<Instagram />
 					<Twitter />
 					<Linkedin />
+					
 				</div>
+				
 			</div>
 		</div>
 	);
@@ -47,7 +49,7 @@ function Teachers() {
 				subHeading="Instructors"
 				heading="Our professional & Expert Course Instructors"
 			/>
-			<div className="w-full grid grid-cols-1 gap-4 mt-16 md:grid-cols-2">
+			<div className="w-full grid grid-rows-4 gap-4 mt-16">
 				<InstructorCard image={instOneImage} />
 				<InstructorCard image={instTwoImage} />
 				<InstructorCard image={instThreeImage} />
