@@ -6,10 +6,10 @@ import Overlay from "../../UI/Overlay";
 import useStore from "../../context/useStore";
 import useRazor from "./useRazor";
 import { Navigate } from "react-router-dom";
-function HeroSection({ course }) {
-  const { myCourses } = useStore();
+function HeroSection({ course, id }) {
+  const { myCourses,  } = useStore();
   const [openCourse, setOpenCourse] = useState(false);
-  const [isNotSubcribed, setNotSubcribed] = useState(false);
+  const [isSubcribed, setSubcribed] = useState(false);
   const { showRazorpay } = useRazor();
   const openCourseHandler = () => {
     setOpenCourse(true);
@@ -26,16 +26,22 @@ const {user}=useStore()
     } else {
       document.body.style = "overflow:auto;";
     }
-    const currentOrder = myCourses.find(order => order.courseId == course.id);
-    if(myCourses != null &&  currentOrder!= null ) {
-      setNotSubcribed(true);
+    console.log("user",user)
+    console.log("course",course)
+    console.log("myCourses",myCourses)
+    console.log("user && course.subscribers && course.subscribers.includes(user.id)",user && course.subscribers && course.subscribers.includes(user.id))
+    console.log("myCourses.length != 0",myCourses.length != 0)
+    if (user && course.subscribers && course.subscribers.includes(user.id)) {
+      setSubcribed(true);
+    }
+    if (myCourses.length != 0) {
+      console.log("myCourses.filter((courseItem)=>courseItem.id == id)",myCourses.filter((courseItem)=>courseItem.id == id))
+      const course = myCourses.filter((courseItem)=>courseItem.id == id);
+      if (course && course[0] && course[0].id) {
+        setSubcribed(true);
+      }
     }
   }, [openCourse]);
-  console.log('Eval: 0 ',myCourses[0]);
-  console.log('Eval: 1 ',myCourses[1]);
-  console.log('Eval: ',myCourses.find(eachCourse => eachCourse.courseId == course.id));
-console.log('myCourses',myCourses);
-console.log('isNotSubcribed',isNotSubcribed);
 
   const handleRazor = () => {
     if(user.id){
@@ -66,7 +72,7 @@ console.log('isNotSubcribed',isNotSubcribed);
                 })
               )}
             </div>
-            {isNotSubcribed ? (
+            {isSubcribed ? (
               <Button isPrimary={true} onClick={openCourseHandler}>
                 Get started
               </Button>
