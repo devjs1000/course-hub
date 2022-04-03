@@ -9,9 +9,12 @@ import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
 
-  function makeCard(name,category,tagline,image){
-    return <div className='w-1/4 rounded h-96 cursor-pointer'>
-    <Link to='/projects'>
+  function makeCard(name,category,tagline,image,id){
+    let path = `/chapters/chapterdetails/${id}`
+    return <div className='w-full rounded h-96 cursor-pointer'>
+    <Link to={
+      path
+    }>
       <div className="rounded overflow-hidden shadow-2xl h-full">
       <img src={image} alt="course-image" className='h-2/4 w-full object-cover' />
       <div className="px-6 py-4">
@@ -49,7 +52,7 @@ export default ({}) => {
   return myCourseId.includes(eachObj.id) 
   })
  console.log(dataToBeShown)
- let k=dataToBeShown.map(obj=>makeCard(obj.name, obj.category,obj.tagline, obj.image))
+ let k=dataToBeShown.map(obj=>makeCard(obj.name, obj.category,obj.tagline, obj.image, obj.id))
   console.log(k)
   setEnrolledCourses(k)
   }
@@ -57,14 +60,15 @@ export default ({}) => {
   setEnrolledCourses('loading......')
  }
   }
-  let dummyVal=1
+
+
 //run after redering
 useEffect(runQueries, [projects || allCourses])
 
   return (
     <div>
   {/* the cards*/}
-     <section className='flex flex-row justify-around'>
+     <section className='px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:px-16'>
       {enrolledCourses}
      </section>
     </div>

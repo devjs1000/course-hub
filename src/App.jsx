@@ -24,7 +24,7 @@ import {
 import Community from "./components/Community/Community";
 import { Home, CourseDetails, NotFound } from "./pages";
 import { Login, Signup } from "./components/Auth";
-
+import Chapters from './components/Chapters'
 import Navbar from "./components/header/Navbar";
 import Loading from "./UI/BoxLoading";
 import Contact from "./components/ContactUs/ContactUs";
@@ -91,6 +91,10 @@ function App() {
               <Route
                 path="my-profile/courses/coursedetails/:id"
                 element={<CourseDetails />}
+              />
+              <Route
+                path="/chapters/chapterdetails/:id"
+                element={<Chapters />}
               />
             </Routes>
             <Footer />
