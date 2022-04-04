@@ -4,42 +4,42 @@ import NextChapterChip from "./nextChapterChip";
 import Modal from "./modal";
 import VideoPlayer from "./videoPlayer";
 
-const CourseVideo = ({ closeModal }) => {
+const CourseVideo = ({ closeModal, chapters, courseName }) => {
   const [nextVideos, setNextVideos] = useState(videos);
   const [current, setCurrent] = useState({
-    title: "Lesson 1",
-    videoLength: 11.3,
-    status: false,
-    completion: "0%",
-    src: "",
+    vidPoster:"https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700",
+    title:"Wellcome, Tap the chapters to begin"
   });
+  console.log('chapters',chapters);
   return (
     <>
-      <Modal close={closeModal} title={"watching course"}>
-        <div>
-          <VideoPlayer
-            vidSrc={current.src}
-            title={current.title}
-            status={current.status}
-            completion={current.completion}
-            videoLength={current.videoLength}
-          />
-        </div>
-        <div className="overflow-auto h-[40vh] pb-[8rem]">
-          {Children.toArray(
-            nextVideos?.map((vid) => {
-              return (
-                <NextChapterChip
-                  setter={setCurrent}
-                  status={vid.status}
-                  completion={vid.completion}
-                  src={vid.src}
-                  title={vid.title}
-                  videoLength={vid.videoLength}
-                />
-              );
-            })
-          )}
+      <Modal close={closeModal} title={courseName}>
+        <div className="w-full flex flex-wrap p-1 py-2">
+          <div className="w-full md:w-8/12">
+            <VideoPlayer
+              vidSrc={current.src}
+              title={current.title}
+              vidPoster={current.vidPoster}
+              // status={current.status}
+              // comchapterspletion={current.completion}
+              // videoLength={current.videoLength}
+            />
+          </div>
+          <div className="overflow-auto h-[40vh] pb-[8rem] w-full md:h-[98vh] md:px-3 md:w-4/12">
+            {Children.toArray(
+              chapters?.map((vid) => {
+                return (
+                  <NextChapterChip
+                    setter={setCurrent}
+                    src={vid.video}
+                    title={vid.name}
+                    description={vid.about}
+                    assignment={vid.project}
+                  />
+                );
+              })
+            )}
+          </div>
         </div>
       </Modal>
     </>

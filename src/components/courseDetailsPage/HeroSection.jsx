@@ -6,19 +6,29 @@ import Overlay from "../../UI/Overlay";
 import useStore from "../../context/useStore";
 import useRazor from "./useRazor";
 import { Navigate } from "react-router-dom";
-function HeroSection({ course }) {
-  const { myCourses } = useStore();
+import { getChaptersQuery } from "../../graphql/Queries";
+import { useQuery } from "@apollo/client";
+
+function HeroSection({ course, id }) {
+  const { myCourses,  } = useStore();
+  const [chapters,setChapters] = useState([]);
   const [openCourse, setOpenCourse] = useState(false);
-  const [isNotSubcribed, setNotSubcribed] = useState(false);
+  const [isSubcribed, setSubcribed] = useState(false);
   const { showRazorpay } = useRazor();
   const openCourseHandler = () => {
     setOpenCourse(true);
   };
-const {user}=useStore()
+  const {user}=useStore()
   
   const closeCourseHandler = () => {
     setOpenCourse(false);
   };
+
+  const { loading, data, error } = useQuery(getChaptersQuery,{
+    variables:{
+      courseId: course.id,
+    }
+  });
 
   useEffect(() => {
     if (openCourse) {
@@ -26,16 +36,20 @@ const {user}=useStore()
     } else {
       document.body.style = "overflow:auto;";
     }
-    const currentOrder = myCourses.find(order => order.courseId == course.id);
-    if(myCourses != null &&  currentOrder!= null ) {
-      setNotSubcribed(true);
+    
+    if (user && course.subscribers && course.subscribers.includes(user.id)) {
+      setSubcribed(true);
+    }
+    if (myCourses.length != 0) {
+      const course = myCourses.filter((courseItem)=>courseItem.id == id);
+      if (course && course[0] && course[0].id) {
+        setSubcribed(true);
+      }
+    }
+    if (data && data.chapters) {
+      setChapters(data.chapters);
     }
   }, [openCourse]);
-  console.log('Eval: 0 ',myCourses[0]);
-  console.log('Eval: 1 ',myCourses[1]);
-  console.log('Eval: ',myCourses.find(eachCourse => eachCourse.courseId == course.id));
-console.log('myCourses',myCourses);
-console.log('isNotSubcribed',isNotSubcribed);
 
   const handleRazor = () => {
     if(user.id){
@@ -66,7 +80,7 @@ console.log('isNotSubcribed',isNotSubcribed);
                 })
               )}
             </div>
-            {isNotSubcribed ? (
+            {isSubcribed ? (
               <Button isPrimary={true} onClick={openCourseHandler}>
                 Get started
               </Button>
@@ -78,7 +92,7 @@ console.log('isNotSubcribed',isNotSubcribed);
           </div>
         </div>
         <div
-          className="bg-cover bg-no-repeat bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
+          className="bg-cover bg-no-rnextVideosepeat bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
           style={{ backgroundImage: `url(${course?.image})` }}
         >
           <span className="absolute z-10 top-[16rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
@@ -89,7 +103,7 @@ console.log('isNotSubcribed',isNotSubcribed);
 
       {openCourse &&
         createPortal(
-          <CourseVideo closeModal={closeCourseHandler} />,
+          <CourseVideo closeModal={closeCourseHandler} chapters={chapters} courseName={course.name}/>,
           document.getElementById("video-section")
         )}
       {openCourse &&

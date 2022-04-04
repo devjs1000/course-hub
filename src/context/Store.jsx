@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { postPrint } from "../bluePrint/contextPrint";
 
 import { useQuery } from "@apollo/client";
-import { allCoursesQuery,getUserById,allPopularCoursesQuery } from "../graphql/Queries";
+import { allCoursesQuery,getUserById,allPopularCoursesQuery,myCousesQuery } from "../graphql/Queries";
 import jwt_decode from "jwt-decode";
 
 const Store = () => {
@@ -30,6 +30,12 @@ const Store = () => {
       getUserByIdId:decoded.id
     } 
   });
+
+  const myCoursedata = useQuery(myCousesQuery,{
+    variables:{
+      userId:decoded.id
+    }
+  });
        
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
@@ -37,6 +43,20 @@ const Store = () => {
   
   /* Get All Courses Data */
   useEffect(() => {
+    if (getAllPopularCourses?.data?.popularCourses) {
+      let popularCourses = getAllPopularCourses.data.popularCourses;
+      if(popularCourses.length >6) {
+        popularCourses = popularCourses.slice(0,6);
+      }
+      setAllPopularCoursesData(popularCourses);
+      setAllPopularCoursesLoading(false);
+    }
+    else {
+      setAllPopularCoursesLoading(false);
+    }
+    if(myCoursedata?.data?.myCourses) {
+      setMyCourses(myCoursedata?.data?.myCourses);
+    }
     if (getAllCourses?.data?.courses) {
       setAllCoursesData(getAllCourses?.data?.courses);
       setAllCoursesLoading(false);
@@ -45,23 +65,10 @@ const Store = () => {
       setUser(data.getUserById);
       setUserLoading(false);
     }
-    if (getAllPopularCourses?.data?.popularCourses) {
-      let popularCourses = getAllPopularCourses.data.popularCourses;
-      if(popularCourses.length >6) {
-        popularCourses = popularCourses.slice(0,6);
-      }
-      console.log("popularCourses",popularCourses);
-      setAllPopularCoursesData(popularCourses);
-      setAllPopularCoursesLoading(false);
-    }
-    else {
-      setAllPopularCoursesLoading(false);
-    }
     if (error) {
       setUserLoading(false);
     }
     if (getAllCourses?.error?.message) {
-      console.log(getAllCourses.error.message);
       setAllCoursesLoading(false);
     }
   }, [getAllCourses?.data]);

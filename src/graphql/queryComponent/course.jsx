@@ -12,6 +12,8 @@ export const allCoursesQuery = gql`
       image
       about
       teacherId
+      subscribers
+      noOfSubscribers
     }
   }
 `;
@@ -30,6 +32,57 @@ query {
       teacherId
       subscribers
       noOfSubscribers
+  }
+}
+`;
+
+
+export const myCousesQuery = gql`
+query myCourses($userId: String) {
+  myCourses(userId: $userId) {
+    name
+    id
+    tagline
+    tags
+    category
+    price
+    image
+    about
+    teacherId
+    subscribers
+    noOfSubscribers
+  }
+}
+`;
+
+export const getCourseByIdQuery = gql`
+query CourseById($courseId: String) {
+  courseById(courseId: $courseId) {
+    name
+    id
+    tagline
+    tags
+    category
+    price
+    image
+    about
+    teacherId
+    subscribers
+    noOfSubscribers
+  }
+}
+`;
+
+export const getChaptersQuery = gql `
+query Chapters($courseId: ID) {
+  chapters(courseId: $courseId) {
+    id
+    teacherId
+    name
+    courseId
+    video
+    about
+    project
   }
 }
 `;
