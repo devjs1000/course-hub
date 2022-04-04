@@ -72,3 +72,17 @@ query CourseById($courseId: String) {
   }
 }
 `;
+
+export const getChaptersQuery = gql `
+query Chapters($courseId: ID) {
+  chapters(courseId: $courseId) {
+    id
+    teacherId
+    name
+    courseId
+    video
+    about
+    project
+  }
+}
+`;
