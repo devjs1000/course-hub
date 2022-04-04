@@ -33,3 +33,13 @@ query {
   }
 }
 `;
+
+export const getChaptersQuery = gql`
+query Chapters($courseId: ID, $userId: ID) {
+  chapters(courseId: $courseId, userId: $userId) {
+    name
+    video
+  }
+}
+`;
+

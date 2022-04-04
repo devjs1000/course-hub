@@ -32,8 +32,9 @@ export default ({}) => {
     </div>
   }
 
+//variables
   const [enrolledCourses, setEnrolledCourses]=useState([])
-  const { myCourses,user } = useStore();
+  let { myCourses,user } = useStore();
   const {data:projects} = useQuery(userOrdersQuery, {
     variables: {
       userId: user.id,
@@ -44,13 +45,16 @@ export default ({}) => {
       userId: user.id,
     },
   })
+let dataToBeShown
+
 
  async function runQueries(){
   try{
-    let myCourseId= await  projects.getUserOrders.map(obj=>obj.courseId)
- let dataToBeShown= await allCourses.courses.filter(eachObj=>{
+  let myCourseId= projects.getUserOrders.map(obj=>obj.courseId)
+ dataToBeShown= allCourses.courses.filter(eachObj=>{
   return myCourseId.includes(eachObj.id) 
   })
+
  console.log(dataToBeShown)
  let k=dataToBeShown.map(obj=>makeCard(obj.name, obj.category,obj.tagline, obj.image, obj.id))
   console.log(k)
@@ -64,7 +68,10 @@ export default ({}) => {
 
 //run after redering
 useEffect(runQueries, [projects || allCourses])
-
+useEffect(()=>{
+  myCourses = dataToBeShown
+  console.log(myCourses)
+}, [projects || allCourses])
   return (
     <div>
   {/* the cards*/}
