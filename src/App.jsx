@@ -21,6 +21,8 @@ import {
   Settings,
 } from "./components/profile";
 
+import { AdminDashboard, AdminLogin } from "./components/admin";
+
 import Community from "./components/Community/Community";
 import { Home, CourseDetails, NotFound } from "./pages";
 import { Login, Signup } from "./components/Auth";
@@ -54,6 +56,8 @@ function App() {
               <Route path="/contactus" element={<Contact />} />
               <Route path="/about-us" element={<About />} />
               <Route path="/all-courses" element={<AllCourses />} />
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/acess" element={<AdminDashboard />} />
               <Route
                 path="/my-profile"
                 element={

@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const getUserById = gql`
-query GetUserById($getUserByIdId: ID!) {
+  query GetUserById($getUserByIdId: ID!) {
     getUserById(id: $getUserByIdId) {
       name
       id
@@ -16,8 +16,8 @@ query GetUserById($getUserByIdId: ID!) {
   }
 `;
 
-export const getUserByEmail= gql`
-query GetUserByEmail($email: String) {
+export const getUserByEmail = gql`
+  query GetUserByEmail($email: String) {
     getUserByEmail(email: $email) {
       name
       id
@@ -27,6 +27,18 @@ query GetUserByEmail($email: String) {
       description
       phone
       token
+      role
+    }
+  }
+`;
+
+export const allUsersQuery = gql`
+  query users {
+    users {
+      id
+      name
+      email
+      phone
       role
     }
   }
