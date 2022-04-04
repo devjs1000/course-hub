@@ -24,24 +24,22 @@ const Chapters = () => {
       userId: user.id,
     },
   })
-
+console.log(chapters)
 	useEffect(() => {
-
-	// console.log(chapters.chapters)
-	let arrayOfItems = chapters.chapters.map(obj=>{
-		return <li className='h-8 border-1 border border-black my-4 pointer'>
-		{obj.name}
+		try{
+		let arrayOfItems = chapters.chapters.map(obj=>{
+		return <li className=' border-1 border border-black my-4 pointer'>
+		<span className='text-2xl m-8 my-4'>{obj.name}</span>
 		</li>
 	})
-	setChapterList(arrayOfItems)
-	// console.log(arrayOfItems)
+	setChapterList(arrayOfItems)			
+		}
+catch{
+	setChapterList('loading....')
+}
 
 	}, [chapters])
 
-	//get the chapters inside the id
-	/*
-using the id of the course, get the chapters
-	*/
 	return (
 		<div className='bg-white min-h-screen p-8'>
 			<h1 className='text-4xl font-bold'>Chapters</h1>
