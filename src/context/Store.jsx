@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { postPrint } from "../bluePrint/contextPrint";
 
 import { useQuery } from "@apollo/client";
+
 import {
   allCoursesQuery,
   getUserById,
   allPopularCoursesQuery,
   allUsersQuery,
+  myCousesQuery
 } from "../graphql/Queries";
+
 import jwt_decode from "jwt-decode";
 
 const Store = () => {
@@ -39,6 +42,14 @@ const Store = () => {
     },
   });
 
+
+  const myCoursedata = useQuery(myCousesQuery,{
+    variables:{
+      userId:decoded.id
+    }
+  });
+       
+
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
   const getAllPopularCourses = useQuery(allPopularCoursesQuery);
@@ -46,6 +57,7 @@ const Store = () => {
 
   /* Get All Courses Data */
   useEffect(() => {
+
     if (getAllUsersData?.data?.users) {
       setAllUsersData(getAllUsersData?.data?.users);
       setAllUsersLoading(false);
@@ -58,6 +70,7 @@ const Store = () => {
       setUser(data.getUserById);
       setUserLoading(false);
     }
+
     if (getAllPopularCourses?.data?.popularCourses) {
       let popularCourses = getAllPopularCourses.data.popularCourses;
       if (popularCourses.length > 6) {
@@ -68,11 +81,21 @@ const Store = () => {
     } else {
       setAllPopularCoursesLoading(false);
     }
+    if(myCoursedata?.data?.myCourses) {
+      setMyCourses(myCoursedata?.data?.myCourses);
+    }
+    if (getAllCourses?.data?.courses) {
+      setAllCoursesData(getAllCourses?.data?.courses);
+      setAllCoursesLoading(false);
+    }
+    if (data && data.getUserById) {
+      setUser(data.getUserById);
+      setUserLoading(false);
+    }
     if (error) {
       setUserLoading(false);
     }
     if (getAllCourses?.error?.message) {
-      console.log(getAllCourses.error.message);
       setAllCoursesLoading(false);
     }
   }, [getAllCourses?.data]);
