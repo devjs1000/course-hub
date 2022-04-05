@@ -27,9 +27,9 @@ console.log(chapters)
 	useEffect(() => {
 		try{
 		let arrayOfItems = chapters.chapters.map(obj=>{
-		return <li className=' border-1 border border-black my-4 pointer'>
-		<span className='text-2xl m-8 my-4'>{obj.name}</span>
-		</li>
+		return <div className=' border-1 border border-black my-4 p-2 pointer'>
+		<span className='text-2xl '>{obj.name}</span>
+		</div>
 	})
 	setChapterList(arrayOfItems)			
 		}
@@ -43,8 +43,8 @@ catch{
 		<div className='bg-white min-h-screen p-8'>
 			<h1 className='text-4xl font-bold'>Chapters</h1>
 		{/* the list of chapters*/}
-			<ol className="list-decimal text-xl pt-2">
-				{chapterList}			</ol>
+			<div className="list-decimal text-xl pt-2">
+				{chapterList}			</div>
 		</div>
 	)
 }
