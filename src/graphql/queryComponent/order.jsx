@@ -31,3 +31,20 @@ export const getOrderId = `
   }
 `;
 
+export const getMyCourses = gql`
+  query GetMyCourses($userId: ID!) {
+    getMyCourses(userId: $userId) {
+      name
+      id
+      tagline
+      tags
+      category
+      price
+      image
+      about
+      teacherId
+      subscribers
+      noOfSubscribers
+    }
+  }
+`;
