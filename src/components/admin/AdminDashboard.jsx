@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../context/useStore";
 
-const AdminDashboard = () => {
+export const AdminDashboard = () => {
   const { allUsersData, allUsersLoading } = useStore();
   const [allStudents, setAllStudents] = useState([]);
   const [allTeachers, setAllTeachers] = useState([]);

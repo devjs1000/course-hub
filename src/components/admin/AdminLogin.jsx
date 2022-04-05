@@ -6,7 +6,7 @@ import Button from "../../UI/Button";
 import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 
-const AdminLogin = () => {
+export const AdminLogin = () => {
   const { login } = useAuthHook();
   const [loginData, setLoginData] = useState({});
 
@@ -57,4 +57,3 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;

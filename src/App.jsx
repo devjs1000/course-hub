@@ -21,7 +21,7 @@ import {
   Settings,
 } from "./components/profile";
 
-import { AdminDashboard, AdminLogin } from "./components/admin";
+import { AdminDashboard, AdminLogin, Admin } from "./components/admin";
 
 import Community from "./components/Community/Community";
 import { Home, CourseDetails, NotFound } from "./pages";
@@ -57,7 +57,6 @@ function App() {
               <Route path="/about-us" element={<About />} />
               <Route path="/all-courses" element={<AllCourses />} />
               <Route path="/admin" element={<AdminLogin />} />
-              <Route path="/admin/acess" element={<AdminDashboard />} />
               <Route
                 path="/my-profile"
                 element={
@@ -96,6 +95,14 @@ function App() {
                 path="my-profile/courses/coursedetails/:id"
                 element={<CourseDetails />}
               />
+              {/* admin area */}
+              <Route path="/admin/access" element={<Admin />}>
+                <Route path="/admin/access/courses" element={"courses"} />
+                <Route path="/admin/access/students" element={"students"} />
+                <Route path="/admin/access/dashboard" element={<AdminDashboard />} />
+
+                <Route path="/admin/access/teachers" element={"teachers"} />
+              </Route>
             </Routes>
             <Footer />
           </Suspense>

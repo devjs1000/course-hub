@@ -1,4 +1,4 @@
-import AdminDashboard from "./AdminDashboard";
-import AdminLogin from "./AdminLogin";
-
-export { AdminDashboard, AdminLogin };
+export * from './Admin'
+export * from './AdminDashboard'
+export * from './AdminLogin'
+export * from './Sidebar'
