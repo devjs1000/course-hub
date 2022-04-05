@@ -21,7 +21,6 @@ const Chapters = () => {
 	const {data:chapters} = useQuery(getChaptersQuery, {
     variables: {
     courseId : id,
-      userId: user.id,
     },
   })
 console.log(chapters)

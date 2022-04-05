@@ -35,10 +35,12 @@ query {
 `;
 
 export const getChaptersQuery = gql`
-query Chapters($courseId: ID, $userId: ID) {
-  chapters(courseId: $courseId, userId: $userId) {
+query Chapters($courseId: ID) {
+  chapters(courseId: $courseId) {
     name
     video
+    project
+    about
   }
 }
 `;
