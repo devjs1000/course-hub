@@ -4,8 +4,11 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import { allCoursesQuery, userOrdersQuery } from "../../graphql/Queries";
+import {userOrdersQuery} from '../../graphql/queryComponent/order'
+import {allCoursesQuery} from '../../graphql/queryComponent/course'
+
 export default ({}) => {
+
   function makeCard(name,category,tagline,image,id){
     let path = `/chapters/chapterdetails/${id}`
     return <div className='w-full rounded h-96 cursor-pointer'>
@@ -23,9 +26,11 @@ export default ({}) => {
       <div className="px-6 pt-4 pb-2">
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
       </div>
-    );
-  }
+    </div>
+    </Link>
 
+    </div>
+  }
 
 //variables
   const [enrolledCourses, setEnrolledCourses]=useState([])
@@ -34,8 +39,8 @@ export default ({}) => {
     variables: {
       userId: user.id,
     },
-  });
-  const { data: allCourses } = useQuery(allCoursesQuery, {
+  })
+  const {data:allCourses} = useQuery(allCoursesQuery, {
     variables: {
       userId: user.id,
     },
@@ -75,22 +80,35 @@ useEffect(()=>{
      </section>
     </div>
   );
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 //  const { user, myCourses, theme } = useStore();
 //  const {loading,error, data}=useQuery(myProjectsQuery, {
 //    variables:{
 //      "userId": user.id
 //    }
-// {Children.toArray(
-//          myCourses.map((a) => {
-//            return a.id
-//          })
-//        )}
+ // {Children.toArray(
+ //          myCourses.map((a) => {
+ //            return a.id
+ //          })
+ //        )}
 //  })
 
 //  console.log(data);
-
+  
 // if(loading) return 'loading...'
 // if(error) return 'error'
 // console.log('assignment',data);
