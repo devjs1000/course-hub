@@ -20,7 +20,6 @@ function MyCourses() {
     },
   });
 
-  console.log(user)
   useEffect(() => {
     console.log(user);
     if (data != null && data != undefined) {

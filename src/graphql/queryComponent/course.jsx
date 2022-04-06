@@ -36,7 +36,6 @@ query {
 }
 `;
 
-
 export const myCousesQuery = gql`
 query myCourses($userId: String) {
   myCourses(userId: $userId) {
@@ -73,16 +72,16 @@ query CourseById($courseId: String) {
 }
 `;
 
-export const getChaptersQuery = gql `
+
+export const getChaptersQuery = gql`
 query Chapters($courseId: ID) {
   chapters(courseId: $courseId) {
-    id
-    teacherId
     name
-    courseId
     video
-    about
     project
+    about
   }
 }
 `;
+
+

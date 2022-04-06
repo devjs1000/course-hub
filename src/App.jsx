@@ -26,7 +26,7 @@ import { AdminDashboard, AdminLogin, Admin } from "./components/admin";
 import Community from "./components/Community/Community";
 import { Home, CourseDetails, NotFound } from "./pages";
 import { Login, Signup } from "./components/Auth";
-
+import Chapters from './components/Chapters'
 import Navbar from "./components/header/Navbar";
 import Loading from "./UI/BoxLoading";
 import Contact from "./components/ContactUs/ContactUs";
@@ -95,6 +95,10 @@ function App() {
                 path="my-profile/courses/coursedetails/:id"
                 element={<CourseDetails />}
               />
+                  <Route
+                path="/chapters/chapterdetails/:id"
+                element={<Chapters />}
+              />
               {/* admin area */}
               <Route path="/admin/access" element={<Admin />}>
                 <Route path="/admin/access/courses" element={"courses"} />
@@ -103,6 +107,7 @@ function App() {
 
                 <Route path="/admin/access/teachers" element={"teachers"} />
               </Route>
+
             </Routes>
             <Footer />
           </Suspense>
