@@ -9,6 +9,10 @@ import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
 
+  
+
+
+
   function makeCard(name,category,tagline,image,id){
     let path = `/chapters/chapterdetails/${id}`
     return <div className='w-full rounded h-96 cursor-pointer'>
@@ -19,7 +23,7 @@ export default ({}) => {
       <img src={image} alt="course-image" className='h-2/4 w-full object-cover' />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{name}</div>
-        <p className="text-gray-700 text-base">
+        <p className="">
           {tagline}
         </p>
       </div>
@@ -34,7 +38,7 @@ export default ({}) => {
 
 //variables
   const [enrolledCourses, setEnrolledCourses]=useState([])
-  let { myCourses,user } = useStore();
+  let { myCourses,user,theme } = useStore();
   const {data:projects} = useQuery(userOrdersQuery, {
     variables: {
       userId: user.id,
@@ -65,6 +69,12 @@ let dataToBeShown
  }
   }
 
+//styling for some sections
+let styles = {
+    mainSection : ` ${theme?'bg-slate-800' : 'bg-white'}  px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:px-16`,
+    tagLine : `${theme? 'text-white':  'text-gray-700'} text-base`,
+  }
+
 
 //run after redering
 useEffect(runQueries, [projects || allCourses])
@@ -75,7 +85,7 @@ useEffect(()=>{
   return (
     <div>
   {/* the cards*/}
-     <section className='px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:px-16'>
+     <section className={styles.mainSection}>
       {enrolledCourses}
      </section>
     </div>

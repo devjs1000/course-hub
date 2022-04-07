@@ -12,7 +12,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import "./mycourses.css";
 
 function MyCourses() {
-  const { user, setMyCourses } = useStore();
+  const { user,theme, setMyCourses } = useStore();
 
   const { data, error, loading } = useQuery(userOrdersQuery, {
     variables: {
