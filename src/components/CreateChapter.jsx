@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 
 const CreateChapter = () => {
-  const { user } = useStore();
+  const { user, theme } = useStore();
   const { id } = useParams();
 
   const [formData, setFormData] = useState({});
@@ -29,10 +29,10 @@ const CreateChapter = () => {
       },
     });
   };
-
+   const mainDivStyles = `${theme? 'bg-slate-800 text-white' : 'bg-white'} py-8 px-16`
   return (
     <>
-      <div className="bg-white py-8 px-16">
+      <div className={mainDivStyles}>
         <h1 className="mb-4 font-bold text-lg">New Chapter</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormControl

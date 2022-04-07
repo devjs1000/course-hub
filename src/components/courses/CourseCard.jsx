@@ -15,7 +15,7 @@ const CourseCard = ({ id, drill = false, userRole }) => {
   }, [id]);
 
   return (
-    <ErrorBoundary fallback={"error in course page"}>
+    <ErrorBoundary fallback={"error in course page"} >
       <Link
         to={
           userRole === "teacher"
@@ -23,7 +23,7 @@ const CourseCard = ({ id, drill = false, userRole }) => {
             : `coursedetails/${current?.id}`
         }
       >
-        <div className="rounded-sm relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
+        <div className="bg-black rounded-sm relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
           <div className="h-[12rem] rounded-t-sm overflow-hidden relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[rgba(255,118,118,0.09)]">
             <img
               src={current?.image}
