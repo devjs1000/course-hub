@@ -32,11 +32,13 @@ function MyCourses() {
 
   console.log(data);
   const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`;
+  const btnSectionStyles = `px-2 h-[3rem] flex items-center my-4`
+  const cardContainerStyles = `flex flex-wrap gap-6 justify-around ${theme? 'bg-slate-800' : null}`
   return (
     <>
       <ErrorBoundary>
         {user.role === "teacher" && (
-          <nav className="px-2 h-[3rem] flex items-center my-4">
+          <nav className={btnSectionStyles}>
             <Link
               className="bg-red-700 text-white px-4 py-2 rounded-sm"
               to="/create-course"
@@ -45,7 +47,7 @@ function MyCourses() {
             </Link>
           </nav>
         )}
-        <div className="flex flex-wrap gap-6 justify-around">
+        <div className={cardContainerStyles}>
 
           {Children.toArray(data?.getUserOrders.map((a) => {
             return (
