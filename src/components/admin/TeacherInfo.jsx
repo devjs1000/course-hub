@@ -106,7 +106,10 @@ export const TeacherInfo = () => {
                       else if (
                         teacher.name
                           .toLowerCase()
-                          .startsWith(inputField.toLowerCase()) === true
+                          .startsWith(inputField.toLowerCase()) === true ||
+                        teacher.name
+                          .toLowerCase()
+                          .includes(inputField.toLowerCase()) === true
                       )
                         return teacher;
                     })
