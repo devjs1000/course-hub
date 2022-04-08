@@ -5,6 +5,8 @@ import { Search } from "react-bootstrap-icons";
 export const StudentInfo = () => {
   const { allUsersData, allUsersLoading, setAllUsersData } = useStore();
   const [allStudents, setAllStudents] = useState([]);
+
+  const [inputField, setInputField] = useState("");
   let data = [];
 
   useEffect(() => {
@@ -56,6 +58,7 @@ export const StudentInfo = () => {
                   type="text"
                   placeholder="Search..."
                   className="px-2   bg-transparent outline-none"
+                  onChange={(e) => setInputField(e.target.value)}
                 />
               </div>
             </div>
@@ -102,47 +105,57 @@ export const StudentInfo = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {allStudents?.map((user, idx) => {
-                    return (
-                      <tr
-                        className={`${
-                          idx % 2 == 0 ? "bg-gray-100" : "bg-white"
-                        } border-b`}
-                        key={user.id}
-                      >
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          {idx + 1}
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {user.name}
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {user.email}
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          {user.phone}
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button
-                            id={user.id}
-                            onClick={changeRole}
-                            className="bg-blue-400 p-2 rounded-sm"
-                          >
-                            Change
-                          </button>
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          <button
-                            id={user.id}
-                            onClick={deleteAccount}
-                            className="bg-red-600 p-2 rounded-sm"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {allStudents
+                    ?.filter((student) => {
+                      if (inputField === "") return student;
+                      else if (
+                        student.name
+                          .toLowerCase()
+                          .startsWith(inputField.toLowerCase()) === true
+                      )
+                        return student;
+                    })
+                    ?.map((user, idx) => {
+                      return (
+                        <tr
+                          className={`${
+                            idx % 2 == 0 ? "bg-gray-100" : "bg-white"
+                          } border-b`}
+                          key={user.id}
+                        >
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            {idx + 1}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {user.name}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {user.email}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {user.phone}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <button
+                              id={user.id}
+                              onClick={changeRole}
+                              className="bg-blue-400 p-2 rounded-sm"
+                            >
+                              Change
+                            </button>
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <button
+                              id={user.id}
+                              onClick={deleteAccount}
+                              className="bg-red-600 p-2 rounded-sm"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </table>
             </div>
