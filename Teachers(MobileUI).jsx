@@ -9,25 +9,26 @@ import useStore from '../context/useStore'
 const InstructorCard = ({ image }) => {
 	return (
 		<div
-			className="shadow-md flex items-start rounded-sm overflow-hidden"
+			//className="shadow-md flex items-start rounded-sm overflow-hidden"
 			id="teachers"
 		>
-			<div
-				className="flex-[0.5] h-full bg-cover bg-top relative after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-[rgba(0,0,0,.2)]"
+			<div 
+				className=" bg-[rgba(0,0,0,.2)] bg-center bg-cover h-[250px] w-[100%]"
 				style={{ backgroundImage: `url(${image})` }}
 			>
 				&nbsp;
 			</div>
-			<div className="flex-[0.8] p-4 flex flex-col items-start gap-4 h-[275px]">
+			<div >
 				<div>
-					<h6 className="text-2xl font-semibold">John Doe</h6>
+					<h4 className="text-2xl font-semibold">John Doe</h4>
 					<span>Professional React Developer</span>
 				</div>
-				<div className="h-[2px] bg-primary-color-light w-[50%]"></div>
+				<div className="h-[2px] bg-primary-color-light w-[100%]"></div>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
 					placeat!
 				</p>
+				<br></br>
 				<div className="text-2xl flex items-center gap-4 text-primary-color-light">
 					<Instagram />
 					<Twitter />
