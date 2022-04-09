@@ -13,9 +13,9 @@ export default ({}) => {
 
 
 
-  function makeCard(name,category,tagline,image,id){
+  function makeCard(name,category,tagline,image,id,index){
     let path = `/chapters/chapterdetails/${id}`
-    return <div className='w-full rounded h-96 cursor-pointer'>
+    return <div className='w-full rounded h-96 cursor-pointer' key={index}>
     <Link to={
       path
     }>
@@ -39,10 +39,13 @@ export default ({}) => {
 //variables
   const [enrolledCourses, setEnrolledCourses]=useState([])
   let { myCourses,user,theme } = useStore();
+  const token = localStorage.getItem("accessToken");
   const {data:projects} = useQuery(userOrdersQuery, {
-    variables: {
-      userId: user.id,
-    },
+    context : {
+      headers:{
+        Authorization: token
+      }
+    }
   })
   const {data:allCourses} = useQuery(allCoursesQuery, {
     variables: {
@@ -60,7 +63,7 @@ let dataToBeShown
   })
 
  console.log(dataToBeShown)
- let k=dataToBeShown.map(obj=>makeCard(obj.name, obj.category,obj.tagline, obj.image, obj.id))
+ let k=dataToBeShown.map((obj,index)=>makeCard(obj.name, obj.category,obj.tagline, obj.image, obj.id,index))
   console.log(k)
   setEnrolledCourses(k)
   }

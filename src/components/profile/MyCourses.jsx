@@ -14,10 +14,13 @@ import "./mycourses.css";
 function MyCourses() {
   const { user,theme, setMyCourses } = useStore();
 
+  const token = localStorage.getItem("accessToken");
   const { data, error, loading } = useQuery(userOrdersQuery, {
-    variables: {
-      userId: user.id,
-    },
+    context : {
+      headers:{
+        Authorization: token
+      }
+    }
   });
 
   useEffect(() => {

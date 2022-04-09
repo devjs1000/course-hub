@@ -37,8 +37,8 @@ query {
 `;
 
 export const myCousesQuery = gql`
-query myCourses($userId: String) {
-  myCourses(userId: $userId) {
+query myCourses{
+  myCourses{
     name
     id
     tagline

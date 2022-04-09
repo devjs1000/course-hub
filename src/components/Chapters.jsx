@@ -13,11 +13,17 @@ const Chapters = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [chapterList, setChapterList] = useState([]) 
 	let {id} = useParams()
-	let {user,theme} = useStore()
+	let {user,theme} = useStore();
+	const token = localStorage.getItem("accessToken");
 	const {data:chapters} = useQuery(getChaptersQuery, {
-    variables: {
-    courseId : id,
-    },
+	variables: {
+		courseId : id,
+	},
+	context : {
+		headers:{
+			Authorization: token
+		}
+	}
   })
 console.log(chapters)
 	useEffect(() => {
