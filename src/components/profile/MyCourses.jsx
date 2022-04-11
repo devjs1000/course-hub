@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import CourseCard from "../courses/CourseCard";
-import { userOrdersQuery } from "../../graphql/Queries";
+import { userOrdersQuery, getMyCourses } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
 import { Link } from "react-router-dom";
@@ -23,8 +23,18 @@ function MyCourses() {
     }
   });
 
+
+  // const { data, error, loading } = useQuery(userOrdersQuery, {
+  //   variables: {
+  //     userId: user.id,
+  //   },
+  // });
+
+  console.log(data)
+  // console.log(pro)
+
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     if (data != null && data != undefined) {
       setMyCourses(data.getUserOrders);
     }
@@ -52,11 +62,11 @@ function MyCourses() {
         )}
         <div className={cardContainerStyles}>
 
-          {Children.toArray(data?.getUserOrders.map((a) => {
+          {Children.toArray(data?.getMyCourses.map((a) => {
             return (
             
                 <CourseCard
-                  id={a.courseId}
+                  id={a.id}
                   enrolled={true}
                   userRole={user.role}
                 />
