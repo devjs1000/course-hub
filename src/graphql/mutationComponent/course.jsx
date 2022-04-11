@@ -22,6 +22,7 @@ export const createCourseMutation = gql`
       name: $name
     ) {
       name
+      id
     }
   }
 `;
