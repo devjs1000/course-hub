@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../context/useStore";
-import { Search } from "react-bootstrap-icons";
+import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
 
 export const StudentInfo = () => {
   const { allUsersData, allUsersLoading, setAllUsersData } = useStore();
@@ -44,11 +44,14 @@ export const StudentInfo = () => {
       </div>
     );
   return (
-    <div className="bg-white w-full px-16 py-4">
+    <div className="bg-white w-full px-8 py-4">
       <div className="flex flex-col mt-4 border">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="border-b px-4 py-4 bg-red-400 flex justify-between items-center">
+            <div
+              className="border-b px-4 py-4 bg-primary-color-dark
+            text-white flex justify-between items-center"
+            >
               <h1 className="text-xl uppercase p-4 font-bold  ">
                 student information
               </h1>
@@ -139,22 +142,28 @@ export const StudentInfo = () => {
                             {user.phone}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <button
-                              id={user.id}
-                              onClick={changeRole}
-                              className="bg-blue-400 p-2 rounded-sm"
+                            <span
+                              className="bg-blue-500 flex justify-evenly
+                            items-center p-2
+                            rounded-sm"
                             >
-                              Change
-                            </button>
+                              <PencilSquare />
+                              <button id={user.id} onClick={changeRole}>
+                                Change
+                              </button>
+                            </span>
                           </td>
-                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <button
-                              id={user.id}
-                              onClick={deleteAccount}
-                              className="bg-red-600 p-2 rounded-sm"
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
+                            <span
+                              className="bg-red-500 flex justify-evenly
+                            items-center p-2
+                            rounded-sm"
                             >
-                              Delete
-                            </button>
+                              <Trash />
+                              <button id={user.id} onClick={deleteAccount}>
+                                Delete
+                              </button>
+                            </span>
                           </td>
                         </tr>
                       );
