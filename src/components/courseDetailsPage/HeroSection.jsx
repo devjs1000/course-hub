@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 import { getChaptersQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 
-function HeroSection({ course, id }) {
+function HeroSection({ course, id, isEnrolled }) {
   const { myCourses,  } = useStore();
   const [chapters,setChapters] = useState([]);
   const [openCourse, setOpenCourse] = useState(false);
@@ -24,19 +24,27 @@ function HeroSection({ course, id }) {
     setOpenCourse(false);
   };
 
+  const token = localStorage.getItem("accessToken");
   const { loading, data, error } = useQuery(getChaptersQuery,{
-    variables:{
+    context : {
+      headers:{
+        Authorization: token
+      }
+    },
+    variables: {
       courseId: course.id,
     }
   });
 
   useEffect(() => {
+    if (token) {
+      setSubcribed(true);
+    }
     if (openCourse) {
       document.body.style = "overflow:hidden;";
     } else {
       document.body.style = "overflow:auto;";
     }
-    
     if (user && course.subscribers && course.subscribers.includes(user.id)) {
       setSubcribed(true);
     }
@@ -46,8 +54,13 @@ function HeroSection({ course, id }) {
         setSubcribed(true);
       }
     }
+    if(data){
+      console.log("data",data);
+      console.log("data.chapters",data.chapters);
+    }
     if (data && data.chapters) {
       setChapters(data.chapters);
+      setSubcribed(true);
     }
   }, [openCourse]);
 

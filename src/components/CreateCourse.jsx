@@ -6,12 +6,13 @@ import useStore from "../context/useStore";
 import { createCourseMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 import { CardImage } from "react-bootstrap-icons";
+import { Navigate } from "react-router-dom";
 
 export default () => {
   const { user } = useStore();
 
   const [formData, setFormData] = useState({});
-  const [createCourse] = useMutation(createCourseMutation);
+  const [createCourse,{data}] = useMutation(createCourseMutation);
   const [isImageSelected, setImageSelected] = useState(false);
 
   const handleChange = (e) => {
@@ -34,14 +35,20 @@ export default () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("accessToken");
     createCourse({
+      headers:{
+        Authorization: token
+      },
       variables: {
         ...formData,
         teacherId: user.id,
-        // image:
-        //   "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+        image:
+          "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
       },
     });
+    alert("Course created successfully !");
+    location.reload();
   };
 
   return (
@@ -87,21 +94,21 @@ export default () => {
           />
 
           {/* <Upload className="text-slate-800" size={20} /> */}
-          <div class="flex justify-center">
-            <div class="rounded-lg bg-white  w-[100%]">
-              <div class="mt-2">
-                <label class="inline-block mb-2 text-slate-700">
+          <div className="flex justify-center">
+            <div className="rounded-lg bg-white  w-[100%]">
+              <div className="mt-2">
+                <label className="inline-block mb-2 text-slate-700">
                   Upload Image
                 </label>
-                <div class="flex  items-center  justify-center w-full">
-                  <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
-                    <div class="flex flex-col items-center justify-center pt-7">
+                <div className="flex  items-center  justify-center w-full">
+                  <label className="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                    <div className="flex flex-col items-center justify-center pt-7">
                       <CardImage className="text-slate-700" size={40} />
-                      <p class="pt-1 text-sm tracking-wider text-gray-700 group-hover:text-gray-600">
+                      <p className="pt-1 text-sm tracking-wider text-gray-700 group-hover:text-gray-600">
                         {isImageSelected ? formData.image : "Select a photo"}
                       </p>
                     </div>
-                    <input type="file" class="hidden" onChange={handleImage} />
+                    <input type="file" className="hidden" onChange={handleImage} />
                   </label>
                 </div>
               </div>

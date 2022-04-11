@@ -20,7 +20,7 @@ const CourseDetails = () => {
   const [current, setCurrent] = useState({});
   const [courseLoading, setCourseLoading] = useState(true);
   const [notFound, setNotFound] = useState(true);
-  const { id } = useParams();
+  const { id, isEnrolled } = useParams();
 
   const currentCourse = useQuery(getCourseByIdQuery,{
     variables :{
@@ -49,7 +49,7 @@ const CourseDetails = () => {
   });
   return (
     <>
-      <HeroSection course={current} id={id}/>
+      <HeroSection course={current} id={id} isEnrolled={isEnrolled}/>
       <DetailsNavigation />
       <div className="px-4 py-6 grid grid-cols-1 text-gray-600 bg-white lg:grid-cols-6 lg:px-16 lg:py-8 lg:gap-2">
         <div className="col-span-4 order-2 p-2">

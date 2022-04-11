@@ -37,15 +37,22 @@ const Store = () => {
   }
 
   const { loading, error, data } = useQuery(getUserById, {
-    variables: {
-      getUserByIdId: decoded.id,
-    },
+    context : {
+      headers:{
+        Authorization: token
+      }
+    }
   });
-
+  // if (data){
+  //   console.log("data",data);
+  //   console.log("data.user",data.user);
+  // }
 
   const myCoursedata = useQuery(myCousesQuery,{
-    variables:{
-      userId:decoded.id
+    context : {
+      headers:{
+        Authorization: token
+      }
     }
   });
        
@@ -88,8 +95,8 @@ const Store = () => {
       setAllCoursesData(getAllCourses?.data?.courses);
       setAllCoursesLoading(false);
     }
-    if (data && data.getUserById) {
-      setUser(data.getUserById);
+    if (data && data.user) {
+      setUser(data.user);
       setUserLoading(false);
     }
     if (error) {
