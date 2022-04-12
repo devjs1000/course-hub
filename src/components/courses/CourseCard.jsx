@@ -6,7 +6,6 @@ import author from "../../images/author.jpg";
 import { Clock, ListUl } from "react-bootstrap-icons";
 
 const CourseCard = ({ id, drill = false, userRole }) => {
-  console.log(id);
   const { allCoursesData } = useStore();
   const [current, setCurrent] = useState({});
 
