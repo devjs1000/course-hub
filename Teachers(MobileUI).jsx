@@ -56,7 +56,7 @@ function Teachers() {
 				<InstructorCard image={instThreeImage} />
 				<InstructorCard image={instFourImage} />
 			</div>
-		</div>
+		 </div>
 	);
 }
 
