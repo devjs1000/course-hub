@@ -26,6 +26,7 @@ import {
   TeacherInfo,
   AdminLogin,
   CourseInfo,
+  AdminDashboard,
   Admin,
 } from "./components/admin";
 
@@ -112,7 +113,10 @@ function App() {
                   path="/admin/access/students"
                   element={<StudentInfo />}
                 />
-                <Route path="/admin/access/dashboard" element={"dashboard"} />
+                <Route
+                  path="/admin/access/dashboard"
+                  element={<AdminDashboard />}
+                />
 
                 <Route
                   path="/admin/access/teachers"

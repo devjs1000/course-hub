@@ -18,8 +18,6 @@ function AllCourses() {
       let tempData = [];
       if (!allCoursesData.length) return;
 
-      console.log(allCoursesData);
-
       allCoursesData?.forEach((course) => {
         if (!tempType.includes(course?.type)) {
           tempType.push(course?.type);
