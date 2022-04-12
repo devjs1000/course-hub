@@ -80,6 +80,7 @@ query Chapters($courseId: ID) {
     video
     project
     about
+    id
   }
 }
 `;

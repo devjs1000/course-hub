@@ -6,12 +6,12 @@ import author from "../../images/author.jpg";
 import { Clock, ListUl } from "react-bootstrap-icons";
 
 const CourseCard = ({ id, drill = false, userRole }) => {
-  console.log(id)
   const { allCoursesData } = useStore();
   const [current, setCurrent] = useState({});
   // console.log(allCoursesData)
   useEffect(() => {
     if (drill) return;
+    console.log(id)
     const data = allCoursesData.find((course) => course.id === id);
     setCurrent(data);
     console.log(data)

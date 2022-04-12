@@ -30,11 +30,10 @@ function MyCourses() {
   //   },
   // });
 
-  console.log(data)
-  // console.log(pro)
+
 
   useEffect(() => {
-    // console.log(user);
+  
     if (data != null && data != undefined) {
       setMyCourses(data.getUserOrders);
     }
@@ -42,8 +41,6 @@ function MyCourses() {
 
   if (loading) return "loading";
   if (error) return "error";
-
-  console.log(data);
   const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`;
   const btnSectionStyles = `px-2 h-[3rem] flex items-center my-4`
   const cardContainerStyles = `flex flex-wrap gap-6 justify-around ${theme? 'bg-slate-800' : null}`
@@ -62,11 +59,11 @@ function MyCourses() {
         )}
         <div className={cardContainerStyles}>
 
-          {Children.toArray(data?.getMyCourses.map((a) => {
+          {Children.toArray(data?.getUserOrders.map((a) => {
             return (
             
                 <CourseCard
-                  id={a.id}
+                  id={a.courseId}
                   enrolled={true}
                   userRole={user.role}
                 />

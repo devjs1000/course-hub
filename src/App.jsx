@@ -32,6 +32,7 @@ import Community from "./components/Community/Community";
 import { Home, CourseDetails, NotFound } from "./pages";
 import { Login, Signup } from "./components/Auth";
 import Chapters from "./components/Chapters";
+import StudentsEnrolled from "./components/StudentsEnrolled";
 import Navbar from "./components/header/Navbar";
 import Loading from "./UI/BoxLoading";
 import Contact from "./components/ContactUs/ContactUs";
@@ -104,6 +105,11 @@ function App() {
                 path="/chapters/chapterdetails/:id"
                 element={<Chapters />}
               />
+              <Route
+                path="/students-enrolled/:chapterId"
+                element={<StudentsEnrolled />}
+              />
+
               {/* admin area */}
               <Route path="/admin/access" element={<Admin />}>
                 <Route path="/admin/access/courses" element={"courses"} />
