@@ -31,7 +31,7 @@ const Profile = () => {
   const navBarClasses = `relative h-14 ${
     theme ? "bg-slate-800  text-white" : "bg-white text-gray-600"
   } flex items-center justify-between px-4 border-l lg:px-16`;
-  const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden`;
+  const searchBarClasses = `border h-[80%] flex items-center w-[40%] rounded-md overflow-hidden text-black`;
   const containerClasses = `${
     theme ? "bg-slate-800 text-white" : "bg-white text-gray-600"
   } flex`;
