@@ -6,19 +6,18 @@ import author from "../../images/author.jpg";
 import { Clock, ListUl } from "react-bootstrap-icons";
 
 const CourseCard = ({ id, drill = false, userRole }) => {
-  console.log(id)
+  console.log(id);
   const { allCoursesData } = useStore();
   const [current, setCurrent] = useState({});
-  // console.log(allCoursesData)
+
   useEffect(() => {
     if (drill) return;
     const data = allCoursesData.find((course) => course.id === id);
     setCurrent(data);
-    console.log(data)
   }, [id]);
 
   return (
-    <ErrorBoundary fallback={"error in course page"} >
+    <ErrorBoundary fallback={"error in course page"}>
       <Link
         to={
           userRole === "teacher"

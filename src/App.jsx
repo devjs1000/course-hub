@@ -25,6 +25,7 @@ import {
   StudentInfo,
   TeacherInfo,
   AdminLogin,
+  CourseInfo,
   Admin,
 } from "./components/admin";
 
@@ -106,7 +107,7 @@ function App() {
               />
               {/* admin area */}
               <Route path="/admin/access" element={<Admin />}>
-                <Route path="/admin/access/courses" element={"courses"} />
+                <Route path="/admin/access/courses" element={<CourseInfo />} />
                 <Route
                   path="/admin/access/students"
                   element={<StudentInfo />}
