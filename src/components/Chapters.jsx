@@ -28,6 +28,7 @@ const Chapters = () => {
 		}
 	}
   })
+console.log(user)
 
 //fn to handle file conversion
 const handleSelect= async (e)=>{
@@ -50,7 +51,7 @@ reader.onload=(f)=>{
 	useEffect(() => {
 		try{
 		let arrayOfItems = chapters.chapters.map(obj=>{
-			// console.log(obj)
+			console.log(obj)
 		let path = `/students-enrolled/dasdasdsdas`
 
 		return <div className=' border-1 border border-black my-4 p-2 cursor-pointer'
