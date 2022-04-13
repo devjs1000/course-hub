@@ -1,48 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useStore from "../../context/useStore";
-import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
+import { FileEarmarkArrowDownFill, Search, Trash } from "react-bootstrap-icons";
 
-export const StudentInfo = () => {
-  const { allUsersData, allUsersLoading, setAllUsersData } = useStore();
-  const [allStudents, setAllStudents] = useState([]);
-
+export const CourseInfo = () => {
+  const { allCoursesData, allUsersData } = useStore();
   const [inputField, setInputField] = useState("");
-  let data = [];
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    try {
-      if (!allUsersData.length) return;
+    if (!allCoursesData.length) return;
 
-      allUsersData?.forEach((user) => {
-        if (user.role === "student") data.push(user);
-      });
+    let tem = [];
+    allCoursesData.forEach((element) => {
+      tem.push(element);
+    });
 
-      data.sort((a, b) => {
-        if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
-        return 1;
-      });
+    tem.sort((a, b) => {
+      if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
+      return 1;
+    });
 
-      setAllStudents(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [allUsersData]);
-  const changeRole = (e) => {
-    e.preventDefault();
-    console.log("student role changed to  teacher");
+    setData(tem);
+  }, [allCoursesData]);
+
+  const deleteCourse = (e) => {
+    console.log("delete course with id " + e.target.id);
   };
 
-  const deleteAccount = (e) => {
-    e.preventDefault();
-    console.log(e.target.id + "student  account deleted");
-  };
-
-  if (allUsersLoading === true)
-    return (
-      <div className="bg-white w-full px-16 py-4">
-        <h1>Loading</h1>
-      </div>
-    );
   return (
     <div className="bg-white w-full px-8 py-4">
       <div className="flex flex-col mt-4 border">
@@ -53,7 +37,7 @@ export const StudentInfo = () => {
             text-white flex justify-between items-center"
             >
               <h1 className="text-xl uppercase p-4 font-bold  ">
-                student information
+                courses information
               </h1>
               <div className="flex items-center bg-white px-4 text-gray-400 h-[50px] rounded-lg">
                 <Search className="text-2xl  " />
@@ -81,86 +65,83 @@ export const StudentInfo = () => {
                     >
                       Name
                     </th>
+
                     <th
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Email
+                      Tutor
                     </th>
                     <th
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Phone
+                      Price
                     </th>
                     <th
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Change Role
+                      No. of Subscribers
                     </th>
                     <th
                       scope="col"
                       className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                     >
-                      Delete Account
+                      Delete Course
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {allStudents
-                    ?.filter((student) => {
-                      if (inputField === "") return student;
+                  {data
+                    ?.filter((course) => {
+                      if (inputField === "") return course;
                       else if (
-                        student.name
-                          .toLowerCase()
-                          .startsWith(inputField.toLowerCase()) === true ||
-                        student.name
+                        course.name
                           .toLowerCase()
                           .includes(inputField.toLowerCase()) === true
                       )
-                        return student;
+                        return course;
                     })
-                    ?.map((user, idx) => {
+                    ?.map((course, idx) => {
                       return (
                         <tr
                           className={`${
                             idx % 2 == 0 ? "bg-gray-100" : "bg-white"
                           } border-b`}
-                          key={user.id}
+                          key={course.id}
                         >
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {idx + 1}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {user.name}
+                            {course.name}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {user.email}
+                            {allUsersData
+                              ?.filter((user) => {
+                                if (user.id === course.teacherId) return user;
+                              })
+                              .map((user) => user.name)}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {user.phone}
+                            {course.price}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <span
-                              className="bg-blue-500 flex justify-evenly
-                            items-center p-2
-                            rounded-sm"
-                            >
-                              <PencilSquare />
-                              <button id={user.id} onClick={changeRole}>
-                                Make Teacher
-                              </button>
-                            </span>
+                            {course.noOfSubscribers === null
+                              ? 0
+                              : course.noOfSubscribers}
                           </td>
+
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
                             <span
                               className="bg-red-500 flex justify-evenly
+                              w-[70%]
                             items-center p-2
                             rounded-sm"
                             >
                               <Trash />
-                              <button id={user.id} onClick={deleteAccount}>
+                              <button id={course.id} onClick={deleteCourse}>
                                 Delete
                               </button>
                             </span>

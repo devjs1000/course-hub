@@ -144,7 +144,7 @@ export const TeacherInfo = () => {
                             >
                               <PencilSquare />
                               <button id={user.id} onClick={changeRole}>
-                                Change
+                                Make Student
                               </button>
                             </span>
                           </td>

@@ -37,7 +37,8 @@ export const Sidebar = () => {
           menuItems.map((a) => {
             return (
               <div
-                className="flex items-center  py-4 px-4 
+                className="flex items-center  py-4
+                 px-4 
               hover:bg-gray-200
               lg:text-xl md:text-xl"
               >
