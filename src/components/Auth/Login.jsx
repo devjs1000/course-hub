@@ -31,6 +31,7 @@ const Login = () => {
      let token=localStorage.getItem("accessToken")
       if(token!==null){
         toast.success('Logged In Successfully!')
+        console.log(token)
       }
       else{
         toast.error("Email or password does not match")
