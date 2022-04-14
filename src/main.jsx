@@ -6,9 +6,12 @@ import "./styles/global.css";
 import StoreProvider from "./context/StoreProvider";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
+const api={
+	dev:'http://localhost:6900/xcite',
+	online:'https://xciteserver.herokuapp.com/xcite'
+}
 const client = new ApolloClient({
-  uri: "https://xciteserver.herokuapp.com/xcite",
+  uri: api.online,
   cache: new InMemoryCache(),
 });
 
