@@ -40,6 +40,7 @@ import Loading from "./UI/BoxLoading";
 import Contact from "./components/ContactUs/ContactUs";
 import About from "./components/AboutUs/AboutUs";
 import AllCourses from "./components/courses/AllCourses";
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -55,6 +56,7 @@ function App() {
         <Loading />
       ) : (
         <div>
+        <Toaster />
           <Navbar />
           <Suspense fallback={<Loading />}>
             <Routes>
