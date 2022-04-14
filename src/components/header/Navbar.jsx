@@ -8,7 +8,6 @@ import { Link, useLocation } from "react-router-dom";
 import useStore from "../../context/useStore";
 import useIntersection from "../../UI/useIntersection";
 import Navside from "./Navside";
-import MenuIcon from '@material-ui/icons/Menu';
 
 function Navbar() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -67,7 +66,7 @@ function Navbar() {
     { name: "Courses", path: "/all-courses" },
   ];
   const usernameClasses = `text-xl ${
-    isVisible ? "text-white" : theme ? "text-black" : "text-black"
+    isVisible ? "text-white" : theme ? "text-white" : "text-black"
   }`;
   return (
     <>
@@ -119,7 +118,7 @@ function Navbar() {
           )}
         </div>
         <div className="lg:hidden text-3xl ml-auto cursor-pointer">
-          <MenuIcon style={{ fontSize: '36px' }} onClick={() => setShowNavside(true)} />
+          <ListCheck onClick={() => setShowNavside(true)} />
         </div>
 
         <Navside
@@ -149,4 +148,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
