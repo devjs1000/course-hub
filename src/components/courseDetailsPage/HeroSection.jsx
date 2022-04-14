@@ -37,9 +37,9 @@ function HeroSection({ course, id, isEnrolled }) {
   });
 
   useEffect(() => {
-    if (token) {
-      setSubcribed(true);
-    }
+    // if (token) {
+    //   setSubcribed(true);
+    // }
     if (openCourse) {
       document.body.style = "overflow:hidden;";
     } else {
