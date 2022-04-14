@@ -49,6 +49,7 @@ export default () => {
     });
     alert("Course created successfully !");
     location.reload();
+    toast.success('Course Created Successfully!')
   };
 
   return (

@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import {userOrdersQuery} from '../../graphql/queryComponent/order'
+import {userOrdersQuery,getMyCourses} from '../../graphql/queryComponent/order'
 import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
@@ -47,6 +47,7 @@ export default ({}) => {
       }
     }
   })
+  
   const {data:allCourses} = useQuery(allCoursesQuery, {
     variables: {
       userId: user.id,

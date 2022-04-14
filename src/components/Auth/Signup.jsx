@@ -25,7 +25,8 @@ const Signup = () => {
 
   const submitSignup = (e) => {
     e.preventDefault();
-    signup(signupData);
+    signup(signupData).then(toast.success('Account Created Successfully! You are logged in'))
+
   };
 
   //if the id is available, redirect to homepage

@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import CourseCard from "../courses/CourseCard";
-import { userOrdersQuery, getMyCourses } from "../../graphql/Queries";
+import {getMyCourses } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ function MyCourses() {
   const { user,theme, setMyCourses } = useStore();
 
   const token = localStorage.getItem("accessToken");
-  const { data, error, loading } = useQuery(userOrdersQuery, {
+  const { data, error, loading } = useQuery(getMyCourses, {
     context : {
       headers:{
         Authorization: token
@@ -35,7 +35,7 @@ function MyCourses() {
   useEffect(() => {
   
     if (data != null && data != undefined) {
-      setMyCourses(data.getUserOrders);
+      setMyCourses(data.getMyCourses);
     }
   }, [data]);
 
@@ -59,11 +59,11 @@ function MyCourses() {
         )}
         <div className={cardContainerStyles}>
 
-          {Children.toArray(data?.getUserOrders.map((a) => {
+          {Children.toArray(data?.getMyCourses.map((a) => {
             return (
             
                 <CourseCard
-                  id={a.courseId}
+                  id={a.id}
                   enrolled={true}
                   userRole={user.role}
                 />

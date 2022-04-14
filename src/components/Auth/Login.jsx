@@ -5,6 +5,7 @@ import FormControl from "../../UI/FormControl";
 import Button from "../../UI/Button";
 import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { login } = useAuthHook();
@@ -26,8 +27,18 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    login(loginData);
-   
+    login(loginData).then(()=>{
+     let token=localStorage.getItem("accessToken")
+      if(token!==null){
+        toast.success('Logged In Successfully!')
+        console.log(token)
+      }
+      else{
+        toast.error("Email or password does not match")
+      }
+    })
+    
+    
   };
 
   return (
