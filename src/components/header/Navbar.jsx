@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import useStore from "../../context/useStore";
 import useIntersection from "../../UI/useIntersection";
 import Navside from "./Navside";
-import MenuIcon from '@material-ui/icons/Menu';
+import {BsList} from 'react-icons/bs'
 
 function Navbar() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -119,7 +119,7 @@ function Navbar() {
           )}
         </div>
         <div className="lg:hidden text-3xl ml-auto cursor-pointer">
-          <MenuIcon style={{ fontSize: '36px' }} onClick={() => setShowNavside(true)} />
+          <BsList style={{ fontSize: '36px' }} onClick={() => setShowNavside(true)} />
         </div>
 
         <Navside
