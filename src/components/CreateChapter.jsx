@@ -5,7 +5,6 @@ import useStore from "../context/useStore";
 import { createChapterMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import toast from 'react-hot-toast';
 
 const CreateChapter = () => {
   const { user, theme } = useStore();
