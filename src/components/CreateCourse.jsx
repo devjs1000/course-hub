@@ -7,6 +7,8 @@ import { createCourseMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 import { CardImage } from "react-bootstrap-icons";
 import { Navigate } from "react-router-dom";
+import toast from 'react-hot-toast';
+
 
 export default () => {
   const { user } = useStore();
@@ -47,7 +49,6 @@ export default () => {
           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
       },
     });
-    alert("Course created successfully !");
     location.reload();
     toast.success('Course Created Successfully!')
   };
