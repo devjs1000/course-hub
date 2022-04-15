@@ -14,6 +14,11 @@ import { Link, Outlet } from "react-router-dom";
 import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 import { profileDesign } from "../../styles/styleObjects";
+import toast from 'react-hot-toast';
+
+
+
+
 const Profile = () => {
 
   const [openAside, setOpenAside] = useState(false);
@@ -98,7 +103,10 @@ const Profile = () => {
               <span className="text-2xl">
                 <BoxArrowLeft />
               </span>
-              <button onClick={logout} className="text-xl">
+              <button onClick={()=>{
+                logout()
+                toast.success('You have successfully logged out')
+              }} className="text-xl">
                 Logout?
               </button>
             </li>
