@@ -12,6 +12,12 @@ import toast from 'react-hot-toast';
 
 
 Modal.setAppElement('#root');
+
+
+const ConditionalLink = ({ children, to, condition }) => (condition && to)
+      ? <Link to={to}>{children}</Link>
+      : <>{children}</>;
+
 const Chapters = () => {
 	/*
 	
@@ -89,9 +95,11 @@ const handleSubmit = (e)=>{
 
 	useEffect(() => {
 		try{
+			console.log(user)
 		let arrayOfItems = chapters.chapters.map(obj=>{
 		let path = `/students-enrolled/dasdasdsdas`
-		return <div className=' border-1 border border-black my-4 p-2 cursor-pointer'
+		return <ConditionalLink condition={user.role=='teacher'} to={path}>
+		<div className=' border-1 border border-black my-4 p-2 cursor-pointer'
 		onClick={()=>{
 		setIsOpen(true)
 		setModalData(prevState=>({
@@ -103,10 +111,9 @@ const handleSubmit = (e)=>{
 		key={uuidv4()}
 
 		>
-
 		<span className='text-2xl '>{obj?.name}</span> <br/>
-
 		</div>
+		</ConditionalLink>
 	})
 	setChapterList(arrayOfItems)			
 		}
@@ -142,8 +149,6 @@ let modalStyles= `flex w-full h-full justify-center items-center ${theme ? 'bg-s
 				<button
 				onClick={(e)=>{
 				handleSubmit(e)
-				
-			
  		setTimeout(()=>{
 					setIsOpen(false)
 				},3000)
