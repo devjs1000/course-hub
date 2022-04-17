@@ -8,7 +8,7 @@ import {
   getUserById,
   allPopularCoursesQuery,
   allUsersQuery,
-  myCousesQuery
+  myCousesQuery,
 } from "../graphql/Queries";
 
 import jwt_decode from "jwt-decode";
@@ -30,6 +30,9 @@ const Store = () => {
   const [assignments, setAssignments] = useState({});
   const [theme, setTheme] = useState(false);
 
+  /* Admin access state */
+  const [adminPanelAccess, setAdminPanelAccess] = useState(false);
+
   let decoded = { id: null };
   const token = localStorage.getItem("accessToken");
   if (token) {
@@ -37,25 +40,24 @@ const Store = () => {
   }
 
   const { loading, error, data } = useQuery(getUserById, {
-    context : {
-      headers:{
-        Authorization: token
-      }
-    }
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
   });
   // if (data){
   //   console.log("data",data);
   //   console.log("data.user",data.user);
   // }
 
-  const myCoursedata = useQuery(myCousesQuery,{
-    context : {
-      headers:{
-        Authorization: token
-      }
-    }
+  const myCoursedata = useQuery(myCousesQuery, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
   });
-       
 
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
@@ -64,7 +66,6 @@ const Store = () => {
 
   /* Get All Courses Data */
   useEffect(() => {
-
     if (getAllUsersData?.data?.users) {
       setAllUsersData(getAllUsersData?.data?.users);
       setAllUsersLoading(false);
@@ -88,7 +89,7 @@ const Store = () => {
     } else {
       setAllPopularCoursesLoading(false);
     }
-    if(myCoursedata?.data?.myCourses) {
+    if (myCoursedata?.data?.myCourses) {
       setMyCourses(myCoursedata?.data?.myCourses);
     }
     if (getAllCourses?.data?.courses) {
@@ -137,6 +138,9 @@ const Store = () => {
 
     theme,
     setTheme,
+
+    adminPanelAccess,
+    setAdminPanelAccess,
   };
 };
 

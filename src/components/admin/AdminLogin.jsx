@@ -7,6 +7,7 @@ import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 
 export const AdminLogin = () => {
+  const { user } = useStore();
   const { login } = useAuthHook();
   const [loginData, setLoginData] = useState({});
 
@@ -23,11 +24,21 @@ export const AdminLogin = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    login(loginData);
+    login(loginData).then(() => {
+      let token = localStorage.getItem("accessToken");
+      if (token !== null) {
+        toast.success("Logged In Successfully!");
+        console.log(token);
+      } else {
+        toast.error("Email or password does not match");
+      }
+    });
   };
 
   return (
-    <div className="min-h-screen bg-red-800 flex items-center justify-center">
+    <div className="min-h-screen w-full bg-red-800 flex items-center justify-center ">
+      {user.id && user.role === "admin" && <Navigate to="/admin/access" />}
+      {user.id && user.role !== "admin" && <Navigate to="/" />}
       <div className="relative bg-white w-[25rem] mx-2 py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
         <Link to="/">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
@@ -56,4 +67,3 @@ export const AdminLogin = () => {
     </div>
   );
 };
-

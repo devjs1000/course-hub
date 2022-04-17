@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import useStore from "../../context/useStore";
 import useIntersection from "../../UI/useIntersection";
 import Navside from "./Navside";
-import {BsList} from 'react-icons/bs'
+import { BsList } from "react-icons/bs";
 
 function Navbar() {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -28,7 +28,7 @@ function Navbar() {
   const path = location.pathname.split("/")[1];
 
   //add objects in nullpath for hiding object in paths
-  const nullPath = ["login", "signup"];
+  const nullPath = ["login", "signup", "admin-login"];
   if (nullPath.includes(path)) return null;
 
   const openSidebarHandler = () => {
@@ -119,7 +119,10 @@ function Navbar() {
           )}
         </div>
         <div className="lg:hidden text-3xl ml-auto cursor-pointer">
-          <BsList style={{ fontSize: '36px' }} onClick={() => setShowNavside(true)} />
+          <BsList
+            style={{ fontSize: "36px" }}
+            onClick={() => setShowNavside(true)}
+          />
         </div>
 
         <Navside
@@ -149,4 +152,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
