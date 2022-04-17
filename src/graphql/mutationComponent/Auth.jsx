@@ -41,6 +41,7 @@ export const loginMutation = gql`
         description
         phone
         token
+        role
       }
     }
   }

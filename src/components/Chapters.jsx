@@ -98,17 +98,17 @@ const handleSubmit = (e)=>{
 			console.log(user)
 		let arrayOfItems = chapters.chapters.map(obj=>{
 		let path = `/students-enrolled/dasdasdsdas`
-		return <ConditionalLink condition={user.role=='teacher'} to={path}>
+		return <ConditionalLink condition={user.role=='teacher'} to={path} key={uuidv4()}>
 		<div className=' border-1 border border-black my-4 p-2 cursor-pointer'
 		onClick={()=>{
-		setIsOpen(true)
+		console.log(user)
 		setModalData(prevState=>({
 			...prevState,
 			chapterName : obj.name,
 			chapterId : obj.id
 		}))
 		}}
-		key={uuidv4()}
+		
 
 		>
 		<span className='text-2xl '>{obj?.name}</span> <br/>
