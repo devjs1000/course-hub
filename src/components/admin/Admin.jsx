@@ -1,8 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
+import useStore from "../../context/useStore";
 export function Admin() {
+  const { user, userLoading, adminPanelAccess, setAdminPanelAccess } =
+    useStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userLoading) return "";
+    if (user?.role === "admin") setAdminPanelAccess(true);
+    // if user is not logged in the it will be redirected to admin-login page
+    if (JSON.stringify(user) === JSON.stringify({})) navigate("/admin-login");
+  }, [user, userLoading]);
+
   return (
-    <div>
+    <div className="relative">
       <nav className="bg-white border-b-[2px] text-xl uppercase font-bold p-3">
         admin panel
       </nav>
@@ -14,6 +27,9 @@ export function Admin() {
           <Outlet />
         </div>
       </div>
+      {!adminPanelAccess && (
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+      )}
     </div>
   );
 }
