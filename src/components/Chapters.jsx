@@ -6,7 +6,7 @@ import useStore from '../context/useStore'
 import Modal from 'react-modal';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
-import { projectSubmitMutation } from "../graphql/Mutations";
+import { submitMyProject } from "../graphql/Mutations";
 import toast from 'react-hot-toast';
 
 
@@ -25,9 +25,8 @@ const Chapters = () => {
 	chapterId -> chapter ID
 
 	*/
-
-
-	const [submitProject] = useMutation(projectSubmitMutation);
+	const token = localStorage.getItem("accessToken");
+	
 	const [modalData, setModalData] = useState({
 		chapterName : '',
 		chapterId: ''
@@ -36,7 +35,6 @@ const Chapters = () => {
 	const [chapterList, setChapterList] = useState([]) 
 	let {id} = useParams()
 	let {user,theme} = useStore();
-	const token = localStorage.getItem("accessToken");
 	let fileData;
 	const {data:chapters} = useQuery(getChaptersQuery, {
 	variables: {
@@ -48,6 +46,19 @@ const Chapters = () => {
 		}
 	}
   })
+	const [submitProject] = useMutation(submitMyProject, {
+	variables: {
+	chapterId: modalData.chapterId,
+	  courseId: id,
+	  projectLink: fileData,
+	},
+	context : {
+		headers:{
+			Authorization: token
+		}
+	}});
+
+
 
 //fn to handle file conversion
 const handleSelect= async (e)=>{
@@ -61,34 +72,50 @@ reader.onload=(f)=>{
  await reader.readAsDataURL(file);
 }
 	
-const handleSubmit = (e)=>{
+const handleSubmit = async (e)=>{
 	e.preventDefault()
-	const token = localStorage.getItem("accessToken");
-	// console.log(fileData)
 	submitProject({
 		headers:{
         Authorization: token
       },
 	variables:{
-	  userId: user.id,
-      courseId: id,
-      projectLink: fileData,
-      chapterId: modalData.chapterId,
+	  chapterId: modalData.chapterId,
+	  courseId: id,
+	  projectLink: fileData,
 		}
+	}).then(res=>{
+		console.log(res)
+	}).catch(err=>{
+		console.log(err)
 	})
+
+	// console.log(modalData.chapterId)
+	// console.log(id)
+
 	toast.promise(
   			submitProject({
+		headers:{
+        Authorization: token
+      },
 	variables:{
-	  userId: user.id,
-      courseId: id,
-      projectLink: fileData,
-      chapterId: modalData.chapterId,
+	  chapterId: modalData.chapterId,
+	  courseId: id,
+	  projectLink: fileData,
 		}
 	}),{
      		loading: 'Saving...',
      		success: <b>Project Submission Successfully!</b>,
      		error: <b>Project Submission Failed.</b>,
-   	}
+   	},
+   	 {
+    success: {
+      duration: 4000,
+    },
+    error :{
+      duration: 4000,
+
+    }
+  }
  )
 }
 
@@ -98,10 +125,10 @@ const handleSubmit = (e)=>{
 			console.log(user)
 		let arrayOfItems = chapters.chapters.map(obj=>{
 		let path = `/students-enrolled/dasdasdsdas`
-		return <ConditionalLink condition={user.role=='teacher'} to={path} key={uuidv4()}>
+		return <ConditionalLink condition={user.role=='student'} to={path} key={uuidv4()}>
 		<div className=' border-1 border border-black my-4 p-2 cursor-pointer'
 		onClick={()=>{
-		console.log(user)
+		setIsOpen(true)
 		setModalData(prevState=>({
 			...prevState,
 			chapterName : obj.name,
@@ -150,6 +177,7 @@ let modalStyles= `flex w-full h-full justify-center items-center ${theme ? 'bg-s
 				onClick={(e)=>{
 				handleSubmit(e)
  		setTimeout(()=>{
+ 					
 					setIsOpen(false)
 				},3000)
 				}}

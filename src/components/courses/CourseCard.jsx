@@ -11,7 +11,6 @@ const CourseCard = ({ id, drill = false, userRole }) => {
 
   useEffect(() => {
     if (drill) return;
-    console.log(id)
     const data = allCoursesData.find((course) => course.id === id);
     setCurrent(data);
   }, [id]);
