@@ -15,7 +15,11 @@ export default ({ courseId, chapterId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("accessToken");
     submitProject({
+      headers:{
+        Authorization: token
+      },
       variables: { ...formData, teacherId: user.id, courseId, chapterId },
     });
   };

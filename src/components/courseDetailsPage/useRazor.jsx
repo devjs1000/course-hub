@@ -24,12 +24,19 @@ const useRazor = () => {
       return;
     }
 
+    const token = localStorage.getItem("accessToken");
     const orderData = await axios.post("/api", {
       query: getOrderId,
       variables: {
         courseId,
-      },
-    })
+      }
+    },
+    {
+      headers:{
+        Authorization: token
+      }
+    }
+    )
 
     console.log(orderData);
 
@@ -52,11 +59,15 @@ const useRazor = () => {
           query: createOrder,
           variables: {
             courseId,
-            userId,
             razorpaySignature:response.razorpay_signature,
             paymentId:response.razorpay_payment_id,
             orderId:response.razorpay_order_id
-          },
+          }
+        },
+        {
+          headers:{
+            Authorization: token
+          }
         })
     
        console.log(verificationOrder);
