@@ -27,16 +27,20 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    login(loginData).then(()=>{
-     let token=localStorage.getItem("accessToken")
-      if(token!==null){
-        toast.success('Logged In Successfully!')
-        console.log(token)
-      }
-      else{
-        toast.error("Email or password does not match")
-      }
-    })
+    login(loginData)
+    toast.promise(
+  login(loginData),
+   {
+     loading: 'Logging in...',
+     success: <b>Logged in successfully!</b>,
+     error: <b>Email or password does not match</b>,
+   },
+   {
+    success: {
+      duration: 3000,
+    },
+  }
+ );
     
     
   };

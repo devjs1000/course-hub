@@ -18,6 +18,17 @@ export const projectSubmitMutation = gql`
   }
 `;
 
+export const submitMyProject = gql`
+  mutation SubmitProject($chapterId: ID!, $courseId: ID!, $projectLink: String!) {
+  submitProject(chapterId: $chapterId, courseId: $courseId, projectLink: $projectLink) {
+    projectStatus
+    projectLink
+    id
+  }
+}
+`
+
+
 export const checkProjectMutation = gql`
   mutation CheckProject($projectId: ID!, $projectStatus: String) {
     checkProject(projectId: $projectId, projectStatus: $projectStatus) {
