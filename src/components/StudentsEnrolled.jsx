@@ -1,12 +1,14 @@
 import React from 'react'
 import useStore from '../context/useStore'
 import {useParams} from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const StudentsEnrolled = () => {
 	const {theme} = useStore()
 	const fakeIds = [{name:'rohan', id:98}, {name :'rohit',id:48}, {name: 'shweta',id:28}]
 	let output=fakeIds.map(obj=>{
-		return <tr className='border-collapse border border-slate-400'>
+		return <tr className='border-collapse border border-slate-400' key={uuidv4()}>
       <td className="border border-slate-500">{obj.name}</td>
       <td className="border border-slate-500">{obj.id}</td>
       <td className="border border-slate-500">pending</td>
