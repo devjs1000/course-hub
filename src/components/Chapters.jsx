@@ -182,7 +182,6 @@ let modalStyles= `flex w-full h-full justify-center items-center ${theme ? 'bg-s
 				},3000)
 				}}
 				 className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded h-12'>Submit</button>
-				}
 				</div>
 			</article>
 			</div>

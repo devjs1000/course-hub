@@ -2,13 +2,11 @@ import { gql } from "@apollo/client";
 
 export const projectSubmitMutation = gql`
   mutation Mutation(
-    $userId: ID!
     $courseId: ID!
     $projectLink: String!
     $chapterId: ID!
   ) {
     submitProject(
-      userId: $userId
       courseId: $courseId
       projectLink: $projectLink
       chapterId: $chapterId
