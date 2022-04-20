@@ -40,41 +40,17 @@ function AllCourses() {
         {allCoursesData?.length !== 0 ? (
           Children.toArray(
             coursesByType.map((eachType) => (
-              <div className="bg-[#fffbfb] px-16 h-[100%] pt-8 select-none lg:pt-16">
+              <div className="bg-[#fffbfb] px-16 h-[100%]  pt-8 select-none lg:pt-16">
                 <h2 className="text-4xl font-semibold w-full text-slate-700 uppercase">
                   {eachType?.type}
                 </h2>
-
-                <Swiper
-                  style={{
-                    "--swiper-navigation-color": "#000",
-                  }}
-                  breakpoints={{
-                    // when window width is >= 640px
-                    640: {
-                      width: 640,
-                      slidesPerView: 1,
-                    },
-                    // when window width is >= 768px
-                    768: {
-                      width: 768,
-                      slidesPerView: 2,
-                    },
-                  }}
-                  navigation={true}
-                  modules={[Navigation]}
-                  className="py-4 lg:py-8"
-                >
+                <div className="flex flex-wrap justify-around gap-6 ">
                   {Children.toArray(
                     eachType?.data.map((course) => {
-                      return (
-                        <SwiperSlide key={course?.id}>
-                          <CourseCard id={course?.id} />
-                        </SwiperSlide>
-                      );
+                      return <CourseCard id={course?.id} />;
                     })
                   )}
-                </Swiper>
+                </div>
               </div>
             ))
           )

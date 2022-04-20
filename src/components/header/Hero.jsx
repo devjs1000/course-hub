@@ -4,9 +4,8 @@ import hero from "../../images/hero.svg";
 
 function Hero() {
   const bluePrint = {
-    heading: "Hold our hand on the path of your career.",
-    subHeading:
-      "Take on the professional world by learning and practicing in-demand skills with us.",
+    heading: "Hold on",
+    subHeading: "We’re working hard to get you the best experience possible",
     callToAction: "Enroll Now",
   };
 
