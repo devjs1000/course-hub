@@ -6,7 +6,7 @@ import instThreeImage from '../images/instructors/Inst-3.jpg';
 import instFourImage from '../images/instructors/Inst-4.jpg';
 import SectionHeading from '../UI/SectionHeading';
 import useStore from '../context/useStore'
-const InstructorCard = ({ image }) => {
+const InstructorCard = ({ image, name,quote, role }) => {
 	return (
 		<div
 			className="shadow-md flex items-start rounded-sm overflow-hidden"
@@ -20,13 +20,12 @@ const InstructorCard = ({ image }) => {
 			</div>
 			<div className="flex-[0.8] p-4 flex flex-col items-start gap-4 h-[275px]">
 				<div>
-					<h6 className="text-2xl font-semibold">John Doe</h6>
-					<span>Professional React Developer</span>
+					<h6 className="text-2xl font-semibold">{name}</h6>
+					<span>{role}</span>
 				</div>
 				<div className="h-[2px] bg-primary-color-light w-[50%]"></div>
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-					placeat!
+					{quote}
 				</p>
 				<div className="text-2xl flex items-center gap-4 text-primary-color-light">
 					<Instagram />
@@ -42,6 +41,44 @@ const InstructorCard = ({ image }) => {
 
 function Teachers() {
 	const {theme} = useStore()
+	let teachersArray = [
+	{
+		'name' : 'Akshay Acharya',
+		'quote' : 'Education is what survives when what has been learned is forgotten.',
+		'role' : 'Professional React Developer',
+		'img': instOneImage
+	},
+	{
+		'name' : 'Sahil Gupta',
+		'quote' : 'Our task, regarding creativity, is to help children climb their own mountains, as high as possible. No one can do more',
+		'role' : 'Software Engineer at BlackBuck Inc.',
+		'img': instTwoImage
+
+
+	},
+	{
+		'name' : 'Sneha Sharma',
+		'quote' : 'Education is for improving the lives of others and for leaving your community and world better than you found it.',
+		'role' : 'Sr. Front End Developer at Swiggy',
+		'img': instThreeImage
+
+
+	},
+	{
+		'name' : 'Sourav Mishra',
+		'quote' : 'Education is not to reform students or amuse them or to make them expert technicians. It is to unsettle their minds, widen their horizons, inflame their intellects, teach them to think straight, if possible.',
+		'role' : 'Sr. DevOps Engineer',
+		'img': instFourImage
+
+
+	},
+	]
+
+	let list = teachersArray.map(obj=>{
+		return <InstructorCard image={obj.img} name={obj.name} quote={obj.quote} role={obj.role} />
+
+	})
+
 	const teachersStyles = ` ${theme? 'bg-slate-800 text-white' : 'text-slate-900 bg-white'} px-8 py-8 flex flex-col items-start lg:px-16 md:py-16 lg:py-20`
 	return (
 		<div className={teachersStyles} >
@@ -50,10 +87,7 @@ function Teachers() {
 				heading="Our professional & Expert Course Instructors"
 			/>
 			<div className="w-full grid grid-rows-4 gap-4 mt-16">
-				<InstructorCard image={instOneImage} />
-				<InstructorCard image={instTwoImage} />
-				<InstructorCard image={instThreeImage} />
-				<InstructorCard image={instFourImage} />
+				{list}
 			</div>
 		</div>
 	);
