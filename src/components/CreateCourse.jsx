@@ -12,10 +12,29 @@ import toast from 'react-hot-toast';
 
 export default () => {
   const { user } = useStore();
-
+  let fileData
   const [formData, setFormData] = useState({});
   const [createCourse,{data}] = useMutation(createCourseMutation);
   const [isImageSelected, setImageSelected] = useState(false);
+
+  const handleFile= async (e)=>{
+    const file=e.target.files[0]
+    const fileSize = file.size / 1024 / 1024; // in MiB
+    if(fileSize>200){
+      alert('file size exceeds limit')
+    }
+    else{
+    const reader=new FileReader()
+    reader.onload=(f)=>{
+    fileData=f.target.result
+    let value = fileData
+    // console.log(fileData)
+    setFormData((val) => ({ ...val, ['video']: value }))
+ }
+ await reader.readAsDataURL(file);
+  
+    }
+  }
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -94,7 +113,10 @@ export default () => {
             label="price"
             icon="CURRENCY"
           />
-
+          <div className='border border-1 border-gray-300 p-4 rounded'>
+            <label htmlFor="video" className='text-slate-700'>Upload Video</label>
+           <input type="file" id="video" onChange={handleFile} className='ml-8' />
+          </div> 
           {/* <Upload className="text-slate-800" size={20} /> */}
           <div className="flex justify-center">
             <div className="rounded-lg bg-white  w-[100%]">
@@ -110,6 +132,7 @@ export default () => {
                         {isImageSelected ? formData.image : "Select a photo"}
                       </p>
                     </div>
+
                     <input type="file" className="hidden" onChange={handleImage} />
                   </label>
                 </div>
