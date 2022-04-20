@@ -113,9 +113,9 @@ export default () => {
             label="price"
             icon="CURRENCY"
           />
-          <div>
-            <label htmlFor="video" className='text-gray-500'>Video</label>
-           <input type="file" id="video" onChange={handleFile} />
+          <div className='border border-1 border-gray-300 p-4 rounded'>
+            <label htmlFor="video" className='text-slate-700'>Upload Video</label>
+           <input type="file" id="video" onChange={handleFile} className='ml-8' />
           </div> 
           {/* <Upload className="text-slate-800" size={20} /> */}
           <div className="flex justify-center">
