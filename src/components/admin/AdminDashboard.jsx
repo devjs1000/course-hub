@@ -5,18 +5,27 @@ import { PeopleFill, Journal, PersonLinesFill } from "react-bootstrap-icons";
 export const AdminDashboard = () => {
   const { allUsersData, allCoursesData } = useStore();
   const [studentsCount, setStudentCount] = useState(0);
+  const [teachersCount, setTeacherCount] = useState(0);
   const topIconDiv =
     "w-10 h-10 flex items-center justify-center text-white rounded-full text-2xl";
-
-  let students = 0;
 
   useEffect(() => {
     if (allUsersData?.length === 0) return;
 
+    let students = 0;
     allUsersData.forEach((user) => {
       if (user.role === "student") students++;
     });
     setStudentCount(students);
+  }, [allUsersData]);
+
+  useEffect(() => {
+    if (allUsersData?.length === 0) return;
+    let teachers = 0;
+    allUsersData.forEach((user) => {
+      if (user.role === "teacher") teachers++;
+    });
+    setTeacherCount(teachers);
   }, [allUsersData]);
   return (
     <div>
@@ -53,7 +62,7 @@ export const AdminDashboard = () => {
           </div>
           <div className="text-xl font-semibold flex mt-2">
             <h1 className="mr-4">Teachers</h1>
-            <p>{allUsersData.length - studentsCount}</p>
+            <p>{teachersCount}</p>
           </div>
         </div>
         <div className="bg-green-300 flex justify-center items-center flex-col py-8 rounded-md">
