@@ -48,8 +48,8 @@ const About = () => {
     <div>
       <div className={styles.topDiv}>
         <h1 className={styles.topHead}>About Us</h1>
-        <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p>Culpa commodi, fugit suscipit ut</p>
+        <p className='text-center'>We are a start-up aimed at providing premium education at affordable prices</p>
+   
       </div>
       <div className={styles.topGridMain}>
         <div className={styles.topGridWrapper}>
@@ -65,11 +65,10 @@ const About = () => {
               </div>
             </div>
             <h2 className={`${styles.topGridHead} text-red-700`}>
-              CLEAN DESIGN
+              1-to-1 MENTORSHIP
             </h2>
             <p className={styles.topGridShort}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-              commodi, fugit suscipit ut
+             You get mentored by our Expert faculty on any courses you enroll
             </p>
           </div>
         {/*Secure Data Card*/}
@@ -84,11 +83,10 @@ const About = () => {
               </div>
             </div>
             <h2 className={`${styles.topGridHead} text-blue-700`}>
-              SECURE DATA
+              OFFLINE VIEWING
             </h2>
             <p className={styles.topGridShort}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-              commodi, fugit suscipit ut
+             Learn on the go even without connecting to the internet by saving the lectures offline.
             </p>
           </div>
         {/*Retina Ready Card*/}
@@ -103,11 +101,10 @@ const About = () => {
               </div>
             </div>
             <h2 className={`${styles.topGridHead} text-green-700`}>
-              RETINA READY
+             SECURE DATA
             </h2>
             <p className={styles.topGridShort}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-              commodi, fugit suscipit ut
+       You data is encrypted and secured so much that even we can't access it!
             </p>
           </div>
         </div>
@@ -120,60 +117,55 @@ const About = () => {
             <div className={styles.whyIcon}>
               <Tree />
             </div>
-            <h4 className={styles.whyItemHead}>Trening Courses</h4>
+            <h4 className={styles.whyItemHead}>Trending Courses</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+             Our courses are always updated according to the latest technologies
             </p>
           </div>
           <div className={styles.whyGridItem}>
             <div className={styles.whyIcon}>
               <JournalArrowDown />
             </div>
-            <h4 className={styles.whyItemHead}>Books Liberary</h4>
+            <h4 className={styles.whyItemHead}>e-Books Library</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+              Get access to exclusive e-books from our expert faculty to boost your learning.
             </p>
           </div>
           <div className={styles.whyGridItem}>
             <div className={styles.whyIcon}>
               <PatchCheck />
             </div>
-            <h4 className={styles.whyItemHead}>Certified Teacher</h4>
+            <h4 className={styles.whyItemHead}>Certified Teachers</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+              All our instructors are from Premier Institues and Fortune 500 companies.
+              So you can be rest assured of getting the best of education.
             </p>
           </div>
           <div className={styles.whyGridItem}>
             <div className={styles.whyIcon}>
               <Percent />
             </div>
-            <h4 className={styles.whyItemHead}>Available Support</h4>
+            <h4 className={styles.whyItemHead}>Instant Support</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+             You get access to priority support on any issue you face.
             </p>
           </div>
           <div className={styles.whyGridItem}>
             <div className={styles.whyIcon}>
               <ArrowsExpand />
             </div>
-            <h4 className={styles.whyItemHead}>Experts Teacher</h4>
+            <h4 className={styles.whyItemHead}>Industry Level Projects</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+             Nuild industry grade projects to showcase your skills to potential recruiters
             </p>
           </div>
           <div className={styles.whyGridItem}>
             <div className={styles.whyIcon}>
               <Collection />
             </div>
-            <h4 className={styles.whyItemHead}>Books Liberary</h4>
+            <h4 className={styles.whyItemHead}>Placement Assistance</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua
+              We prepare you for your interviews with our industry standard syllabus and courses.
             </p>
           </div>
         </div>
