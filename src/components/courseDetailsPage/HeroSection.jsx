@@ -48,15 +48,18 @@ function HeroSection({ course, id, isEnrolled }) {
     if (user && course.subscribers && course.subscribers.includes(user.id)) {
       setSubcribed(true);
     }
+
+
     if (myCourses.length != 0) {
-      const course = myCourses.filter((courseItem)=>courseItem.id == id);
-      if (course && course[0] && course[0].id) {
+      const course = myCourses.filter((courseItem)=>courseItem?.id == id);
+      if (course && course[0] && course[0]?.id) {
         setSubcribed(true);
       }
     }
+
     if(data){
       console.log("data",data);
-      console.log("data.chapters",data.chapters);
+      console.log("data.chapters",data?.chapters);
     }
     if (data && data.chapters) {
       setChapters(data.chapters);

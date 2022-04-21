@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import useStore from "../../context/useStore";
+
+
+
 export function Admin() {
   const { user, userLoading, adminPanelAccess, setAdminPanelAccess } =
     useStore();
@@ -10,6 +13,10 @@ export function Admin() {
   useEffect(() => {
     if (userLoading) return "";
     if (user?.role === "admin") setAdminPanelAccess(true);
+
+
+
+    
     // if user is not logged in the it will be redirected to admin-login page
     if (JSON.stringify(user) === JSON.stringify({})) navigate("/admin-login");
   }, [user, userLoading]);
