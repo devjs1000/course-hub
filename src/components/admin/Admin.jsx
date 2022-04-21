@@ -14,6 +14,7 @@ export function Admin() {
     if (JSON.stringify(user) === JSON.stringify({})) navigate("/admin-login");
   }, [user, userLoading]);
 
+  if (userLoading) return "Loading";
   return (
     <div className="relative">
       <nav className="bg-white border-b-[2px] text-xl uppercase font-bold p-3">
@@ -28,7 +29,9 @@ export function Admin() {
         </div>
       </div>
       {!adminPanelAccess && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-white flex justify-center items-center text-[40px] font-bold">
+          Access Denied
+        </div>
       )}
     </div>
   );

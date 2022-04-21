@@ -46,3 +46,15 @@ export const loginMutation = gql`
     }
   }
 `;
+
+export const adminDeleteUserByIdMutation = gql`
+  mutation AdminDeleteUserById($userId: ID!) {
+    adminDeleteUserById(userId: $userId)
+  }
+`;
+
+export const adminUpdateUserRoleByIdMutation = gql`
+  mutation AdminUpdateUserRoleById($userId: ID!, $role: String!) {
+    adminUpdateUserRoleById(userId: $userId, role: $role)
+  }
+`;

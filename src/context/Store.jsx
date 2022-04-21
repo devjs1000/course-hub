@@ -7,7 +7,7 @@ import {
   allCoursesQuery,
   getUserById,
   allPopularCoursesQuery,
-  allUsersQuery,
+  adminGetAllUsersQuery,
   myCousesQuery,
 } from "../graphql/Queries";
 
@@ -62,12 +62,18 @@ const Store = () => {
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
   const getAllPopularCourses = useQuery(allPopularCoursesQuery);
-  const getAllUsersData = useQuery(allUsersQuery);
+  const getAllUsersData = useQuery(adminGetAllUsersQuery, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+  });
 
   /* Get All Courses Data */
   useEffect(() => {
-    if (getAllUsersData?.data?.users) {
-      setAllUsersData(getAllUsersData?.data?.users);
+    if (getAllUsersData?.data?.adminGetAllUsers) {
+      setAllUsersData(getAllUsersData?.data?.adminGetAllUsers);
       setAllUsersLoading(false);
     }
     if (getAllCourses?.data?.courses) {
@@ -125,6 +131,7 @@ const Store = () => {
     setAllPopularCoursesLoading,
 
     allCoursesData,
+    setAllCoursesData,
     allCoursesLoading,
 
     posts,
