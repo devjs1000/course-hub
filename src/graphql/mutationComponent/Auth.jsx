@@ -55,6 +55,11 @@ export const adminDeleteUserByIdMutation = gql`
 
 export const adminUpdateUserRoleByIdMutation = gql`
   mutation AdminUpdateUserRoleById($userId: ID!, $role: String!) {
-    adminUpdateUserRoleById(userId: $userId, role: $role)
+    adminUpdateUserRoleById(userId: $userId, role: $role) {
+      id
+      name
+      role
+      email
+    }
   }
 `;

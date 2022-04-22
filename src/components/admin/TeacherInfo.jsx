@@ -35,19 +35,19 @@ export const TeacherInfo = () => {
   const handleChangeRole = (e) => {
     e.preventDefault();
     console.log("role changed");
-    // let user_id = e.target.id;
-    // let new_role = "student";
-    // adminUpdateUserRoleById({
-    //   variables: {
-    //     userId: user_id,
-    //     role: new_role,
-    //   },
-    //   context: {
-    //     headers: {
-    //       Authorization: token,
-    //     },
-    //   },
-    // });
+    let user_id = e.target.id;
+    let new_role = "student";
+    adminUpdateUserRoleById({
+      variables: {
+        userId: user_id,
+        role: new_role,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
   };
 
   const handleDeleteUser = async (e) => {
