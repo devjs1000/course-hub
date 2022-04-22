@@ -3,8 +3,6 @@ import useStore from "../../context/useStore";
 import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
 import { useMutation } from "@apollo/client";
 
-
-
 import {
   adminDeleteUserByIdMutation,
   adminUpdateUserRoleByIdMutation,
@@ -21,44 +19,38 @@ export const StudentInfo = () => {
     adminUpdateUserRoleByIdMutation
   );
 
-
-
   useEffect(() => {
-    try {
-      if (!allUsersData.length) return;
+    if (!allUsersData.length) return;
 
-      allUsersData?.forEach((user) => {
-        if (user.role === "student") data.push(user);
-      });
+    allUsersData?.forEach((user) => {
+      if (user.role === "student") data.push(user);
+    });
 
-      data.sort((a, b) => {
-        if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
-        return 1;
-      });
+    data.sort((a, b) => {
+      if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
+      return 1;
+    });
 
-      setAllStudents(data);
-    } catch (error) {
-      console.log(error);
-    }
+    setAllStudents(data);
   }, [allUsersData]);
 
   const token = localStorage.getItem("accessToken");
   const handleChangeRole = (e) => {
     e.preventDefault();
     console.log("role changed");
-    // let user_id = e.target.id;
-    // let new_role = "teacher";
-    // adminUpdateUserRoleById({
-    //   variables: {
-    //     userId: user_id,
-    //     role: new_role,
-    //   },
-    //   context: {
-    //     headers: {
-    //       Authorization: token,
-    //     },
-    //   },
-    // });
+    let user_id = e.target.id;
+    let new_role = "teacher";
+    adminUpdateUserRoleById({
+      variables: {
+        userId: user_id,
+        role: new_role,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
   };
 
   const handleDeleteUser = async (e) => {

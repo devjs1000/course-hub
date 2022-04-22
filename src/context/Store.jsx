@@ -70,12 +70,18 @@ const Store = () => {
     },
   });
 
-  /* Get All Courses Data */
+  /* Get All Users Data */
   useEffect(() => {
+    console.log(getAllUsersData);
     if (getAllUsersData?.data?.adminGetAllUsers) {
+      console.log(getAllUsersData);
       setAllUsersData(getAllUsersData?.data?.adminGetAllUsers);
       setAllUsersLoading(false);
     }
+  }, [getAllUsersData?.data]);
+
+  /* Get All Courses Data */
+  useEffect(() => {
     if (getAllCourses?.data?.courses) {
       setAllCoursesData(getAllCourses?.data?.courses);
       setAllCoursesLoading(false);
