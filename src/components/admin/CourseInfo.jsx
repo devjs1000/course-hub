@@ -9,6 +9,7 @@ export const CourseInfo = () => {
   const [inputField, setInputField] = useState("");
   const [data, setData] = useState([]);
   const [adminDeleteCourseById] = useMutation(adminDeleteCourseByIdMutation);
+
   useEffect(() => {
     if (!allCoursesData.length) return;
 
@@ -45,7 +46,7 @@ export const CourseInfo = () => {
       if (course.id !== c_id) return course;
     });
 
-    console.log(data);
+    //console.log(data);
     setAllCoursesData(data);
   };
 

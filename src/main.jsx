@@ -11,7 +11,7 @@ const api = {
   online: "https://xciteserver.herokuapp.com/xcite",
 };
 const client = new ApolloClient({
-  uri: api.online,
+  uri: api.dev,
   cache: new InMemoryCache(),
 });
 
