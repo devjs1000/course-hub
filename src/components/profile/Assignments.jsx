@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import {userOrdersQuery,getMyCourses} from '../../graphql/queryComponent/order'
+import {getMyCourses} from '../../graphql/queryComponent/order'
 import {allCoursesQuery} from '../../graphql/queryComponent/course'
 
 export default ({}) => {
@@ -40,7 +40,8 @@ export default ({}) => {
   const [enrolledCourses, setEnrolledCourses]=useState([])
   let { myCourses,user,theme } = useStore();
   const token = localStorage.getItem("accessToken");
-  const {data:projects} = useQuery(userOrdersQuery, {
+  console.log(token)
+  const {data:projects} = useQuery(getMyCourses, {
     context : {
       headers:{
         Authorization: token
@@ -48,6 +49,8 @@ export default ({}) => {
     }
   })
   
+  // console.log(projects)
+
   const {data:allCourses} = useQuery(allCoursesQuery, {
     variables: {
       userId: user.id,
@@ -58,7 +61,11 @@ let dataToBeShown
 
  async function runQueries(){
   try{
-  let myCourseId= projects.getUserOrders.map(obj=>obj.courseId)
+  let myCourseId= projects.getMyCourses.map(obj=>{
+    // console.log(obj)
+    return obj.id
+  })
+  // console.log(myCourseId)
  dataToBeShown= allCourses.courses.filter(eachObj=>{
   return myCourseId.includes(eachObj.id) 
   })
