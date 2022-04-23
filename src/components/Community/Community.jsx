@@ -6,7 +6,7 @@ import { Plus } from "react-bootstrap-icons";
 import Post from "./Post";
 import useStore from '../../context/useStore'
 import axios from "axios";
-import {allQuestionsQuery, getAnswerQuery} from '../../graphql/Queries'
+import {allQuestionsQuery} from '../../graphql/Queries'
 import { useQuery,useMutation } from "@apollo/client";
 
 
@@ -23,19 +23,8 @@ const Community = () => {
     }
   }
   })
-  function getAnswers(id){
-    const {data,loading,error} = useQuery(getAnswerQuery,{
-      variables:{
-        questionId: id
-      },
-      context : {
-    headers:{
-      Authorization: token
-    }
-  }
-    })
-    return data
-  }
+  
+
 
 
 if(loading) return <div className='flex items-center justify-center'>
@@ -62,14 +51,11 @@ if(error) return 'Oops! Something wrong happened. Please contact support'
         <div className="col-span-4 mb-4 ">
           {Children.toArray(
             ques.questions.map((obj) => {
-              // console.log(obj.question)
               return (
                 <Post
                   id={obj.id}
                   question={obj.question}
                   category="Frontend"
-                  // answers={get}
-
                 />
               );
             })
