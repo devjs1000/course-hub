@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../../context/useStore";
 import { FileEarmarkArrowDownFill, Search, Trash } from "react-bootstrap-icons";
+import { adminDeleteCourseByIdMutation } from "../../graphql/Mutations";
+import { useMutation } from "@apollo/client";
 
 export const CourseInfo = () => {
-  const { allCoursesData, allUsersData } = useStore();
+  const { allCoursesData, setAllCoursesData, allUsersData } = useStore();
   const [inputField, setInputField] = useState("");
   const [data, setData] = useState([]);
+  const [adminDeleteCourseById] = useMutation(adminDeleteCourseByIdMutation);
 
   useEffect(() => {
     if (!allCoursesData.length) return;
@@ -23,8 +26,28 @@ export const CourseInfo = () => {
     setData(tem);
   }, [allCoursesData]);
 
-  const deleteCourse = (e) => {
-    console.log("delete course with id " + e.target.id);
+  const token = localStorage.getItem("accessToken");
+  const handleDeleteCourse = async (e) => {
+    e.preventDefault();
+    let c_id = e.target.id;
+    //console.log("deleted", e.target.id);
+    await adminDeleteCourseById({
+      variables: {
+        courseId: c_id,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
+
+    const data = allCoursesData.filter((course) => {
+      if (course.id !== c_id) return course;
+    });
+
+    //console.log(data);
+    setAllCoursesData(data);
   };
 
   return (
@@ -134,17 +157,16 @@ export const CourseInfo = () => {
                           </td>
 
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
-                            <span
+                            <button
+                              id={course.id}
+                              onClick={handleDeleteCourse}
                               className="bg-red-500 flex justify-evenly
-                              w-[70%]
-                            items-center p-2
+                            items-center p-2 font-bold
                             rounded-sm"
                             >
-                              <Trash />
-                              <button id={course.id} onClick={deleteCourse}>
-                                Delete
-                              </button>
-                            </span>
+                              <Trash className="mr-2" />
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       );

@@ -7,7 +7,7 @@ import {
   allCoursesQuery,
   getUserById,
   allPopularCoursesQuery,
-  allUsersQuery,
+  adminGetAllUsersQuery,
   myCousesQuery,
 } from "../graphql/Queries";
 
@@ -29,6 +29,7 @@ const Store = () => {
   const [myCourses, setMyCourses] = useState([]);
   const [assignments, setAssignments] = useState({});
   const [theme, setTheme] = useState(false);
+  const [chatbotOn, setChatbotOn] = useState(false);
 
   /* Admin access state */
   const [adminPanelAccess, setAdminPanelAccess] = useState(false);
@@ -62,14 +63,26 @@ const Store = () => {
   /* Define GraphQL Hooks */
   const getAllCourses = useQuery(allCoursesQuery);
   const getAllPopularCourses = useQuery(allPopularCoursesQuery);
-  const getAllUsersData = useQuery(allUsersQuery);
+  const getAllUsersData = useQuery(adminGetAllUsersQuery, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+  });
+
+  /* Get All Users Data */
+  useEffect(() => {
+    console.log(getAllUsersData);
+    if (getAllUsersData?.data?.adminGetAllUsers) {
+      console.log(getAllUsersData);
+      setAllUsersData(getAllUsersData?.data?.adminGetAllUsers);
+      setAllUsersLoading(false);
+    }
+  }, [getAllUsersData?.data]);
 
   /* Get All Courses Data */
   useEffect(() => {
-    if (getAllUsersData?.data?.users) {
-      setAllUsersData(getAllUsersData?.data?.users);
-      setAllUsersLoading(false);
-    }
     if (getAllCourses?.data?.courses) {
       setAllCoursesData(getAllCourses?.data?.courses);
       setAllCoursesLoading(false);
@@ -125,6 +138,7 @@ const Store = () => {
     setAllPopularCoursesLoading,
 
     allCoursesData,
+    setAllCoursesData,
     allCoursesLoading,
 
     posts,
@@ -141,6 +155,9 @@ const Store = () => {
 
     adminPanelAccess,
     setAdminPanelAccess,
+
+    chatbotOn,
+    setChatbotOn,
   };
 };
 

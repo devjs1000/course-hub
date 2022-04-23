@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../context/useStore";
-import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
+import { Search, Trash, PencilSquare, Handbag } from "react-bootstrap-icons";
+import { useMutation } from "@apollo/client";
+import {
+  adminDeleteUserByIdMutation,
+  adminUpdateUserRoleByIdMutation,
+} from "../../graphql/Mutations";
 
 export const TeacherInfo = () => {
-  const { allUsersData, allUsersLoading } = useStore();
+  const { allUsersData, setAllUsersData, allUsersLoading } = useStore();
   const [allTeachers, setAllTeachers] = useState([]);
   const [inputField, setInputField] = useState("");
   let data = [];
+  const [adminDeleteByUserId] = useMutation(adminDeleteUserByIdMutation);
+  const [adminUpdateUserRoleById] = useMutation(
+    adminUpdateUserRoleByIdMutation
+  );
 
   useEffect(() => {
     try {
@@ -22,14 +31,45 @@ export const TeacherInfo = () => {
     }
   }, [allUsersData]);
 
-  const changeRole = (e) => {
+  const token = localStorage.getItem("accessToken");
+  const handleChangeRole = (e) => {
     e.preventDefault();
-    console.log("teacher role changed to student");
+    console.log("role changed");
+    let user_id = e.target.id;
+    let new_role = "student";
+    adminUpdateUserRoleById({
+      variables: {
+        userId: user_id,
+        role: new_role,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
   };
 
-  const deleteAccount = (e) => {
+  const handleDeleteUser = async (e) => {
     e.preventDefault();
-    console.log(e.target.id + "account deleted");
+    // console.log(e.target.id + "account deleted");
+    let user_id = e.target.id;
+    await adminDeleteByUserId({
+      variables: {
+        userId: user_id,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
+
+    let data = allUsersData.filter((user) => {
+      if (user.id !== user_id) return user;
+    });
+
+    setAllUsersData(data);
   };
 
   if (allUsersLoading === true)
@@ -137,28 +177,28 @@ export const TeacherInfo = () => {
                             {user.phone}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <span
+                            <button
+                              id={user.id}
+                              onClick={handleChangeRole}
                               className="bg-blue-500 flex justify-evenly
-                            items-center p-2
+                            items-center p-2 font-bold
                             rounded-sm"
                             >
-                              <PencilSquare />
-                              <button id={user.id} onClick={changeRole}>
-                                Make Student
-                              </button>
-                            </span>
+                              <PencilSquare className="mr-2" />
+                              Make Student
+                            </button>
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <span
+                            <button
+                              id={user.id}
+                              onClick={handleDeleteUser}
                               className="bg-red-500 flex justify-evenly
-                            items-center p-2
+                            items-center p-2 font-bold
                             rounded-sm"
                             >
-                              <Trash />
-                              <button id={user.id} onClick={deleteAccount}>
-                                Delete
-                              </button>
-                            </span>
+                              <Trash className="mr-2" />
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       );

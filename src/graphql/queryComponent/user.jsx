@@ -32,9 +32,9 @@ export const getUserByEmail = gql`
   }
 `;
 
-export const allUsersQuery = gql`
-  query users {
-    users {
+export const adminGetAllUsersQuery = gql`
+  query adminGetAllUsers {
+    adminGetAllUsers {
       id
       name
       email

@@ -25,18 +25,20 @@ const useRazor = () => {
     }
 
     const token = localStorage.getItem("accessToken");
-    const orderData = await axios.post("/api", {
-      query: getOrderId,
-      variables: {
-        courseId,
+    const orderData = await axios.post(
+      "https://xciteserver.herokuapp.com/xcite",
+      {
+        query: getOrderId,
+        variables: {
+          courseId,
+        },
+      },
+      {
+        headers: {
+          Authorization: token,
+        },
       }
-    },
-    {
-      headers:{
-        Authorization: token
-      }
-    }
-    )
+    );
 
     console.log(orderData);
 
@@ -52,25 +54,28 @@ const useRazor = () => {
       image: "https://example.com/your_logo",
       //   order_id: "order_9A33XWu170gUtm",
 
-      handler:async function (response) {
+      handler: async function (response) {
         console.log(response);
 
-        const verificationOrder = await axios.post("/api", {
-          query: createOrder,
-          variables: {
-            courseId,
-            razorpaySignature:response.razorpay_signature,
-            paymentId:response.razorpay_payment_id,
-            orderId:response.razorpay_order_id
+        const verificationOrder = await axios.post(
+          "https://xciteserver.herokuapp.com/xcite",
+          {
+            query: createOrder,
+            variables: {
+              courseId,
+              razorpaySignature: response.razorpay_signature,
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+            },
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
           }
-        },
-        {
-          headers:{
-            Authorization: token
-          }
-        })
-    
-       console.log(verificationOrder);
+        );
+
+        console.log(verificationOrder);
       },
       prefill: {
         name: "Gaurav Kumar",

@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../context/useStore";
 import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
+import { useMutation } from "@apollo/client";
+
+import {
+  adminDeleteUserByIdMutation,
+  adminUpdateUserRoleByIdMutation,
+} from "../../graphql/Mutations";
 
 export const StudentInfo = () => {
   const { allUsersData, allUsersLoading, setAllUsersData } = useStore();
@@ -8,33 +14,65 @@ export const StudentInfo = () => {
 
   const [inputField, setInputField] = useState("");
   let data = [];
+  const [adminDeleteUserById] = useMutation(adminDeleteUserByIdMutation);
+  const [adminUpdateUserRoleById] = useMutation(
+    adminUpdateUserRoleByIdMutation
+  );
 
   useEffect(() => {
-    try {
-      if (!allUsersData.length) return;
+    if (!allUsersData.length) return;
 
-      allUsersData?.forEach((user) => {
-        if (user.role === "student") data.push(user);
-      });
+    allUsersData?.forEach((user) => {
+      if (user.role === "student") data.push(user);
+    });
 
-      data.sort((a, b) => {
-        if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
-        return 1;
-      });
+    data.sort((a, b) => {
+      if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
+      return 1;
+    });
 
-      setAllStudents(data);
-    } catch (error) {
-      console.log(error);
-    }
+    setAllStudents(data);
   }, [allUsersData]);
-  const changeRole = (e) => {
+
+  const token = localStorage.getItem("accessToken");
+  const handleChangeRole = (e) => {
     e.preventDefault();
-    console.log("student role changed to  teacher");
+    console.log("role changed");
+    let user_id = e.target.id;
+    let new_role = "teacher";
+    adminUpdateUserRoleById({
+      variables: {
+        userId: user_id,
+        role: new_role,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
   };
 
-  const deleteAccount = (e) => {
+  const handleDeleteUser = async (e) => {
     e.preventDefault();
-    console.log(e.target.id + "student  account deleted");
+    // console.log(e.target.id + "account deleted");
+    let user_id = e.target.id;
+    await adminDeleteUserById({
+      variables: {
+        userId: user_id,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
+
+    let data = allUsersData.filter((user) => {
+      if (user.id !== user_id) return user;
+    });
+
+    setAllUsersData(data);
   };
 
   if (allUsersLoading === true)
@@ -142,28 +180,28 @@ export const StudentInfo = () => {
                             {user.phone}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <span
+                            <button
+                              id={user.id}
+                              onClick={handleChangeRole}
                               className="bg-blue-500 flex justify-evenly
-                            items-center p-2
+                            items-center p-2 font-bold
                             rounded-sm"
                             >
-                              <PencilSquare />
-                              <button id={user.id} onClick={changeRole}>
-                                Make Teacher
-                              </button>
-                            </span>
+                              <PencilSquare className="mr-3" />
+                              Make Teacher
+                            </button>
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
-                            <span
+                            <button
+                              id={user.id}
+                              onClick={handleDeleteUser}
                               className="bg-red-500 flex justify-evenly
-                            items-center p-2
+                            items-center p-2 font-bold
                             rounded-sm"
                             >
-                              <Trash />
-                              <button id={user.id} onClick={deleteAccount}>
-                                Delete
-                              </button>
-                            </span>
+                              <Trash className="mr-2" />
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       );

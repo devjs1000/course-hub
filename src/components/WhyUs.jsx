@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Children} from 'react';
 import Button from '../UI/Button';
 import SectionHeading from '../UI/SectionHeading';
 import { Check } from 'react-bootstrap-icons';
@@ -46,30 +46,34 @@ const {theme} = useStore()
 	},
 	]
 
-	let list = featuresArray.map(obj=>{
-			return	<WhyFeature title={obj.title} description={obj.description}/>
-	})
+	
 
 	return (
-		<section
-			className={whyUsStyles}
-			id="about"
-		>
-			<div className="flex-1 flex flex-col items-start gap-4 lg:flex-[0.5]">
-				<SectionHeading subHeading="WhyUs?" heading="Why Learn Here?" />
-				<p className={paraStyles} >
-					We offer the best of educational courses at affordable prices! Our instructors
-					are Senior Engineers from Premier Institues and Fortune 500 start-ups and companies.
-				</p>
-				<Link to="/about-us">
-					<Button isPrimary={true}>Discover More</Button>
-				</Link>
-			</div>
+<section
+	className={whyUsStyles}
+	id="about"
+>
+	<div className="flex-1 flex flex-col items-start gap-4 lg:flex-[0.5]">
+		<SectionHeading subHeading="WhyUs?" heading="Why Learn Here?" />
+		<p className={paraStyles} >
+			We offer the best of educational courses at affordable prices! Our instructors
+			are Senior Engineers from Premier Institues and Fortune 500 start-ups and companies.
+		</p>
+		<Link to="/about-us">
+			<Button isPrimary={true}>Discover More</Button>
+		</Link>
+	</div>
 
 			<div className="flex-[0.5] flex flex-col gap-6 bor border-l pl-12">
-				{list}
+		{
+Children.toArray(
+			featuresArray.map(obj=>{
+				return	<WhyFeature title={obj.title} description={obj.description}/>
+			})
+			)
+		}
 			</div>
-		</section>
+</section>
 	);
 }
 

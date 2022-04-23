@@ -48,3 +48,9 @@ export const createChapterMutation = gql`
     }
   }
 `;
+
+export const adminDeleteCourseByIdMutation = gql`
+  mutation AdminDeleteCourseById($courseId: ID!) {
+    adminDeleteCourseById(courseId: $courseId)
+  }
+`;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Children} from 'react';
 import { Instagram, Linkedin, Twitter } from 'react-bootstrap-icons';
 import instOneImage from '../images/instructors/Inst-1.jpg';
 import instTwoImage from '../images/instructors/Inst-2.jpg';
@@ -74,10 +74,7 @@ function Teachers() {
 	},
 	]
 
-	let list = teachersArray.map(obj=>{
-		return <InstructorCard image={obj.img} name={obj.name} quote={obj.quote} role={obj.role} />
-
-	})
+	
 
 	const teachersStyles = ` ${theme? 'bg-slate-800 text-white' : 'text-slate-900 bg-white'} px-8 py-8 flex flex-col items-start lg:px-16 md:py-16 lg:py-20`
 	return (
@@ -87,7 +84,14 @@ function Teachers() {
 				heading="Our professional & Expert Course Instructors"
 			/>
 			<div className="w-full grid grid-rows-4 gap-4 mt-16">
-				{list}
+				{
+					Children.toArray(
+						teachersArray.map(obj=>{
+							return <InstructorCard image={obj.img} name={obj.name} quote={obj.quote} role={obj.role} />
+
+						})
+					)
+				}
 			</div>
 		</div>
 	);
