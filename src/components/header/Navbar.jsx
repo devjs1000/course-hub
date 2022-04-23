@@ -65,6 +65,7 @@ function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about-us" },
     { name: "Courses", path: "/all-courses" },
+    { name: "Community", path: "/community" },
   ];
   const usernameClasses = `text-xl ${
     isVisible ? "text-white" : theme ? "text-black" : "text-black"
