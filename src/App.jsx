@@ -89,7 +89,7 @@ function App() {
               </Route>
               {/* <Route path="/my-courses" element={<MyCourses />} /> */}
 
-              <Route path="/Community" element={<Community />} />
+              <Route path="/community" element={<Community />} />
               <Route path="/create-course" element={<CreateCourse />} />
               <Route path="/create-chapter/:id" element={<CreateChapter />} />
               <Route path="/create-quiz" element={<CreateQuiz />} />
