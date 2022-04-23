@@ -27,6 +27,14 @@ export const createCourseMutation = gql`
   }
 `;
 
+export const newCreateChapterMutation = gql`
+mutation CreateChapter($courseId: ID!, $video: String!, $about: String!, $project: String!, $name: String!) {
+  createChapter(courseId: $courseId, video: $video, about: $about, project: $project, name: $name) {
+    video
+  }
+}
+`
+
 export const createChapterMutation = gql`
   mutation CreateChapter(
     $teacherId: ID!
