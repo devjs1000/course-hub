@@ -45,7 +45,7 @@ export const CourseInfo = () => {
     const data = allCoursesData.filter((course) => {
       if (course.id !== c_id) return course;
     });
-
+    //console.log(data)
     setAllCoursesData(data);
   };
 
