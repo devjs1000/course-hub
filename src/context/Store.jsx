@@ -29,6 +29,7 @@ const Store = () => {
   const [myCourses, setMyCourses] = useState([]);
   const [assignments, setAssignments] = useState({});
   const [theme, setTheme] = useState(false);
+  const [chatbotOn, setChatbotOn] = useState(false);
 
   /* Admin access state */
   const [adminPanelAccess, setAdminPanelAccess] = useState(false);
@@ -154,6 +155,9 @@ const Store = () => {
 
     adminPanelAccess,
     setAdminPanelAccess,
+
+    chatbotOn,
+    setChatbotOn,
   };
 };
 

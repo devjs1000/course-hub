@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../UI/Button";
 import hero from "../../images/hero.svg";
+
+import Chatbot from "./Chatbot";
+import useStore from "../../context/useStore";
 
 function Hero() {
   const bluePrint = {
@@ -26,6 +29,8 @@ function Hero() {
           <img src={hero} alt="" className="block w-full" />
         </div>
       </div>
+
+      <Chatbot />
     </section>
   );
 }

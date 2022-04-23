@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import useStore from "../../context/useStore";
-
-
+import PageNotFound from "./PageNotFound";
 
 export function Admin() {
   const { user, userLoading, adminPanelAccess, setAdminPanelAccess } =
@@ -14,9 +13,6 @@ export function Admin() {
     if (userLoading) return "";
     if (user?.role === "admin") setAdminPanelAccess(true);
 
-
-
-    
     // if user is not logged in the it will be redirected to admin-login page
     if (JSON.stringify(user) === JSON.stringify({})) navigate("/admin-login");
   }, [user, userLoading]);
@@ -35,11 +31,7 @@ export function Admin() {
           <Outlet />
         </div>
       </div>
-      {!adminPanelAccess && (
-        <div className="absolute top-0 left-0 w-full h-full bg-white flex justify-center items-center text-[40px] font-bold">
-          Access Denied
-        </div>
-      )}
+      {!adminPanelAccess && <PageNotFound />}
     </div>
   );
 }
