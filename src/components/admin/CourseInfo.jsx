@@ -30,7 +30,7 @@ export const CourseInfo = () => {
   const handleDeleteCourse = async (e) => {
     e.preventDefault();
     let c_id = e.target.id;
-
+    //console.log("deleted", e.target.id);
     await adminDeleteCourseById({
       variables: {
         courseId: c_id,
@@ -46,6 +46,7 @@ export const CourseInfo = () => {
       if (course.id !== c_id) return course;
     });
 
+    //console.log(data);
     setAllCoursesData(data);
   };
 
