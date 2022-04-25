@@ -6,9 +6,6 @@ import { useQuery } from "@apollo/client";
 import {
   allCoursesQuery,
   getUserById,
-  allPopularCoursesQuery,
-  adminGetAllUsersQuery,
-  myCousesQuery,
 } from "../graphql/Queries";
 
 import jwt_decode from "jwt-decode";
@@ -17,13 +14,8 @@ const Store = () => {
   /* Define All States */
   const [user, setUser] = useState({});
   const [userLoading, setUserLoading] = useState(true);
-  const [allCoursesData, setAllCoursesData] = useState([]);
-  const [allPopularCoursesData, setAllPopularCoursesData] = useState([]);
   const [allUsersData, setAllUsersData] = useState([]);
-  const [allUsersLoading, setAllUsersLoading] = useState(true);
-  const [allCoursesLoading, setAllCoursesLoading] = useState(true);
-  const [allPopularCoursesLoading, setAllPopularCoursesLoading] =
-    useState(true);
+  const [allCoursesData,setAllCoursesData] = useState([]);
 
   const [posts, setPosts] = useState(postPrint);
   const [myCourses, setMyCourses] = useState([]);
@@ -47,68 +39,9 @@ const Store = () => {
       },
     },
   });
-  // if (data){
-  //   console.log("data",data);
-  //   console.log("data.user",data.user);
-  // }
-
-  const myCoursedata = useQuery(myCousesQuery, {
-    context: {
-      headers: {
-        Authorization: token,
-      },
-    },
-  });
-
-  /* Define GraphQL Hooks */
-  const getAllCourses = useQuery(allCoursesQuery);
-  const getAllPopularCourses = useQuery(allPopularCoursesQuery);
-  const getAllUsersData = useQuery(adminGetAllUsersQuery, {
-    context: {
-      headers: {
-        Authorization: token,
-      },
-    },
-  });
-
-  /* Get All Users Data */
-  useEffect(() => {
-    console.log(getAllUsersData);
-    if (getAllUsersData?.data?.adminGetAllUsers) {
-      console.log(getAllUsersData);
-      setAllUsersData(getAllUsersData?.data?.adminGetAllUsers);
-      setAllUsersLoading(false);
-    }
-  }, [getAllUsersData?.data]);
 
   /* Get All Courses Data */
   useEffect(() => {
-    if (getAllCourses?.data?.courses) {
-      setAllCoursesData(getAllCourses?.data?.courses);
-      setAllCoursesLoading(false);
-    }
-    if (data && data.getUserById) {
-      setUser(data.getUserById);
-      setUserLoading(false);
-    }
-
-    if (getAllPopularCourses?.data?.popularCourses) {
-      let popularCourses = getAllPopularCourses.data.popularCourses;
-      if (popularCourses.length > 6) {
-        popularCourses = popularCourses.slice(0, 6);
-      }
-      setAllPopularCoursesData(popularCourses);
-      setAllPopularCoursesLoading(false);
-    } else {
-      setAllPopularCoursesLoading(false);
-    }
-    if (myCoursedata?.data?.myCourses) {
-      setMyCourses(myCoursedata?.data?.myCourses);
-    }
-    if (getAllCourses?.data?.courses) {
-      setAllCoursesData(getAllCourses?.data?.courses);
-      setAllCoursesLoading(false);
-    }
     if (data && data.user) {
       setUser(data.user);
       setUserLoading(false);
@@ -116,10 +49,7 @@ const Store = () => {
     if (error) {
       setUserLoading(false);
     }
-    if (getAllCourses?.error?.message) {
-      setAllCoursesLoading(false);
-    }
-  }, [getAllCourses?.data]);
+  }, []);
 
   //returning for global access
   return {
@@ -128,18 +58,9 @@ const Store = () => {
 
     allUsersData,
     setAllUsersData,
-    allUsersLoading,
 
     userLoading,
     setUserLoading,
-
-    allPopularCoursesData,
-    allPopularCoursesLoading,
-    setAllPopularCoursesLoading,
-
-    allCoursesData,
-    setAllCoursesData,
-    allCoursesLoading,
 
     posts,
     setPosts,
@@ -158,6 +79,9 @@ const Store = () => {
 
     chatbotOn,
     setChatbotOn,
+
+    allCoursesData,
+    setAllCoursesData
   };
 };
 
