@@ -24,14 +24,8 @@ function MyCourses() {
   });
 
 
-  // const { data, error, loading } = useQuery(userOrdersQuery, {
-  //   variables: {
-  //     userId: user.id,
-  //   },
-  // });
-
   useEffect(() => {
-    if (data != null && data != undefined) {
+    if (data) {
       setMyCourses(data.getMyCourses);
     }
   }, [data]);

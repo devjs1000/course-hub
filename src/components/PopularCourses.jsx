@@ -10,11 +10,29 @@ import { Clock, ListUl, PeopleFill } from 'react-bootstrap-icons';
 import author from '../images/author.jpg';
 
 function PopularCourses() {
-	const { allPopularCoursesData ,theme } = useStore();
+	const [ allPopularCoursesData ,setAllPopularCoursesData ] = useState([]);
+	const [ allPopularCoursesLoading, setAllPopularCoursesLoading ] = useState(true);
+	const {theme}  = useStore();
 	const sectionStyles = `bg-${theme?'slate-800' : 'white'} px-8 py-8 md:py-16 lg:py-20 lg:px-16`
-	// console.log("redering ",allPopularCoursesData);
+	const { loading, data, error } = useQuery(allPopularCoursesQuery);
+	if(data) {
+		let popularCourses = data.popularCourses;
+		if (popularCourses.length > 6) {
+			popularCourses = popularCourses.slice(0, 6);
+		}
+		if (allPopularCoursesData.length == 0) {
+			setAllPopularCoursesData(popularCourses);
+		}
+	}
 	useEffect(()=>{
-	},[])
+		if (data && data.popularCourses) {
+			let popularCourses = data.popularCourses;
+			if (popularCourses.length > 6) {
+				popularCourses = popularCourses.slice(0, 6);
+			}
+			setAllPopularCoursesData(popularCourses);
+		}
+	},[]);
 	return (
 		<section
 			className={sectionStyles}
