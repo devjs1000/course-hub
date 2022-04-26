@@ -3,6 +3,11 @@ import axios from "axios";
 import { createOrder } from "../../graphql/Mutations";
 import { getOrderId } from "../../graphql/Queries";
 
+const api = {
+  dev: "http://localhost:6900/xcite",
+  online: "https://xcite-server.herokuapp.com/xcite",
+};
+
 const useRazor = () => {
   const loadRazorpay = (src) => {
     return new Promise((resolve) => {
@@ -26,7 +31,7 @@ const useRazor = () => {
 
     const token = localStorage.getItem("accessToken");
     const orderData = await axios.post(
-      "https://xciteserver.herokuapp.com/xcite",
+      api.online,
       {
         query: getOrderId,
         variables: {
@@ -58,7 +63,7 @@ const useRazor = () => {
         console.log(response);
 
         const verificationOrder = await axios.post(
-          "https://xciteserver.herokuapp.com/xcite",
+          api.online,
           {
             query: createOrder,
             variables: {

@@ -15,9 +15,9 @@ export function Admin() {
 
     // if user is not logged in the it will be redirected to admin-login page
     if (JSON.stringify(user) === JSON.stringify({})) navigate("/admin-login");
-  }, [user, userLoading]);
+  }, []);
 
-  if (userLoading) return "Loading";
+ 
   return (
     <div className="relative">
       <nav className="bg-white border-b-[2px] text-xl uppercase font-bold p-3">

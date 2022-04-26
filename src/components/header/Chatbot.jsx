@@ -43,10 +43,10 @@ const Chatbot = () => {
     <>
       {!chatbotOn && (
         <span
-          className="fixed bottom-8 right-16 text-primary-color-light text-7xl z-200"
+          className="fixed bottom-8 z-[100] right-16 text-primary-color-light text-7xl z-200"
           onClick={() => setChatbotOn(true)}
         >
-          <ChatDotsFill />
+          <ChatDotsFill className="" size={40} />
         </span>
       )}
       {chatbotOn && (
