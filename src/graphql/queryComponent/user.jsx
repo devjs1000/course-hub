@@ -43,3 +43,33 @@ export const adminGetAllUsersQuery = gql`
     }
   }
 `;
+
+
+export const adminGetAllStudentsQuery=gql`
+query AdminGetAllStudents {
+  adminGetAllStudents {
+    name
+    id
+    image
+    email
+    password
+    description
+    phone
+  }
+}
+`
+
+
+export const adminGetAllTeachersQuery=gql`
+query AdminGetAllTeachers {
+  adminGetAllTeachers {
+    name
+    id
+    image
+    email
+    password
+    description
+    phone
+  }
+}
+`

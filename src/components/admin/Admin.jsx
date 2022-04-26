@@ -3,23 +3,26 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import useStore from "../../context/useStore";
 import PageNotFound from "./PageNotFound";
-
+import {AdminLogin} from './AdminLogin'
 export function Admin() {
-  const { user, userLoading, adminPanelAccess, setAdminPanelAccess } =
+  const { user, userLoading } =
     useStore();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userLoading) return "";
-    if (user?.role === "admin") setAdminPanelAccess(true);
-
-    // if user is not logged in the it will be redirected to admin-login page
-    if (JSON.stringify(user) === JSON.stringify({})) navigate("/admin-login");
+   
+    if(user.role!=='admin'){
+      navigate('/admin-login')
+    }
   }, []);
 
  
   return (
     <div className="relative">
+    {
+      Boolean(user.role=='admin')?
+
+    <div>
       <nav className="bg-white border-b-[2px] text-xl uppercase font-bold p-3">
         admin panel
       </nav>
@@ -31,7 +34,8 @@ export function Admin() {
           <Outlet />
         </div>
       </div>
-      {!adminPanelAccess && <PageNotFound />}
+      </div>
+      : <PageNotFound/>}
     </div>
   );
 }

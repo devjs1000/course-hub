@@ -7,7 +7,7 @@ import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 
 export const AdminLogin = () => {
-  const { user } = useStore();
+  const { user, setUser } = useStore();
   const { login } = useAuthHook();
   const [loginData, setLoginData] = useState({});
 
@@ -24,15 +24,18 @@ export const AdminLogin = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    login(loginData).then(() => {
-      let token = localStorage.getItem("accessToken");
-      if (token !== null) {
-        toast.success("Logged In Successfully!");
-        console.log(token);
-      } else {
-        toast.error("Email or password does not match");
-      }
-    });
+    login(loginData)
+    // .then(() => {
+    //   let token = localStorage.getItem("accessToken");
+    //   if (token !== null) {
+    //     toast.success("Logged In Successfully!");
+    //     console.log(token);
+    //   } else {
+    //     toast.error("Email or password does not match");
+    //   }
+    // });
+
+
   };
 
   return (

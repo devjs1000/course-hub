@@ -2,29 +2,27 @@ import React, { useEffect, useState } from "react";
 import useStore from "../../context/useStore";
 import { FileEarmarkArrowDownFill, Search, Trash } from "react-bootstrap-icons";
 import { adminDeleteCourseByIdMutation } from "../../graphql/Mutations";
-import { useMutation } from "@apollo/client";
+import { allCoursesQuery } from "../../graphql/Queries";
+import { useMutation, useQuery } from "@apollo/client";
 
 export const CourseInfo = () => {
-  const { allCoursesData, setAllCoursesData, allUsersData } = useStore();
+
+
   const [inputField, setInputField] = useState("");
   const [data, setData] = useState([]);
   const [adminDeleteCourseById] = useMutation(adminDeleteCourseByIdMutation);
+  const allCoursesData = useQuery(allCoursesQuery);
+
+console.log()
 
   useEffect(() => {
-    if (!allCoursesData.length) return;
+    if (allCoursesData.loading) return
 
-    let tem = [];
-    allCoursesData.forEach((element) => {
-      tem.push(element);
-    });
-
-    tem.sort((a, b) => {
-      if (a.name.toLowerCase() <= b.name.toLowerCase()) return -1;
-      return 1;
-    });
+    let tem = allCoursesData.data.courses
+    console.log(tem)
 
     setData(tem);
-  }, [allCoursesData]);
+  }, [allCoursesData.data]);
 
   const token = localStorage.getItem("accessToken");
   const handleDeleteCourse = async (e) => {
@@ -141,11 +139,11 @@ export const CourseInfo = () => {
                             {course.name}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {allUsersData
+                            {/*allUsersData
                               ?.filter((user) => {
                                 if (user.id === course.teacherId) return user;
                               })
-                              .map((user) => user.name)}
+                              .map((user) => user.name)*/}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {course.price}

@@ -8,7 +8,6 @@ import {
   getUserById,
 } from "../graphql/Queries";
 
-import jwt_decode from "jwt-decode";
 
 const Store = () => {
   /* Define All States */
@@ -24,13 +23,11 @@ const Store = () => {
   const [chatbotOn, setChatbotOn] = useState(false);
 
   /* Admin access state */
-  const [adminPanelAccess, setAdminPanelAccess] = useState(false);
+  // const [adminPanelAccess, setAdminPanelAccess] = useState(false);
 
-  let decoded = { id: null };
+  
   const token = localStorage.getItem("accessToken");
-  if (token) {
-    decoded = jwt_decode(token, "anandpandit");
-  }
+  
 
   const { loading, error, data } = useQuery(getUserById, {
     context: {
@@ -39,17 +36,19 @@ const Store = () => {
       },
     },
   });
+  
 
-  /* Get All Courses Data */
+  // /* Get All Courses Data */
   useEffect(() => {
-    if (data && data.user) {
+    if (Boolean(data && data.user)) {
       setUser(data.user);
       setUserLoading(false);
     }
     if (error) {
       setUserLoading(false);
     }
-  }, []);
+  }, [data]);
+
 
   //returning for global access
   return {
@@ -74,8 +73,8 @@ const Store = () => {
     theme,
     setTheme,
 
-    adminPanelAccess,
-    setAdminPanelAccess,
+    // adminPanelAccess,
+    // setAdminPanelAccess,
 
     chatbotOn,
     setChatbotOn,

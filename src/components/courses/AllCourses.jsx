@@ -11,6 +11,7 @@ function AllCourses() {
 
   /* Define GraphQL Hooks */
   const {data,loading,error} = useQuery(allCoursesQuery);
+
   if (data && data.courses) {
     console.log("data.courses",data.courses);
     if (allCoursesData.length == 0) {

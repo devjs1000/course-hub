@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../context/useStore";
 import { Search, Trash, PencilSquare, Handbag } from "react-bootstrap-icons";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import {
   adminDeleteUserByIdMutation,
   adminUpdateUserRoleByIdMutation,
 } from "../../graphql/Mutations";
+import { adminGetAllTeachersQuery } from "../../graphql/Queries";
 
 export const TeacherInfo = () => {
-  const { allUsersData, setAllUsersData, allUsersLoading } = useStore();
-  const [allTeachers, setAllTeachers] = useState([]);
+
+
+
+  const [teachers, setTeachers] = useState([]);
   const [inputField, setInputField] = useState("");
   let data = [];
   const [adminDeleteByUserId] = useMutation(adminDeleteUserByIdMutation);
@@ -17,19 +20,27 @@ export const TeacherInfo = () => {
     adminUpdateUserRoleByIdMutation
   );
 
-  useEffect(() => {
-    try {
-      if (!allUsersData.length) return;
-
-      allUsersData?.forEach((user) => {
-        if (user.role === "teacher") data.push(user);
-      });
-
-      setAllTeachers(data);
-    } catch (error) {
-      console.log(error);
+const allTeachers=useQuery(adminGetAllTeachersQuery, {
+  context:{
+    headers:{
+      Authorization:localStorage.getItem('accessToken')
     }
-  }, [allUsersData]);
+  }
+})
+
+
+
+
+  useEffect(() => {
+    if (allTeachers.loading) return;
+
+    setTeachers(allTeachers?.data?.adminGetAllTeachers);
+
+  }, [allTeachers.data]);
+
+
+
+  
 
   const token = localStorage.getItem("accessToken");
   const handleChangeRole = (e) => {
@@ -65,19 +76,17 @@ export const TeacherInfo = () => {
       },
     });
 
-    let data = allUsersData.filter((user) => {
+    let data = teachers.filter((user) => {
       if (user.id !== user_id) return user;
     });
 
-    setAllUsersData(data);
+   setAllTeachers(data)
   };
 
-  if (allUsersLoading === true)
-    return (
-      <div className="bg-white w-full px-16 py-4">
-        <h1>Loading</h1>
-      </div>
-    );
+
+if(allTeachers.loading) return 'loading...';
+
+
   return (
     <div className="bg-white w-full px-8 py-4">
       <div className="flex flex-col mt-4 border">
@@ -143,7 +152,7 @@ export const TeacherInfo = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {allTeachers
+                  {teachers
                     ?.filter((teacher) => {
                       if (inputField === "") return teacher;
                       else if (
