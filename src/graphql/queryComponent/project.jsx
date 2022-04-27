@@ -10,3 +10,15 @@ query Query{
       projectStatus
     }
   }`
+
+
+  export const myProjectsQuery=gql`
+query Query{
+    projects {
+      chapterId
+      courseId
+      isCertified
+      projectLink
+      projectStatus
+    }
+  }`
