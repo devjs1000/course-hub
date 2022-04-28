@@ -12,13 +12,14 @@ query Query{
   }`
 
 
-  export const myProjectsQuery=gql`
-query Query{
-    projects {
-      chapterId
-      courseId
-      isCertified
-      projectLink
-      projectStatus
-    }
-  }`
+  export const GetAllProjectsByChapterId=gql`
+query GetAllProjectsByChapterId($chapterId: ID!) {
+  getAllProjectsByChapterId(chapterId: $chapterId) {
+    id
+    userId
+    courseId
+    chapterId
+    projectLink
+    projectStatus
+  }
+}`
