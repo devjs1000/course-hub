@@ -10,7 +10,7 @@ const AllProjects = () => {
 	const [table, setTable] = useState()
 	const { chapterId } = location.state
 	const token = localStorage.getItem("accessToken");
-	const {data:chapters} = useQuery(GetAllProjectsByChapterId, {
+	const {data:chapters,loading,error} = useQuery(GetAllProjectsByChapterId, {
 	variables: {
 		chapterId : chapterId,
 	},
@@ -20,10 +20,11 @@ const AllProjects = () => {
 		}
 	}
   })
-	let courseId=chapters?.getAllProjectsByChapterId[0].courseId
+	if(loading) return 'loading....'
+	if(error) return 'error..'
 		const {data:chapter} = useQuery(getAllProjectsByCourseId, {
 	variables: {
-		courseId : courseId,
+		courseId : chapters?.getAllProjectsByChapterId[0].courseId,
 	},
 	context : {
 		headers:{
@@ -33,8 +34,8 @@ const AllProjects = () => {
   })
 		console.log(chapter)
 
-	const getData = async()=>{
-	let list = chapter.getAllProjectsByCourseId.map(obj=>{
+	const getData =async ()=>{
+	let list = chapter?.getAllProjectsByCourseId.map(obj=>{
 	return <tr key={uuidv4()}>
       <td className='border border-slate-300'>{obj.id}</td>
       <td className='border border-slate-300'>{obj.userId}</td>
@@ -54,8 +55,7 @@ const AllProjects = () => {
 	
 	useEffect(()=>{
 		getData()
-
-	},[chapters || chapter])
+	},[chapters])
 
 	
 

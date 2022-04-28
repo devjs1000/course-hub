@@ -46,7 +46,7 @@ const CurrentProject = () => {
 
 	return (
 		<div className=' w-full h-[50rem] flex flex-col items-center'>
-<table class="table-auto">
+<table className="table-auto">
   <thead>
     <tr>
       <th className='border border-slate-300'>Student ID</th>
