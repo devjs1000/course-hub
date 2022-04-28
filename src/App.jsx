@@ -35,6 +35,8 @@ import { Home, CourseDetails, NotFound } from "./pages";
 import { Login, Signup } from "./components/Auth";
 import Chapters from "./components/Chapters";
 import StudentsEnrolled from "./components/StudentsEnrolled";
+import CurrentProject from "./components/CurrentProject";
+import AllProjects from "./components/AllProjects";
 import Navbar from "./components/header/Navbar";
 import Loading from "./UI/BoxLoading";
 import Contact from "./components/ContactUs/ContactUs";
@@ -112,7 +114,11 @@ function App() {
               <Route
                 path="/students-enrolled/:chapterId"
                 element={<StudentsEnrolled />}
-              />
+              >
+                <Route path="/students-enrolled/:chapterId/current-chapter" element={<CurrentProject/>} />
+                <Route path="/students-enrolled/:chapterId/all-chapters" element={<AllProjects/>} />
+                  
+              </Route>
 
               {/* admin area */}
               <Route path="/admin-login" element={<AdminLogin />} />
