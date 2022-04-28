@@ -10,3 +10,27 @@ query Query{
       projectStatus
     }
   }`
+
+
+  export const GetAllProjectsByChapterId=gql`
+query GetAllProjectsByChapterId($chapterId: ID!) {
+  getAllProjectsByChapterId(chapterId: $chapterId) {
+    id
+    userId
+    courseId
+    chapterId
+    projectLink
+    projectStatus
+  }
+}`
+
+export const getAllProjectsByCourseId = gql`
+query Projects($courseId: ID!) {
+  getAllProjectsByCourseId(courseId: $courseId) {
+    userId
+    projectLink
+    projectStatus
+    id
+  }
+}
+`

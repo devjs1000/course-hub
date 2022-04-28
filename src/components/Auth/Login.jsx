@@ -13,6 +13,8 @@ const Login = () => {
   const { user } = useStore();
   const getlocation = useLocation();
   const path = getlocation?.state?.location;
+  const token = localStorage.getItem("accessToken");
+
 
   const getLoginData = (e) => {
     const name = e.target.name;
@@ -27,22 +29,7 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    login(loginData)
-    toast.promise(
-  login(loginData),
-   {
-     loading: 'Logging in...',
-     success: <b>Logged in successfully!</b>,
-     error: <b>Email or password does not match</b>,
-   },
-   {
-    success: {
-      duration: 3000,
-    },
-  }
- );
-    
-    
+      login(loginData)
   };
 
   return (

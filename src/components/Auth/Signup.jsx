@@ -5,6 +5,8 @@ import FormControl from "../../UI/FormControl";
 import Button from "../../UI/Button";
 import useAuthHook from "../../hooks/useAuthHook";
 import useStore from "../../context/useStore";
+import toast from 'react-hot-toast';
+
 
 const Signup = () => {
   const { user } = useStore();
@@ -24,8 +26,10 @@ const Signup = () => {
   };
 
   const submitSignup = (e) => {
+    console.log(signupData)
     e.preventDefault();
-    signup(signupData).then(toast.success('Account Created Successfully! You are logged in'))
+    signupData.name.length<3? alert('name cannot be less than three characters') : signup(signupData).then(toast.success('Account Created Successfully! You are logged in'))
+    
 
   };
 
@@ -63,22 +67,11 @@ const Signup = () => {
               icon="LOCK"
               onChange={getSignupData}
             />
-            <FormControl
-              type="text"
-              label="description"
-              icon="DESCRIPTION"
-              onChange={getSignupData}
-            />
+
             <FormControl
               type="text"
               label="phone"
               icon="PHONE"
-              onChange={getSignupData}
-            />
-            <FormControl
-              type="text"
-              label="image"
-              icon="IMAGE"
               onChange={getSignupData}
             />
           </div>

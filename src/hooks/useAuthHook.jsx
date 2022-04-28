@@ -1,6 +1,8 @@
 import useStore from "../context/useStore";
 import { useMutation } from "@apollo/client";
 import { signupMutation, loginMutation } from "../graphql/Mutations";
+import toast from 'react-hot-toast';
+
 
 const useAuthHook = () => {
   const { setUser, setUserLoading } = useStore();
@@ -30,15 +32,20 @@ const useAuthHook = () => {
     setUserLoading(true);
     try {
       const response = await loginFunction({ variables: inputs });
-      if (response?.data) {
+      console.log(response)
+      if (response?.data.createLogin.token!=='false') {
         setUser(response.data.createLogin.userData);
         localStorage.setItem("accessToken", response.data.createLogin.token);
         setUserLoading(false);
+        toast.success('logged in successfully!')
       } else {
         setUserLoading(false);
         console.log("something went wrong");
+        toast.error("Incorrect e-mail or password")
+
       }
     } catch (err) {
+
       console.log(err);
       setUserLoading(false);
     }

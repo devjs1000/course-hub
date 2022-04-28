@@ -124,7 +124,8 @@ const handleSubmit = async (e)=>{
 		try{
 		
 		let arrayOfItems = chapters.chapters.map(obj=>{
-		let path = `/students-enrolled/dasdasdsdas`
+			let id=obj.id
+		let path = `/students-enrolled/${id}`
 		return <ConditionalLink condition={user.role=='teacher'} to={path} key={uuidv4()}>
 		<div className=' border-1 border border-black my-4 p-2 cursor-pointer'
 		onClick={()=>{
