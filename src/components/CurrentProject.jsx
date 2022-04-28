@@ -22,16 +22,16 @@ const CurrentProject = () => {
   })
 
 	const getData = async()=>{
-		let list = chapters.getAllProjectsByChapterId.map(obj=>{
+		let list = chapters?.getAllProjectsByChapterId.map(obj=>{
 		console.log(obj)
 		return  <tr key={uuidv4()}>
       <td className='border border-slate-300'>{obj.userId}</td>
       <td className='border border-slate-300'>
       <a href={obj.projectLink}>
-      <button class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">View Project</button>
+      <button className="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">View Project</button>
       </a>
 </td>
-      <td className='border border-slate-300'><button class="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800">{
+      <td className='border border-slate-300'><button className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800">{
       	obj.projectStatus=='unchecked'? 'UnChecked' : 'Checked'
       }</button>
 </td>

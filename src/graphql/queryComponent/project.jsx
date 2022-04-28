@@ -23,3 +23,14 @@ query GetAllProjectsByChapterId($chapterId: ID!) {
     projectStatus
   }
 }`
+
+export const getAllProjectsByCourseId = gql`
+query Projects($courseId: ID!) {
+  getAllProjectsByCourseId(courseId: $courseId) {
+    userId
+    projectLink
+    projectStatus
+    id
+  }
+}
+`
