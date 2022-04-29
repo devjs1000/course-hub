@@ -12,7 +12,6 @@ const CourseCard = ({ id, drill = false, userRole }) => {
   const { allCoursesData,setAllCoursesData } = useStore();
   const [current, setCurrent] = useState({});
   const token = localStorage.getItem("accessToken");
-
     const {data,loading,error} = useQuery(allCoursesQuery,{
       context: {
         headers:{
@@ -21,9 +20,6 @@ const CourseCard = ({ id, drill = false, userRole }) => {
       },
     })
 
-if(loading) return <h1> Loading.....Please wait</h1>
-
-if(error) return <h1> Oops! Something Wrong happened.</h1>
 
   useEffect(() => {
     if (drill) return;
@@ -31,7 +27,11 @@ if(error) return <h1> Oops! Something Wrong happened.</h1>
     console.log(data2)
     setCurrent(data2);
     setAllCoursesData(data)
-  }, [id]);
+  }, [data]);
+
+if(loading) return <h1> Loading.....Please wait</h1>
+
+if(error) return <h1> Oops! Something Wrong happened.</h1>
 
   return (
     <ErrorBoundary fallback={"error in course page"}>

@@ -49,9 +49,6 @@ export default ({}) => {
 
 
 
- async function runQueries(){
-      
-  }
 
 //styling for some sections
 let styles = {
