@@ -27,9 +27,7 @@ function MyCourses() {
 
 
   useEffect(() => {
-    if (data) {
       setMyCourses(data.myCourses);
-    }
   }, [data]);
 
   if (loading) return "loading";
