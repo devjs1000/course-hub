@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import CourseCard from "../courses/CourseCard";
-import { getMyCourses } from "../../graphql/Queries";
+import { myCousesQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ function MyCourses() {
   const { user, theme, setMyCourses } = useStore();
 
   const token = localStorage.getItem("accessToken");
-  const { data, error, loading } = useQuery(getMyCourses, {
+  const { data, error, loading } = useQuery(myCousesQuery, {
     context: {
       headers: {
         Authorization: token,
@@ -23,10 +23,12 @@ function MyCourses() {
     },
   });
 
+  console.log(data)
+
 
   useEffect(() => {
     if (data) {
-      setMyCourses(data.getMyCourses);
+      setMyCourses(data.myCourses);
     }
   }, [data]);
 
@@ -52,7 +54,7 @@ function MyCourses() {
         )}
         <div className={cardContainerStyles}>
           {Children.toArray(
-            data?.getMyCourses.map((a) => {
+            data?.myCourses.map((a) => {
               console.log(a, "a");
 
               return (

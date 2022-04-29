@@ -4,15 +4,33 @@ import { Link } from "react-router-dom";
 import useStore from "../../context/useStore";
 import author from "../../images/author.jpg";
 import { Clock, ListUl } from "react-bootstrap-icons";
+import { allCoursesQuery } from "../../graphql/Queries";
+import { useQuery } from "@apollo/client";
+
 
 const CourseCard = ({ id, drill = false, userRole }) => {
-  const { allCoursesData } = useStore();
+  const { allCoursesData,setAllCoursesData } = useStore();
   const [current, setCurrent] = useState({});
+  const token = localStorage.getItem("accessToken");
+
+    const {data,loading,error} = useQuery(allCoursesQuery,{
+      context: {
+        headers:{
+            Authorization: token
+        },
+      },
+    })
+
+if(loading) return <h1> Loading.....Please wait</h1>
+
+if(error) return <h1> Oops! Something Wrong happened.</h1>
 
   useEffect(() => {
     if (drill) return;
-    const data = allCoursesData.find((course) => course.id === id);
-    setCurrent(data);
+    const data2 = data?.courses.find((course) => course.id === id);
+    console.log(data2)
+    setCurrent(data2);
+    setAllCoursesData(data)
   }, [id]);
 
   return (
