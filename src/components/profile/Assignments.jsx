@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import { myCousesQuery } from "../../graphql/Queries";
+import { getMyCourses } from "../../graphql/Queries";
 
 
 export default ({}) => {
@@ -13,7 +13,7 @@ export default ({}) => {
   const [enrolledCourses, setEnrolledCourses]=useState([])
   let { myCourses,user,theme } = useStore();
   const token = localStorage.getItem("accessToken");
- const { data, error, loading } = useQuery(myCousesQuery, {
+ const { data, error, loading } = useQuery(getMyCourses, {
     context: {
       headers: {
         Authorization: token,
@@ -62,7 +62,7 @@ let styles = {
   {/* the cards*/}
      <section className={styles.mainSection}>
      {Children.toArray(
-      data?.myCourses.map(a=>{
+      data?.getMyCourses.map(a=>{
         console.log(a)
         return makeCard(a?.name,a?.category,a?.tagline,a?.image,a?.id)
       })
