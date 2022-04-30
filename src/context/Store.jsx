@@ -15,7 +15,7 @@ const Store = () => {
   const [userLoading, setUserLoading] = useState(true);
   const [allUsersData, setAllUsersData] = useState([]);
   const [allCoursesData,setAllCoursesData] = useState([]);
-
+  const [currentCourseId,setCurrentCourseId] = useState('')
   const [posts, setPosts] = useState(postPrint);
   const [myCourses, setMyCourses] = useState([]);
   const [assignments, setAssignments] = useState({});
@@ -80,7 +80,9 @@ const Store = () => {
     setChatbotOn,
 
     allCoursesData,
-    setAllCoursesData
+    setAllCoursesData,
+
+    currentCourseId,setCurrentCourseId,
   };
 };
 

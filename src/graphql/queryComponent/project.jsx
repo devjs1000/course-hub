@@ -25,12 +25,15 @@ query GetAllProjectsByChapterId($chapterId: ID!) {
 }`
 
 export const getAllProjectsByCourseId = gql`
-query Projects($courseId: ID!) {
+query GetAllProjects($courseId: ID!) {
   getAllProjectsByCourseId(courseId: $courseId) {
+    id
     userId
+    courseId
+    chapterId
+    isCertified
     projectLink
     projectStatus
-    id
   }
 }
 `
