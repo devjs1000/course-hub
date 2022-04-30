@@ -34,7 +34,7 @@ const Chapters = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [chapterList, setChapterList] = useState([]) 
 	let {id} = useParams()
-	let {user,theme} = useStore();
+	let {user,theme,setCurrentCourseId} = useStore();
 	let fileData;
 	const {data:chapters} = useQuery(getChaptersQuery, {
 	variables: {
@@ -122,7 +122,7 @@ const handleSubmit = async (e)=>{
 
 	useEffect(() => {
 		try{
-		
+	setCurrentCourseId(id)
 		let arrayOfItems = chapters.chapters.map(obj=>{
 			let id=obj.id
 		let path = `/students-enrolled/${id}`

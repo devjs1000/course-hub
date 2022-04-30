@@ -4,18 +4,29 @@ import { useQuery } from "@apollo/client";
 import { myProjectsQuery } from "../../graphql/Queries";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import {getMyCourses} from '../../graphql/queryComponent/order'
-import {allCoursesQuery} from '../../graphql/queryComponent/course'
+import { getMyCourses } from "../../graphql/Queries";
+
 
 export default ({}) => {
 
-  
+//variables
+  const [enrolledCourses, setEnrolledCourses]=useState([])
+  let { myCourses,user,theme } = useStore();
+  const token = localStorage.getItem("accessToken");
+ const { data, error, loading } = useQuery(getMyCourses, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+  });
+ console.log(data)
 
 
-
-  function makeCard(name,category,tagline,image,id,index){
+  //function for making cards
+  function makeCard(name,category,tagline,image,id){
     let path = `/chapters/chapterdetails/${id}`
-    return <div className='w-full rounded h-96 cursor-pointer' key={index}>
+    return <div className='w-full rounded h-96 cursor-pointer'>
     <Link to={
       path
     }>
@@ -36,49 +47,8 @@ export default ({}) => {
     </div>
   }
 
-//variables
-  const [enrolledCourses, setEnrolledCourses]=useState([])
-  let { myCourses,user,theme } = useStore();
-  const token = localStorage.getItem("accessToken");
-  console.log(token)
-  const {data:projects} = useQuery(getMyCourses, {
-    context : {
-      headers:{
-        Authorization: token
-      }
-    }
-  })
-  
-  // console.log(projects)
-
-  const {data:allCourses} = useQuery(allCoursesQuery, {
-    variables: {
-      userId: user.id,
-    },
-  })
-let dataToBeShown
 
 
- async function runQueries(){
-  try{
-  let myCourseId= projects.getMyCourses.map(obj=>{
-    // console.log(obj)
-    return obj.id
-  })
-  // console.log(myCourseId)
- dataToBeShown= allCourses.courses.filter(eachObj=>{
-  return myCourseId.includes(eachObj.id) 
-  })
-
- console.log(dataToBeShown)
- let k=dataToBeShown.map((obj,index)=>makeCard(obj.name, obj.category,obj.tagline, obj.image, obj.id,index))
-  console.log(k)
-  setEnrolledCourses(k)
-  }
- catch{
-  setEnrolledCourses('loading......')
- }
-  }
 
 //styling for some sections
 let styles = {
@@ -87,17 +57,16 @@ let styles = {
   }
 
 
-//run after redering
-useEffect(runQueries, [projects || allCourses])
-useEffect(()=>{
-  myCourses = dataToBeShown
-  console.log(myCourses)
-}, [projects || allCourses])
   return (
     <div>
   {/* the cards*/}
      <section className={styles.mainSection}>
-      {enrolledCourses}
+     {Children.toArray(
+      data?.getMyCourses.map(a=>{
+        console.log(a)
+        return makeCard(a?.name,a?.category,a?.tagline,a?.image,a?.id)
+      })
+      )}
      </section>
     </div>
   );
