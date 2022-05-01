@@ -21,6 +21,8 @@ const CurrentProject = () => {
 	}
   })
 
+	console.log(localStorage.getItem("currentCourseId"))
+
 	const getData = async()=>{
 		let list = chapters?.getAllProjectsByChapterId.map(obj=>{
 		console.log(obj)
@@ -32,7 +34,7 @@ const CurrentProject = () => {
       </a>
 </td>
       <td className='border border-slate-300'><button className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800">{
-      	obj.projectStatus=='unchecked'? 'UnChecked' : 'Checked'
+      	!obj.projectStatus? 'UnChecked' : 'Checked'
       }</button>
 </td>
     </tr>
