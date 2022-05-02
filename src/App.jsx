@@ -32,7 +32,13 @@ import {
 
 import Community from "./components/Community/Community";
 import { Home, CourseDetails, NotFound } from "./pages";
-import { Login, Signup } from "./components/Auth";
+import {
+  Login,
+  Signup,
+  VerifyEmail,
+  NewPassword,
+  CheckOTP,
+} from "./components/Auth";
 import Chapters from "./components/Chapters";
 import StudentsEnrolled from "./components/StudentsEnrolled";
 import CurrentProject from "./components/CurrentProject";
@@ -64,6 +70,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/verify-email" element={<VerifyEmail />} />
+              <Route path="/check-otp" element={<CheckOTP />} />
+              <Route exact path="/new-password" element={<NewPassword />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/contactus" element={<Contact />} />
               <Route path="/about-us" element={<About />} />
@@ -115,9 +124,14 @@ function App() {
                 path="/students-enrolled/:chapterId"
                 element={<StudentsEnrolled />}
               >
-                <Route path="/students-enrolled/:chapterId/current-chapter" element={<CurrentProject/>} />
-                <Route path="/students-enrolled/:chapterId/all-chapters" element={<AllProjects/>} />
-                  
+                <Route
+                  path="/students-enrolled/:chapterId/current-chapter"
+                  element={<CurrentProject />}
+                />
+                <Route
+                  path="/students-enrolled/:chapterId/all-chapters"
+                  element={<AllProjects />}
+                />
               </Route>
 
               {/* admin area */}

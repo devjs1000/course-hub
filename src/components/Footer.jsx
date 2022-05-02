@@ -9,12 +9,18 @@ import useStore from "../context/useStore";
 const Footer = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-const { theme } = useStore();
+  const { theme } = useStore();
 
   //add objects in nullpath for hiding object in paths
-  const nullPath = ["login", "signup", "my-assignments", "admin-login"];
+  const nullPath = [
+    "login",
+    "signup",
+    "my-assignments",
+    "admin-login",
+    "verify-email",
+  ];
   if (nullPath.includes(path)) return null;
-  
+
   //removed border from mainDiv and extracted the styles from stylesObject to here
   const mainDiv = `bg-${theme ? "slate-800" : "white"} p-3 md:p-8 relative`;
 
