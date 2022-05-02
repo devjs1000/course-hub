@@ -2,7 +2,9 @@ import React,{useState,useEffect} from 'react'
 import { useLocation } from 'react-router-dom'
 import { useQuery,useMutation } from "@apollo/client";
 import {GetAllProjectsByChapterId} from '../graphql/Queries'
+import {checkProjectMutation} from '../graphql/Mutations'
 import { v4 as uuidv4 } from 'uuid';
+import toast from 'react-hot-toast';
 
 
 const CurrentProject = () => {
@@ -10,7 +12,7 @@ const CurrentProject = () => {
 	const location = useLocation()
 	const { chapterId } = location.state
 	const token = localStorage.getItem("accessToken");
-	const {data:chapters} = useQuery(GetAllProjectsByChapterId, {
+	const {data:chapters,refetch} = useQuery(GetAllProjectsByChapterId, {
 	variables: {
 		chapterId : chapterId,
 	},
@@ -20,6 +22,45 @@ const CurrentProject = () => {
 		}
 	}
   })
+  	const [checkProject] = useMutation(checkProjectMutation,{
+		onCompleted: refetch,
+		context : {
+		headers:{
+			Authorization: token
+		}
+	}
+	})
+
+	console.log(localStorage.getItem("currentCourseId"))
+		const handleCheck =(projectId,status)=>{
+		let newStatus = !status
+		console.log(newStatus)
+		checkProject({
+			headers:{
+				Authorization: token
+			},
+			variables:{
+				projectId: projectId,
+				projectStatus : newStatus
+			}
+		})
+		toast.promise(
+  	checkProject({
+			headers:{
+				Authorization: token
+			},
+			variables:{
+				projectId: projectId,
+				projectStatus : newStatus
+			}
+		}),
+   {
+     loading: 'Saving...',
+     success: <b>Checking saved!</b>,
+     error: <b>Could not save.</b>,
+   }
+ );
+	}
 
 	const getData = async()=>{
 		let list = chapters?.getAllProjectsByChapterId.map(obj=>{
@@ -31,8 +72,12 @@ const CurrentProject = () => {
       <button className="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">View Project</button>
       </a>
 </td>
-      <td className='border border-slate-300'><button className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800">{
-      	obj.projectStatus=='unchecked'? 'UnChecked' : 'Checked'
+      <td className='border border-slate-300'><button 
+      className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800"
+      onClick={()=>handleCheck(obj.id,obj.projectStatus)}
+
+      >{
+      	obj.projectStatus? 'Checked' : 'UnChecked'
       }</button>
 </td>
     </tr>

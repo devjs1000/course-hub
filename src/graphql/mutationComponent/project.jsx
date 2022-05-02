@@ -28,9 +28,7 @@ export const submitMyProject = gql`
 
 
 export const checkProjectMutation = gql`
-  mutation CheckProject($projectId: ID!, $projectStatus: String) {
-    checkProject(projectId: $projectId, projectStatus: $projectStatus) {
-      projectLink
-    }
-  }
+  mutation CheckProject($projectId: ID!, $projectStatus: Boolean!) {
+  checkProject(projectId: $projectId, projectStatus: $projectStatus)
+}
 `;

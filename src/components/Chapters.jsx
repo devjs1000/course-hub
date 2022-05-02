@@ -123,6 +123,7 @@ const handleSubmit = async (e)=>{
 	useEffect(() => {
 		try{
 	setCurrentCourseId(id)
+		localStorage.getItem("currentCourseId") ? localStorage.getItem("currentCourseId") : localStorage.setItem("currentCourseId",id)
 		let arrayOfItems = chapters.chapters.map(obj=>{
 			let id=obj.id
 		let path = `/students-enrolled/${id}`
