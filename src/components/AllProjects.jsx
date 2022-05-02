@@ -1,6 +1,7 @@
 import React,{useState,useEffect,Children} from 'react'
 import { useLocation } from 'react-router-dom'
 import {GetAllProjectsByChapterId,getAllProjectsByCourseId} from '../graphql/Queries'
+import {checkProjectMutation} from '../graphql/Mutations'
 import { useQuery,useMutation } from "@apollo/client";
 import { v4 as uuidv4 } from 'uuid';
 import useStore from '../context/useStore'
@@ -23,8 +24,13 @@ const AllProjects = () => {
 		}
 	})
 
+	const handleCheck =()=>{
+		
+	}
+
 	console.log(data?.getAllProjectsByCourseId)
 	console.log(localStorage.getItem("currentCourseId"))
+	console.log(token)
 
 
 	return <div>
@@ -57,7 +63,10 @@ const AllProjects = () => {
       <td className='border border-slate-300'><a href={obj.projectLink}>
       <button className="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">View Project</button>
       </a></td>
-      <td className='border border-slate-300'><button className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800">{
+      <td className='border border-slate-300'><button
+      className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800"
+      onClick={handleCheck}
+      >{
       	!obj.projectStatus? 'UnChecked' : 'Checked'
       }</button>
 </td>

@@ -52,7 +52,7 @@ export default ({}) => {
 
 //styling for some sections
 let styles = {
-    mainSection : ` ${theme?'bg-slate-800' : 'bg-white'}  px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:px-16`,
+    mainSection : ` ${theme?'bg-slate-800' : 'bg-white'} h-[50rem] px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:px-16`,
     tagLine : `${theme? 'text-white':  'text-gray-700'} text-base`,
   }
 
