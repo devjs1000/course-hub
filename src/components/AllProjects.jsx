@@ -5,6 +5,7 @@ import {checkProjectMutation} from '../graphql/Mutations'
 import { useQuery,useMutation } from "@apollo/client";
 import { v4 as uuidv4 } from 'uuid';
 import useStore from '../context/useStore'
+import toast from 'react-hot-toast';
 
 
 
@@ -13,7 +14,7 @@ const AllProjects = () => {
 	let currentCourse =localStorage.getItem("currentCourseId")
 	const token = localStorage.getItem("accessToken");
 	console.log(currentCourse)
-	const {data} = useQuery(getAllProjectsByCourseId,{
+	const {data,refetch} = useQuery(getAllProjectsByCourseId,{
 		variables:{
 			courseId: currentCourse,
 		},
@@ -24,8 +25,44 @@ const AllProjects = () => {
 		}
 	})
 
-	const handleCheck =()=>{
-		
+	const [checkProject] = useMutation(checkProjectMutation,{
+		onCompleted: refetch,
+		context : {
+		headers:{
+			Authorization: token
+		}
+	}
+	})
+
+
+	const handleCheck =(projectId,status)=>{
+		let newStatus = !status
+		console.log(newStatus)
+		checkProject({
+			headers:{
+				Authorization: token
+			},
+			variables:{
+				projectId: projectId,
+				projectStatus : newStatus
+			}
+		})
+		toast.promise(
+  	checkProject({
+			headers:{
+				Authorization: token
+			},
+			variables:{
+				projectId: projectId,
+				projectStatus : newStatus
+			}
+		}),
+   {
+     loading: 'Saving...',
+     success: <b>Checking saved!</b>,
+     error: <b>Could not save.</b>,
+   }
+ );
 	}
 
 	console.log(data?.getAllProjectsByCourseId)
@@ -65,9 +102,9 @@ const AllProjects = () => {
       </a></td>
       <td className='border border-slate-300'><button
       className="h-10 px-5 m-2 text-gray-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline hover:bg-gray-800"
-      onClick={handleCheck}
+      onClick={()=>handleCheck(obj.id,obj.projectStatus)}
       >{
-      	!obj.projectStatus? 'UnChecked' : 'Checked'
+      	obj.projectStatus? 'Checked' : 'UnChecked'
       }</button>
 </td>
 
