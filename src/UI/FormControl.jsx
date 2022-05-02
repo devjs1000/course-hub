@@ -23,9 +23,10 @@ import {
   Book,
   PlusSquareFill,
   Receipt,
+  Percent,
 } from "react-bootstrap-icons";
 
-function FormControl({ type, label, onChange, icon }) {
+function FormControl({ type, label, onChange, icon, extra }) {
   let iconImg;
   let iconClass = "text-lg";
 
@@ -52,6 +53,7 @@ function FormControl({ type, label, onChange, icon }) {
   if (icon === "BOOK") iconImg = <Book className={iconClass} />;
   if (icon === "ABOUT") iconImg = <PlusSquareFill className={iconClass} />;
   if (icon === "PROJECT") iconImg = <Receipt className={iconClass} />;
+  if (icon === "GST") iconImg = <Percent className={iconClass} />;
 
   return (
     <div className="relative top-0 left-0 w-full">
@@ -66,6 +68,7 @@ function FormControl({ type, label, onChange, icon }) {
         placeholder=" "
         onChange={onChange}
         name={label}
+        {...extra}
         required
       />
       <label
