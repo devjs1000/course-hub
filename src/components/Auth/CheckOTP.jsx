@@ -1,71 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import FormControl from "../../UI/FormControl";
 import Button from "../../UI/Button";
 import toast from "react-hot-toast";
-import { isValidUserQuery, checkOtpQuery } from "../../graphql/Queries";
+import { checkOtpQuery } from "../../graphql/Queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { forgetPasswordMutation } from "../../graphql/Mutations";
-
-// Toast for success and failure in email verification
-const emailSuccess = () => toast.success("Email verified successfully");
-const emailFailure = () => toast.error("Email does not exist");
-
-//Toast for success and failuer in otp sending
-const otpSuccess = () => toast.success("OTP sent successfully");
-const otpFailure = () => toast.error("Error occurred in sending otp");
+import useStore from "../../context/useStore";
 
 const CheckOTP = () => {
-  const [isOtpSent, setIsOtpSent] = useState(false);
-  const [__data, setData] = useState({});
+  const { forgetPasswordData, setForgetPasswordData } = useStore();
+  const [timer, setTimer] = useState(120);
 
   const [forgetPassword] = useMutation(forgetPasswordMutation);
 
-  const { loading, error, data, refetch } = useQuery(isValidUserQuery, {
+  const { refetch } = useQuery(checkOtpQuery, {
     variables: {
-      email: __data?.email,
+      otp: forgetPasswordData?.otp,
+      email: forgetPasswordData?.email,
     },
     enabled: false,
   });
 
+  useEffect(() => {
+    let x = setTimeout(() => {
+      setTimer(timer - 1);
+    }, 1000);
+
+    if (timer <= 0) return clearInterval(x);
+  }, [timer]);
+
   const getData = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    if (name === "email") {
-      value = value.toLowerCase();
-    }
-    const newData = { ...__data };
+    let name = "otp";
+    let value = parseInt(e.target.value);
+    const newData = { ...forgetPasswordData };
     newData[name] = value;
-    setData(newData);
+
+    console.log(newData);
+    setForgetPasswordData(newData);
   };
 
-  const SendOtp = async (e) => {
+  const otpVerification = async (e) => {
     e.preventDefault();
+
     let res = await refetch();
-
-    console.log(res?.data?.isValidUser + " -- email verified");
-
-    if (res?.data?.isValidUser === true) {
-      emailSuccess();
-
-      let res2 = await forgetPassword({
-        variables: {
-          email: __data.email,
-        },
-      });
-
-      console.log(res2?.data?.forgetPassword + "-- otp send");
-
-      if (res2?.data?.forgetPassword) {
-        otpSuccess();
-        setIsOtpSent(true);
-      } else {
-        otpFailure();
-      }
-    } else {
-      emailFailure();
-    }
+    console.log(res?.data?.checkOtp);
+    console.log("otp verified");
   };
 
   return (
@@ -85,11 +66,13 @@ const CheckOTP = () => {
             />
           </div>
 
+          <p>{timer} sec</p>
+
           <Button
             isPrimary={true}
             isWidthFull={true}
             type="submit"
-            onClick={SendOtp}
+            onClick={otpVerification}
           >
             Submit
           </Button>

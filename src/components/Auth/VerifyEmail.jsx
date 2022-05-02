@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { isValidUserQuery, checkOtpQuery } from "../../graphql/Queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { forgetPasswordMutation } from "../../graphql/Mutations";
+import useStore from "../../context/useStore";
 
 // Toast for success and failure in email verification
 const emailSuccess = () => toast.success("Email verified successfully");
@@ -17,14 +18,14 @@ const otpSuccess = () => toast.success("OTP sent successfully");
 const otpFailure = () => toast.error("Error occurred in sending otp");
 
 const VerifyEmail = () => {
-  const [__data, setData] = useState({});
+  const { forgetPasswordData, setForgetPasswordData } = useStore();
   const navigate = useNavigate();
 
   const [forgetPassword] = useMutation(forgetPasswordMutation);
 
   const { loading, error, data, refetch } = useQuery(isValidUserQuery, {
     variables: {
-      email: __data?.email,
+      email: forgetPasswordData?.email,
     },
     enabled: false,
   });
@@ -35,9 +36,9 @@ const VerifyEmail = () => {
     if (name === "email") {
       value = value.toLowerCase();
     }
-    const newData = { ...__data };
+    const newData = { ...forgetPasswordData };
     newData[name] = value;
-    setData(newData);
+    setForgetPasswordData(newData);
   };
 
   const SendOtp = async (e) => {
@@ -51,7 +52,7 @@ const VerifyEmail = () => {
 
       let res2 = await forgetPassword({
         variables: {
-          email: __data.email,
+          email: forgetPasswordData?.email,
         },
       });
 

@@ -18,6 +18,7 @@ const Footer = () => {
     "my-assignments",
     "admin-login",
     "verify-email",
+    "check-otp",
   ];
   if (nullPath.includes(path)) return null;
 
