@@ -6,38 +6,43 @@ import useStore from "../context/useStore";
 import { createCourseMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 import { CardImage } from "react-bootstrap-icons";
-import { Navigate } from "react-router-dom";
-import toast from 'react-hot-toast';
-
+import { Select, MenuItem } from "@material-ui/core";
+import toast from "react-hot-toast";
 
 export default () => {
   const { user } = useStore();
-  let fileData
-  const [formData, setFormData] = useState({});
-  const [createCourse,{data}] = useMutation(createCourseMutation);
+  let fileData;
+  const [formData, setFormData] = useState({
+    gst: 18,
+    category: " ",
+  });
+  const [createCourse, { data }] = useMutation(createCourseMutation);
   const [isImageSelected, setImageSelected] = useState(false);
 
-  const handleFile= async (e)=>{
-    const file=e.target.files[0]
-    const fileSize = file.size / 1024 / 1024; // in MiB
-    if(fileSize>200){
-      alert('file size exceeds limit')
-    }
-    else{
-    const reader=new FileReader()
-    reader.onload=(f)=>{
-    fileData=f.target.result
-    let value = fileData
-    // console.log(fileData)
-    setFormData((val) => ({ ...val, ['video']: value }))
- }
- await reader.readAsDataURL(file);
-  
-    }
-  }
+  const categories = [
+    "Frontend development",
+    "backend development",
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Business Intelligence",
+    "Cloud Computing",
+  ];
 
   const handleChange = (e) => {
     let name = e.target.name;
+    let value = e.target.value;
+    setFormData((val) => ({ ...val, [name]: value }));
+  };
+
+  const handleArray = (e) => {
+    let name = e.target.name;
+    let value = e.target.value.split(",");
+    value = value.map((val) => val.trim());
+    // console.log(value);
+    setFormData((val) => ({ ...val, [name]: value }));
+  };
+  const handleCategory = (e) => {
+    let name = "category";
     let value = e.target.value;
     setFormData((val) => ({ ...val, [name]: value }));
   };
@@ -58,8 +63,8 @@ export default () => {
     e.preventDefault();
     const token = localStorage.getItem("accessToken");
     createCourse({
-      headers:{
-        Authorization: token
+      headers: {
+        Authorization: token,
       },
       variables: {
         ...formData,
@@ -68,8 +73,8 @@ export default () => {
           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
       },
     });
-    location.reload();
-    toast.success('Course Created Successfully!')
+    //location.reload();
+    toast.success("Course Created Successfully!");
   };
 
   return (
@@ -91,32 +96,59 @@ export default () => {
           />
           <FormControl
             type="text"
-            onChange={handleChange}
+            onChange={handleArray}
             label="tags"
             icon="TAGS"
           />
+
+          <div className="flex gap-x-4">
+            <FormControl
+              type="number"
+              onChange={handleNum}
+              label="price"
+              icon="CURRENCY"
+            />
+            <div className="min-w-[35%]">
+              <FormControl
+                type="number"
+                onChange={handleNum}
+                label="GST"
+                icon="GST"
+                extra={{
+                  disabled: true,
+                  value: 18,
+                }}
+              />
+            </div>
+          </div>
+
           <FormControl
-            type="text"
-            onChange={handleChange}
-            label="category"
-            icon=""
-          />
-          <FormControl
-            type="text"
-            onChange={handleChange}
+            type="textarea"
+            onChange={handleNum}
             label="about"
             icon="ABOUT"
+            extra={{
+              rows: "6",
+              cols: "80",
+            }}
           />
-          <FormControl
-            type="number"
-            onChange={handleNum}
-            label="price"
-            icon="CURRENCY"
-          />
-          <div className='border border-1 border-gray-300 p-4 rounded'>
-            <label htmlFor="video" className='text-slate-700'>Upload Video</label>
-           <input type="file" id="video" onChange={handleFile} className='ml-8' />
-          </div> 
+
+          <Select
+            variant="outlined"
+            value={formData.category}
+            onChange={handleCategory}
+            className="w-full"
+          >
+            <MenuItem value=" ">Select Catgory</MenuItem>
+            {categories.map((category, idx) => {
+              return (
+                <MenuItem value={category} key={idx}>
+                  {category}
+                </MenuItem>
+              );
+            })}
+          </Select>
+
           {/* <Upload className="text-slate-800" size={20} /> */}
           <div className="flex justify-center">
             <div className="rounded-lg bg-white  w-[100%]">
@@ -133,7 +165,11 @@ export default () => {
                       </p>
                     </div>
 
-                    <input type="file" className="hidden" onChange={handleImage} />
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={handleImage}
+                    />
                   </label>
                 </div>
               </div>
