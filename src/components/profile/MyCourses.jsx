@@ -57,7 +57,7 @@ function MyCourses() {
             data?.getMyCourses.map((a) => {
               console.log(a);
               return (
-                <CourseCard id={a?.id} enrolled={true} userRole={user?.role} 
+                <CourseCard id={a?.id} enrolled={true} course={a} 
                 image={a?.image} category={a?.category} price={a?.price} 
                 name={a?.name} tagline={a?.tagline}
                 />

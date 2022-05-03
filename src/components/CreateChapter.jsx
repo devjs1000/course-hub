@@ -5,15 +5,14 @@ import useStore from "../context/useStore";
 import { newCreateChapterMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import toast from 'react-hot-toast';
-
+import toast from "react-hot-toast";
 
 const CreateChapter = () => {
   const { user, theme } = useStore();
   const { id } = useParams();
-
   const [formData, setFormData] = useState({});
   const [createChapter] = useMutation(newCreateChapterMutation);
+  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -22,7 +21,7 @@ const CreateChapter = () => {
   };
 
   const token = localStorage.getItem("accessToken");
-  console.log(token)
+  console.log(token);
   const handleSubmit = (e) => {
     e.preventDefault();
     createChapter({
@@ -32,26 +31,44 @@ const CreateChapter = () => {
         courseId: id,
       },
     });
-    
-
 
     toast.promise(
       createChapter({
-      variables: {
-        ...formData,
-        teacherId: user.id,
-        courseId: id,
-      },
-    })
-  ,
-   {
-     loading: 'Saving...',
-     success: <b>Chapter Created!</b>,
-     error: <b>Could not create chapter</b>,
-   }
- );
+        variables: {
+          ...formData,
+          teacherId: user.id,
+          courseId: id,
+        },
+      }),
+      {
+        loading: "Saving...",
+        success: <b>Chapter Created!</b>,
+        error: <b>Could not create chapter</b>,
+      }
+    );
   };
-   const mainDivStyles = `${theme? 'bg-slate-800 text-white' : 'bg-white'} py-8 px-16`
+  const mainDivStyles = `${
+    theme ? "bg-slate-800 text-white" : "bg-white"
+  } py-8 px-16`;
+
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (res) => {
+      setFile({
+        data: res.target.result,
+        originalName: file.name,
+        size: file.size,
+        type: file.type,
+      });
+    };
+  };
+
+  const handleUpload = () => {};
+
+  console.log(file);
+
   return (
     <>
       <div className={mainDivStyles}>
@@ -63,12 +80,15 @@ const CreateChapter = () => {
             label="name"
             icon="BOOK"
           />
-          <FormControl
-            onChange={handleChange}
-            type="text"
-            label="video"
-            icon="VIDEO"
-          />
+          <div>
+            <input type="file" onChange={handleFile} />
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={handleUpload}
+            >
+              Upload Video
+            </button>
+          </div>
           <FormControl
             type="text"
             onChange={handleChange}

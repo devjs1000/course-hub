@@ -7,7 +7,7 @@ import { Clock, ListUl } from "react-bootstrap-icons";
 import { allCoursesQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 
-const CourseCard = ({ id, course }) => {
+const CourseCard = ({ id, course , enrolled}) => {
   const { allCoursesData } = useStore();
   const [current, setCurrent] = useState({});
   const { user } = useStore();
@@ -16,9 +16,9 @@ const CourseCard = ({ id, course }) => {
     <ErrorBoundary fallback={"error in course page"}>
       <Link
         to={
-          user?.role == "teacher"
-            ? `/create-chapter/${id}`
-            : `coursedetails/${id}`
+          user?.role == "teacher" && Boolean(enrolled)
+            ? `/create-chapter/${course?.id}`
+            : `coursedetails/${course?.id}`
         }
       >
         <div className="bg-black rounded-sm relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
