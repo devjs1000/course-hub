@@ -1,10 +1,10 @@
 import React,{useState,useEffect,Children} from 'react'
 import { useLocation } from 'react-router-dom'
-import {GetAllProjectsByChapterId,getAllProjectsByCourseId} from '../graphql/Queries'
-import {checkProjectMutation} from '../graphql/Mutations'
+import {GetAllProjectsByChapterId,getAllProjectsByCourseId} from '../../graphql/Queries'
+import {checkProjectMutation} from '../../graphql/Mutations'
 import { useQuery,useMutation } from "@apollo/client";
 import { v4 as uuidv4 } from 'uuid';
-import useStore from '../context/useStore'
+import useStore from '../../context/useStore'
 import toast from 'react-hot-toast';
 
 

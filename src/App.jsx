@@ -39,10 +39,10 @@ import {
   NewPassword,
   CheckOTP,
 } from "./components/Auth";
-import Chapters from "./components/Chapters";
-import StudentsEnrolled from "./components/StudentsEnrolled";
-import CurrentProject from "./components/CurrentProject";
-import AllProjects from "./components/AllProjects";
+import Chapters from "./components/Chapters/Chapters";
+import StudentsEnrolled from "./components/Chapters/StudentsEnrolled";
+import CurrentProject from "./components/Chapters/CurrentProject";
+import AllProjects from "./components/Chapters/AllProjects";
 import Navbar from "./components/header/Navbar";
 import Loading from "./UI/BoxLoading";
 import Contact from "./components/ContactUs/ContactUs";

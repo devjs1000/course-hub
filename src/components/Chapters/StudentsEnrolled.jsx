@@ -1,11 +1,43 @@
 import React, {useState,useEffect} from 'react'
-import useStore from '../context/useStore'
+import useStore from '../../context/useStore'
 import {useParams,Link,Outlet} from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import { useQuery,useMutation } from "@apollo/client";
-import {GetAllProjectsByChapterId} from '../graphql/Queries'
+import {GetAllProjectsByChapterId} from '../../graphql/Queries'
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import AllProjects from './AllProjects'
 
 
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
 const StudentsEnrolled = () => {
 	let {chapterId} = useParams()
@@ -14,7 +46,10 @@ const StudentsEnrolled = () => {
 	const [loading, setLoading] = useState(false)
 	const currentChapterLink = `/students-enrolled/${chapterId}/current-chapter`
 	const allChaptersLink = `/students-enrolled/${chapterId}/all-chapters`
-
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
 
 	const mainDivStyles = `${theme? 'bg-slate-800 text-white' : 'bg-white'} min-h-screen flex flex-col items-center`
@@ -27,21 +62,25 @@ const StudentsEnrolled = () => {
 </div>:
  <div className='flex flex-col justify-center items-center'>
 	<h1 className='text-center text-4xl m-6'>List Of Students Enrolled</h1>
-	<div className='flex flex-row justify-center'>
-		<Link to={currentChapterLink} state={{
-			chapterId : chapterId
-		}}>
-		<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Current Chapter</button>
-	</Link>
-	<Link to={allChaptersLink} state={{
-			chapterId : chapterId
-		}} >
-		<button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">All Chapters</button>
-	</Link>
-	</div>
+	<Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
+          <Tab label="Current Chapter" value={0}/>
+          <Tab label="All Chapters" value={1} />
+
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        Item One
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <AllProjects/>
+      </TabPanel>
+
+    </Box>
  </div>
  }
-  <Outlet/>
+
 	</div>
 }
 
