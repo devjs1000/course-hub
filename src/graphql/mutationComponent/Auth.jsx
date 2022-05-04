@@ -60,8 +60,8 @@ export const forgetPasswordMutation = gql`
   }
 `;
 
-export const updatePassordMutation = gql`
-  mutation UpdatePassord($password: String!) {
+export const updatePasswordMutation = gql`
+  mutation UpdatePassword($password: String!) {
     updatePassword(password: $password)
   }
 `;
