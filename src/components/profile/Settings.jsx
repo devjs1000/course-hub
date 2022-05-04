@@ -63,7 +63,7 @@ function Settings() {
 				phone: phone,
 				email: email,
 			}
-		})
+		}).then(res=>console.log(res))
 
 		toast.promise(
   updateProfile2({

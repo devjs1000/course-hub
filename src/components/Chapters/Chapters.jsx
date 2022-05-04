@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getChaptersQuery } from "../graphql/Queries";
+import { getChaptersQuery } from "../../graphql/Queries";
 import { useQuery, useMutation } from "@apollo/client";
-import useStore from "../context/useStore";
+import useStore from "../../context/useStore";
 import Modal from "react-modal";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
-import { submitMyProject } from "../graphql/Mutations";
+import { submitMyProject } from "../../graphql/Mutations";
 import toast from "react-hot-toast";
 
 Modal.setAppElement("#root");
