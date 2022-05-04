@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const userOrdersQuery = gql`
-  query Questions{
-    getUserOrders{
+  query Questions {
+    getUserOrders {
       id
       date
       courseId
@@ -22,7 +22,7 @@ export const teacherOrdersQuery = gql`
   }
 `;
 
-export const getOrderId = `
+export const getOrderId = gql`
   query GetOrderId($courseId: ID!) {
     getOrderId(courseId: $courseId) {
       receipt

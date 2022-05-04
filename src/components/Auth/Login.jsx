@@ -5,7 +5,7 @@ import FormControl from "../../UI/FormControl";
 import Button from "../../UI/Button";
 import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { login } = useAuthHook();
@@ -14,7 +14,6 @@ const Login = () => {
   const getlocation = useLocation();
   const path = getlocation?.state?.location;
   const token = localStorage.getItem("accessToken");
-
 
   const getLoginData = (e) => {
     const name = e.target.name;
@@ -29,7 +28,7 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-      login(loginData)
+    login(loginData);
   };
 
   return (
@@ -56,7 +55,7 @@ const Login = () => {
               onChange={getLoginData}
             />
             <a
-              href="#"
+              href="/verify-email"
               className="relative text-gray-700 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:scale-x-0  after:bg-current hover:text-gray-800 hover:font-semibold transition-all duration-200 after:transition-all hover:after:scale-x-100"
             >
               Forgot password
