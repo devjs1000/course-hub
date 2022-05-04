@@ -12,6 +12,7 @@ import useStore from "../../context/useStore";
 const CheckOTP = () => {
   const { forgetPasswordData, setForgetPasswordData } = useStore();
   const [timer, setTimer] = useState(120);
+  const navigate = useNavigate();
 
   const [forgetPassword] = useMutation(forgetPasswordMutation);
 
@@ -24,11 +25,14 @@ const CheckOTP = () => {
   });
 
   useEffect(() => {
-    let x = setTimeout(() => {
+    let timerRef = setTimeout(() => {
       setTimer(timer - 1);
     }, 1000);
 
-    if (timer <= 0) return clearInterval(x);
+    if (timer <= 0) {
+      toast.error("Token has expired");
+      navigate("/verify-email");
+    }
   }, [timer]);
 
   const getData = (e) => {
@@ -46,7 +50,7 @@ const CheckOTP = () => {
 
     let res = await refetch();
     console.log(res?.data?.checkOtp);
-    console.log("otp verified");
+    if (res?.data?.checkOtp === false) navigate("/new-password");
   };
 
   return (
@@ -57,16 +61,15 @@ const CheckOTP = () => {
         </Link>
         <form className="w-4/5 h-full">
           <h2 className="text-4xl font-semibold mb-12">Check OTP</h2>
-          <div className="flex flex-col items-start gap-6 mb-12">
+          <div className="flex flex-col items-start gap-2 mb-8">
             <FormControl
               type="number"
               label="enter otp"
               icon="PERSON"
               onChange={getData}
             />
+            <p className="self-end text-red-500">{timer} seconds left</p>
           </div>
-
-          <p>{timer} sec</p>
 
           <Button
             isPrimary={true}

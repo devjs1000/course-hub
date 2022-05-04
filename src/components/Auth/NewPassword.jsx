@@ -8,11 +8,6 @@ import useAuthHook from "../../hooks/useAuthHook";
 import toast from "react-hot-toast";
 
 const NewPassword = () => {
-  const { login } = useAuthHook();
-  const [loginData, setLoginData] = useState({});
-  const { user } = useStore();
-  const getlocation = useLocation();
-  const path = getlocation?.state?.location;
   const token = localStorage.getItem("accessToken");
 
   const getLoginData = (e) => {
@@ -33,8 +28,6 @@ const NewPassword = () => {
 
   return (
     <div className="min-h-screen bg-red-800 flex items-center justify-center">
-      {user.id && path && <Navigate to={path} />}
-      {user.id && !path && <Navigate to="/" />}
       <div className="relative bg-white w-[25rem] mx-2 py-16 flex items-center justify-center rounded-xl sm:w-[27rem]">
         <Link to="/login">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
@@ -45,12 +38,6 @@ const NewPassword = () => {
             <FormControl
               type="password"
               label="new password"
-              icon="LOCK"
-              onChange={getLoginData}
-            />
-            <FormControl
-              type="password"
-              label="confirm password"
               icon="LOCK"
               onChange={getLoginData}
             />
