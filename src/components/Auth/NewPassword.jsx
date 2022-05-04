@@ -20,23 +20,30 @@ const NewPassword = () => {
 
   const submitPassword = async (e) => {
     e.preventDefault();
-    let res = await updatePassword({
-      variables: {
-        password: newPassword,
-      },
-      context: {
-        headers: {
-          Authorization: token,
-        },
-      },
-    });
 
-    console.log(res);
-    if (res?.data?.updatePassword) {
-      toast.success("Password changed successfully");
-      navigate("/login");
-    } else {
-      toast.error(res?.errors[0]?.message);
+    let res;
+    try {
+      res = await updatePassword({
+        variables: {
+          password: newPassword,
+        },
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
+      });
+
+      if (res?.data?.updatePassword) {
+        toast.success("Password changed successfully");
+        navigate("/login");
+      } else {
+        toast.error("Password updation failed.Try again");
+        document.getElementById("myForm").reset();
+      }
+    } catch (err) {
+      // console.log(err);
+      toast.error(err.message);
     }
   };
 
@@ -46,7 +53,7 @@ const NewPassword = () => {
         <Link to="/login">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
         </Link>
-        <form className="w-4/5 h-full" onSubmit={submitPassword}>
+        <form className="w-4/5 h-full" onSubmit={submitPassword} id="myForm">
           <h2 className="text-4xl font-semibold mb-12">Change Password</h2>
           <div className="flex flex-col items-start gap-6 mb-12">
             <FormControl

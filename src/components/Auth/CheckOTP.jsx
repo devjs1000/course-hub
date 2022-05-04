@@ -30,7 +30,7 @@ const CheckOTP = () => {
     }, 1000);
 
     if (timer <= 0) {
-      toast.error("Token has expired");
+      toast.error("OTP has been expired");
       navigate("/verify-email");
     }
   }, [timer]);
@@ -41,7 +41,7 @@ const CheckOTP = () => {
     const newData = { ...forgetPasswordData };
     newData[name] = value;
 
-    console.log(newData);
+    //console.log(newData);
     setForgetPasswordData(newData);
   };
 
@@ -49,8 +49,14 @@ const CheckOTP = () => {
     e.preventDefault();
 
     let res = await refetch();
-    console.log(res?.data?.checkOtp);
-    if (res?.data?.checkOtp === false) navigate("/new-password");
+    //console.log(res?.data?.checkOtp);
+    if (res?.data?.checkOtp === true) {
+      toast.success("OTP verified successfully");
+      navigate("/new-password");
+    } else {
+      toast.error("OTP doesn't match");
+      document.getElementById("myForm").reset();
+    }
   };
 
   return (
@@ -59,7 +65,7 @@ const CheckOTP = () => {
         <Link to="/verify-email">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
         </Link>
-        <form className="w-4/5 h-full">
+        <form className="w-4/5 h-full" id="myForm">
           <h2 className="text-4xl font-semibold mb-12">Check OTP</h2>
           <div className="flex flex-col items-start gap-2 mb-8">
             <FormControl

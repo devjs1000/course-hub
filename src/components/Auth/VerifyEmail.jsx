@@ -15,7 +15,7 @@ const emailFailure = () => toast.error("Email does not exist");
 
 //Toast for success and failuer in otp sending
 const otpSuccess = () => toast.success("OTP sent successfully");
-const otpFailure = () => toast.error("Error occurred in sending otp");
+const otpFailure = () => toast.error("Error occurred in sending otp.Try again");
 
 const VerifyEmail = () => {
   const { forgetPasswordData, setForgetPasswordData } = useStore();
@@ -45,7 +45,7 @@ const VerifyEmail = () => {
     e.preventDefault();
     let res = await refetch();
 
-    console.log(res?.data?.isValidUser + " -- email verified");
+    // console.log(res?.data?.isValidUser + " -- email verified");
 
     if (res?.data?.isValidUser === true) {
       emailSuccess();
@@ -56,7 +56,7 @@ const VerifyEmail = () => {
         },
       });
 
-      console.log(res2?.data?.forgetPassword + "-- otp send");
+      // console.log(res2?.data?.forgetPassword + "-- otp send");
 
       if (res2?.data?.forgetPassword) {
         otpSuccess();
@@ -65,6 +65,7 @@ const VerifyEmail = () => {
         otpFailure();
       }
     } else {
+      document.getElementById("myForm").reset();
       emailFailure();
     }
   };
@@ -75,7 +76,7 @@ const VerifyEmail = () => {
         <Link to="/login">
           <ArrowLeft className="absolute top-4 left-11 text-2xl cursor-pointer text-gray-600 hover:text-gray-900" />
         </Link>
-        <form className="w-4/5 h-full">
+        <form className="w-4/5 h-full" id="myForm">
           <h2 className="text-4xl font-semibold mb-12">Verify Email</h2>
           <div className="flex flex-col items-start gap-6 mb-12">
             <FormControl
