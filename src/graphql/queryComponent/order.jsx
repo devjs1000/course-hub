@@ -22,7 +22,7 @@ export const teacherOrdersQuery = gql`
   }
 `;
 
-export const getOrderId = gql`
+export const getOrderId = `
   query GetOrderId($courseId: ID!) {
     getOrderId(courseId: $courseId) {
       receipt

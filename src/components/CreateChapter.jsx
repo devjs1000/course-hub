@@ -30,9 +30,9 @@ const CreateChapter = () => {
     setFormData((val) => ({ ...val, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createChapter({
+    let res = await createChapter({
       variables: {
         ...formData,
         teacherId: user.id,
@@ -40,20 +40,11 @@ const CreateChapter = () => {
       },
     });
 
-    toast.promise(
-      createChapter({
-        variables: {
-          ...formData,
-          teacherId: user.id,
-          courseId: id,
-        },
-      }),
-      {
-        loading: "Saving...",
-        success: <b>Chapter Created!</b>,
-        error: <b>Could not create chapter</b>,
-      }
-    );
+    toast.promise(res, {
+      loading: "Saving...",
+      success: <b>Chapter Created!</b>,
+      error: <b>Could not create chapter</b>,
+    });
   };
 
   const handleFile = (e) => {
@@ -83,8 +74,7 @@ const CreateChapter = () => {
         },
       }
     );
-    setFormData({...formData, video:data})
-    
+    setFormData({ ...formData, video: data });
   };
 
   console.log(file);
