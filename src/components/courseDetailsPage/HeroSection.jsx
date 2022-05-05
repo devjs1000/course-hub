@@ -112,12 +112,18 @@ function HeroSection({ course, id, isEnrolled }) {
         >
           <span className="absolute z-10 top-[17rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
             <strong>
-              ₹{course?.price - (course?.price * course?.discount) / 100}
+              ₹
+              {course?.price -
+                (course?.price *
+                  (course?.discount === null ? 0 : course?.discount)) /
+                  100}
             </strong>
             <small className="line-through mx-2 text-gray-600">
               ₹ {course?.price}
             </small>
-            <small className="text-gray-600">({course?.dicount}%)</small>
+            <small className="text-gray-600">
+              ({course?.discount === null ? 0 : course?.discount}%)
+            </small>
           </span>
         </div>
       </div>

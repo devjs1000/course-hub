@@ -69,6 +69,7 @@ export const getCourseByIdQuery = gql`
       teacherId
       subscribers
       noOfSubscribers
+      discount
     }
   }
 `;
