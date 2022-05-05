@@ -10,9 +10,8 @@ import toast from "react-hot-toast";
 
 
 function Settings() {
-
-
 	const {theme, setTheme,user} = useStore()
+	const [password,setPassword] = useState(user.password)
 	const [name,setName] = useState(user.name)
 	const [phone,setPhone] = useState(user.phone)
 	const [email,setEmail] = useState(user.email)
@@ -28,13 +27,13 @@ function Settings() {
     },
   });
 
-	 // console.log(updateProfile2)
+
 //styles
 
 	const mainContainerStyles = `p-8 ${theme? 'bg-slate-800 text-white' : 'white text-black'} h-full`
-	const inputTextStyles = ` border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 `
+	const inputTextStyles = ` border text-black border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 `
 	const labelStyles = `block mb-2 text-sm font-medium capitalize`
-	const iconStyles = `absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none`
+	const iconStyles = `absolute text-black inset-y-0 left-0 flex items-center pl-3 pointer-events-none`
 	const btnStyles = `text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800`
 
 
@@ -51,6 +50,9 @@ function Settings() {
 	const handlePhone =e=>{
 		setPhone(e.target.value)
 	}
+	const handlePassword =e=>{
+		if(e.target.value!=='' || e.target.value!==' ') setPassword(e.target.value)
+	}
 
 	const handleSubmit =(e)=>{
 		e.preventDefault()
@@ -62,6 +64,7 @@ function Settings() {
 				name:name,
 				phone: phone,
 				email: email,
+				password: password,
 			}
 		}).then(res=>console.log(res))
 
@@ -95,7 +98,7 @@ function Settings() {
 
 {/*name*/}
 			<div>
-<label for="name" className={labelStyles}>Your name</label>
+<label htmlFor="name" className={labelStyles}>Your name</label>
 <div className="relative">
   <div className={iconStyles}>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
@@ -110,15 +113,15 @@ function Settings() {
 {/*email*/}
 
 	<div>
-<label for="name" className={labelStyles}>Your email</label>
+<label htmlFor="email" className={labelStyles}>Your email</label>
 <div className="relative">
   <div className={iconStyles}>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-envelope-fill" viewBox="0 0 16 16">
   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
 </svg>
   </div>
-  <input type="text" id="name"
-   className={inputTextStyles} placeholder={user.name} onChange={handleEmail} value={email} />
+  <input type="text" id="email"
+   className={inputTextStyles} placeholder={user.email} onChange={handleEmail} value={email} />
 </div>
 	</div>
 
@@ -126,17 +129,31 @@ function Settings() {
 
 
 	<div>
-<label for="name" className={labelStyles}>Your phone number</label>
+<label htmlFor="phone" className={labelStyles}>Your phone number</label>
 <div className="relative">
   <div className={iconStyles}>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
   <path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
 </svg>
   </div>
-  <input type="text" id="name"
-   className={inputTextStyles} placeholder={user.name} onChange={handlePhone} value={phone} />
+  <input type="text" id="phone"
+   className={inputTextStyles} placeholder={user.phone} onChange={handlePhone} value={phone} />
 </div>
 	</div>
+
+	<div>
+<label htmlFor="password" className={labelStyles}>Your New Password</label>
+<div className="relative">
+  <div className={iconStyles}>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+</svg>
+  </div>
+  <input type="password" id="password"
+   className={inputTextStyles} placeholder="enter your new password here" onChange={handlePassword} />
+</div>
+	</div>
+	
 
 <button type='submit' className={btnStyles}>Submit</button>
 			</form>
