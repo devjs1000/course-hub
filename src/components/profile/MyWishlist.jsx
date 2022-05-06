@@ -9,6 +9,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import "./mycourses.css";
 import { LockFill } from "react-bootstrap-icons";
 import { log } from "react-modal/lib/helpers/ariaAppHider";
+import BoxLoading from "../../UI/BoxLoading";
 
 function MyWishlist() {
   const {
@@ -47,6 +48,8 @@ function MyWishlist() {
   const cardContainerStyles = `flex flex-wrap gap-6 justify-around ${
     theme ? "bg-slate-800" : null
   }`;
+
+  if (wishlist.loading || allCourses.loading) return <BoxLoading />;
 
   return (
     <>
