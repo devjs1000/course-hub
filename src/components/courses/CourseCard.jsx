@@ -87,16 +87,18 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
             <div className="bg-orange-300 text-[14px] font-semibold rounded-sm text-white p-2 uppercase">
               {course?.category}
             </div>
-            <div className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]">
-              {inwishlist ? (
-                <HeartFill
-                  className="text-red-600"
-                  onClick={handleRomveCourseFromWishlist}
-                />
-              ) : (
-                <Heart onClick={handleAddCourseIntoWishlist} />
-              )}
-            </div>
+            {!(enrolled === true) && (
+              <div className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]">
+                {inwishlist ? (
+                  <HeartFill
+                    className="text-red-600"
+                    onClick={handleRomveCourseFromWishlist}
+                  />
+                ) : (
+                  <Heart onClick={handleAddCourseIntoWishlist} />
+                )}
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 font-semibold text-gray-700">
