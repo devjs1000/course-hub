@@ -53,7 +53,8 @@ function FormControl({ type, label, onChange, icon, extra }) {
   if (icon === "BOOK") iconImg = <Book className={iconClass} />;
   if (icon === "ABOUT") iconImg = <PlusSquareFill className={iconClass} />;
   if (icon === "PROJECT") iconImg = <Receipt className={iconClass} />;
-  if (icon === "GST") iconImg = <Percent className={iconClass} />;
+  if (icon === "GST" || icon === "DISCOUNT")
+    iconImg = <Percent className={iconClass} />;
 
   return (
     <div className="relative top-0 left-0 w-full">

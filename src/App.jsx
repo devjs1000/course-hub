@@ -10,6 +10,7 @@ import {
   Footer,
   Courses,
   PrivateRoute,
+  UpdateDiscount,
 } from "./components";
 
 import {
@@ -105,6 +106,7 @@ function App() {
               <Route path="/community" element={<Community />} />
               <Route path="/create-course" element={<CreateCourse />} />
               <Route path="/create-chapter/:id" element={<CreateChapter />} />
+              <Route path="/update-discount/:id" element={<UpdateDiscount />} />
               <Route path="/create-quiz" element={<CreateQuiz />} />
               <Route path="/create-assignment" element={<CreateAssignment />} />
 
