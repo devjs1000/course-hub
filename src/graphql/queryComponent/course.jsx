@@ -88,18 +88,6 @@ export const getChaptersQuery = gql`
 
 export const getMyWishlistsQuery = gql`
   query getMyWishlists {
-    getMyWishlists {
-      name
-      id
-      tagline
-      tags
-      category
-      price
-      image
-      about
-      teacherId
-      subscribers
-      noOfSubscribers
-    }
+    getMyWishlists
   }
 `;

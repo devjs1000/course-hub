@@ -2,11 +2,7 @@ import CourseCard from "./CourseCard";
 import BoxLoading from "../../UI/BoxLoading";
 import { useEffect, useState, Children } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { allCoursesQuery, getMyWishlistsQuery } from "../../graphql/Queries";
-import {
-  addCourseIntoWishlistMutation,
-  romveCourseFromWishlistMutation,
-} from "../../graphql/Mutations";
+import { allCoursesQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
 function AllCourses() {

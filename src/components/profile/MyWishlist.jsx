@@ -2,17 +2,20 @@ import React, { Children, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import CourseCard from "../courses/CourseCard";
-import { getMyWishlistsQuery } from "../../graphql/Queries";
+import { getMyWishlistsQuery, allCoursesQuery } from "../../graphql/Queries";
 import { useQuery } from "@apollo/client";
 import useStore from "../../context/useStore";
 import { ErrorBoundary } from "react-error-boundary";
 import "./mycourses.css";
+import { LockFill } from "react-bootstrap-icons";
+import { log } from "react-modal/lib/helpers/ariaAppHider";
 
 function MyWishlist() {
-  const { user, theme, setMyWishlist } = useStore();
+  const { user, theme, setMyWishlist, allCoursesData, setAllCoursesData } =
+    useStore();
 
   const token = localStorage.getItem("accessToken");
-  const { data, error, loading, refetch } = useQuery(getMyWishlistsQuery, {
+  const wishlist = useQuery(getMyWishlistsQuery, {
     context: {
       headers: {
         Authorization: token,
@@ -20,11 +23,19 @@ function MyWishlist() {
     },
   });
 
+  const allCourses = useQuery(allCoursesQuery);
+
   useEffect(() => {
-    console.log(data + " --- ");
-    // setMyWishlist(data?.getMyCourses);
-    refetch();
-  }, [data]);
+    if (wishlist?.loading) return;
+
+    setMyWishlist(wishlist?.data?.getMyWishlists);
+  }, [wishlist.data]);
+
+  useEffect(() => {
+    if (allCourses?.loading) return;
+
+    setAllCoursesData(allCourses?.data?.courses);
+  }, [allCourses?.data]);
 
   const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`;
   const btnSectionStyles = `px-2 h-[3rem] flex items-center my-4`;
@@ -36,24 +47,12 @@ function MyWishlist() {
     <>
       <ErrorBoundary>
         <div className={cardContainerStyles}>
-          {/* {Children.toArray(
-            data?.getMyCourses.map((a) => {
-              console.log(a);
-              return (
-                <CourseCard
-                  id={a?.id}
-                  enrolled={true}
-                  course={a}
-                  image={a?.image}
-                  category={a?.category}
-                  price={a?.price}
-                  name={a?.name}
-                  tagline={a?.tagline}
-                />
-              );
+          {Children.toArray(
+            wishlist?.data?.getMyWishlists.map((a) => {
+              let Course = allCoursesData.filter((c) => c.id === a)[0];
+              return <CourseCard id={Course?.id} course={Course} />;
             })
-          )} */}
-          hello
+          )}
         </div>
       </ErrorBoundary>
     </>

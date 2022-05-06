@@ -9,13 +9,15 @@ import {
   addCourseIntoWishlistMutation,
   romveCourseFromWishlistMutation,
 } from "../../graphql/Mutations";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import toast from "react-hot-toast";
 
 const CourseCard = ({ id, course, enrolled }) => {
   const [courseInWishlist, setCourseInWishlist] = useState(false);
   const { allCoursesData } = useStore();
   const [current, setCurrent] = useState({});
   const { user } = useStore();
+  const [addCourseIntoWishlist] = useMutation(addCourseIntoWishlistMutation);
 
   const token = localStorage.getItem("accessToken");
   const { data, loading, error } = useQuery(getMyWishlistsQuery, {
@@ -26,9 +28,23 @@ const CourseCard = ({ id, course, enrolled }) => {
     },
   });
 
-  useEffect(() => {
-    console.log(data + "hello");
-  });
+  const handleAddCourseIntoWishlistMutation = async () => {
+    try {
+      let response = await addCourseIntoWishlist({
+        variables: {
+          courseId: course?.id,
+        },
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
+      });
+      toast.success(response?.data?.addCourseIntoWishlist);
+    } catch (err) {
+      toast.error("Error occurred in adding course to wishlist");
+    }
+  };
 
   return (
     <ErrorBoundary fallback={"error in course page"}>
@@ -57,8 +73,10 @@ const CourseCard = ({ id, course, enrolled }) => {
             </div>
             <div
               className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]"
-              id={id}
-              onClick={() => setCourseInWishlist((val) => !val)}
+              onClick={(e) => {
+                setCourseInWishlist((val) => !val);
+                handleAddCourseIntoWishlistMutation();
+              }}
             >
               {courseInWishlist === false && <Heart className="" />}
               {courseInWishlist && <HeartFill className="text-red-600" />}
@@ -87,10 +105,14 @@ const CourseCard = ({ id, course, enrolled }) => {
           <span className="absolute top-[-1.1rem] right-[1rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
             <strong>
               ₹
-              {course?.price -
-                (course?.price *
-                  (course?.discount === null ? 0 : course?.discount)) /
-                  100}
+              {Math.round(
+                `${
+                  course?.price -
+                  (course?.price *
+                    (course?.discount === null ? 0 : course?.discount)) /
+                    100
+                }` * 100
+              ) / 100}
             </strong>
             <small className="line-through mx-2 text-gray-600">
               ₹ {course?.price}

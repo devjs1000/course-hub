@@ -7,14 +7,23 @@ import useStore from "../../context/useStore";
 import useRazor from "./useRazor";
 import { Navigate } from "react-router-dom";
 import { getChaptersQuery } from "../../graphql/Queries";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import {
+  addCourseIntoWishlistMutation,
+  romveCourseFromWishlistMutation,
+} from "../../graphql/Mutations";
+import { Heart, HeartFill } from "react-bootstrap-icons";
+import toast from "react-hot-toast";
 
 function HeroSection({ course, id, isEnrolled }) {
+  const [courseInWishlist, setCourseInWishlist] = useState(false);
   const { myCourses } = useStore();
   const [chapters, setChapters] = useState([]);
   const [openCourse, setOpenCourse] = useState(false);
   const [isSubcribed, setSubcribed] = useState(false);
   const { showRazorpay } = useRazor();
+  const [addCourseIntoWishlist] = useMutation(addCourseIntoWishlistMutation);
+
   const openCourseHandler = () => {
     setOpenCourse(true);
   };
@@ -71,6 +80,24 @@ function HeroSection({ course, id, isEnrolled }) {
       showRazorpay(course.id, user.id);
     }
   };
+
+  const handleAddCourseIntoWishlistMutation = async () => {
+    try {
+      let response = await addCourseIntoWishlist({
+        variables: {
+          courseId: course?.id,
+        },
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
+      });
+      toast.success(response?.data?.addCourseIntoWishlist);
+    } catch (err) {
+      toast.error("Error occurred in adding course to wishlist");
+    }
+  };
   // { backgroundImage: `url(${course?.image})` }
   return (
     <>
@@ -78,9 +105,9 @@ function HeroSection({ course, id, isEnrolled }) {
         <div className="flex flex-col items-start sm:w-full backdrop-blur-[100px] py-8 sm:rounded-xl ">
           <div className="mb-7">
             <h1 className="text-4xl font-bold text-white uppercase tracking-wide">
-              {course.name}
+              {course?.name}
             </h1>
-            <p className="text-xl text-white">{course.tagline}</p>
+            <p className="text-xl text-white">{course?.tagline}</p>
           </div>
 
           <div className="">
@@ -104,28 +131,42 @@ function HeroSection({ course, id, isEnrolled }) {
                 Enroll
               </Button>
             )}
+            <div
+              className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]"
+              onClick={(e) => {
+                setCourseInWishlist((val) => !val);
+                handleAddCourseIntoWishlistMutation();
+              }}
+            >
+              {courseInWishlist === false && <Heart className="" />}
+              {courseInWishlist && <HeartFill className="text-red-600" />}
+            </div>
           </div>
         </div>
-        <div
-          className="bg-cover bg-no-rnextVideosepeat bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
-          style={{ backgroundImage: `url(${course?.image})` }}
-        >
-          <span className="absolute z-10 top-[17rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
-            <strong>
-              ₹
-              {course?.price -
+      </div>
+      <div
+        className="bg-cover bg-no-rnextVideosepeat bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
+        style={{ backgroundImage: `url(${course?.image})` }}
+      >
+        <span className="absolute z-10 top-[17rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
+          <strong>
+            ₹
+            {Math.round(
+              `${
+                course?.price -
                 (course?.price *
                   (course?.discount === null ? 0 : course?.discount)) /
-                  100}
-            </strong>
-            <small className="line-through mx-2 text-gray-600">
-              ₹ {course?.price}
-            </small>
-            <small className="text-gray-600">
-              ({course?.discount === null ? 0 : course?.discount}%)
-            </small>
-          </span>
-        </div>
+                  100
+              }` * 100
+            ) / 100}
+          </strong>
+          <small className="line-through mx-2 text-gray-600">
+            ₹ {course?.price}
+          </small>
+          <small className="text-gray-600">
+            ({course?.discount === null ? 0 : course?.discount}%)
+          </small>
+        </span>
       </div>
 
       {openCourse &&
