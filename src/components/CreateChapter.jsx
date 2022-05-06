@@ -6,6 +6,7 @@ import { newCreateChapterMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const CreateChapter = () => {
   const { user, theme } = useStore();
@@ -67,12 +68,19 @@ const CreateChapter = () => {
 
   const handleUpload = () => {};
 
-  console.log(file);
-
   return (
     <>
       <div className={mainDivStyles}>
-        <h1 className="mb-4 font-bold text-lg">New Chapter</h1>
+        <nav className="flex gap-12 mb-8 bg-gray-200 text-[20px]">
+          <Link to={`/create-chapter/${id}`}>
+            <h1 className="pb-2 pt-4 px-4 font-bold border-b-4 border-red-500">
+              New Chapter
+            </h1>
+          </Link>
+          <Link to={`/update-discount/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">Update Discount</h1>
+          </Link>
+        </nav>
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormControl
             onChange={handleChange}

@@ -28,12 +28,24 @@ export const createCourseMutation = gql`
 `;
 
 export const newCreateChapterMutation = gql`
-mutation CreateChapter($courseId: ID!, $video: String!, $about: String!, $project: String!, $name: String!) {
-  createChapter(courseId: $courseId, video: $video, about: $about, project: $project, name: $name) {
-    video
+  mutation CreateChapter(
+    $courseId: ID!
+    $video: String!
+    $about: String!
+    $project: String!
+    $name: String!
+  ) {
+    createChapter(
+      courseId: $courseId
+      video: $video
+      about: $about
+      project: $project
+      name: $name
+    ) {
+      video
+    }
   }
-}
-`
+`;
 
 export const createChapterMutation = gql`
   mutation CreateChapter(
@@ -60,5 +72,21 @@ export const createChapterMutation = gql`
 export const adminDeleteCourseByIdMutation = gql`
   mutation AdminDeleteCourseById($courseId: ID!) {
     adminDeleteCourseById(courseId: $courseId)
+  }
+`;
+
+export const updateDiscountMutation = gql`
+  mutation UpdateDiscount(
+    $courseId: ID!
+    $discount: Float!
+    $discountType: String!
+  ) {
+    updateDiscount(
+      courseId: $courseId
+      discount: $discount
+      discountType: $discountType
+    ) {
+      id
+    }
   }
 `;

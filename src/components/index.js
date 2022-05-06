@@ -5,6 +5,7 @@ import CreateChapter from "./CreateChapter";
 import Footer from "./Footer";
 import Courses from "./Courses";
 import PrivateRoute from "./PrivateRoute";
+import UpdateDiscount from "./UpdateDiscount";
 
 import Tags from "./Tags";
 
@@ -17,4 +18,5 @@ export {
   Courses,
   PrivateRoute,
   Tags,
+  UpdateDiscount,
 };
