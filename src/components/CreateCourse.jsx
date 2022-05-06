@@ -124,7 +124,7 @@ export default () => {
 
           <FormControl
             type="textarea"
-            onChange={handleNum}
+            onChange={handleChange}
             label="about"
             icon="ABOUT"
             extra={{

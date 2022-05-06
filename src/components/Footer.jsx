@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
           <p className={footerStyles.shortDes}>{footerPrint.description}</p>
         </div>
-        <div className="flex space-between w-full">
+        <div className="flex flex-wrap sm:flex-nowrap space-between w-full">
           {Children.toArray(
             footerPrint.lists.map((a) => {
               return (

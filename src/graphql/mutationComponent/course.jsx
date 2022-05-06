@@ -75,6 +75,7 @@ export const adminDeleteCourseByIdMutation = gql`
   }
 `;
 
+
 export const updateDiscountMutation = gql`
   mutation UpdateDiscount(
     $courseId: ID!
@@ -88,5 +89,16 @@ export const updateDiscountMutation = gql`
     ) {
       id
     }
+
+export const addCourseIntoWishlistMutation = gql`
+  mutation AddCourseIntoWishlist($courseId: ID!) {
+    addCourseIntoWishlist(courseId: $courseId)
+  }
+`;
+
+export const romveCourseFromWishlistMutation = gql`
+  mutation RomveCourseFromWishlist($courseId: ID!) {
+    romveCourseFromWishlist(courseId: $courseId)
+
   }
 `;
