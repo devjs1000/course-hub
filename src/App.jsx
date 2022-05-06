@@ -16,6 +16,7 @@ import {
   Profile,
   Dashboard,
   MyCourses,
+  MyWishlist,
   Assignments,
   Notifications,
   Settings,
@@ -88,6 +89,7 @@ function App() {
               >
                 <Route path="/my-profile/dashboard" element={<Dashboard />} />
                 <Route path="/my-profile/courses" element={<MyCourses />} />
+                <Route path="/my-profile/wishlist" element={<MyWishlist />} />
                 <Route
                   path="/my-profile/assignments"
                   element={<Assignments />}

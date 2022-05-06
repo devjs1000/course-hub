@@ -9,18 +9,15 @@ import {
   Search,
   BoxArrowLeft,
   List,
+  BookmarkHeart,
 } from "react-bootstrap-icons";
 import { Link, Outlet } from "react-router-dom";
 import useStore from "../../context/useStore";
 import useAuthHook from "../../hooks/useAuthHook";
 import { profileDesign } from "../../styles/styleObjects";
-import toast from 'react-hot-toast';
-
-
-
+import toast from "react-hot-toast";
 
 const Profile = () => {
-
   const [openAside, setOpenAside] = useState(false);
   const [showNotificationCard, setShowNotificationCard] = useState(false);
   const { user, myCourses, setUser, theme, setTheme } = useStore();
@@ -52,12 +49,17 @@ const Profile = () => {
   }  'bg-white text-gray-600' transition-all duration-300 lg:w-[35vh] lg:px-4 lg:py-2`;
   // =======
   const notificationToggleHandler = () => {
-    setShowNotificationCard(val=>!val);
+    setShowNotificationCard((val) => !val);
   };
 
   const sidebarItems = [
     { name: "Dashboard", icon: <Speedometer />, path: "/my-profile/dashboard" },
     { name: "My Courses", icon: <Journal />, path: "/my-profile/courses" },
+    {
+      name: "My Wishlist",
+      icon: <BookmarkHeart />,
+      path: "/my-profile/wishlist",
+    },
     {
       name: "Assignments",
       icon: <JournalCode />,
@@ -103,10 +105,13 @@ const Profile = () => {
               <span className="text-2xl">
                 <BoxArrowLeft />
               </span>
-              <button onClick={()=>{
-                logout()
-                toast.success('You have successfully logged out')
-              }} className="text-xl">
+              <button
+                onClick={() => {
+                  logout();
+                  toast.success("You have successfully logged out");
+                }}
+                className="text-xl"
+              >
                 Logout?
               </button>
             </li>
@@ -139,7 +144,8 @@ const Profile = () => {
               ></div>
             </div>
 
-            <div className={notificationCardClasses}>f
+            <div className={notificationCardClasses}>
+              f
               <h4 className="bg-gray-50 p-2 font-semibold text-center">
                 Notifications
               </h4>
@@ -157,7 +163,6 @@ const Profile = () => {
                 {/* notification end */}
               </div>
             </div>
-
           </nav>
           <div className="bg-white  lg:m-3 h-full   z-[1000]">
             <Outlet />

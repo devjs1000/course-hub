@@ -14,6 +14,7 @@ const Store = () => {
   const [currentCourseId, setCurrentCourseId] = useState("");
   const [posts, setPosts] = useState(postPrint);
   const [myCourses, setMyCourses] = useState([]);
+  const [myWishlist, setMyWishlist] = useState([]);
   const [assignments, setAssignments] = useState({});
   const [theme, setTheme] = useState(false);
   const [chatbotOn, setChatbotOn] = useState(false);
@@ -59,6 +60,9 @@ const Store = () => {
 
     myCourses,
     setMyCourses,
+
+    myWishlist,
+    setMyWishlist,
 
     assignments,
     setAssignments,
