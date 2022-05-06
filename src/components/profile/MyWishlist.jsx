@@ -11,8 +11,13 @@ import { LockFill } from "react-bootstrap-icons";
 import { log } from "react-modal/lib/helpers/ariaAppHider";
 
 function MyWishlist() {
-  const { user, theme, setMyWishlist, allCoursesData, setAllCoursesData } =
-    useStore();
+  const {
+    theme,
+    myWishlist,
+    setMyWishlist,
+    allCoursesData,
+    setAllCoursesData,
+  } = useStore();
 
   const token = localStorage.getItem("accessToken");
   const wishlist = useQuery(getMyWishlistsQuery, {
@@ -27,7 +32,7 @@ function MyWishlist() {
 
   useEffect(() => {
     if (wishlist?.loading) return;
-
+    wishlist.refetch();
     setMyWishlist(wishlist?.data?.getMyWishlists);
   }, [wishlist.data]);
 
@@ -48,9 +53,11 @@ function MyWishlist() {
       <ErrorBoundary>
         <div className={cardContainerStyles}>
           {Children.toArray(
-            wishlist?.data?.getMyWishlists.map((a) => {
+            myWishlist.map((a) => {
               let Course = allCoursesData.filter((c) => c.id === a)[0];
-              return <CourseCard id={Course?.id} course={Course} />;
+              return (
+                <CourseCard id={Course?.id} course={Course} inwishlist={true} />
+              );
             })
           )}
         </div>

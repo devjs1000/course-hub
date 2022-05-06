@@ -12,23 +12,15 @@ import {
 import { useMutation, useQuery } from "@apollo/client";
 import toast from "react-hot-toast";
 
-const CourseCard = ({ id, course, enrolled }) => {
-  const [courseInWishlist, setCourseInWishlist] = useState(false);
-  const { allCoursesData } = useStore();
-  const [current, setCurrent] = useState({});
-  const { user } = useStore();
+const CourseCard = ({ id, course, enrolled, inwishlist }) => {
+  const { user, myWishlist, setMyWishlist } = useStore();
   const [addCourseIntoWishlist] = useMutation(addCourseIntoWishlistMutation);
+  const [romveCourseFromWishlist] = useMutation(
+    romveCourseFromWishlistMutation
+  );
 
   const token = localStorage.getItem("accessToken");
-  const { data, loading, error } = useQuery(getMyWishlistsQuery, {
-    context: {
-      headers: {
-        Authorization: token,
-      },
-    },
-  });
-
-  const handleAddCourseIntoWishlistMutation = async () => {
+  const handleAddCourseIntoWishlist = async () => {
     try {
       let response = await addCourseIntoWishlist({
         variables: {
@@ -41,10 +33,34 @@ const CourseCard = ({ id, course, enrolled }) => {
         },
       });
       toast.success(response?.data?.addCourseIntoWishlist);
+      setMyWishlist((val) => [...val, course?.id]);
     } catch (err) {
+      console.log(err.message);
       toast.error("Error occurred in adding course to wishlist");
     }
   };
+  const handleRomveCourseFromWishlist = async () => {
+    try {
+      let response = await romveCourseFromWishlist({
+        variables: {
+          courseId: course?.id,
+        },
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
+      });
+      toast.success(response?.data?.romveCourseFromWishlist);
+      let newData = myWishlist.filter((a) => a !== course.id);
+      setMyWishlist(newData);
+    } catch (err) {
+      console.log(err.message);
+      toast.error("Error occurred in removing course from wishlist");
+    }
+  };
+
+  // useEffect(() => console.log(myWishlist));
 
   return (
     <ErrorBoundary fallback={"error in course page"}>
@@ -71,15 +87,15 @@ const CourseCard = ({ id, course, enrolled }) => {
             <div className="bg-orange-300 text-[14px] font-semibold rounded-sm text-white p-2 uppercase">
               {course?.category}
             </div>
-            <div
-              className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]"
-              onClick={(e) => {
-                setCourseInWishlist((val) => !val);
-                handleAddCourseIntoWishlistMutation();
-              }}
-            >
-              {courseInWishlist === false && <Heart className="" />}
-              {courseInWishlist && <HeartFill className="text-red-600" />}
+            <div className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]">
+              {inwishlist ? (
+                <HeartFill
+                  className="text-red-600"
+                  onClick={handleRomveCourseFromWishlist}
+                />
+              ) : (
+                <Heart onClick={handleAddCourseIntoWishlist} />
+              )}
             </div>
           </div>
           <div className="flex items-center gap-6">
