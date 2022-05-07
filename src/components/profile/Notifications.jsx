@@ -1,7 +1,8 @@
-
+import { userNotifications } from "../../graphql/Queries";
 import React from 'react';
 import author from '../../images/author.jpg';
 import useStore from '../../context/useStore'
+import { useQuery } from "@apollo/client";
 
 const Notification = () => {
   return (
@@ -25,8 +26,23 @@ const Notification = () => {
 };
 
 function Notifications() {
-
 	const {theme} = useStore()
+  const token = localStorage.getItem("accessToken");
+  const {data,loading,error} = useQuery(userNotifications,{
+    context:{
+      headers:{
+        Authorization: token
+      }
+    }
+  })
+
+  if(loading) return <h1>Loading Please wait...</h1>
+  if(error) return <h1>Something wrong happend! Please contact support </h1>
+
+  let list = data?.usersNotifications.map(obj=>{
+    console.log(obj)
+  })
+
 	const mainContainerStyles = `p-8 bg-${theme? 'slate-800' : 'white'} h-full`
 	return (
 		<div className={mainContainerStyles} >
