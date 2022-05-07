@@ -61,10 +61,10 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
   };
 
   // useEffect(() => console.log(myWishlist));
-
+  console.log(course)
   return (
     <ErrorBoundary fallback={"error in course page"}>
-      <div className="bg-black rounded-sm relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
+      <div className="rounded-sm h-[70%] relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
         <Link
           to={
             user?.role == "teacher" && Boolean(enrolled)
@@ -113,13 +113,6 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
           <h3 className="leading-6 text-xl font-semibold h-12 text-slate-800">
             {course?.tagline}
           </h3>
-          {/* <div className="flex items-center gap-4"> */}
-          {/*   <div */}
-          {/*     className="bg-cover h-12 w-12 rounded-full border bg-no-repeat bg-top" */}
-          {/*     style={{ backgroundImage: `url(${author})` }} */}
-          {/*   ></div> */}
-          {/*   <span>John Doe</span> */}
-          {/* </div> */}
           <span className="absolute top-[-1.1rem] right-[1rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
             <strong>
               ₹
@@ -127,7 +120,7 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
                 `${
                   course?.price -
                   (course?.price *
-                    (course?.discount === null ? 0 : course?.discount)) /
+                    (course?.discount === undefined ? 0 : course?.discount)) /
                     100
                 }` * 100
               ) / 100}

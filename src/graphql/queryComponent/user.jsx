@@ -77,3 +77,15 @@ export const isValidUserQuery = gql`
     isValidUser(email: $email)
   }
 `;
+
+export const userNotifications = gql`
+  query UsersNotifications {
+  usersNotifications {
+    title
+    about
+    targetType
+    target
+    id
+  }
+}
+`
