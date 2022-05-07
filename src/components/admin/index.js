@@ -5,3 +5,5 @@ export * from "./AdminLogin";
 export * from "./Sidebar";
 export * from "./CourseInfo";
 export * from "./AdminDashboard";
+export * from "./SendNotifications";
+export * from "./NotificationInfo";
