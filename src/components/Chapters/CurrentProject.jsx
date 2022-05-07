@@ -103,7 +103,7 @@ const handleCheck =(projectId,status)=>{
             <TableCell>Project ID</TableCell>
             <TableCell align="right">Student ID</TableCell>
             <TableCell align="right">Project Link</TableCell>
-            <TableCell align="right">Project Status</TableCell>
+            <TableCell align="right">Change Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
