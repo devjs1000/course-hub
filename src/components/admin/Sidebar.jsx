@@ -5,6 +5,8 @@ import {
   PeopleFill,
   Journal,
   PersonLinesFill,
+  BellFill,
+  CardList
 } from "react-bootstrap-icons";
 export const Sidebar = () => {
   const menuItems = [
@@ -28,6 +30,16 @@ export const Sidebar = () => {
       href: "/admin/access/students",
       title: "students",
       logo: <PeopleFill />,
+    },
+    {
+      href: "/admin/access/send-notifications",
+      title: "send notifications",
+      logo: <BellFill />,
+    },
+    {
+      href: "/admin/access/notifications",
+      title: "All notifications",
+      logo: <CardList />,
     },
   ];
   return (

@@ -146,7 +146,7 @@ export const AdminDashboard = () => {
             <p>{count.pendingRequests}</p>
           </div>
           <div className="flex text-xl mt-2 font-semibold ">
-            <h1 className="w-full text-center">Pendind requests</h1>
+            <h1 className="w-full text-center">Pending requests</h1>
           </div>
           
         </div>

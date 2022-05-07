@@ -28,6 +28,8 @@ import {
   CourseInfo,
   AdminDashboard,
   Admin,
+  SendNotifications,
+  NotificationInfo
 } from "./components/admin";
 
 import Community from "./components/Community/Community";
@@ -150,6 +152,14 @@ function App() {
                 <Route
                   path="/admin/access/teachers"
                   element={<TeacherInfo />}
+                />
+                <Route
+                  path="/admin/access/send-notifications"
+                  element={<SendNotifications />}
+                />
+                <Route
+                  path="/admin/access/notifications"
+                  element={<NotificationInfo />}
                 />
               </Route>
             </Routes>
