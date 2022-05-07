@@ -1,35 +1,70 @@
-import emailLogo from '../../images/svgs-for-forms/emailLogo.svg'
-import phoneLogo from '../../images/svgs-for-forms/phoneLogo.svg'
-import lockLogo from '../../images/svgs-for-forms/lockLogo.svg'
-import nameLogo from '../../images/svgs-for-forms/name.svg'
+import {
+  Person,
+  Phone,
+  Github,
+  Linkedin,
+  Envelope,
+  Lock,
+  Image,
+  TextLeft,
+} from "react-bootstrap-icons";
 
 export const data = [
-	{
-		label: "name",
-		labelTitle: "Your name",
-		img : nameLogo,
-		type : 'text',
-	},
+  {
+    label: "name",
+    labelTitle: "Your name",
+    img: <Person />,
+    type: "text",
+  },
 
-	{
-		label: "email",
-		labelTitle: "Your email",
-		img : emailLogo,
-		type : 'email',
-	},
+  {
+    label: "email",
+    labelTitle: "Your email",
+    img: <Envelope />,
+    type: "email",
+  },
 
-	{
-		label: "phone",
-		labelTitle: "Your Phone Numer",
-		img : phoneLogo,
-		type : 'number',
-	},
-
-	{
-		label: "password",
-		labelTitle: "Your Password",
-		img : lockLogo,
-		type : 'password',
-	}
-
-]
+  {
+    label: "phone",
+    labelTitle: "Your Phone Numer",
+    img: <Phone />,
+    type: "number",
+  },
+  {
+    label: "password",
+    labelTitle: "Your Password",
+    img: <Lock />,
+    type: "password",
+    extra: {
+      disabled: true,
+    },
+  },
+  {
+    label: "description",
+    labelTitle: "Your Description",
+    img: <TextLeft />,
+    type: "textarea",
+    extra: {
+      rows: "6",
+      cols: "70",
+    },
+  },
+  {
+    label: "image",
+    labelTitle: "Your Profile Image",
+    img: <Image />,
+    type: "file",
+  },
+  {
+    label: "github",
+    labelTitle: "Your Github Link",
+    img: <Github />,
+    type: "text",
+  },
+  {
+    label: "linkedIn",
+    labelTitle: "Your Linkedin Link",
+    img: <Linkedin />,
+    type: "text",
+  },
+];
