@@ -40,16 +40,6 @@ export const data = [
     },
   },
   {
-    label: "description",
-    labelTitle: "Your Description",
-    img: <TextLeft />,
-    type: "textarea",
-    extra: {
-      rows: "6",
-      cols: "70",
-    },
-  },
-  {
     label: "image",
     labelTitle: "Your Profile Image",
     img: <Image />,
@@ -66,5 +56,15 @@ export const data = [
     labelTitle: "Your Linkedin Link",
     img: <Linkedin />,
     type: "text",
+  },
+  {
+    label: "description",
+    labelTitle: "Your Description",
+    img: <TextLeft />,
+    type: "textarea",
+    extra: {
+      rows: "5",
+      cols: "70",
+    },
   },
 ];

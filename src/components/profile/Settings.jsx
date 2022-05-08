@@ -16,6 +16,7 @@ function Settings() {
   const [email, setEmail] = useState(user.email);
   const [description, setDescription] = useState(user.description);
   const [image, setImage] = useState("");
+  const [image2, setImage2] = useState("");
   const [github, setGithub] = useState(
     user.github === undefined ? "" : user.github
   );
@@ -27,10 +28,10 @@ function Settings() {
     email,
     phone,
     password,
-    description,
     image,
     github,
     linkedIn,
+    description,
   ];
   const token = localStorage.getItem("accessToken");
   const [updateProfile2] = useMutation(updateProfile, {
@@ -40,8 +41,6 @@ function Settings() {
       },
     },
   });
-
-  console.log(user);
 
   //styles
   const mainContainerStyles = `p-8 ${
@@ -68,8 +67,8 @@ function Settings() {
   };
 
   const handleImage = (e) => {
+    // setImage2(URL.createObjectURL(e.target.files[0]));
     console.log(e.target.files[0].name);
-    // setImage(e.target.files[0].name);
   };
   const handleGithub = (e) => {
     setGithub(e.target.value);
@@ -83,10 +82,10 @@ function Settings() {
     handleEmail,
     handlePhone,
     handlePassword,
-    handleDescription,
     handleImage,
     handleGithub,
     handleLinkedIn,
+    handleDescription,
   ];
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -125,6 +124,7 @@ function Settings() {
           type={obj.type}
           value={values[i]}
           handleFunc={handlers[i]}
+          extra={obj.extra === undefined ? {} : obj.extra}
         />
       );
     })
@@ -148,6 +148,7 @@ function Settings() {
           Submit
         </button>
       </form>
+      {/* <img src={image2} alt="" /> */}
     </div>
   );
 }
