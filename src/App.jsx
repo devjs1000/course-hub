@@ -11,6 +11,7 @@ import {
   Courses,
   PrivateRoute,
   UpdateDiscount,
+  PreviousChapter,
 } from "./components";
 
 import {
@@ -31,7 +32,7 @@ import {
   AdminDashboard,
   Admin,
   SendNotifications,
-  NotificationInfo
+  NotificationInfo,
 } from "./components/admin";
 
 import Community from "./components/Community/Community";
@@ -109,6 +110,10 @@ function App() {
               <Route path="/create-course" element={<CreateCourse />} />
               <Route path="/create-chapter/:id" element={<CreateChapter />} />
               <Route path="/update-discount/:id" element={<UpdateDiscount />} />
+              <Route
+                path="/previous-chapter/:id"
+                element={<PreviousChapter />}
+              />
               <Route path="/create-quiz" element={<CreateQuiz />} />
               <Route path="/create-assignment" element={<CreateAssignment />} />
 

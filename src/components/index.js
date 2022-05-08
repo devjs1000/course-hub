@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Courses from "./Courses";
 import PrivateRoute from "./PrivateRoute";
 import UpdateDiscount from "./UpdateDiscount";
+import PreviousChapter from "./PreviousChapters";
 
 import Tags from "./Tags";
 
@@ -19,4 +20,5 @@ export {
   PrivateRoute,
   Tags,
   UpdateDiscount,
+  PreviousChapter,
 };
