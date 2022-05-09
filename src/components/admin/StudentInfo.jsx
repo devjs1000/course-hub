@@ -3,7 +3,7 @@ import useStore from "../../context/useStore";
 import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
 import { adminGetAllStudentsQuery } from "../../graphql/Queries";
 import { useMutation, useQuery } from "@apollo/client";
-
+import toast from "react-hot-toast";
 import {
   adminDeleteUserByIdMutation,
   adminUpdateUserRoleByIdMutation,
@@ -56,6 +56,15 @@ const allStudents=useQuery(adminGetAllStudentsQuery, {
           Authorization: token,
         },
       },
+    }).then((res)=>{
+      console.log("res",res);
+      toast.success("User role updated succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("User role updation failed ! ")
     });
   };
 
@@ -63,7 +72,7 @@ const allStudents=useQuery(adminGetAllStudentsQuery, {
     e.preventDefault();
     // console.log(e.target.id + "account deleted");
     let user_id = e.target.id;
-    await adminDeleteUserById({
+    adminDeleteUserById({
       variables: {
         userId: user_id,
       },
@@ -72,6 +81,15 @@ const allStudents=useQuery(adminGetAllStudentsQuery, {
           Authorization: token,
         },
       },
+    }).then((res)=>{
+      console.log("res",res);
+      toast.success("User deleted succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("User deletion failed ! ")
     });
 
     let data = students.filter((user) => {

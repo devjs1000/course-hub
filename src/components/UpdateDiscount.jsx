@@ -37,7 +37,7 @@ const UpdateDiscount = () => {
     }
 
     try {
-      let response = await updateDiscount({
+      updateDiscount({
         variables: {
           ...formData,
           courseId: id,
@@ -47,11 +47,19 @@ const UpdateDiscount = () => {
             Authorization: token,
           },
         },
+      }).then((res)=>{
+        setFormData({ discountType: " " });
+        console.log("res",res);
+        toast.success("Discount updated succesfully ! ");
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }).catch((err)=>{
+        console.log("err",err);
+        toast.error("Discount updation failed ! ")
       });
 
-      // console.log(response);
-      toast.success("Discount updated successfully");
-      document.getElementById("myForm").reset();
+      // document.getElementById("myForm").reset();
     } catch (err) {
       toast.error("Error occurred in updating discount");
     }

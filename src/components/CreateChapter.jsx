@@ -33,18 +33,22 @@ const CreateChapter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await createChapter({
+    createChapter({
       variables: {
         ...formData,
         teacherId: user.id,
         courseId: id,
       },
-    });
-
-    toast.promise(res, {
-      loading: "Saving...",
-      success: <b>Chapter Created!</b>,
-      error: <b>Could not create chapter</b>,
+    }).then((res)=>{
+      setFormData({});
+      console.log("res",res);
+      toast.success("Chapter created succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("Chapter creation failed ! ")
     });
   };
 
