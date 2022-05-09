@@ -69,42 +69,17 @@ const Chapters = () => {
         courseId: id,
         projectLink: fileData,
       },
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res)=>{
+      console.log("res",res);
+      toast.success("Project submited succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("Project submition failed ! ")
+    });
 
-    // console.log(modalData.chapterId)
-    // console.log(id)
-
-    toast.promise(
-      submitProject({
-        headers: {
-          Authorization: token,
-        },
-        variables: {
-          chapterId: modalData.chapterId,
-          courseId: id,
-          projectLink: fileData,
-        },
-      }),
-      {
-        loading: "Saving...",
-        success: <b>Project Submission Successfully!</b>,
-        error: <b>Project Submission Failed.</b>,
-      },
-      {
-        success: {
-          duration: 4000,
-        },
-        error: {
-          duration: 4000,
-        },
-      }
-    );
   };
 
   useEffect(() => {

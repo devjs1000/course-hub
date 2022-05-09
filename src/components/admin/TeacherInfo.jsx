@@ -7,6 +7,7 @@ import {
   adminUpdateUserRoleByIdMutation,
 } from "../../graphql/Mutations";
 import { adminGetAllTeachersQuery } from "../../graphql/Queries";
+import toast from "react-hot-toast";
 
 export const TeacherInfo = () => {
 
@@ -58,6 +59,15 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
           Authorization: token,
         },
       },
+    }).then((res)=>{
+      console.log("res",res);
+      toast.success("User role updated succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("User role updation failed ! ")
     });
   };
 
@@ -65,7 +75,7 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
     e.preventDefault();
     // console.log(e.target.id + "account deleted");
     let user_id = e.target.id;
-    await adminDeleteByUserId({
+    adminDeleteByUserId({
       variables: {
         userId: user_id,
       },
@@ -74,6 +84,15 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
           Authorization: token,
         },
       },
+    }).then((res)=>{
+      console.log("res",res);
+      toast.success("User deleted succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("User deletion failed ! ")
     });
 
     let data = teachers.filter((user) => {

@@ -22,7 +22,7 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
   const token = localStorage.getItem("accessToken");
   const handleAddCourseIntoWishlist = async () => {
     try {
-      let response = await addCourseIntoWishlist({
+      addCourseIntoWishlist({
         variables: {
           courseId: course?.id,
         },
@@ -31,8 +31,16 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
             Authorization: token,
           },
         },
+      }).then((res)=>{
+        console.log("res",res);
+        toast.success("Course added into wishlist succesfully ! ");
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }).catch((err)=>{
+        console.log("err",err);
+        toast.error("Course addition into wishlist failed ! ")
       });
-      toast.success(response?.data?.addCourseIntoWishlist);
       setMyWishlist((val) => [...val, course?.id]);
     } catch (err) {
       console.log(err.message);
@@ -41,7 +49,7 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
   };
   const handleRomveCourseFromWishlist = async () => {
     try {
-      let response = await romveCourseFromWishlist({
+      romveCourseFromWishlist({
         variables: {
           courseId: course?.id,
         },
@@ -50,8 +58,16 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
             Authorization: token,
           },
         },
+      }).then((res)=>{
+        console.log("res",res);
+        toast.success("Course removed from wishlist succesfully ! ");
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }).catch((err)=>{
+        console.log("err",err);
+        toast.error("Course removal from wishlist failed ! ")
       });
-      toast.success(response?.data?.romveCourseFromWishlist);
       let newData = myWishlist.filter((a) => a !== course.id);
       setMyWishlist(newData);
     } catch (err) {

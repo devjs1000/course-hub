@@ -72,9 +72,17 @@ export default () => {
         image:
           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
       },
+    }).then((res)=>{
+      setFormData({});
+      console.log("res",res);
+      toast.success("Course created succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("Course creation failed ! ")
     });
-    //location.reload();
-    toast.success("Course Created Successfully!");
   };
 
   return (
