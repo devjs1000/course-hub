@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useStore from "../context/useStore";
 import { useMutation } from "@apollo/client";
 import { projectSubmitMutation } from "../graphql/Mutations";
+import toast from "react-hot-toast";
 
 export default ({ courseId, chapterId }) => {
   const { user, myCourses } = useStore();
@@ -21,6 +22,16 @@ export default ({ courseId, chapterId }) => {
         Authorization: token
       },
       variables: { ...formData, teacherId: user.id, courseId, chapterId },
+    }).then((res)=>{
+      setFormData({});
+      console.log("res",res);
+      toast.success("Assignment created succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("Assignment creation failed ! ")
     });
   };
 

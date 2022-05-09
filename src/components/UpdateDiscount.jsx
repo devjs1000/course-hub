@@ -37,7 +37,7 @@ const UpdateDiscount = () => {
     }
 
     try {
-      let response = await updateDiscount({
+      updateDiscount({
         variables: {
           ...formData,
           courseId: id,
@@ -47,11 +47,19 @@ const UpdateDiscount = () => {
             Authorization: token,
           },
         },
+      }).then((res)=>{
+        setFormData({ discountType: " " });
+        console.log("res",res);
+        toast.success("Discount updated succesfully ! ");
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }).catch((err)=>{
+        console.log("err",err);
+        toast.error("Discount updation failed ! ")
       });
 
-      // console.log(response);
-      toast.success("Discount updated successfully");
-      document.getElementById("myForm").reset();
+      // document.getElementById("myForm").reset();
     } catch (err) {
       toast.error("Error occurred in updating discount");
     }
@@ -66,6 +74,9 @@ const UpdateDiscount = () => {
         <nav className="flex gap-12 text-[20px] mb-8 bg-gray-200">
           <Link to={`/create-chapter/${id}`}>
             <h1 className="pb-2 pt-4 px-4 font-bold">New Chapter</h1>
+          </Link>
+          <Link to={`/previous-chapter/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">Previous Chapters</h1>
           </Link>
           <Link to={`/update-discount/${id}`}>
             <h1 className="pb-2 pt-4 font-bold border-b-4 border-red-500">

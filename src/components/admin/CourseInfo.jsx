@@ -4,6 +4,7 @@ import { FileEarmarkArrowDownFill, Search, Trash } from "react-bootstrap-icons";
 import { adminDeleteCourseByIdMutation } from "../../graphql/Mutations";
 import { allCoursesQuery } from "../../graphql/Queries";
 import { useMutation, useQuery } from "@apollo/client";
+import toast from "react-hot-toast";
 
 export const CourseInfo = () => {
 
@@ -29,7 +30,7 @@ console.log()
     e.preventDefault();
     let c_id = e.target.id;
     //console.log("deleted", e.target.id);
-    await adminDeleteCourseById({
+    adminDeleteCourseById({
       variables: {
         courseId: c_id,
       },
@@ -38,6 +39,15 @@ console.log()
           Authorization: token,
         },
       },
+    }).then((res)=>{
+      console.log("res",res);
+      toast.success("Course deleted succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("Course deletion failed ! ")
     });
 
     const data = allCoursesData.filter((course) => {

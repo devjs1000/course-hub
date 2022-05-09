@@ -18,6 +18,7 @@ import toast, {Toaster} from 'react-hot-toast';
 
 export const SendNotifications = () => {
     const [sendStudentNotificationsFunction] = useMutation(sendStudentNotificationsMutation);
+    const [sendTeacherNotificationsFunction] = useMutation(sendTeacherNotificationsMutation);
 
     const [notificationData, setNotificationData] = useState({
         title:"",
@@ -54,22 +55,55 @@ export const SendNotifications = () => {
           console.log(notificationData);
           const token = localStorage.getItem("accessToken");
           console.log(token);
-          const res = sendStudentNotificationsFunction(
-              {
-                context: {
-                  headers: {
-                    Authorization: token,
-                  },
-                },
-                variables: notificationData
-            }).then((res)=>{
-                console.log(res);
-                toast.success("Notification send successfully");
-                setNotificationData({
-                    title:"",
-                    about:"",
-                    role:"undefined"});
-            })
+          if (notificationData.role == "student") {
+            sendStudentNotificationsFunction(
+                {
+                    context: {
+                    headers: {
+                        Authorization: token,
+                    },
+                    },
+                    variables: notificationData
+                }).then((res)=>{
+                    console.log("res",res);
+                    toast.success("Notification send successfully");
+                    setNotificationData({
+                        title:"",
+                        about:"",
+                        role:"undefined"});
+                    // setTimeout(() => {
+                    //   location.reload();
+                    // }, 3000);
+                }).catch((err)=>{
+                console.log("err",err);
+                toast.error("Sending notification failed ! ")
+                });
+          } else if (notificationData.role == "teacher") {
+            sendTeacherNotificationsFunction(
+                {
+                    context: {
+                    headers: {
+                        Authorization: token,
+                    },
+                    },
+                    variables: notificationData
+                }).then((res)=>{
+                    console.log("res",res);
+                    toast.success("Notification send successfully");
+                    setNotificationData({
+                        title:"",
+                        about:"",
+                        role:"undefined"});
+                    // setTimeout(() => {
+                    //   location.reload();
+                    // }, 3000);
+                }).catch((err)=>{
+                console.log("err",err);
+                toast.error("Sending notification failed ! ")
+                });
+          } else {
+              toast.error("Invalid operation !");
+          }
       }
   
     };

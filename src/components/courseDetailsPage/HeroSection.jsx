@@ -83,7 +83,7 @@ function HeroSection({ course, id, isEnrolled }) {
 
   const handleAddCourseIntoWishlistMutation = async () => {
     try {
-      let response = await addCourseIntoWishlist({
+      addCourseIntoWishlist({
         variables: {
           courseId: course?.id,
         },
@@ -92,8 +92,16 @@ function HeroSection({ course, id, isEnrolled }) {
             Authorization: token,
           },
         },
+      }).then((res)=>{
+        console.log("res",res);
+        toast.success("Course added into wishlist succesfully ! ");
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }).catch((err)=>{
+        console.log("err",err);
+        toast.error("Course addition into wishlist failed ! ")
       });
-      toast.success(response?.data?.addCourseIntoWishlist);
     } catch (err) {
       toast.error("Error occurred in adding course to wishlist");
     }

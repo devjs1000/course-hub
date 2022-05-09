@@ -4,10 +4,9 @@ import Button from "../UI/Button";
 import useStore from "../context/useStore";
 import { newCreateChapterMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-
 
 const CreateChapter = () => {
   const { user, theme } = useStore();
@@ -33,18 +32,22 @@ const CreateChapter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await createChapter({
+    createChapter({
       variables: {
         ...formData,
         teacherId: user.id,
         courseId: id,
       },
-    });
-
-    toast.promise(res, {
-      loading: "Saving...",
-      success: <b>Chapter Created!</b>,
-      error: <b>Could not create chapter</b>,
+    }).then((res)=>{
+      setFormData({});
+      console.log("res",res);
+      toast.success("Chapter created succesfully ! ");
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+    }).catch((err)=>{
+      console.log("err",err);
+      toast.error("Chapter creation failed ! ")
     });
   };
 
@@ -86,6 +89,9 @@ const CreateChapter = () => {
             <h1 className="pb-2 pt-4 px-4 font-bold border-b-4 border-red-500">
               New Chapter
             </h1>
+          </Link>
+          <Link to={`/previous-chapter/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">Previous Chapters</h1>
           </Link>
           <Link to={`/update-discount/${id}`}>
             <h1 className="pb-2 pt-4 font-bold">Update Discount</h1>

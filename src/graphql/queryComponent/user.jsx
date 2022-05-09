@@ -12,6 +12,8 @@ export const getUserById = gql`
       phone
       token
       role
+      github
+      linkedIn
     }
   }
 `;
@@ -80,12 +82,12 @@ export const isValidUserQuery = gql`
 
 export const userNotifications = gql`
   query UsersNotifications {
-  usersNotifications {
-    title
-    about
-    targetType
-    target
-    id
+    usersNotifications {
+      title
+      about
+      targetType
+      target
+      id
+    }
   }
-}
-`
+`;
