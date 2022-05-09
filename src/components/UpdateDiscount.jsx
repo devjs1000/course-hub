@@ -75,6 +75,9 @@ const UpdateDiscount = () => {
           <Link to={`/create-chapter/${id}`}>
             <h1 className="pb-2 pt-4 px-4 font-bold">New Chapter</h1>
           </Link>
+          <Link to={`/previous-chapter/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">Previous Chapters</h1>
+          </Link>
           <Link to={`/update-discount/${id}`}>
             <h1 className="pb-2 pt-4 font-bold border-b-4 border-red-500">
               Update Discount

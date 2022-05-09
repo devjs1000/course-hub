@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useStore from "../../context/useStore";
+import BoxLoading from "../../UI/BoxLoading";
 import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
 import { adminGetAllStudentsQuery } from "../../graphql/Queries";
 import { useMutation, useQuery } from "@apollo/client";
@@ -10,34 +10,27 @@ import {
 } from "../../graphql/Mutations";
 
 export const StudentInfo = () => {
-  
   const [inputField, setInputField] = useState("");
-  const [students, setAllStudents]=useState()
+  const [students, setAllStudents] = useState();
   let data = [];
   const [adminDeleteUserById] = useMutation(adminDeleteUserByIdMutation);
   const [adminUpdateUserRoleById] = useMutation(
     adminUpdateUserRoleByIdMutation
   );
 
-const allStudents=useQuery(adminGetAllStudentsQuery, {
-  context:{
-    headers:{
-      Authorization:localStorage.getItem('accessToken')
-    }
-  }
-})
-
-
-
+  const allStudents = useQuery(adminGetAllStudentsQuery, {
+    context: {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    },
+  });
 
   useEffect(() => {
     if (allStudents.loading) return;
 
     setAllStudents(allStudents?.data?.adminGetAllStudents);
-
   }, [allStudents.data]);
-
-
 
   const token = localStorage.getItem("accessToken");
 
@@ -98,11 +91,9 @@ const allStudents=useQuery(adminGetAllStudentsQuery, {
 
     setAllStudents(data);
   };
-  console.log(allStudents.data)
+  console.log(allStudents.data);
 
-  
-
-if(allStudents.loading) return 'loading...';
+  if (allStudents.loading) return <BoxLoading />;
 
   return (
     <div className="bg-white w-full px-8 py-4">
@@ -169,7 +160,8 @@ if(allStudents.loading) return 'loading...';
                   </tr>
                 </thead>
                 <tbody>
-                  {students?.filter((student) => {
+                  {students
+                    ?.filter((student) => {
                       if (inputField === "") return student;
                       else if (
                         student.name
