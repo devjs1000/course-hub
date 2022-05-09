@@ -11,8 +11,11 @@ const api = {
   online: "https://xcite-server.herokuapp.com/xcite",
 };
 const client = new ApolloClient({
-  uri: api.dev,
+  uri: api.online,
   cache: new InMemoryCache(),
+  fetchOptions: {
+    mode: "no-cors",
+  },
 });
 
 render(
