@@ -5,13 +5,14 @@ import Search from "../../UI/Search";
 import { Plus, Chat } from "react-bootstrap-icons";
 import useStore from "../../context/useStore";
 import {getAnswerQuery} from '../../graphql/Queries'
+import {createAnswerMutation} from '../../graphql/Mutations'
 import { useQuery,useMutation } from "@apollo/client";
-
-
+import toast from "react-hot-toast";
 
 const Category = ({ question, category,id }) => {
   const {posts,setPosts} = useStore()
   const [show, setShow] = useState(false);
+  const [ans, setAns] = useState('');
   const handleShow = () => {
     show ? setShow(false) : setShow(true);
   };
@@ -27,18 +28,49 @@ const Category = ({ question, category,id }) => {
   }
   })
 
+ const [createAnswer] = useMutation(createAnswerMutation, {
+    variables: {
+      questionId:id
+    },
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+  });
+
+
+
 if(loading) return 'loading...'
-  // console.log(answer)
-  const addPost = e=>{
+  const submitAnswer = e=>{
     e.preventDefault()
-    const post = posts.find(single=>single.id===id)
-    post.answers.push(e.target[0].value)
-    const merged = posts.filter(single=>single.id!==id||post)
-    setPosts(merged)
-    e.target.reset()
+    toast.promise(
+  createAnswer({
+    variables:{
+      questionId:id,
+      answer:ans
+    }
+  }),
+   {
+     loading: 'Saving...',
+     success: <b>Answer Submitted!</b>,
+     error: <b>Something wrong occured</b>,
+   }
+ );
   }
 
-let list = answer.answer.map(a=><div></div>)
+let list = Children.toArray(answer?.answer.map(a=>{
+  return <div className="flex items-start mt-3">
+        <div>
+          <span className="inline-flex justify-center items-center w-6 h-6 rounded bg-green-200 text-gray-800 font-medium text-sm">
+              A
+          </span>
+        </div>
+        <p className="ml-4 md:ml-6 text-gray-800">
+         {a.answer}
+        </p>
+      </div>
+}))
 
   return (
     <div className="bg-white mx-2 md:mx-4 lg:mx-32 cursor-pointer border-1 border border-slate-400 p-2">
@@ -51,22 +83,18 @@ let list = answer.answer.map(a=><div></div>)
         <div className="m-2">
           {show && (
             <>
-              <form onSubmit={addPost}>
+              <form onSubmit={submitAnswer}>
               <input
               required
-                className="bg-slate-50 py-1 px-2"
+                className="border border-1 border-black text-black rounded-md py-1 px-2"
                 placeholder="answer the question"
+                onChange={(e)=>setAns(e.target.value)}
+                value={ans}
               />
+              <button type="submit" className="focus:outline-none text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              >Answer</button>
+
               </form>
-            {/* {Children.toArray(
-                answer?.map((a) => {
-                  return (
-                    <div className="my-2 py-2 px-2 text-slate-800 border border-[2px] border-slate-200 ">
-                      {a}
-                    </div>
-                  );
-                })
-              )}*/}
               {list}
              
             </>
