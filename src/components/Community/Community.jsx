@@ -36,7 +36,7 @@ if(error) return 'Oops! Something wrong happened. Please contact support'
   return (
     <div className={mainContainerStyles}>
      <AskQuestionComponent/>
-      <div className="grid h-auto w-full gap-2 mt-4 rounded-sm">
+      <div className="grid h-auto w-full gap-4 mt-4 rounded-sm">
         <div className="col-span-4 mb-4 ">
           {Children.toArray(
             ques.questions.map((obj) => {
