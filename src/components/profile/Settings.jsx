@@ -6,7 +6,10 @@ import { updateProfile } from "../../graphql/Mutations";
 import toast from "react-hot-toast";
 import { data } from "../Settings/data";
 import InputField from "../Settings/inputField";
-import Accordion from '../courseDetailsPage/accordion/Accordion';
+import ProfileSettings from "../Settings/ProfileSettings";
+import ContactSettings from "../Settings/ContactSettings";
+import Socials from "../Settings/Socials";
+
 
 function Settings() {
   const { theme, setTheme, user } = useStore();
@@ -78,79 +81,13 @@ function Settings() {
     setLinkedIn(e.target.value);
   };
 
-  let handlers = [
-    handleName,
-    handleEmail,
-    handlePhone,
-    handlePassword,
-    handleImage,
-    handleGithub,
-    handleLinkedIn,
-    handleDescription,
-  ];
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast.promise(
-      updateProfile2({
-        headers: {
-          Authorization: token,
-        },
-        variables: {
-          name: name,
-          email: email,
-          phone: phone,
-          description: description,
-          image: image,
-          github: github,
-          linkedIn: linkedIn,
-        },
-      }).then((res) => console.log(res)),
-      {
-        loading: "Saving...",
-        success: <b>Settings saved!</b>,
-        error: <b>Could not save.</b>,
-      }
-    );
-  };
 
-  let i = -1;
-  let list = Children.toArray(
-    data.map((obj) => {
-      i++;
-      return (
-        <InputField
-          label={obj.label}
-          labelTitle={obj.labelTitle}
-          img={obj.img}
-          type={obj.type}
-          value={values[i]}
-          handleFunc={handlers[i]}
-          extra={obj.extra === undefined ? {} : obj.extra}
-        />
-      );
-    })
-  );
   return (
     <div className={mainContainerStyles}>
-      <div className=" w-3/4 flex flex-row">
-        <span className="text-2xl">Dark Mode:</span>
-        <Button />
-      </div>
-      <form
-        action=""
-        className="m-4 flex flex-col justify-around"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="my-4 text-lg font-bold text-blue-700">
-          Update You Details
-        </h1>
-        {list}
-        <button type="submit" className={btnStyles}>
-          Submit
-        </button>
-      </form>
-      {/* <img src={image2} alt="" /> */}
-
+      
+      <ProfileSettings/>
+      <ContactSettings/>
+      <Socials/>
 
     </div>
 
