@@ -6,10 +6,15 @@ import QuestionModal from './QuestionModal'
 import toast from "react-hot-toast";
 import {Link} from 'react-router-dom'
 
-const AskQuestionComponent = () => {
+const AskQuestionComponent = ({refetch}) => {
   const {theme} = useStore()
   let [open,setOpen] = useState(false)
-  console.log(open)
+  let [submitted,setSubmitted] = useState(false)
+  if(submitted==true){
+    refetch()
+    setSubmitted(false)
+  }
+
 	return (
 		 <div className=" px-4 flex sticky top-0 py-1">
         <Search placeholder="search your answers" />
@@ -32,7 +37,7 @@ const AskQuestionComponent = () => {
           <Plus className="text-red-700   mx-2" size={30} />
           Ask<span className="text-red-700 mx-1" >?</span>
         </button>
-        <QuestionModal open={open} setOpen={setOpen} />
+        <QuestionModal open={open} setOpen={setOpen} submitted={setSubmitted}/>
       </div>
 	)
 }

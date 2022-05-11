@@ -20,7 +20,6 @@ export default function SelectCourse({course,setCourse}) {
   		}
   	}
   })
-  console.log(data)
   let menuItems = React.Children.toArray(data?.courses.map(obj=>{
       return <MenuItem value={obj.id}>{obj.name}</MenuItem>
   }))

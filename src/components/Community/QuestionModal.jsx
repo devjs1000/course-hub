@@ -4,27 +4,29 @@ import SelectCourse from './SelectCourse'
 import {createQuestionMutation} from '../../graphql/Mutations'
 import {useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
+import {allQuestionsQuery} from '../../graphql/Queries'
 
-const QuestionModal = ({open,setOpen}) => {
+
+const QuestionModal = ({open,setOpen,setSubmitted}) => {
   const [course, setCourse] = React.useState("62415210244bfa8e7566abf5");
   const [question, setQuestion] = React.useState("");
-  console.log(course)
+  let token =localStorage.getItem("accessToken")
   let [createQuestion] = useMutation(createQuestionMutation,{
   	context:{
   		headers:{
   			Authorization:localStorage.getItem("accessToken")
   		}
-  	}
+  	},
+  	refetchQueries:[allQuestionsQuery]
   })
 
   const submitQuestion=(e)=>{
-  	console.log(question,course)
   	e.preventDefault()
   	// if(question=='' || ' ') return;
   	toast.promise(
  	createQuestion({
  		headers:{
-  			Authorization:localStorage.getItem("accessToken")
+  			Authorization:token
   		},
   		variables:{
   			courseId: course,
@@ -32,9 +34,10 @@ const QuestionModal = ({open,setOpen}) => {
   		}
   	}).then(()=>{
   		setTimeout(()=>{
-  			location.reload()
+  			setOpen(false)
+  			setQuestion('')
   		},1000)
-  	}),
+  	}).catch((err)=>console.log(err)),
    {
      loading: 'Saving...',
      success: <b>Question Submitted Successfully!</b>,

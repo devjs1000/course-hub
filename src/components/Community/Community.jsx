@@ -13,7 +13,7 @@ const Community = () => {
   const {allCoursesData,theme} = useStore()
   const {posts} = useStore()
   const token = localStorage.getItem("accessToken");
-  const {data: ques,loading,error} = useQuery(allQuestionsQuery,{
+  const {data: ques,loading,error,refetch} = useQuery(allQuestionsQuery,{
     context : {
     headers:{
       Authorization: token
@@ -35,7 +35,7 @@ if(loading) return <div className='flex items-center justify-center'>
 if(error) return 'Oops! Something wrong happened. Please contact support'
   return (
     <div className={mainContainerStyles}>
-     <AskQuestionComponent/>
+     <AskQuestionComponent refetch={refetch}/>
       <div className="grid h-auto w-full gap-4 mt-4 rounded-sm">
         <div className="col-span-4 mb-4 ">
           {Children.toArray(
