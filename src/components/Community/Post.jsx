@@ -37,6 +37,7 @@ const Category = ({ question, category,id }) => {
         Authorization: token,
       },
     },
+    refetchQueries:[getAnswerQuery]
   });
 
 
@@ -50,7 +51,7 @@ if(loading) return 'loading...'
       questionId:id,
       answer:ans
     }
-  }),
+  }).then(()=>setAns('')),
    {
      loading: 'Saving...',
      success: <b>Answer Submitted!</b>,
