@@ -9,8 +9,6 @@ import InputField from "../Settings/inputField";
 
 function Settings() {
   const { theme, setTheme, user } = useStore();
-
-  const [password, setPassword] = useState(user.password);
   const [name, setName] = useState(user.name);
   const [phone, setPhone] = useState(user.phone);
   const [email, setEmail] = useState(user.email);
@@ -23,16 +21,7 @@ function Settings() {
   const [linkedIn, setLinkedIn] = useState(
     user.linkedIn === undefined ? "" : user.linkedIn
   );
-  let values = [
-    name,
-    email,
-    phone,
-    password,
-    image,
-    github,
-    linkedIn,
-    description,
-  ];
+  let values = [name, email, phone, image, github, linkedIn, description];
   const token = localStorage.getItem("accessToken");
   const [updateProfile2] = useMutation(updateProfile, {
     context: {
@@ -61,10 +50,6 @@ function Settings() {
   const handleDescription = (e) => {
     setDescription(e.target.value);
   };
-  const handlePassword = (e) => {
-    if (e.target.value !== "" || e.target.value !== " ")
-      setPassword(e.target.value);
-  };
 
   const handleImage = (e) => {
     // setImage2(URL.createObjectURL(e.target.files[0]));
@@ -81,7 +66,6 @@ function Settings() {
     handleName,
     handleEmail,
     handlePhone,
-    handlePassword,
     handleImage,
     handleGithub,
     handleLinkedIn,
