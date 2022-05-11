@@ -140,7 +140,7 @@ function HeroSection({ course, id, isEnrolled }) {
               </Button>
             )}
             <div
-              className="flex justify-center align-center bg-gray-300 p-3 rounded-[50%]"
+              className="flex justify-center items-center mt-8 cursor-pointer h-16 w-16 align-center bg-gray-300 p-3 rounded-[50%]"
               onClick={(e) => {
                 setCourseInWishlist((val) => !val);
                 handleAddCourseIntoWishlistMutation();

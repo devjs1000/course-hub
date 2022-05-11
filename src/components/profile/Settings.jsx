@@ -6,6 +6,7 @@ import { updateProfile } from "../../graphql/Mutations";
 import toast from "react-hot-toast";
 import { data } from "../Settings/data";
 import InputField from "../Settings/inputField";
+import Accordion from '../courseDetailsPage/accordion/Accordion';
 
 function Settings() {
   const { theme, setTheme, user } = useStore();
@@ -149,7 +150,10 @@ function Settings() {
         </button>
       </form>
       {/* <img src={image2} alt="" /> */}
+
+
     </div>
+
   );
 }
 

@@ -18,7 +18,7 @@ const AccordionIcon = ({ className }) => {
 	);
 };
 
-function Accordion() {
+function Accordion({heading='Question 1',description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolor iste odio quia fugit! Dicta tenetur'}) {
 	const [isActive, setIsActive] = useState('bg-gray-50');
 	const [initialHeight, setInitialHeight] = useState('0px');
 
@@ -41,7 +41,7 @@ function Accordion() {
 	return (
 		<div className="border rounded-md">
 			<button className={buttonClass} onClick={toggleAccordion}>
-				<p>Question 1</p>
+				<p>{heading}</p>
 				<AccordionIcon className={iconClass} />
 			</button>
 			<div

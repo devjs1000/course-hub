@@ -14,7 +14,7 @@ const QuestionModal = ({open,setOpen,setSubmitted}) => {
   let [createQuestion] = useMutation(createQuestionMutation,{
   	context:{
   		headers:{
-  			Authorization:localStorage.getItem("accessToken")
+  			Authorization:token
   		}
   	},
   	refetchQueries:[allQuestionsQuery]
