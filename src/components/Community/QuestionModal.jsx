@@ -37,8 +37,8 @@ const QuestionModal = ({open,setOpen}) => {
   	}),
    {
      loading: 'Saving...',
-     success: <b>Settings saved!</b>,
-     error: <b>Could not save.</b>,
+     success: <b>Question Submitted Successfully!</b>,
+     error: <b>Please Login And Try Again</b>,
    }
  );
   	

@@ -39,7 +39,7 @@ if(error) return 'Oops! Something wrong happened. Please contact support'
       <div className="grid h-auto w-full gap-4 mt-4 rounded-sm">
         <div className="col-span-4 mb-4 ">
           {Children.toArray(
-            ques.questions.map((obj) => {
+            ques?.questions.map((obj) => {
               return (
                 <Post
                   id={obj.id}

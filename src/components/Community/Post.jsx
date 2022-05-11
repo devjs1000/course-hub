@@ -75,9 +75,9 @@ let list = Children.toArray(answer?.answer.map(a=>{
   return (
     <div className="bg-white mx-2 md:mx-4 lg:mx-32 cursor-pointer border-1 border border-slate-400 p-2">
       <div className="text-slate-800 font-semibold px-4 capitalize">{question}</div>
-      <div className="bg-yellow-500 rounded-lg inline-block px-4 my-2 mx-4 text-slate-500">
-        {category}
-      </div>
+      <span className="text-xs font-semibold inline-block ml-4 py-1 px-2 uppercase rounded-full text-rose-600 bg-rose-200 uppercase last:mr-0 mr-1">
+  {category}
+</span>
       <div className="text-red-700">
         <Chat className="cursor-pointer" onClick={handleShow} />
         <div className="m-2">
