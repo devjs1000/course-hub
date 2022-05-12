@@ -11,6 +11,7 @@ import {
 } from "../../graphql/Mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import toast from "react-hot-toast";
+import noImagePlaceHolder from '../../images/noImagePlaceHolder.png'
 
 const CourseCard = ({ id, course, enrolled, inwishlist }) => {
   const { user, myWishlist, setMyWishlist } = useStore();
@@ -90,11 +91,12 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
         >
           <div className="h-[12rem] rounded-t-sm overflow-hidden relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[rgba(255,118,118,0.09)]">
             <img
-              src={course?.image}
+              src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image}
               alt="course-image"
               className="object-cover w-full h-full"
             />
           </div>
+       {console.log(course.image=='IMG_20220321_121445.jpg')}
         </Link>
 
         <div className="relative px-8 py-10 bg-white text-slate-900 flex flex-col items-start gap-4">
