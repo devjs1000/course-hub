@@ -10,7 +10,6 @@ import ProfileSettings from "../Settings/ProfileSettings";
 import ContactSettings from "../Settings/ContactSettings";
 import Socials from "../Settings/Socials";
 
-
 function Settings() {
   const { theme, setTheme, user } = useStore();
   //styles
