@@ -156,7 +156,7 @@ function HeroSection({ course, id, isEnrolled }) {
         <div className='mb-4'>
         <img src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
         </div>
-          <span className="absolute z-50 top-[54%] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
+          <span className="absolute z-50 top-[50%] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
           <strong>
             ₹
             {Math.round(
