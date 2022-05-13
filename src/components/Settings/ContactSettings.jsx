@@ -90,7 +90,7 @@ export default function ProfileSettings() {
           <Typography sx={{ width: '33%', flexShrink: 0 }}>
             Contact Settings
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>E-mail, Phone Number</Typography>
+          <Typography sx={{ color: 'text.secondary' }}></Typography>
         </AccordionSummary>
         <AccordionDetails>
         <form onSubmit={handleSubmit}>

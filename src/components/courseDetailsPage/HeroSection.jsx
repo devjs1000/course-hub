@@ -14,6 +14,7 @@ import {
 } from "../../graphql/Mutations";
 import { Heart, HeartFill } from "react-bootstrap-icons";
 import toast from "react-hot-toast";
+import noImagePlaceHolder from '../../images/noImagePlaceHolder.png'
 
 function HeroSection({ course, id, isEnrolled }) {
   const [courseInWishlist, setCourseInWishlist] = useState(false);
@@ -122,6 +123,7 @@ function HeroSection({ course, id, isEnrolled }) {
             <div className="my-4 flex flex-wrap items-center gap-2">
               {Children.toArray(
                 course?.advantages?.map((a) => {
+
                   return (
                     <span className="inline-block rounded-full bg-white px-4 py-1 text-slate-700">
                       {a.advantageName}
@@ -151,12 +153,10 @@ function HeroSection({ course, id, isEnrolled }) {
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="bg-cover bg-no-rnextVideosepeat bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
-        style={{ backgroundImage: `url(${course?.image})` }}
-      >
-        <span className="absolute z-10 top-[17rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
+        <div className='mb-4'>
+        <img src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
+        </div>
+          <span className="absolute z-50 top-[50%] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
           <strong>
             ₹
             {Math.round(
