@@ -1,4 +1,4 @@
-import author from '../../images/author.jpg';
+import noImagePlaceHolder from '../../images/noImagePlaceHolder.png';
 
 function AuthorIntro() {
 	const backgroundImage = `h-28 w-28 border rounded-full bg-no-repeat bg-cover bg-center outline-offset-2 outline outline-slate-300`;
@@ -10,7 +10,7 @@ function AuthorIntro() {
 			<div className="my-4 flex items-center gap-6">
 				<div
 					className={backgroundImage}
-					style={{ backgroundImage: `url(${author})` }}
+					style={{ backgroundImage: `url(${noImagePlaceHolder})` }}
 				>
 					&nbsp;
 				</div>
