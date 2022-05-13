@@ -156,12 +156,7 @@ function HeroSection({ course, id, isEnrolled }) {
         <div className='mb-4'>
         <img src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
         </div>
-      </div>
-      <div
-        className="bg-cover bg-no-rnextVideosepeat bg-red-500 bg-center rounded-md relative  after:absolute after:top-0 after:left-0 after:w-full after:h-full after:mix-blend-multiply after:bg-gray-600 after:opacity-75 md:h-[50%] md:w-[80%] lg:h-[80%] lg:w-full"
-        style={{ backgroundImage: `url(${course?.image})` }}
-      >
-        <span className="absolute z-10 top-[17rem] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
+          <span className="absolute z-50 top-[54%] right-[4rem] bg-[#fc2340] px-4 py-1 rounded-sm text-white text-xl">
           <strong>
             ₹
             {Math.round(
