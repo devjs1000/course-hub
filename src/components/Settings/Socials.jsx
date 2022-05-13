@@ -95,7 +95,7 @@ export default function ProfileSettings() {
           <Typography sx={{ width: '33%', flexShrink: 0 }}>
             Your Socials
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>GitHub, LinkedIn</Typography>
+          <Typography sx={{ color: 'text.secondary' }}></Typography>
         </AccordionSummary>
         <AccordionDetails>
         <form onSubmit={handleSubmit}>

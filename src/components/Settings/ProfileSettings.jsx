@@ -94,9 +94,8 @@ export default function ProfileSettings() {
           id={`panel1bh-header`}
         >
           <Typography sx={{ width: '33%', flexShrink: 0 }}>
-            General settings
+            Profile settings
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>Name,Profile Picture,Dark Mode,Description</Typography>
         </AccordionSummary>
         <AccordionDetails>
       <div className=" w-3/4 flex flex-row">
