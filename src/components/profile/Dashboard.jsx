@@ -26,11 +26,14 @@ function Dashboard() {
 					Education is the passport to the future So, Learn more & more
 				</p>
 				<Button isPrimary={true}>Browse</Button>
-				<img
+				<div className=''>
+					<img
 					src={dashboardImg}
 					alt="dashboard svg"
-					className="opacity-0 absolute w-[35%] right-0 top-[50%] translate-y-[-50%] lg:opacity-100"
+					className="opacity-0 h-full w-full absolute w-[35%] right-0 top-[50%] translate-y-[-50%] lg:opacity-100"
 				/>
+				</div>
+
 			</div>
 			<div className="w-full flex flex-col gap-6 mt-6 md:flex-row">
 				<div className="w-full lg:w-[40%]">
