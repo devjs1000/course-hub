@@ -12,6 +12,7 @@ import {
   PrivateRoute,
   UpdateDiscount,
   PreviousChapter,
+
   StudentsEnrolledInCourse,
   SendNotificationAllStudents,
 } from "./components";
@@ -111,6 +112,8 @@ function App() {
               <Route path="/community" element={<Community />} />
               <Route path="/create-course" element={<CreateCourse />} />
               <Route path="/create-chapter/:id" element={<CreateChapter />} />
+
+              <Route path="/benefits/:id" element={<Benefits/>} />
               <Route
                 path="/previous-chapter/:id"
                 element={<PreviousChapter />}

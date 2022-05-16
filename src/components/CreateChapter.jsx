@@ -87,6 +87,7 @@ const CreateChapter = () => {
   return (
     <>
       <div className={mainDivStyles}>
+
         <NavTabs id={id} />
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormControl

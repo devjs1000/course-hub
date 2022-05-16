@@ -10,6 +10,7 @@ import PreviousChapter from "./PreviousChapters";
 import NavTabs from "./NavTabs";
 import SendNotificationAllStudents from "./SendNotificationAllStudents";
 import StudentsEnrolledInCourse from "./StudentsEnrolledInCourse";
+import Benefits from "./Benefits";
 import Tags from "./Tags";
 
 export {
@@ -26,4 +27,5 @@ export {
   Tags,
   UpdateDiscount,
   PreviousChapter,
+  Benefits
 };

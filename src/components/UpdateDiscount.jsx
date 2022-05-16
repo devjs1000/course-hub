@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FormControl from "../UI/FormControl";
 import Button from "../UI/Button";
+import { useParams } from "react-router-dom";
 import useStore from "../context/useStore";
 import { updateDiscountMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";

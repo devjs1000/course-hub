@@ -48,6 +48,7 @@ const PreviousChapter = () => {
     <>
       <div className={mainDivStyles}>
         <NavTabs id={id} />
+
         <div className="bg-white w-full px-8 py-4">
           <div className="flex flex-col mt-4 border">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
