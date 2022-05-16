@@ -10,7 +10,7 @@ const Courses = ({}) => {
 	useEffect(() => {
 		setTeacher(user.isInstructor);
 	}, [user._id]);
-	console.log(myCourses);
+	console.log('hello');
 	return (
 		<>
 			{myCourses.length && user._id !== undefined ? (
