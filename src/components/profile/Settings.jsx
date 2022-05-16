@@ -35,7 +35,6 @@ function Settings() {
     },
   });
 
-
   //styles
   const mainContainerStyles = `p-8 ${
     theme ? "bg-slate-800 text-white" : "white text-black"
@@ -56,9 +55,20 @@ function Settings() {
   const handleDescription = (e) => {
     setDescription(e.target.value);
   };
-
-  
-
+  const handleImage = (e) => {
+    let img = e.target.files[0];
+    let reader = new FileReader();
+    img.onload = function (e) {
+      setImage(e.target.result);
+    };
+    reader.readAsDataURL(img);
+  };
+  const handleGithub = (e) => {
+    setGithub(e.target.value);
+  };
+  const handleLinkedIn = (e) => {
+    setLinkedIn(e.target.value);
+  };
 
   let handlers = [
     handleName,
@@ -69,6 +79,7 @@ function Settings() {
     handleLinkedIn,
     handleDescription,
   ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.promise(
@@ -114,13 +125,10 @@ function Settings() {
 
   return (
     <div className={mainContainerStyles}>
-      
-      <ProfileSettings/>
-      <ContactSettings/>
-      <Socials/>
-
+      <ProfileSettings />
+      <ContactSettings />
+      <Socials />
     </div>
-
   );
 }
 
