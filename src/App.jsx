@@ -12,7 +12,7 @@ import {
   PrivateRoute,
   UpdateDiscount,
   PreviousChapter,
-
+  Benefits,
   StudentsEnrolledInCourse,
   SendNotificationAllStudents,
 
