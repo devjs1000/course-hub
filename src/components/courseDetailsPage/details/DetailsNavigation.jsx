@@ -9,7 +9,7 @@ const navItems = [
 
 function DetailsNavigation() {
 	return (
-		<nav className=" bg-[#f7f7f7] sticky top-0 z-50 flex items-center justify-center xsm:justify-start">
+		<nav className=" bg-[#f7f7f7] sticky top-0 flex items-center justify-center xsm:justify-start">
 			<ul className="flex items-center">
 				{Children.toArray(
 					navItems.map(item => (
