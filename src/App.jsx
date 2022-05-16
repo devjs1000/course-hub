@@ -12,6 +12,7 @@ import {
   PrivateRoute,
   UpdateDiscount,
   PreviousChapter,
+  Benefits
 } from "./components";
 
 import {
@@ -110,6 +111,7 @@ function App() {
               <Route path="/create-course" element={<CreateCourse />} />
               <Route path="/create-chapter/:id" element={<CreateChapter />} />
               <Route path="/update-discount/:id" element={<UpdateDiscount />} />
+              <Route path="/benefits/:id" element={<Benefits/>} />
               <Route
                 path="/previous-chapter/:id"
                 element={<PreviousChapter />}

@@ -7,6 +7,7 @@ import Courses from "./Courses";
 import PrivateRoute from "./PrivateRoute";
 import UpdateDiscount from "./UpdateDiscount";
 import PreviousChapter from "./PreviousChapters";
+import Benefits from "./Benefits";
 
 import Tags from "./Tags";
 
@@ -21,4 +22,5 @@ export {
   Tags,
   UpdateDiscount,
   PreviousChapter,
+  Benefits
 };

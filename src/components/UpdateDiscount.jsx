@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FormControl from "../UI/FormControl";
 import Button from "../UI/Button";
+import { useParams } from "react-router-dom";
 import useStore from "../context/useStore";
 import { updateDiscountMutation } from "../graphql/Mutations";
 import { useMutation } from "@apollo/client";
@@ -81,6 +82,11 @@ const UpdateDiscount = () => {
           <Link to={`/update-discount/${id}`}>
             <h1 className="pb-2 pt-4 font-bold border-b-4 border-red-500">
               Update Discount
+            </h1>
+          </Link>
+          <Link to={`/benefits/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">
+              Benefits
             </h1>
           </Link>
         </nav>

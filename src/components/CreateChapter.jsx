@@ -96,6 +96,11 @@ const CreateChapter = () => {
           <Link to={`/update-discount/${id}`}>
             <h1 className="pb-2 pt-4 font-bold">Update Discount</h1>
           </Link>
+                     <Link to={`/benefits/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">
+              Benefits
+            </h1>
+          </Link>
         </nav>
         <form onSubmit={handleSubmit} className="space-y-4">
           <FormControl

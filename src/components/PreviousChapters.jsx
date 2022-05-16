@@ -58,6 +58,11 @@ const PreviousChapter = () => {
           <Link to={`/update-discount/${id}`}>
             <h1 className="pb-2 pt-4 font-bold">Update Discount</h1>
           </Link>
+           <Link to={`/benefits/${id}`}>
+            <h1 className="pb-2 pt-4 font-bold">
+              Benefits
+            </h1>
+          </Link>
         </nav>
         <div className="bg-white w-full px-8 py-4">
           <div className="flex flex-col mt-4 border">
