@@ -7,9 +7,11 @@ import Courses from "./Courses";
 import PrivateRoute from "./PrivateRoute";
 import UpdateDiscount from "./UpdateDiscount";
 import PreviousChapter from "./PreviousChapters";
+import Benefits from "./Benefits";
 import NavTabs from "./NavTabs";
 import SendNotificationAllStudents from "./SendNotificationAllStudents";
 import StudentsEnrolledInCourse from "./StudentsEnrolledInCourse";
+
 import Tags from "./Tags";
 
 export {
@@ -26,4 +28,5 @@ export {
   Tags,
   UpdateDiscount,
   PreviousChapter,
+  Benefits
 };
