@@ -1,22 +1,19 @@
 import { Children, useEffect, useState } from "react";
 import CountButton from "../../UI/CountButton";
-import Search from "../../UI/Search";
 import Category from "./Category";
-import { Plus } from "react-bootstrap-icons";
 import Post from "./Post";
 import useStore from '../../context/useStore'
 import axios from "axios";
 import {allQuestionsQuery} from '../../graphql/Queries'
 import { useQuery,useMutation } from "@apollo/client";
-
+import AskQuestionComponent from './AskQuestionComponent'
 
 
 const Community = () => {
-  const {allCoursesData} = useStore()
+  const {allCoursesData,theme} = useStore()
   const {posts} = useStore()
-  // const [answers,setAnswers] = useState([])
   const token = localStorage.getItem("accessToken");
-  const {data: ques,loading,error} = useQuery(allQuestionsQuery,{
+  const {data: ques,loading,error,refetch} = useQuery(allQuestionsQuery,{
     context : {
     headers:{
       Authorization: token
@@ -24,8 +21,9 @@ const Community = () => {
   }
   })
   
-
-
+  const mainContainerStyles = `${
+    theme ? "bg-slate-800 text-white" : "bg-white"
+  } bg-slate-100 min-h-screen `
 
 if(loading) return <div className='flex items-center justify-center'>
    <svg role="status" className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-red-500" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,21 +34,12 @@ if(loading) return <div className='flex items-center justify-center'>
  
 if(error) return 'Oops! Something wrong happened. Please contact support'
   return (
-    <div className="bg-slate-100 min-h-screen ">
-      <div className="bg-white  px-4 flex sticky top-0">
-        <Search placeholder="search your answers" />
-        <button className="flex items-center text-slate-700  border-[2px] border-slate-100 px-2 bg-white"
-
-        >
-          <Plus className="text-red-700   mx-2" size={30} />
-          Ask<span className="text-red-700 mx-1" >?</span>
-        </button>
-      </div>
-
-      <div className="grid h-auto w-full gap-2">
+    <div className={mainContainerStyles}>
+     <AskQuestionComponent refetch={refetch}/>
+      <div className="grid h-auto w-full gap-4 mt-4 rounded-sm">
         <div className="col-span-4 mb-4 ">
           {Children.toArray(
-            ques.questions.map((obj) => {
+            ques?.questions.map((obj) => {
               return (
                 <Post
                   id={obj.id}

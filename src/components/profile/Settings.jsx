@@ -6,9 +6,13 @@ import { updateProfile } from "../../graphql/Mutations";
 import toast from "react-hot-toast";
 import { data } from "../Settings/data";
 import InputField from "../Settings/inputField";
+import ProfileSettings from "../Settings/ProfileSettings";
+import ContactSettings from "../Settings/ContactSettings";
+import Socials from "../Settings/Socials";
 
 function Settings() {
   const { theme, setTheme, user } = useStore();
+
   const [name, setName] = useState(user.name);
   const [phone, setPhone] = useState(user.phone);
   const [email, setEmail] = useState(user.email);
@@ -31,10 +35,12 @@ function Settings() {
     },
   });
 
+
   //styles
   const mainContainerStyles = `p-8 ${
     theme ? "bg-slate-800 text-white" : "white text-black"
   } h-full`;
+
   const btnStyles = `text-white bg-blue-700 mt-4 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800`;
 
   //functions to handle the changes to the fields
@@ -51,16 +57,8 @@ function Settings() {
     setDescription(e.target.value);
   };
 
-  const handleImage = (e) => {
-    // setImage2(URL.createObjectURL(e.target.files[0]));
-    console.log(e.target.files[0].name);
-  };
-  const handleGithub = (e) => {
-    setGithub(e.target.value);
-  };
-  const handleLinkedIn = (e) => {
-    setLinkedIn(e.target.value);
-  };
+  
+
 
   let handlers = [
     handleName,
@@ -113,27 +111,16 @@ function Settings() {
       );
     })
   );
+
   return (
     <div className={mainContainerStyles}>
-      <div className=" w-3/4 flex flex-row">
-        <span className="text-2xl">Dark Mode:</span>
-        <Button />
-      </div>
-      <form
-        action=""
-        className="m-4 flex flex-col justify-around"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="my-4 text-lg font-bold text-blue-700">
-          Update You Details
-        </h1>
-        {list}
-        <button type="submit" className={btnStyles}>
-          Submit
-        </button>
-      </form>
-      {/* <img src={image2} alt="" /> */}
+      
+      <ProfileSettings/>
+      <ContactSettings/>
+      <Socials/>
+
     </div>
+
   );
 }
 

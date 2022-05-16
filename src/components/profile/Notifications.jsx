@@ -1,16 +1,16 @@
 import { userNotifications } from "../../graphql/Queries";
 import React from 'react';
-import author from '../../images/author.jpg';
+import noImagePlaceHolder from '../../images/noImagePlaceHolder.png';
 import useStore from '../../context/useStore'
 import { useQuery } from "@apollo/client";
 
-const Notification = ({title,about}) => {
+const Notification = ({title,about,image}) => {
   return (
     <div className="flex flex-col items-center gap-4 p-2 shadow-sm sm:flex-row sm:shadow-none">
       <div className="w-full sm:flex-[0.1]">
         <div
           className="h-20 w-20 rounded-full outline-offset-2 outline outline-slate-400 bg-cover bg-center"
-          style={{ backgroundImage: `url(${author})` }}
+          style={{ backgroundImage: `url(${image? image : noImagePlaceHolder})` }}
         ></div>
       </div>
       <div className="text-slate-900 flex flex-col items-start gap-2 flex-[0.9]">
@@ -40,7 +40,7 @@ function Notifications() {
 
   let list = data?.usersNotifications.map(obj=>{
       console.log(obj)
-      return   <Notification title={obj.title} about={obj.about} />
+      return   <Notification title={obj.title} about={obj.about} image={obj.image} />
 
   })
 
