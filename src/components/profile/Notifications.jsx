@@ -13,7 +13,7 @@ const Notification = ({title,about,image}) => {
           style={{ backgroundImage: `url(${image? image : noImagePlaceHolder})` }}
         ></div>
       </div>
-      <div className="text-slate-900 flex flex-col items-start gap-2 flex-[0.9]">
+      <div className="text-slate-900 flex flex-col items-start w-full gap-2 flex-[0.9]">
       <h1 className='text-xl font-bold' >{title}</h1>
         <p className="font-semibold text-md">
           {about}

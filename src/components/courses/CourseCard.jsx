@@ -81,7 +81,7 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
   console.log(course)
   return (
     <ErrorBoundary fallback={"error in course page"}>
-      <div className="rounded-sm h-[70%] relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
+      <div className="rounded-sm h-[45%] relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
         <Link
           to={
             user?.role == "teacher" && Boolean(enrolled)
@@ -96,7 +96,7 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
               className="object-cover w-full h-full"
             />
           </div>
-       {console.log(course.image=='IMG_20220321_121445.jpg')}
+
         </Link>
 
         <div className="relative px-8 py-10 bg-white text-slate-900 flex flex-col items-start gap-4">

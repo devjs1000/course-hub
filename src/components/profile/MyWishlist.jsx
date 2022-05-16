@@ -46,8 +46,8 @@ function MyWishlist() {
   const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`;
   const btnSectionStyles = `px-2 h-[3rem] flex items-center my-4`;
   const cardContainerStyles = `flex flex-wrap gap-6 justify-around ${
-    theme ? "bg-slate-800" : null
-  }`;
+    theme ? "bg-slate-800" : "bg-white"
+  } overflow-scroll`;
 
   if (wishlist.loading || allCourses.loading) return <BoxLoading />;
 
