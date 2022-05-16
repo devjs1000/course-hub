@@ -102,3 +102,9 @@ export const romveCourseFromWishlistMutation = gql`
     romveCourseFromWishlist(courseId: $courseId)
   }
 `;
+
+export const addBenefit = gql`
+mutation AddBeneft($courseId: ID!, $name: String!, $description: String!) {
+  addBeneft(courseId: $courseId, name: $name, description: $description)
+}
+`

@@ -91,3 +91,17 @@ export const getMyWishlistsQuery = gql`
     getMyWishlists
   }
 `;
+
+export const getBenefits = gql`
+query ExampleQuery($courseId: ID!) {
+  getFullCourseDetails(courseId: $courseId) {
+    courseBenefits {
+      benefitId
+      name
+      description
+    }
+  }
+}
+
+
+`

@@ -110,8 +110,9 @@ function HeroSection({ course, id, isEnrolled }) {
   // { backgroundImage: `url(${course?.image})` }
   return (
     <>
-      <div className="details-hero h-auto overflow-hidden bg-center bg-fixed bg-no-repeat bg-cover flex flex-col justify-between items-center px-16 md:flex-row md:h-[60vh] md:gap-4">
-        <div className="flex flex-col items-start sm:w-full backdrop-blur-[100px] py-8 sm:rounded-xl ">
+      <div className="relative h-auto overflow-hidden flex flex-col justify-between items-center px-16 lg:flex-row lg:h-[60vh] md:gap-4">
+        <img className='-z-10 lg:hidden h-full w-full absolute object-cover ' src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
+        <div className="flex flex-col lg:items-start lg:w-full py-8 sm:rounded-xl ">
           <div className="mb-7">
             <h1 className="text-4xl font-bold text-white uppercase tracking-wide">
               {course?.name}
@@ -154,9 +155,11 @@ function HeroSection({ course, id, isEnrolled }) {
           </div>
         </div>
         <div className='mb-4'>
-        <img src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
-        </div>
-          <span className="bg-red-700">
+        <div className=' w-[100%] h-full'>
+        <img className='lg:block hidden w-full' src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
+        <span 
+          className="bg-[#fc2340] mb-4 px-4 py-1 rounded-sm text-white text-xl lg:w-[25%]"
+          >
           <strong>
             ₹
             {Math.round(
@@ -175,6 +178,9 @@ function HeroSection({ course, id, isEnrolled }) {
             ({course?.discount === null ? 0 : course?.discount}%)
           </small>
         </span>
+        </div>
+        </div>
+          
       </div>
 
       {openCourse &&

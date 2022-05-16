@@ -24,10 +24,10 @@ function AllCourses() {
   const { courses } = data;
 
   return (
-    <section className=''>
+    <section className=' flex justify-center overflow-scroll'>
       {/* modified code */}
       <ErrorBoundary fallback={"error in course page"}>
-        <div className="container flex gap-6 flex-wrap bg-white p-6 justify-center">
+        <div className="container flex gap-6 flex-wrap bg-white p-6 w-full justify-center">
           {Children.toArray(
             courses.map((course) => {
               let inwishlist = myWishlist.includes(course.id);

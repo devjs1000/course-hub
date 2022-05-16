@@ -12,12 +12,11 @@ import {
   PrivateRoute,
   UpdateDiscount,
   PreviousChapter,
-  Benefits,
   StudentsEnrolledInCourse,
   SendNotificationAllStudents,
 
 } from "./components";
-
+import Benefits from './components/TeachersTab/Benefits'
 import {
   Profile,
   Dashboard,
