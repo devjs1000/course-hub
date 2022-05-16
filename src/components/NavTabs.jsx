@@ -55,6 +55,15 @@ const NavTabs = ({ id }) => {
             Send Notification
           </h1>
         </Link>
+       <Link to={`/benefits/${id}`}>
+          <h1
+            className={`${linkStyle} ${
+              activeTab === "benefits" ? activeStyle : ""
+            } `}
+          >
+            Benefits
+          </h1>
+        </Link>
       </nav>
     </div>
   );
