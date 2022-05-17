@@ -17,8 +17,8 @@ export const notifyStudentsMutation = gql`
 `;
 
 export const notifySpecificStudentMutation = gql`
-  mutation notifyStudent($title: String!, $about: String!, $id: ID!) {
-    notifyStudent(title: $title, about: $about, target: $id) {
+  mutation notifyStudent($title: String!, $about: String!, $target: String!) {
+    notifyStudent(title: $title, about: $about, target: $target) {
       title
       about
       targetType

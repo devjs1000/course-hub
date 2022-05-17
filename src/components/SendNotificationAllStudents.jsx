@@ -27,7 +27,7 @@ const SendNotificationAllStudents = () => {
 
   const submitNotifications = (e) => {
     e.preventDefault();
-    console.log(notificationData);
+    // console.log(notificationData);
 
     if (
       (notificationData && !notificationData.title) ||
@@ -52,7 +52,7 @@ const SendNotificationAllStudents = () => {
       notificationData.about &&
       notificationData.about.length > 1
     ) {
-      console.log(notificationData);
+      // console.log(notificationData);
       const token = localStorage.getItem("accessToken");
 
       notifyStudents({
@@ -73,9 +73,6 @@ const SendNotificationAllStudents = () => {
             title: "",
             about: "",
           });
-          // setTimeout(() => {
-          //   location.reload();
-          // }, 3000);
         })
         .catch((err) => {
           console.log("err", err);
