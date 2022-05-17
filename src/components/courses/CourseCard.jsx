@@ -79,7 +79,7 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
   console.log(course);
   return (
     <ErrorBoundary fallback={"error in course page"}>
-      <div className="rounded-sm h-[45%] relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
+      <div className="rounded-sm  relative w-[21rem] shadow-md overflow-hidden cursor-pointer border-4 border-grey shadow-2xl">
         <Link
           to={
             user?.role == "teacher" && Boolean(enrolled)
