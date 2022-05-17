@@ -10,9 +10,6 @@ import { adminGetAllTeachersQuery } from "../../graphql/Queries";
 import toast from "react-hot-toast";
 
 export const TeacherInfo = () => {
-
-
-
   const [teachers, setTeachers] = useState([]);
   const [inputField, setInputField] = useState("");
   let data = [];
@@ -21,27 +18,19 @@ export const TeacherInfo = () => {
     adminUpdateUserRoleByIdMutation
   );
 
-const allTeachers=useQuery(adminGetAllTeachersQuery, {
-  context:{
-    headers:{
-      Authorization:localStorage.getItem('accessToken')
-    }
-  }
-})
-
-
-
+  const allTeachers = useQuery(adminGetAllTeachersQuery, {
+    context: {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    },
+  });
 
   useEffect(() => {
     if (allTeachers.loading) return;
 
     setTeachers(allTeachers?.data?.adminGetAllTeachers);
-
   }, [allTeachers.data]);
-
-
-
-  
 
   const token = localStorage.getItem("accessToken");
   const handleChangeRole = (e) => {
@@ -59,14 +48,16 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
           Authorization: token,
         },
       },
-    }).then((res)=>{
-      console.log("res",res);
-      toast.success("User role updated succesfully ! ");
-      allTeachers.refetch();
-    }).catch((err)=>{
-      console.log("err",err);
-      toast.error("User role updation failed ! ")
-    });
+    })
+      .then((res) => {
+        console.log("res", res);
+        toast.success("User role updated succesfully ! ");
+        allTeachers.refetch();
+      })
+      .catch((err) => {
+        console.log("err", err);
+        toast.error("User role updation failed ! ");
+      });
   };
 
   const handleDeleteUser = async (e) => {
@@ -82,28 +73,28 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
           Authorization: token,
         },
       },
-    }).then((res)=>{
-      console.log("res",res);
-      toast.success("User deleted succesfully ! ");
-      allTeachers.refetch();
-    }).catch((err)=>{
-      console.log("err",err);
-      toast.error("User deletion failed ! ")
-    });
+    })
+      .then((res) => {
+        console.log("res", res);
+        toast.success("User deleted succesfully ! ");
+        allTeachers.refetch();
+      })
+      .catch((err) => {
+        console.log("err", err);
+        toast.error("User deletion failed ! ");
+      });
 
     let data = teachers.filter((user) => {
       if (user.id !== user_id) return user;
     });
 
-   setAllTeachers(data)
+    setAllTeachers(data);
   };
 
-
-if(allTeachers.loading) return 'loading...';
-
+  if (allTeachers.loading) return "loading...";
 
   return (
-    <div className="bg-white w-full px-8 py-4">
+    <div className="bg-white w-full sm:px-8 p-2 sm:py-4">
       <div className="flex flex-col mt-4 border">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full sm:px-6 lg:px-8">
@@ -111,10 +102,10 @@ if(allTeachers.loading) return 'loading...';
               className="border-b px-4 py-4 bg-primary-color-dark
             text-white flex justify-between items-center"
             >
-              <h1 className="text-xl uppercase p-4 font-bold  ">
+              <h1 className="text-xl uppercase order-2 p-4 font-bold  ">
                 teachers information
               </h1>
-              <div className="flex items-center bg-white px-4 text-gray-400 h-[50px] rounded-lg">
+              <div className="flex items-center order-1 bg-white px-4 text-gray-400 h-[50px] rounded-lg">
                 <Search className="text-2xl  " />
                 <input
                   type="text"
@@ -130,37 +121,37 @@ if(allTeachers.loading) return 'loading...';
                   <tr>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm whitespace-nowrap w-[5rem] font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       S No.
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium whitespace-nowrap w-[10rem] text-gray-900 px-6 py-4 text-left"
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium whitespace-nowrap w-[10rem] text-gray-900 px-6 py-4 text-left"
                     >
                       Email
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium whitespace-nowrap w-[10rem] text-gray-900 px-6 py-4 text-left"
                     >
                       Phone
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium whitespace-nowrap text-gray-900 px-6 py-4 text-left"
                     >
                       Change Role
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm font-medium whitespace-nowrap text-gray-900 px-6 py-4 text-left"
                     >
                       Delete Account
                     </th>
