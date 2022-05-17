@@ -3,10 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../UI/Button";
 import { Person, Tag, CardText } from "react-bootstrap-icons";
 import { useMutation } from "@apollo/client";
-import {
-  sendStudentNotificationsMutation,
-  sendTeacherNotificationsMutation,
-} from "../graphql/Mutations";
+import { notifyStudentsMutation } from "../graphql/Mutations";
 import toast, { Toaster } from "react-hot-toast";
 import NavTabs from "./NavTabs";
 import useStore from "../context/useStore";
@@ -14,13 +11,12 @@ import useStore from "../context/useStore";
 const SendNotificationAllStudents = () => {
   const { id } = useParams();
   const { user, theme } = useStore();
-  const [sendStudentNotificationsFunction] = useMutation(
-    sendStudentNotificationsMutation
-  );
+  const [notifyStudents] = useMutation(notifyStudentsMutation);
 
   const [notificationData, setNotificationData] = useState({
     title: "",
     about: "",
+    courseId: id,
   });
   const getNotificationdata = (e) => {
     const name = e.target.name;
@@ -60,7 +56,7 @@ const SendNotificationAllStudents = () => {
       console.log(notificationData);
       const token = localStorage.getItem("accessToken");
 
-      sendStudentNotificationsFunction({
+      notifyStudents({
         context: {
           headers: {
             Authorization: token,

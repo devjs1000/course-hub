@@ -87,6 +87,7 @@ export const updateDiscountMutation = gql`
       discountType: $discountType
     ) {
       id
+      discount
     }
   }
 `;
@@ -104,7 +105,7 @@ export const romveCourseFromWishlistMutation = gql`
 `;
 
 export const addBenefit = gql`
-mutation AddBeneft($courseId: ID!, $name: String!, $description: String!) {
-  addBeneft(courseId: $courseId, name: $name, description: $description)
-}
-`
+  mutation AddBeneft($courseId: ID!, $name: String!, $description: String!) {
+    addBeneft(courseId: $courseId, name: $name, description: $description)
+  }
+`;
