@@ -36,9 +36,6 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
         .then((res) => {
           console.log("res", res);
           toast.success("Course added into wishlist succesfully ! ");
-          setTimeout(() => {
-            location.reload();
-          }, 3000);
         })
         .catch((err) => {
           console.log("err", err);
@@ -65,9 +62,6 @@ const CourseCard = ({ id, course, enrolled, inwishlist }) => {
         .then((res) => {
           console.log("res", res);
           toast.success("Course removed from wishlist succesfully ! ");
-          setTimeout(() => {
-            location.reload();
-          }, 3000);
         })
         .catch((err) => {
           console.log("err", err);

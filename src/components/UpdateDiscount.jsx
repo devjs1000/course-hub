@@ -53,9 +53,6 @@ const UpdateDiscount = () => {
           setFormData({ discountType: " " });
           console.log("res", res);
           toast.success("Discount updated succesfully ! ");
-          setTimeout(() => {
-            location.reload();
-          }, 3000);
         })
         .catch((err) => {
           console.log("err", err);

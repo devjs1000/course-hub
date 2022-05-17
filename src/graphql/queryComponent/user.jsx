@@ -8,7 +8,6 @@ export const getUserById = gql`
       image
       email
       description
-      password
       phone
       token
       role
@@ -25,7 +24,6 @@ export const getUserByEmail = gql`
       id
       image
       email
-      password
       description
       phone
       token
@@ -53,7 +51,6 @@ export const adminGetAllStudentsQuery = gql`
       id
       image
       email
-      password
       description
       phone
     }
@@ -67,7 +64,6 @@ export const adminGetAllTeachersQuery = gql`
       id
       image
       email
-      password
       description
       phone
     }

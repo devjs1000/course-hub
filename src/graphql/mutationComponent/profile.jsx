@@ -6,7 +6,6 @@ mutation UpdateProfile($name: String, $email: String, $image: String, $github: S
     name
     image
     email
-    password
     description
     phone
     github

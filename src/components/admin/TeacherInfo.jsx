@@ -62,9 +62,7 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
     }).then((res)=>{
       console.log("res",res);
       toast.success("User role updated succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
+      allTeachers.refetch();
     }).catch((err)=>{
       console.log("err",err);
       toast.error("User role updation failed ! ")
@@ -87,9 +85,7 @@ const allTeachers=useQuery(adminGetAllTeachersQuery, {
     }).then((res)=>{
       console.log("res",res);
       toast.success("User deleted succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
+      allTeachers.refetch();
     }).catch((err)=>{
       console.log("err",err);
       toast.error("User deletion failed ! ")

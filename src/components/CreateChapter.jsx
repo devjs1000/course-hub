@@ -44,9 +44,6 @@ const CreateChapter = () => {
         setFormData({});
         console.log("res", res);
         toast.success("Chapter created succesfully ! ");
-        setTimeout(() => {
-          location.reload();
-        }, 3000);
       })
       .catch((err) => {
         console.log("err", err);

@@ -11,7 +11,6 @@ export const signupMutation = gql`
       name
       id
       email
-      password
       token
       role
     }
@@ -27,7 +26,6 @@ export const loginMutation = gql`
         id
         image
         email
-        password
         description
         phone
         token

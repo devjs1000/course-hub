@@ -42,9 +42,7 @@ console.log()
     }).then((res)=>{
       console.log("res",res);
       toast.success("Course deleted succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
+      allCoursesData.refetch();
     }).catch((err)=>{
       console.log("err",err);
       toast.error("Course deletion failed ! ")
