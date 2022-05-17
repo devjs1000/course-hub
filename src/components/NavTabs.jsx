@@ -8,7 +8,7 @@ const NavTabs = ({ id }) => {
   const linkStyle = `px-4 py-2 font-bold`;
   return (
     <div>
-      <nav className="flex gap-12 mb-8 bg-gray-200 text-[20px]">
+      <nav className="flex gap-12 mb-8 bg-gray-200 text-[20px] overflow-scroll">
         <Link to={`/create-chapter/${id}`}>
           <h1
             className={`${linkStyle} ${
