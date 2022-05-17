@@ -52,9 +52,7 @@ export const StudentInfo = () => {
     }).then((res)=>{
       console.log("res",res);
       toast.success("User role updated succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
+      allStudents.refetch();
     }).catch((err)=>{
       console.log("err",err);
       toast.error("User role updation failed ! ")
@@ -77,9 +75,7 @@ export const StudentInfo = () => {
     }).then((res)=>{
       console.log("res",res);
       toast.success("User deleted succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
+      allStudents.refetch();
     }).catch((err)=>{
       console.log("err",err);
       toast.error("User deletion failed ! ")
