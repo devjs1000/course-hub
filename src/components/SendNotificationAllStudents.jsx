@@ -16,7 +16,6 @@ const SendNotificationAllStudents = () => {
   const [notificationData, setNotificationData] = useState({
     title: "",
     about: "",
-    courseId: id,
   });
   const getNotificationdata = (e) => {
     const name = e.target.name;
@@ -62,7 +61,10 @@ const SendNotificationAllStudents = () => {
             Authorization: token,
           },
         },
-        variables: notificationData,
+        variables: {
+          ...notificationData,
+          courseId: id,
+        },
       })
         .then((res) => {
           console.log("res", res);

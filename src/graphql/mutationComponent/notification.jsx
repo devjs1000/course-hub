@@ -1,7 +1,11 @@
 import { gql } from "@apollo/client";
 
 export const notifyStudentsMutation = gql`
-  mutation notifyStudents($title: String!, $about: String!, $courseId: ID!) {
+  mutation notifyStudents(
+    $title: String!
+    $about: String!
+    $courseId: String!
+  ) {
     notifyStudents(title: $title, about: $about, courseId: $courseId) {
       title
       about
