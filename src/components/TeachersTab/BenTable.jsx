@@ -68,10 +68,13 @@ export default function BenTable({id,setSelectedBenefit,isOpen,setIsOpen}) {
               <StyledTableCell align="right"><Button
               variant="contained" onClick={()=>{
                 setSelectedBenefit(obj)
+                setIsOpen(true)
               }}
               ><PencilSquare/></Button></StyledTableCell>
               <StyledTableCell align="right"><Button
-              variant="contained" color="error"
+              variant="contained" color="error" onClick={()=>{
+                setSelectedBenefit(obj)
+              }}
               ><Trash/></Button></StyledTableCell>
             </StyledTableRow>
   }))

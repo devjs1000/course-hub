@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import TextField from '@mui/material/TextField';
 
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
+
+export default function ModifyBenefitModal({isOpen,setIsOpen}) {
 const customStyles = {
   content: {
     top: '50%',
@@ -10,33 +15,21 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    width:'50%',
+    height:'60%',
   },
 };
-
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#yourAppElement');
-
-function ModifyBenefitModal({isOpen}) {
-
   return (
 
       <Modal
         isOpen={isOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={true}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+       <form className=''>
+          <TextField id="name" label="Name Of Benefit" variant="outlined" />
+       </form>
       </Modal>
   );
 }
