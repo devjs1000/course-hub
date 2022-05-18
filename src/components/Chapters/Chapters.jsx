@@ -24,7 +24,7 @@ const Chapters = () => {
   let { id } = useParams();
   let { user, theme, setCurrentCourseId } = useStore();
   let fileData;
-  const { data: chapters } = useQuery(getChaptersQuery, {
+  const { data: chapters, refetch } = useQuery(getChaptersQuery, {
     variables: {
       courseId: id,
     },
@@ -72,9 +72,7 @@ const Chapters = () => {
     }).then((res)=>{
       console.log("res",res);
       toast.success("Project submited succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
+      refetch();
     }).catch((err)=>{
       console.log("err",err);
       toast.error("Project submition failed ! ")

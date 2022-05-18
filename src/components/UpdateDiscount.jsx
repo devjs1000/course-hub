@@ -53,7 +53,9 @@ const UpdateDiscount = () => {
           setFormData({ discountType: " " });
           // console.log("res", res);
           toast.success("Discount updated succesfully ! ");
+
           document.getElementById("updateForm").reset();
+
         })
         .catch((err) => {
           console.log("err", err);

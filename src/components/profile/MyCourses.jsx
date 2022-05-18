@@ -33,7 +33,11 @@ function MyCourses() {
   const btnSectionStyles = `px-2 h-[3rem] flex items-center ${
     theme ? "bg-slate-800" : null
   }`;
+// <<<<<<< notification-mutation
   const cardContainerStyles = `flex min-h-screen  flex-wrap gap-6 justify-around ${
+// =======
+//   const cardContainerStyles = `grid sm:grid-cols-2 place-items-center lg:grid-cols-3 gap-6 justify-around ${
+// >>>>>>> master
     theme ? "bg-slate-800" : "bg-white"
   } overflow-scroll`;
 

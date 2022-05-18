@@ -7,20 +7,18 @@ import { useMutation, useQuery } from "@apollo/client";
 import toast from "react-hot-toast";
 
 export const CourseInfo = () => {
-
-
   const [inputField, setInputField] = useState("");
   const [data, setData] = useState([]);
   const [adminDeleteCourseById] = useMutation(adminDeleteCourseByIdMutation);
   const allCoursesData = useQuery(allCoursesQuery);
 
-console.log()
+  console.log();
 
   useEffect(() => {
-    if (allCoursesData.loading) return
+    if (allCoursesData.loading) return;
 
-    let tem = allCoursesData.data.courses
-    console.log(tem)
+    let tem = allCoursesData.data.courses;
+    console.log(tem);
 
     setData(tem);
   }, [allCoursesData.data]);
@@ -39,16 +37,16 @@ console.log()
           Authorization: token,
         },
       },
-    }).then((res)=>{
-      console.log("res",res);
-      toast.success("Course deleted succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
-    }).catch((err)=>{
-      console.log("err",err);
-      toast.error("Course deletion failed ! ")
-    });
+    })
+      .then((res) => {
+        console.log("res", res);
+        toast.success("Course deleted succesfully ! ");
+        allCoursesData.refetch();
+      })
+      .catch((err) => {
+        console.log("err", err);
+        toast.error("Course deletion failed ! ");
+      });
 
     const data = allCoursesData.filter((course) => {
       if (course.id !== c_id) return course;
@@ -59,7 +57,7 @@ console.log()
   };
 
   return (
-    <div className="bg-white w-full px-8 py-4">
+    <div className="bg-white w-full sm:px-8 p-2 sm:py-4">
       <div className="flex flex-col mt-4 border">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full sm:px-6 lg:px-8">
@@ -67,10 +65,10 @@ console.log()
               className="border-b px-4 py-4 bg-primary-color-dark
             text-white flex justify-between items-center"
             >
-              <h1 className="text-xl uppercase p-4 font-bold  ">
+              <h1 className="text-xl uppercase p-4 font-bold  order-2 ">
                 courses information
               </h1>
-              <div className="flex items-center bg-white px-4 text-gray-400 h-[50px] rounded-lg">
+              <div className="flex items-center bg-white order-1 px-4 text-gray-400 h-[50px] rounded-lg">
                 <Search className="text-2xl  " />
                 <input
                   type="text"
@@ -86,38 +84,38 @@ console.log()
                   <tr>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[5rem] whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       S No.
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Name
                     </th>
 
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Tutor
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Price
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       No. of Subscribers
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Delete Course
                     </th>

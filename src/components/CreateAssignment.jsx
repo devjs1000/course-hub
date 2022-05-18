@@ -26,9 +26,6 @@ export default ({ courseId, chapterId }) => {
       setFormData({});
       console.log("res",res);
       toast.success("Assignment created succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
     }).catch((err)=>{
       console.log("err",err);
       toast.error("Assignment creation failed ! ")

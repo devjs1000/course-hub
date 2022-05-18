@@ -49,16 +49,16 @@ export const StudentInfo = () => {
           Authorization: token,
         },
       },
-    }).then((res)=>{
-      console.log("res",res);
-      toast.success("User role updated succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
-    }).catch((err)=>{
-      console.log("err",err);
-      toast.error("User role updation failed ! ")
-    });
+    })
+      .then((res) => {
+        console.log("res", res);
+        toast.success("User role updated succesfully ! ");
+        allStudents.refetch();
+      })
+      .catch((err) => {
+        console.log("err", err);
+        toast.error("User role updation failed ! ");
+      });
   };
 
   const handleDeleteUser = async (e) => {
@@ -74,16 +74,16 @@ export const StudentInfo = () => {
           Authorization: token,
         },
       },
-    }).then((res)=>{
-      console.log("res",res);
-      toast.success("User deleted succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
-    }).catch((err)=>{
-      console.log("err",err);
-      toast.error("User deletion failed ! ")
-    });
+    })
+      .then((res) => {
+        console.log("res", res);
+        toast.success("User deleted succesfully ! ");
+        allStudents.refetch();
+      })
+      .catch((err) => {
+        console.log("err", err);
+        toast.error("User deletion failed ! ");
+      });
 
     let data = students.filter((user) => {
       if (user.id !== user_id) return user;
@@ -96,7 +96,7 @@ export const StudentInfo = () => {
   if (allStudents.loading) return <BoxLoading />;
 
   return (
-    <div className="bg-white w-full px-8 py-4">
+    <div className="bg-white w-full  px-2 sm:px-8  py-2 sm:py-4">
       <div className="flex flex-col mt-4 border">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full sm:px-6 lg:px-8">
@@ -104,10 +104,10 @@ export const StudentInfo = () => {
               className="border-b px-4 py-4 bg-primary-color-dark
             text-white flex justify-between items-center"
             >
-              <h1 className="text-xl uppercase p-4 font-bold  ">
+              <h1 className="text-xl uppercase order-2 p-4 font-bold  ">
                 student information
               </h1>
-              <div className="flex items-center bg-white px-4 text-gray-400 h-[50px] rounded-lg">
+              <div className="flex items-center bg-white order-1 px-4 text-gray-400 h-[50px] rounded-lg">
                 <Search className="text-2xl  " />
                 <input
                   type="text"
@@ -123,37 +123,37 @@ export const StudentInfo = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[5rem] whitespace-nowrap overflow-auto font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       S No.
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap overflow-auto font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap overflow-auto font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Email
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap overflow-auto font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Phone
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm  w-[10rem] whitespace-nowrap  font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Change Role
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      className="text-sm w-[10rem] whitespace-nowrap font-medium text-gray-900 px-6 py-4 text-left"
                     >
                       Delete Account
                     </th>

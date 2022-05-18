@@ -6,7 +6,7 @@ import {
   Journal,
   PersonLinesFill,
   BellFill,
-  CardList
+  CardList,
 } from "react-bootstrap-icons";
 export const Sidebar = () => {
   const menuItems = [
@@ -44,7 +44,7 @@ export const Sidebar = () => {
   ];
   return (
     <>
-      <div className="w-full  bg-white sticky top-[3.4rem] h-screen shadow-lg">
+      <div className="w-full absolute whitespace-nowrap sm:whitespace-wrap sm:block  flex gap-6 w-[100vw] top-0 left-0 overflow-auto sm:w-auto sm:static bg-white sticky top-[3.4rem] sm:h-screen shadow-lg">
         {Children.toArray(
           menuItems.map((a) => {
             return (

@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../../context/useStore";
-import {useQuery} from "@apollo/client"
-import { PeopleFill, Journal, PersonLinesFill, Projector, BagPlusFill,TicketFill,TicketPerforated } from "react-bootstrap-icons";
+import { useQuery } from "@apollo/client";
+import {
+  PeopleFill,
+  Journal,
+  PersonLinesFill,
+  Projector,
+  BagPlusFill,
+  TicketFill,
+  TicketPerforated,
+} from "react-bootstrap-icons";
 import { adminGetAllCountsQuery } from "../../graphql/Queries";
 
 export const AdminDashboard = () => {
-
   const token = localStorage.getItem("accessToken");
   const adminContext = {
     context: {
       headers: {
         Authorization: token,
       },
-    }
+    },
   };
-  const adminGetAllCounts = useQuery(adminGetAllCountsQuery,adminContext);
+  const adminGetAllCounts = useQuery(adminGetAllCountsQuery, adminContext);
   const [count, setCount] = useState({
     students: 0,
     teachers: 0,
@@ -26,10 +33,13 @@ export const AdminDashboard = () => {
   });
   const topIconDiv =
     "w-10 h-10 flex items-center justify-center text-white rounded-full text-2xl";
-  console.log("adminGetAllCounts",adminGetAllCounts);
-  console.log("adminGetAllCounts.data",adminGetAllCounts.data);
-  if (adminGetAllCounts && adminGetAllCounts.data ) {
-    console.log("adminGetAllCounts.data.adminGetAllCounts",adminGetAllCounts.data.adminGetAllCounts); 
+  console.log("adminGetAllCounts", adminGetAllCounts);
+  console.log("adminGetAllCounts.data", adminGetAllCounts.data);
+  if (adminGetAllCounts && adminGetAllCounts.data) {
+    console.log(
+      "adminGetAllCounts.data.adminGetAllCounts",
+      adminGetAllCounts.data.adminGetAllCounts
+    );
   }
   useEffect(() => {
     if (adminGetAllCounts && adminGetAllCounts.data) {
@@ -41,7 +51,7 @@ export const AdminDashboard = () => {
     <div>
       <h1 className="ml-8 mt-8 text-xl font-semibold">Dashboard</h1>
 
-      <div className="grid grid-cols-3 gap-x-10  m-8 ">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10  m-8 ">
         <div className="bg-blue-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-blue-200">
             <div className="p-2 rounded-full bg-blue-300">
@@ -58,7 +68,6 @@ export const AdminDashboard = () => {
           <div className="text-xl font-semibold flex mt-2">
             <h1 className="w-full text-center">Courses</h1>
           </div>
-          
         </div>
         <div className="bg-red-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-red-200">
@@ -76,7 +85,6 @@ export const AdminDashboard = () => {
           <div className="text-xl font-semibold flex mt-2">
             <h1 className="w-full text-center">Teachers</h1>
           </div>
-          
         </div>
         <div className="bg-green-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-green-200">
@@ -94,7 +102,6 @@ export const AdminDashboard = () => {
           <div className="flex text-xl mt-2 font-semibold ">
             <h1 className="w-full text-center">Students</h1>
           </div>
-          
         </div>
         <div className="bg-orange-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-green-200">
@@ -112,7 +119,6 @@ export const AdminDashboard = () => {
           <div className="flex text-xl mt-2 font-semibold ">
             <h1 className="w-full text-center">Projects</h1>
           </div>
-          
         </div>
         <div className="bg-yellow-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-green-200">
@@ -130,7 +136,6 @@ export const AdminDashboard = () => {
           <div className="flex text-xl mt-2 font-semibold ">
             <h1 className="w-full text-center">Orders</h1>
           </div>
-          
         </div>
         <div className="bg-gray-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-green-200">
@@ -148,7 +153,6 @@ export const AdminDashboard = () => {
           <div className="flex text-xl mt-2 font-semibold ">
             <h1 className="w-full text-center">Pending requests</h1>
           </div>
-          
         </div>
         <div className="bg-brown-300 flex justify-center items-center flex-col py-8 my-6 rounded-md">
           <div className="p-2 rounded-full bg-green-200">
@@ -166,7 +170,6 @@ export const AdminDashboard = () => {
           <div className="flex text-xl mt-2 font-semibold ">
             <h1 className="w-full text-center">Completed Requests</h1>
           </div>
-          
         </div>
       </div>
     </div>
