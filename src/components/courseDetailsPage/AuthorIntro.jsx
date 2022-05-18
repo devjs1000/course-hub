@@ -33,12 +33,12 @@ function AuthorIntro({id}) {
 					<p className="text-sm"></p>
 				</div>
 			</div>
-			<div className='flex w-[20%] justify-around'>
+			<div className='flex w-[20%] md:w-[10%] justify-around'>
 			<a href={details?.linkedIn} target='_blank'>
 			<Linkedin className='text-2xl cursor-pointer'/>
 			</a>
 			<a href={details?.gitub}>
-			<Github className='text-2xl cursor-pointer'/>
+			<Github className='text-2xl cursor-pointer' target='_blank'/>
 			</a>
 			</div>
 			<p>
