@@ -118,3 +118,4 @@ mutation DeleteBeneft($courseId: ID!, $benefitId: ID!) {
   deleteBeneft(courseId: $courseId, benefitId: $benefitId)
 }
 `
+
