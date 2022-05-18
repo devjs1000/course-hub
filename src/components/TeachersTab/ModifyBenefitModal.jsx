@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {updateBenefit} from '../../graphql/Mutations'
+import {getBenefits} from '../../graphql/Queries'
 import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
 
@@ -19,8 +20,8 @@ const [updateBeneft] = useMutation(updateBenefit, {
         Authorization: token,
       },
     },
+    refetchQueries:[getBenefits]
   });
-console.log()
 let handleSubmit = ()=>{
   if(name==''|| description==''){
     alert('please fill all fields!')
@@ -41,10 +42,13 @@ let handleSubmit = ()=>{
     }),
    {
      loading: 'Saving...',
-     success: <b>Benefit saved!</b>,
+     success: <b>Settings saved!</b>,
      error: <b>Could not save.</b>,
    }
  );
+  setTimeout(()=>{
+    setIsOpen(false)
+  },1500)
 }
 const customStyles = {
   content: {
@@ -79,7 +83,7 @@ const customStyles = {
           ></textarea>
           <div>
             <Button variant="contained" type='submit' >Submit</Button>
-            <Button variant="text" onClick={setIsOpen(false)}>Cancel</Button>
+            <Button variant="text" onClick={()=>setIsOpen(false)}>Cancel</Button>
           </div>
        </form>
       </Modal>
