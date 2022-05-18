@@ -24,7 +24,7 @@ const Footer = () => {
   if (nullPath.includes(path)) return null;
 
   //removed border from mainDiv and extracted the styles from stylesObject to here
-  const mainDiv = `bg-${theme ? "slate-800" : "white"} p-3 md:p-8 relative`;
+  const mainDiv = `bg-${theme ? "slate-800" : "white"} p-3 md:p-8 relative w-full`;
 
   return (
     <div className={mainDiv}>

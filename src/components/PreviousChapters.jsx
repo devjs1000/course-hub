@@ -41,7 +41,7 @@ const PreviousChapter = () => {
 
   const mainDivStyles = `${
     theme ? "bg-slate-800 text-white" : "bg-white"
-  } py-8 px-16`;
+  } py-8 px-2 overflow-hidden`;
 
   if (getChapters.loading) return <BoxLoading />;
   return (
