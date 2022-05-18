@@ -1,55 +1,27 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import TextField from '@mui/material/TextField';
+import { Plus } from "react-bootstrap-icons";
 import Button from '@mui/material/Button';
-import {updateBenefit} from '../../graphql/Mutations'
+import TextField from '@mui/material/TextField';
+import { useMutation} from "@apollo/client";
+import {addBenefit} from '../../graphql/Mutations'
 import {getBenefits} from '../../graphql/Queries'
-import { useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
 
-Modal.setAppElement('#root');
-
-export default function ModifyBenefitModal({isOpen,setIsOpen,selectedBenefit,id}) {
-let [name,setName] = useState(selectedBenefit.name)
-let [description,setDescription] = useState(selectedBenefit.description)
-const token = localStorage.getItem("accessToken");
-const [updateBeneft] = useMutation(updateBenefit, {
+const AddBenefits = ({id}) => {
+let [open,setOpen] = useState(false)
+let [name,setName] = useState('')
+let [description,setDescription] = useState('')
+const token = localStorage.getItem("accessToken");	
+ const [addBeneft] = useMutation(addBenefit, {
     context: {
       headers: {
         Authorization: token,
       },
     },
-    refetchQueries:[getBenefits]
+      refetchQueries:[getBenefits]
   });
-let handleSubmit = ()=>{
-  if(name==''|| description==''){
-    alert('please fill all fields!')
-    return;
-  }
-  console.log(selectedBenefit)
-  toast.promise(
-  updateBeneft({
-      headers: {
-        Authorization: token,
-      },
-      variables: {
-        courseId: id,
-        benefitId: selectedBenefit.benefitId,
-        name: name,
-        description : description
-      },
-    }),
-   {
-     loading: 'Saving...',
-     success: <b>Settings saved!</b>,
-     error: <b>Could not save.</b>,
-   }
- );
-  setTimeout(()=>{
-    setIsOpen(false)
-  },1500)
-}
 const customStyles = {
   content: {
     top: '50%',
@@ -62,16 +34,43 @@ const customStyles = {
     height:'60%',
   },
 };
-useEffect(() => {
-setName(selectedBenefit.name)
-setDescription(selectedBenefit.description)
-}, [selectedBenefit])
+const handleSubmit = ()=>{
+	if(name==''|| description==''){
+    alert('please fill all fields!')
+    return;
+  }
+  toast.promise(
+  addBeneft({
+      headers: {
+        Authorization: token,
+      },
+      variables: {
+        courseId: id,
+        name: name,
+        description : description
+      },
+    }),
+   {
+     loading: 'Saving...',
+     success: <b>Benefit saved!</b>,
+     error: <b>Could not save.</b>,
+   }
+ );
+  setTimeout(()=>{
+    setOpen(false)
+    setName('')
+    setDescription('')
+  },1500)
+}
   return (
-      <Modal
-        isOpen={isOpen}
+  	<div className='h-[50%] flex justify-end my-4'>
+         <Button variant="contained" color='secondary'
+          onClick={()=>setOpen(true)}><Plus/> Add </Button>
+  		<Modal
+        isOpen={open}
         onRequestClose={true}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Add Benefit"
       >
        <form className='flex flex-col justify-around h-full'
        onSubmit={(e)=>{
@@ -87,9 +86,13 @@ setDescription(selectedBenefit.description)
           ></textarea>
           <div>
             <Button variant="contained" type='submit' >Submit</Button>
-            <Button variant="text" onClick={()=>setIsOpen(false)}>Cancel</Button>
+            <Button variant="text" onClick={()=>setOpen(false)}>Cancel</Button>
           </div>
        </form>
       </Modal>
-  );
+  	</div>
+  	
+      )
 }
+
+export default AddBenefits

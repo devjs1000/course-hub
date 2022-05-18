@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavTabs from "../NavTabs";
 import BenTable from './BenTable'
 import ModifyBenefitModal from './ModifyBenefitModal'
-
+import AddBenefits from './AddBenefits'
 const Benefits = () => {
    const { user, theme } = useStore();
   const { id } = useParams();
@@ -21,6 +21,7 @@ const Benefits = () => {
   return (
     <div className={mainDivStyles}>
       <NavTabs id={id} />
+      <AddBenefits  id={id} />
       <BenTable id={id} setSelectedBenefit={setSelectedBenefit} setIsOpen={setIsOpen} isOpen={isOpen} />
       <ModifyBenefitModal isOpen={isOpen} setIsOpen={setIsOpen} selectedBenefit={selectedBenefit} id={id} />
     </div>
