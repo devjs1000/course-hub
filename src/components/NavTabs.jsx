@@ -8,7 +8,7 @@ const NavTabs = ({ id }) => {
   const linkStyle = `px-4 py-2 font-bold`;
   return (
     <div>
-      <nav className="flex gap-12 mb-8 bg-gray-200 text-[20px]">
+      <nav className="flex gap-8 mb-8 bg-gray-200 text-[20px]">
         <Link to={`/create-chapter/${id}`}>
           <h1
             className={`${linkStyle} ${
@@ -55,7 +55,7 @@ const NavTabs = ({ id }) => {
             Send Notification
           </h1>
         </Link>
-       <Link to={`/benefits/${id}`}>
+        <Link to={`/benefits/${id}`}>
           <h1
             className={`${linkStyle} ${
               activeTab === "benefits" ? activeStyle : ""
