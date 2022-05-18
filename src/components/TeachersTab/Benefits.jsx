@@ -22,7 +22,7 @@ const Benefits = () => {
     <div className={mainDivStyles}>
       <NavTabs id={id} />
       <BenTable id={id} setSelectedBenefit={setSelectedBenefit} setIsOpen={setIsOpen} isOpen={isOpen} />
-      <ModifyBenefitModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ModifyBenefitModal isOpen={isOpen} setIsOpen={setIsOpen} selectedBenefit={selectedBenefit} id={id} />
     </div>
   )
 }
