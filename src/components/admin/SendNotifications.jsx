@@ -71,9 +71,6 @@ export const SendNotifications = () => {
                         title:"",
                         about:"",
                         role:"undefined"});
-                    // setTimeout(() => {
-                    //   location.reload();
-                    // }, 3000);
                 }).catch((err)=>{
                 console.log("err",err);
                 toast.error("Sending notification failed ! ")
@@ -94,9 +91,6 @@ export const SendNotifications = () => {
                         title:"",
                         about:"",
                         role:"undefined"});
-                    // setTimeout(() => {
-                    //   location.reload();
-                    // }, 3000);
                 }).catch((err)=>{
                 console.log("err",err);
                 toast.error("Sending notification failed ! ")

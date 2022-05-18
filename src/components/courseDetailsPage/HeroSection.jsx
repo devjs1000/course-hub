@@ -96,9 +96,7 @@ function HeroSection({ course, id, isEnrolled }) {
       }).then((res)=>{
         console.log("res",res);
         toast.success("Course added into wishlist succesfully ! ");
-        setTimeout(() => {
-          location.reload();
-        }, 3000);
+        setCourseInWishlist((val) => !val);
       }).catch((err)=>{
         console.log("err",err);
         toast.error("Course addition into wishlist failed ! ")

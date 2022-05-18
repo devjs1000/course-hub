@@ -75,9 +75,6 @@ const SendNotificationAllStudents = () => {
             title: "",
             about: "",
           });
-          // setTimeout(() => {
-          //   location.reload();
-          // }, 3000);
         })
         .catch((err) => {
           console.log("err", err);

@@ -76,9 +76,6 @@ export default () => {
       setFormData({});
       console.log("res",res);
       toast.success("Course created succesfully ! ");
-      setTimeout(() => {
-        location.reload();
-      }, 3000);
     }).catch((err)=>{
       console.log("err",err);
       toast.error("Course creation failed ! ")
