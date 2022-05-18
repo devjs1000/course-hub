@@ -33,6 +33,7 @@ export const allPopularCoursesQuery = gql`
       teacherId
       subscribers
       noOfSubscribers
+      discount
     }
   }
 `;
@@ -51,6 +52,7 @@ export const myCousesQuery = gql`
       teacherId
       subscribers
       noOfSubscribers
+      discount
     }
   }
 `;
@@ -93,15 +95,13 @@ export const getMyWishlistsQuery = gql`
 `;
 
 export const getBenefits = gql`
-query ExampleQuery($courseId: ID!) {
-  getFullCourseDetails(courseId: $courseId) {
-    courseBenefits {
-      benefitId
-      name
-      description
+  query ExampleQuery($courseId: ID!) {
+    getFullCourseDetails(courseId: $courseId) {
+      courseBenefits {
+        benefitId
+        name
+        description
+      }
     }
   }
-}
-
-
-`
+`;
