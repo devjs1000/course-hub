@@ -9,10 +9,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {getBenefits} from '../../graphql/Queries'
+import {deleteBenefit} from '../../graphql/Mutations'
 import { Search, Trash, PencilSquare } from "react-bootstrap-icons";
 import Button from '@mui/material/Button';
 import { useMutation, useQuery } from "@apollo/client";
-
+import toast from "react-hot-toast";
+//styles only
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: '#c21e56',
@@ -31,7 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-
+//functional component
 export default function BenTable({id,setSelectedBenefit,isOpen,setIsOpen}) {
   let token =localStorage.getItem("accessToken")
   let {data} = useQuery(getBenefits, {
@@ -44,6 +46,33 @@ export default function BenTable({id,setSelectedBenefit,isOpen,setIsOpen}) {
       },
     },
   })
+  const [deleteBeneft] = useMutation(deleteBenefit, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+      refetchQueries:[getBenefits]
+  });
+
+  const handleDelete=(obj)=>{
+     toast.promise(
+  deleteBeneft({
+      headers: {
+        Authorization: token,
+      },
+      variables: {
+        courseId: id,
+        benefitId: obj.benefitId,
+      },
+    }),
+   {
+     loading: 'Deleting...',
+     success: <b>Benefit Deleted!</b>,
+     error: <b>Unable to Delete</b>,
+   }
+ );
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -74,6 +103,7 @@ export default function BenTable({id,setSelectedBenefit,isOpen,setIsOpen}) {
               <StyledTableCell align="right"><Button
               variant="contained" color="error" onClick={()=>{
                 setSelectedBenefit(obj)
+                handleDelete(obj)
               }}
               ><Trash/></Button></StyledTableCell>
             </StyledTableRow>
