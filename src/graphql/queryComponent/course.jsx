@@ -104,4 +104,52 @@ export const getBenefits = gql`
       }
     }
   }
-`;
+`
+
+export const getCourseDetails = gql`
+query CourseDetails($courseId: ID!) {
+  getFullCourseDetails(courseId: $courseId) {
+    courseDetails {
+      name
+      id
+      tagline
+      tags
+      category
+      price
+      discount
+      discountType
+      gst
+      netDiscount
+      netGst
+      netPrize
+      image
+      about
+      teacherId
+      subscribers
+      noOfSubscribers
+    }
+  }
+}
+`
+
+export const getTeacherDetails = gql`
+query CourseDetails($courseId: ID!) {
+  getFullCourseDetails(courseId: $courseId) {
+    teacherDetails {
+      name
+      id
+      image
+      email
+      description
+      phone
+      token
+      role
+      wishlist
+      github
+      linkedIn
+      password
+    }
+  }
+}
+`
+

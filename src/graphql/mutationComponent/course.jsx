@@ -110,19 +110,17 @@ export const addBenefit = gql`
     addBeneft(courseId: $courseId, name: $name, description: $description)
   }
 `
-=======
-// mutation AddBeneft($courseId: ID!, $name: String!, $description: String!) {
-//   addBeneft(courseId: $courseId, name: $name, description: $description)
-// }
-// `
-// export const updateBenefit = gql`
-// mutation UpdateBeneft($courseId: ID!, $benefitId: ID!, $name: String!, $description: String!) {
-//   updateBeneft(courseId: $courseId, benefitId: $benefitId, name: $name, description: $description)
-// }
-// `
-// export const deleteBenefit = gql`
-// mutation DeleteBeneft($courseId: ID!, $benefitId: ID!) {
-//   deleteBeneft(courseId: $courseId, benefitId: $benefitId)
-// }
-// `
+
+
+export const updateBenefit = gql`
+mutation UpdateBeneft($courseId: ID!, $benefitId: ID!, $name: String!, $description: String!) {
+  updateBeneft(courseId: $courseId, benefitId: $benefitId, name: $name, description: $description)
+}
+`
+export const deleteBenefit = gql`
+mutation DeleteBeneft($courseId: ID!, $benefitId: ID!) {
+  deleteBeneft(courseId: $courseId, benefitId: $benefitId)
+}
+`
+
 
