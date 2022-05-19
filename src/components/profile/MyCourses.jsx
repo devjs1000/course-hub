@@ -26,13 +26,18 @@ function MyCourses() {
   useEffect(() => {
     setMyCourses(data?.getMyCourses);
     refetch();
+    console.log(data?.getMyCourses);
   }, [data]);
 
   const mainContainerStyles = `px-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:px-16`;
   const btnSectionStyles = `px-2 h-[3rem] flex items-center ${
     theme ? "bg-slate-800" : null
   }`;
-  const cardContainerStyles = `grid sm:grid-cols-2 place-items-center lg:grid-cols-3 gap-6 justify-around ${
+// <<<<<<< notification-mutation
+  const cardContainerStyles = `flex min-h-screen  flex-wrap gap-6 justify-around ${
+// =======
+//   const cardContainerStyles = `grid sm:grid-cols-2 place-items-center lg:grid-cols-3 gap-6 justify-around ${
+// >>>>>>> master
     theme ? "bg-slate-800" : "bg-white"
   } overflow-scroll`;
 

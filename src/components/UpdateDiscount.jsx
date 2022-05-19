@@ -19,7 +19,7 @@ const UpdateDiscount = () => {
   const handleFloat = (e) => {
     let name = e.target.name;
     let value = parseFloat(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setFormData((val) => ({ ...val, [name]: value }));
   };
 
@@ -51,15 +51,16 @@ const UpdateDiscount = () => {
       })
         .then((res) => {
           setFormData({ discountType: " " });
-          console.log("res", res);
+          // console.log("res", res);
           toast.success("Discount updated succesfully ! ");
+
+          document.getElementById("updateForm").reset();
+
         })
         .catch((err) => {
           console.log("err", err);
           toast.error("Discount updation failed ! ");
         });
-
-      // document.getElementById("myForm").reset();
     } catch (err) {
       toast.error("Error occurred in updating discount");
     }
@@ -73,7 +74,7 @@ const UpdateDiscount = () => {
       <div className={mainDivStyles}>
         <NavTabs id={id} />
 
-        <form onSubmit={handleSubmit} className="space-y-4" id="myForm">
+        <form onSubmit={handleSubmit} className="space-y-4" id="updateForm">
           <FormControl
             label="discount"
             type="number"
