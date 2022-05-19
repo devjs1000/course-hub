@@ -7,8 +7,10 @@ import {
 	Award,
 	EmojiSmile,
 } from 'react-bootstrap-icons';
+import {getBenefits} from "../../../graphql/Queries";
+import {useQuery} from "@apollo/client";
 
-function Feature({ icon, title }) {
+function Feature({ icon, title,description }) {
 	return (
 		<div className=" flex flex-col text-center items-center gap-2 py-8 px-2 border-b sm:border-none shadow-sm lg:flex-row lg:text-left lg:px-4 lg:gap-4">
 			<div className="">
@@ -19,52 +21,45 @@ function Feature({ icon, title }) {
 			<div className="flex flex-col gap-1">
 				<h4 className="text-slate-900 font-semibold text-xl">{title}</h4>
 				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi,
-					temporibus.
+					{description}
 				</p>
 			</div>
 		</div>
 	);
 }
 
-function WhatYouGet({ className }) {
+function WhatYouGet({ className,id }) {
 	const iconClasses = `text-red-800 text-2xl mb-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] lg:text-xl`;
 	const features = [
-		{
-			title: 'Learn from top instructors',
-			icon: <PersonVideo3 className={iconClasses} />,
-		},
-		{
-			title: 'Personalized doubt session',
-			icon: <QuestionOctagon className={iconClasses} />,
-		},
-		{
-			title: 'Complete online course',
-			icon: <JournalCheck className={iconClasses} />,
-		},
-		{
-			title: 'Learn at your own pace',
-			icon: <Calendar4 className={iconClasses} />,
-		},
-		{
-			title: 'Earn a valuable credential',
-			icon: <Award className={iconClasses} />,
-		},
-		{
-			title: 'Get a charming career',
-			icon: <EmojiSmile className={iconClasses} />,
-		},
+		<PersonVideo3 className={iconClasses} />,
+ <QuestionOctagon className={iconClasses} />,
+ <JournalCheck className={iconClasses} />,
+ <Calendar4 className={iconClasses} />,
+ <Award className={iconClasses} />,
+ <EmojiSmile className={iconClasses} />,
 	];
-
+	const token = localStorage.getItem("accessToken");
+	const { loading, data, error } = useQuery(getBenefits, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+    variables: {
+     courseId:id
+    },
+  });
+	console.log(data?.getFullCourseDetails.courseBenefits)
+	let list = data?.getFullCourseDetails?.courseBenefits
 	const asideClasses = `${className} text-gray-500`;
+	let i=-1
 	return (
 		<aside className={asideClasses}>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1">
-				{Children.toArray(
-					features.map(feature => {
-						return <Feature icon={feature.icon} title={feature.title} />;
-					}),
-				)}
+				{Children.toArray(list?.map(obj=>{
+					i++
+					return <Feature icon={features[i]} title={obj.name} description={obj.description}/>
+				}))}
 			</div>
 		</aside>
 	);

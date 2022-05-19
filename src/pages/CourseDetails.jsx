@@ -48,7 +48,7 @@ const CourseDetails = () => {
           <DetailsReview />
           <FAQ />
         </div>
-        <WhatYouGet className="lg:col-start-5 lg:col-end-[-1] lg:order-2" />
+        <WhatYouGet className="lg:col-start-5 lg:col-end-[-1] lg:order-2" id={id} />
       </div>
     </>
   );
