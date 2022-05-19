@@ -133,7 +133,7 @@ query CourseDetails($courseId: ID!) {
 `
 
 export const getTeacherDetails = gql`
-query CourseDetails($courseId: ID!) {
+query GetFullCourseDetails($courseId: ID!) {
   getFullCourseDetails(courseId: $courseId) {
     teacherDetails {
       name
@@ -147,9 +147,9 @@ query CourseDetails($courseId: ID!) {
       wishlist
       github
       linkedIn
-      password
     }
   }
 }
+
 `
 
