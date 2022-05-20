@@ -149,20 +149,7 @@ const Profile = () => {
               <h4 className="bg-gray-50 p-2 font-semibold text-center">
                 Notifications
               </h4>
-              <div className="flex flex-col gap-1">
-                {/* notification start */}
-                <div className="relative px-4 py-1 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:bg-red-400">
-                  Lorem ipsum dolor sit amet.
-                </div>
-                <div className="relative px-4 py-1 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:bg-green-400">
-                  Lorem ipsum dolor sit amet.
-                </div>
-                <div className="relative px-4 py-1 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:bg-red-400">
-                  Lorem ipsum dolor sit amet.
-                </div>
-                {/* notification end */}
               </div>
-            </div>
           </nav>
           <div className="bg-white  lg:m-3 h-full   z-[1000]">
             <Outlet />
