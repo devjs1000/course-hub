@@ -1,10 +1,12 @@
 import { Children } from "react";
 
 const SkillBadge = ({ tags }) => {
+    let tagItem = tags[0].split(',')
+  console.log(tagItem)
   return (
     <div className="flex items-center justify-center gap-4 flex-wrap py-4">
       {Children.toArray(
-        tags?.map((tag) => {
+        tagItem?.map((tag) => {
           return (
             <span className="bg-slate-200 py-1 px-3 rounded-full text-gray-800 text-sm">
               {tag}
@@ -22,6 +24,7 @@ function CourseSkills({ tags }) {
       <h2 className="font-semibold text-md uppercase text-left">
         Skills you will gain
       </h2>
+
       <SkillBadge tags={tags} />
     </section>
   );

@@ -5,6 +5,7 @@ import {Linkedin,Github} from "react-bootstrap-icons";
 function AuthorIntro({id}) {
 	const backgroundImage = `h-28 w-28 border rounded-full bg-no-repeat bg-cover bg-center outline-offset-2 outline outline-slate-300`;
 	const token = localStorage.getItem("accessToken");
+	console.log(id)
   const { loading, data, error } = useQuery(getTeacherDetails, {
     context: {
       headers: {

@@ -12,41 +12,31 @@ import DetailsReview from "../components/courseDetailsPage/details/DetailsReview
 import FAQ from "../components/courseDetailsPage/FAQ";
 
 import { useQuery } from "@apollo/client";
-import { getCourseByIdQuery } from "../graphql/Queries";
+import { getCourseDetails } from "../graphql/Queries";
 import { Navigate } from "react-router-dom";
 
 const CourseDetails = () => {
   const { allCoursesData } = useStore();
-  const [current, setCurrent] = useState({});
+  // const [current, setCurrent] = useState({});
   const [courseLoading, setCourseLoading] = useState(true);
   const [notFound, setNotFound] = useState(true);
   const { id, isEnrolled } = useParams();
+  const token = localStorage.getItem("accessToken");
 
-  const currentCourse = useQuery(getCourseByIdQuery,{
+  const {data,loading,error} = useQuery(getCourseDetails,{
+     context: {
+      headers: {
+        Authorization: token,
+      },
+    },
     variables :{
       courseId:id
     }
   })
-
-  useEffect(() => {
-    const data = allCoursesData.find((course) => course.id == id);
-    if (data) {
-      setCurrent(data);
-      setCourseLoading(false);
-    }
-    else if (currentCourse?.data?.courseById) {
-      setCurrent(currentCourse?.data?.courseById);
-      setCourseLoading(false);
-    }
-    else if (currentCourse?.error) {
-      setNotFound(true);
-      setCourseLoading(false);
-      console.log('course not found');
-    }
-    else {
-      setCourseLoading(false);
-    }
-  });
+  console.log(data?.getFullCourseDetails?.courseDetails)
+   let current = data?.getFullCourseDetails?.courseDetails
+  if(loading) return 'loading...'
+  if(error) return 'some error occured'
   return (
     <>
       <HeroSection course={current} id={id} isEnrolled={isEnrolled}/>
@@ -58,7 +48,7 @@ const CourseDetails = () => {
           <DetailsReview />
           <FAQ />
         </div>
-        <WhatYouGet className="lg:col-start-5 lg:col-end-[-1] lg:order-2" />
+        <WhatYouGet className="lg:col-start-5 lg:col-end-[-1] lg:order-2" id={id} />
       </div>
     </>
   );

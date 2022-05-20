@@ -112,7 +112,7 @@ function HeroSection({ course, id, isEnrolled }) {
         <img className='-z-10 lg:hidden h-full w-full absolute object-cover ' src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
         <div className="flex flex-col lg:items-start lg:w-full py-8 sm:rounded-xl ">
           <div className="mb-7">
-            <h1 className="text-4xl font-bold text-white uppercase tracking-wide">
+            <h1 className="text-4xl font-bold text-white text-center uppercase tracking-wide">
               {course?.name}
             </h1>
             <p className="text-xl text-white">{course?.tagline}</p>
