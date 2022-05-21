@@ -41,14 +41,14 @@ const PreviousChapter = () => {
 
   const mainDivStyles = `${
     theme ? "bg-slate-800 text-white" : "bg-white"
-  } py-8 px-2 overflow-hidden`;
+  } py-8 px-16 overflow-hidden`;
 
   if (getChapters.loading) return <BoxLoading />;
   return (
     <>
       <div className={mainDivStyles}>
         <NavTabs id={id} />
-        <div className="bg-white w-full px-8 py-4">
+        <div className="bg-white w-full py-4">
           <div className="flex flex-col mt-4 border">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full sm:px-6 lg:px-8">
