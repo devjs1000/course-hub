@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 
 const NavTabs = ({ id }) => {
   const activeTab = window.location.pathname.split("/")[1];
-
   const activeStyle = `border-b-4 border-red-500`;
-  const linkStyle = `px-4 py-2 font-bold`;
+  const linkStyle = `px-4 py-4 font-bold text-md`;
   return (
     <div>
-
-      <nav className="flex gap-12 mb-8 bg-gray-200 text-[20px] overflow-scroll">
-
+      <nav className="flex justify-center items-center gap-12 bg-gray-200 mb-8 text-[18px]">
         <Link to={`/create-chapter/${id}`}>
           <h1
             className={`${linkStyle} ${
