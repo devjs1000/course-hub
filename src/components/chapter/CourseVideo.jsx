@@ -7,6 +7,7 @@ import axios from "axios";
 
 const CourseVideo = ({ closeModal, chapters, courseName, courseId }) => {
   const [nextVideos, setNextVideos] = useState(videos);
+  const vdsrc = useRef(null);
   const [current, setCurrent] = useState({
     vidPoster:
       "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700",
@@ -41,7 +42,7 @@ const CourseVideo = ({ closeModal, chapters, courseName, courseId }) => {
     //  responseType: "blob",
 
     const { data } = await axios.get(
-      `${s3Url}/getVideo/${key}`,
+      `${s3Url}/getVideo/${courseId || "courseId"}/${key}`,
       // `${s3Url}/s3/get/video/${key}/${courseId}/`,
       {
         headers: {
@@ -51,8 +52,16 @@ const CourseVideo = ({ closeModal, chapters, courseName, courseId }) => {
       }
     );
     console.log(data);
+    vdsrc.current.src = URL.createObjectURL(new Blob(data));
     return data;
   };
+
+  useEffect(() => {
+    if (current && current.src) {
+      getFileStream(current.src);
+    }
+  }, [current]);
+
   console.log("chapters", chapters);
   return (
     <>
@@ -60,7 +69,7 @@ const CourseVideo = ({ closeModal, chapters, courseName, courseId }) => {
         <div className="w-full flex flex-wrap p-1 py-2">
           <div className="w-full md:w-8/12">
             <VideoPlayer
-              vidSrc={getFileStream(current.src)}
+              vidSrc={vdsrc}
               title={current.title}
               vidPoster={current.vidPoster}
               description={current.description}

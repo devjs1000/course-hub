@@ -12,7 +12,7 @@ export default ({
     <>
       <div className=" h-auto w-full md:p-3">
         <video
-          src={vidSrc}
+          ref={vidSrc}
           poster={vidPoster}
           controls={true}
           className="w-full min-h-[50vh] max-h-[60vh] md:min-h[80vh] md:max-h-[80vh]"
@@ -28,4 +28,3 @@ export default ({
     </>
   );
 };
-
