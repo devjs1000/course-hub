@@ -77,7 +77,7 @@ export const getCourseByIdQuery = gql`
 `;
 
 export const getChaptersQuery = gql`
-  query Chapters($courseId: ID) {
+  query Chapters($courseId: String!) {
     chapters(courseId: $courseId) {
       name
       video
@@ -104,52 +104,60 @@ export const getBenefits = gql`
       }
     }
   }
-`
+`;
 
 export const getCourseDetails = gql`
-query CourseDetails($courseId: ID!) {
-  getFullCourseDetails(courseId: $courseId) {
-    courseDetails {
-      name
-      id
-      tagline
-      tags
-      category
-      price
-      discount
-      discountType
-      gst
-      netDiscount
-      netGst
-      netPrize
-      image
-      about
-      teacherId
-      subscribers
-      noOfSubscribers
+  query CourseDetails($courseId: ID!) {
+    getFullCourseDetails(courseId: $courseId) {
+      courseDetails {
+        name
+        id
+        tagline
+        tags
+        category
+        price
+        discount
+        discountType
+        gst
+        netDiscount
+        netGst
+        netPrize
+        image
+        about
+        teacherId
+        subscribers
+        noOfSubscribers
+      }
     }
   }
-}
-`
+`;
 
 export const getTeacherDetails = gql`
-query GetFullCourseDetails($courseId: ID!) {
-  getFullCourseDetails(courseId: $courseId) {
-    teacherDetails {
-      name
-      id
-      image
-      email
-      description
-      phone
-      token
-      role
-      wishlist
-      github
-      linkedIn
+  query GetFullCourseDetails($courseId: ID!) {
+    getFullCourseDetails(courseId: $courseId) {
+      teacherDetails {
+        name
+        id
+        image
+        email
+        description
+        phone
+        token
+        role
+        wishlist
+        github
+        linkedIn
+      }
     }
   }
-}
+`;
 
-`
-
+export const enrolledStudentsQuery = gql`
+  query EnrolledStudents($courseId: String!) {
+    enrolledStudents(courseId: $courseId) {
+      id
+      name
+      email
+    }
+  }
+`;

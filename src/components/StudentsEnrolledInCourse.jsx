@@ -4,7 +4,8 @@ import useStore from "../context/useStore";
 import NavTabs from "./NavTabs";
 import { Tag, CardText, BackspaceFill } from "react-bootstrap-icons";
 import { notifySpecificStudentMutation } from "../graphql/Mutations";
-import { useMutation } from "@apollo/client";
+import { enrolledStudentsQuery } from "../graphql/Queries";
+import { useMutation, useQuery } from "@apollo/client";
 import Button from "../UI/Button";
 import toast from "react-hot-toast";
 
@@ -15,17 +16,25 @@ const StudentsEnrolledInCourse = () => {
     about: "",
   });
   const [currentStudentId, setCurrentStudentId] = useState("");
-  const { theme, myCourses } = useStore();
+  const { theme } = useStore();
   const { id } = useParams();
   const [notifySpecificStudent] = useMutation(notifySpecificStudentMutation);
 
-  const getAllSubscribers = () => {};
+  const enrolledStudentsData = useQuery(enrolledStudentsQuery, {
+    context: {
+      headers: {
+        Authorization: localStorage.getItem("accessToken"),
+      },
+    },
+    variables: {
+      courseId: id,
+    },
+  });
 
   useEffect(() => {
-    let course = myCourses.filter((c) => c.id === id);
-    setSubscribers(course[0]?.subscribers);
-    // console.log(course[0]?.subscribers);
-  }, [myCourses]);
+    if (enrolledStudentsData.loading) return;
+    setSubscribers(enrolledStudentsData.data.enrolledStudents);
+  }, [enrolledStudentsData.data]);
 
   const getNotificationdata = (e) => {
     const name = e.target.name;
@@ -99,7 +108,7 @@ const StudentsEnrolledInCourse = () => {
   return (
     <div className={`${mainDivStyles}`}>
       <NavTabs id={id} />
-      <div className="bg-white w-full px-8 py-4">
+      <div className="bg-white w-full py-4">
         <div className="flex flex-col mt-4 border">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full sm:px-6 lg:px-8">
@@ -131,6 +140,12 @@ const StudentsEnrolledInCourse = () => {
                         scope="col"
                         className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                       >
+                        Email
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                      >
                         Send Notification
                       </th>
                     </tr>
@@ -142,18 +157,21 @@ const StudentsEnrolledInCourse = () => {
                           className={`${
                             idx % 2 == 0 ? "bg-gray-100" : "bg-white"
                           } border-b`}
-                          key={subscriber}
+                          key={subscriber.id}
                         >
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {idx + 1}
                           </td>
 
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {subscriber}
+                            {subscriber.name}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {subscriber.email}
                           </td>
                           <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
                             <button
-                              id={subscriber}
+                              id={subscriber.id}
                               onClick={(e) => setCurrentStudentId(e.target.id)}
                               className="bg-blue-500 flex justify-evenly
                             items-center p-2 font-bold
