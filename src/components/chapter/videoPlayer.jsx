@@ -1,4 +1,5 @@
 import { Clock } from "react-bootstrap-icons";
+import { useEffect, useState } from "react";
 export default ({
   vidSrc,
   title,
@@ -8,6 +9,7 @@ export default ({
   vidPoster,
 }) => {
   console.table({ vidSrc, title });
+
   return (
     <>
       <div className=" h-auto w-full md:p-3">

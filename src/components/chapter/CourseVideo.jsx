@@ -28,7 +28,7 @@ const CourseVideo = ({ closeModal, chapters, courseName, courseId }) => {
     });
   }
   const getFileStream = async (key) => {
-    const s3Url = false
+    const s3Url = true
       ? "https://xcite-file-server-s3.herokuapp.com"
       : "http://localhost:8000";
     const token = localStorage.getItem("accessToken");
@@ -51,8 +51,13 @@ const CourseVideo = ({ closeModal, chapters, courseName, courseId }) => {
         responseType: "arraybuffer",
       }
     );
-    console.log(data);
-    vdsrc.current.src = URL.createObjectURL(new Blob(data));
+
+    const blob = new Blob([data]);
+    let durl = URL.createObjectURL(blob);
+    let rurl = await axios.get(durl);
+    vdsrc.current.src = rurl.data;
+    console.log(rurl);
+    console.log(vdsrc.current.src);
     return data;
   };
 
