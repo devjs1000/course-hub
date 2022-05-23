@@ -16,7 +16,7 @@ import { getCourseDetails } from "../graphql/Queries";
 import { Navigate } from "react-router-dom";
 
 const CourseDetails = () => {
-  const { allCoursesData } = useStore();
+  const { allCoursesData,theme } = useStore();
   // const [current, setCurrent] = useState({});
   const [courseLoading, setCourseLoading] = useState(true);
   const [notFound, setNotFound] = useState(true);

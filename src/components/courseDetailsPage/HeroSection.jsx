@@ -108,9 +108,9 @@ function HeroSection({ course, id, isEnrolled }) {
   // { backgroundImage: `url(${course?.image})` }
   return (
     <>
-      <div className="relative h-auto overflow-hidden flex flex-col justify-between items-center px-16 lg:flex-row lg:h-[60vh] md:gap-4">
+      <div className="relative h-auto overflow-hidden flex flex-col lg:flex-row justify-between items-center px-16 lg:flex-row lg:h-[60vh] md:gap-4">
         <img className='-z-10 lg:hidden h-full w-full absolute object-cover ' src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
-        <div className="flex flex-col lg:items-start lg:w-full py-8 sm:rounded-xl ">
+        <div className="flex flex-col lg:items-start py-8 sm:rounded-xl lg:ml-32">
           <div className="mb-7">
             <h1 className="text-4xl font-bold text-white text-center uppercase tracking-wide">
               {course?.name}
@@ -131,6 +131,7 @@ function HeroSection({ course, id, isEnrolled }) {
                 })
               )}
             </div>
+
             {isSubcribed ? (
               <Button isPrimary={true} onClick={openCourseHandler}>
                 Get started
@@ -153,10 +154,10 @@ function HeroSection({ course, id, isEnrolled }) {
           </div>
         </div>
         <div className='mb-4'>
-        <div className=' w-[100%] h-full'>
+        <div className=' w-[100%] h-full relative'>
         <img className='lg:block hidden w-full' src={course?.image=='IMG_20220321_121445.jpg' || course?.image==undefined || course?.image=='lukas-NLSXFjl_nhc-unsplash.jpg' ? noImagePlaceHolder : course?.image} alt="course-image object-fit" />
         <span 
-          className="bg-[#fc2340] mb-4 px-4 py-1 rounded-sm text-white text-xl lg:w-[25%]"
+          className="bg-[#fc2340] mb-4 px-4 py-1 lg:absolute lg:right-0 lg:bottom-2 rounded-sm text-white text-xl lg:w-[25%]"
           >
           <strong>
             ₹
