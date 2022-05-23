@@ -34,7 +34,7 @@ function MyCourses() {
     theme ? "bg-slate-800" : null
   }`;
 // <<<<<<< notification-mutation
-  const cardContainerStyles = `flex min-h-screen  flex-wrap gap-6 justify-around ${
+  const cardContainerStyles = `grid grid-cols-3 gap-6 justify-around ${
 // =======
 //   const cardContainerStyles = `grid sm:grid-cols-2 place-items-center lg:grid-cols-3 gap-6 justify-around ${
 // >>>>>>> master
