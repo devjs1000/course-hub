@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 const useAuthHook = () => {
   const { setUser, setUserLoading } = useStore();
   const [signupFunction] = useMutation(signupMutation);
-  const [loginFunction] = useMutation(loginMutation);
+  const [createLogin] = useMutation(loginMutation);
 
   /* Signup Function */
   const signup = async (inputs) => {
@@ -30,8 +30,11 @@ const useAuthHook = () => {
   /* Login Function */
   const login = async (inputs) => {
     setUserLoading(true);
+    console.log(inputs)
     try {
-      const response = await loginFunction({ variables: inputs });
+      const response = await createLogin({ variables: {  "email": inputs.email,
+      "password": inputs.password
+    } });
       console.log(response)
       if (response?.data.createLogin.token!=='false') {
         setUser(response.data.createLogin.userData);
@@ -45,7 +48,7 @@ const useAuthHook = () => {
 
       }
     } catch (err) {
-
+      toast.error("Please fill both the fields correctly")
       console.log(err);
       setUserLoading(false);
     }

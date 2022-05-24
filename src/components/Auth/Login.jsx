@@ -28,6 +28,7 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
+    console.log(loginData)
     login(loginData);
   };
 
