@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useStore from "../../context/useStore";
-import { Search, Trash, PencilSquare, Handbag } from "react-bootstrap-icons";
+import { Search, Trash, PencilSquare, ArrowClockwise } from "react-bootstrap-icons";
 import { useMutation, useQuery } from "@apollo/client";
 import {
   adminDeleteUserByIdMutation,
@@ -113,6 +113,13 @@ export const TeacherInfo = () => {
                   className="px-2   bg-transparent outline-none"
                   onChange={(e) => setInputField(e.target.value)}
                 />
+              </div>
+              <div className="order-3 p-2">
+                <ArrowClockwise 
+                className="text-2xl cursor-pointer hover:rotate-45 ease-in-out duration-300" 
+                onClick={()=>{
+                  allTeachers.refetch()
+                  }}/>
               </div>
             </div>
             <div className="overflow-scroll max-h-[470px]">
