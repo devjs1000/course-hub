@@ -84,6 +84,7 @@ export const userNotifications = gql`
       targetType
       target
       id
+      createdAt
     }
   }
 `;

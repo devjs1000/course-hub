@@ -4,7 +4,28 @@ import noImagePlaceHolder from "../../images/noImagePlaceHolder.png";
 import useStore from "../../context/useStore";
 import { useQuery } from "@apollo/client";
 
-const Notification = ({ title, about, image }) => {
+const Notification = ({ title, about, image, publishedOn }) => {
+  const date1 = new Date(publishedOn);
+  const date2 = new Date();
+  const diffTime = Math.abs(date2 - date1);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+  const diffHours = Math.ceil( ( diffTime / (1000 * 60 * 60)) % 24); 
+  const diffMinuites = Math.ceil( (diffTime / (1000 * 60) ) % 60);
+  // console.log(diffTime + " milliseconds");
+  // console.log(diffDays + " days");
+  // console.log(diffHours + " hours");
+  // console.log(diffMinuites + " minuits");
+  let agoText = '';
+  if (diffMinuites > 0) {
+    agoText = diffMinuites + ' minutes ago';
+  }
+  if (diffHours > 0) {
+    agoText = diffHours + ' hours ago';
+  }
+  if (diffDays > 0) {
+    agoText = diffDays + ' days ago';
+  }
+  console.log("agoText",agoText);
   return (
     <div className="flex flex-col items-center gap-4 p-2 shadow-sm sm:flex-row sm:shadow-none">
       <div className="w-full sm:flex-[0.1]">
@@ -21,7 +42,7 @@ const Notification = ({ title, about, image }) => {
           {about}
         </p>
 
-        <span>2 days ago</span>
+        <span>{agoText}</span>
       </div>
     </div>
   );
@@ -45,7 +66,7 @@ function Notifications() {
     data?.usersNotifications.map((obj) => {
       console.log(obj);
       return (
-        <Notification title={obj.title} about={obj.about} image={obj.image} />
+        <Notification title={obj.title} about={obj.about} image={obj.image} publishedOn={obj.createdAt}/>
       );
     })
   );

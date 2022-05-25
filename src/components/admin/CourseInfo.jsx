@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useStore from "../../context/useStore";
-import { FileEarmarkArrowDownFill, Search, Trash } from "react-bootstrap-icons";
+import { FileEarmarkArrowDownFill, Search, Trash, ArrowClockwise } from "react-bootstrap-icons";
 import { adminDeleteCourseByIdMutation } from "../../graphql/Mutations";
 import { allCoursesQuery } from "../../graphql/Queries";
 import { useMutation, useQuery } from "@apollo/client";
@@ -77,6 +77,13 @@ export const CourseInfo = () => {
                   onChange={(e) => setInputField(e.target.value)}
                 />
               </div>
+              <div className="order-3 p-2">
+                <ArrowClockwise 
+                className="text-2xl cursor-pointer hover:rotate-45 ease-in-out duration-300" 
+                onClick={()=>{
+                  allCoursesData.refetch()
+                  }}/>
+              </div>
             </div>
             <div className="overflow-scroll  max-h-[470px]">
               <table className="min-w-full relative">
@@ -135,9 +142,8 @@ export const CourseInfo = () => {
                     ?.map((course, idx) => {
                       return (
                         <tr
-                          className={`${
-                            idx % 2 == 0 ? "bg-gray-100" : "bg-white"
-                          } border-b`}
+                          className={`${idx % 2 == 0 ? "bg-gray-100" : "bg-white"
+                            } border-b`}
                           key={course.id}
                         >
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
