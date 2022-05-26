@@ -8,11 +8,12 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { submitMyProject } from "../../graphql/Mutations";
 import toast from "react-hot-toast";
-
+import BoxLoading from '../../UI/BoxLoading'
 Modal.setAppElement("#root");
 
 const ConditionalLink = ({ children, to, condition }) =>
   condition && to ? <Link to={to}>{children}</Link> : <>{children}</>;
+
 const Chapters = () => {
   const token = localStorage.getItem("accessToken");
   const [modalData, setModalData] = useState({
@@ -22,9 +23,11 @@ const Chapters = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [chapterList, setChapterList] = useState([]);
   let { id } = useParams();
+  console.log(id,token);
   let { user, theme, setCurrentCourseId } = useStore();
   let fileData;
-  const { data: chapters, refetch } = useQuery(getChaptersQuery, {
+
+  const { data: chapters, refetch,loading,error } = useQuery(getChaptersQuery, {
     variables: {
       courseId: id,
     },
@@ -34,6 +37,8 @@ const Chapters = () => {
       },
     },
   });
+
+
   const [submitProject] = useMutation(submitMyProject, {
     variables: {
       chapterId: modalData.chapterId,
@@ -60,23 +65,41 @@ const Chapters = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    submitProject({
-      headers: {
-        Authorization: token,
-      },
-      variables: {
-        chapterId: modalData.chapterId,
-        courseId: id,
-        projectLink: fileData,
-      },
-    }).then((res)=>{
-      console.log("res",res);
-      toast.success("Project submited succesfully ! ");
-      refetch();
-    }).catch((err)=>{
-      console.log("err",err);
-      toast.error("Project submition failed ! ")
-    });
+    // submitProject({
+    //   headers: {
+    //     Authorization: token,
+    //   },
+    //   variables: {
+    //     chapterId: modalData.chapterId,
+    //     courseId: id,
+    //     projectLink: fileData,
+    //   },
+    // }).then((res)=>{
+    //   console.log("res",res);
+    //   toast.success("Project submited succesfully ! ");
+    //   refetch();
+    // }).catch((err)=>{
+    //   console.log("err",err);
+    //   toast.error("Project submition failed ! ")
+    // });
+
+    toast.promise(
+      submitProject({
+        headers: {
+          Authorization: token,
+        },
+        variables: {
+          chapterId: modalData.chapterId,
+          courseId: id,
+          projectLink: fileData,
+        },
+      }),
+       {
+         loading: 'Saving...',
+         success: <b>Settings saved!</b>,
+         error: <b>Could not save.</b>,
+       }
+     );
 
   };
 
@@ -130,6 +153,8 @@ const Chapters = () => {
   let modalStyles = `flex w-full h-full justify-center items-center ${
     theme ? "bg-slate-800 text-white" : "bg-white"
   }`;
+  if(error) return 'error' 
+  if(loading) return 
   return (
     <div className={mainDivStyles}>
       <h1 className="text-4xl font-bold">Chapters</h1>
