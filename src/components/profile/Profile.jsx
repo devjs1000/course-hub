@@ -145,10 +145,6 @@ const Profile = () => {
             </div>
 
             <div className={notificationCardClasses}>
-              f
-              <h4 className="bg-gray-50 p-2 font-semibold text-center">
-                Notifications
-              </h4>
               </div>
           </nav>
           <div className="bg-white  lg:m-3 h-full   z-[1000]">

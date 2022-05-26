@@ -77,15 +77,17 @@ export const getCourseByIdQuery = gql`
 `;
 
 export const getChaptersQuery = gql`
-  query Chapters($courseId: String!) {
-    chapters(courseId: $courseId) {
-      name
-      video
-      project
-      about
-      id
-    }
+query Courses($courseId: ID) {
+  chapters(courseId: $courseId) {
+    id
+    teacherId
+    courseId
+    name
+    video
+    about
+    project
   }
+}
 `;
 
 export const getMyWishlistsQuery = gql`
