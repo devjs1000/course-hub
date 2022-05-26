@@ -8,6 +8,7 @@ import {getAnswerQuery} from '../../graphql/Queries'
 import {createAnswerMutation} from '../../graphql/Mutations'
 import { useQuery,useMutation } from "@apollo/client";
 import toast from "react-hot-toast";
+import BoxLoading from "../../UI/BoxLoading";
 
 const Category = ({ question, category,id }) => {
   const {posts,setPosts} = useStore()
@@ -42,7 +43,7 @@ const Category = ({ question, category,id }) => {
 
 
 
-if(loading) return 'loading...'
+if(loading) return <BoxLoading/>
   const submitAnswer = e=>{
     e.preventDefault()
     toast.promise(
