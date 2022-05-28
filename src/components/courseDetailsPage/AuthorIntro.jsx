@@ -19,7 +19,7 @@ function AuthorIntro({id}) {
   // console.log(data.getFullCourseDetails.teacherDetails)
   let details=data?.getFullCourseDetails.teacherDetails
 	return (
-		<section className="mt-24 h-" id="instructor">
+		<section className="mt-24 h-[50%] overflow-hidden flex flex-col justify-around" id="instructor">
 			<h2 className="uppercase font-semibold text-lg">Instructor</h2>
 
 			<div className="my-4 flex items-center gap-6">
