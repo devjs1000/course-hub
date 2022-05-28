@@ -27,6 +27,7 @@ const AskQuestionComponent = ({refetch}) => {
        </div>
         <button className="flex items-center text-slate-700 border border-2 border-slate-400 px-2 bg-white "
         onClick={()=>{
+          console.log();
           if(localStorage.getItem('accessToken')) setOpen(true)
           else{
         toast((t) => (
