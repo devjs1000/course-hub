@@ -30,7 +30,7 @@ const ReviewBox = ({ className }) => {
 function DetailsReview() {
 	return (
 		<section className="mt-24" id="reviews">
-			<h2 className="uppercase font-semibold text-lg">
+			{/* <h2 className="uppercase font-semibold text-lg">
 				Top reviews from the course
 			</h2>
 			<div className="my-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -38,7 +38,7 @@ function DetailsReview() {
 				<ReviewBox className="lg:col-span-2" />
 				<ReviewBox className="lg:col-span-2" />
 				<ReviewBox />
-			</div>
+			</div> */}
 		</section>
 	);
 }
