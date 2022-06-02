@@ -15,6 +15,7 @@ import {
 import { Heart, HeartFill } from "react-bootstrap-icons";
 import toast from "react-hot-toast";
 import noImagePlaceHolder from '../../images/noImagePlaceHolder.png'
+import RefundBtn from "./RefundBtn";
 
 function HeroSection({ course, id, isEnrolled }) {
   const [courseInWishlist, setCourseInWishlist] = useState(false);
@@ -152,6 +153,7 @@ function HeroSection({ course, id, isEnrolled }) {
               {courseInWishlist && <HeartFill className="text-red-600" />}
             </div>
           </div>
+          <RefundBtn/>
         </div>
         <div className='mb-4'>
         <div className=' w-[100%] h-full relative'>
