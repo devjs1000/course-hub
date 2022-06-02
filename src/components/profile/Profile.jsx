@@ -10,6 +10,7 @@ import {
   BoxArrowLeft,
   List,
   BookmarkHeart,
+  Wallet2,
 } from "react-bootstrap-icons";
 import { Link, Outlet } from "react-router-dom";
 import useStore from "../../context/useStore";
@@ -71,6 +72,7 @@ const Profile = () => {
       path: "/my-profile/notifications",
     },
     { name: "Settings", icon: <Gear />, path: "/my-profile/settings" },
+    { name: "My Refunds", icon: <Wallet2 />, path: "/my-profile/my-refunds" },
   ];
   {
     /*added conditional here - cjreads665*/

@@ -5,7 +5,7 @@ import MyWishlist from "./MyWishlist";
 import Assignments from "./Assignments";
 import Notifications from "./Notifications";
 import Settings from "./Settings";
-
+import MyRefunds from "./MyRefunds";
 export {
   Profile,
   Dashboard,
@@ -14,4 +14,5 @@ export {
   Assignments,
   Notifications,
   Settings,
+  myRefunds
 };
