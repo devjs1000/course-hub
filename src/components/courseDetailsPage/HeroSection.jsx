@@ -47,6 +47,7 @@ function HeroSection({ course, id, isEnrolled }) {
     },
   });
 
+  console.log(data);
   useEffect(() => {
     // if (token) {
     //   setSubcribed(true);
@@ -153,7 +154,7 @@ function HeroSection({ course, id, isEnrolled }) {
               {courseInWishlist && <HeartFill className="text-red-600" />}
             </div>
           </div>
-          <RefundBtn/>
+          <RefundBtn course={course} />
         </div>
         <div className='mb-4'>
         <div className=' w-[100%] h-full relative'>

@@ -65,24 +65,6 @@ const Chapters = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // submitProject({
-    //   headers: {
-    //     Authorization: token,
-    //   },
-    //   variables: {
-    //     chapterId: modalData.chapterId,
-    //     courseId: id,
-    //     projectLink: fileData,
-    //   },
-    // }).then((res)=>{
-    //   console.log("res",res);
-    //   toast.success("Project submited succesfully ! ");
-    //   refetch();
-    // }).catch((err)=>{
-    //   console.log("err",err);
-    //   toast.error("Project submition failed ! ")
-    // });
-
     toast.promise(
       submitProject({
         headers: {

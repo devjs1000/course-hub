@@ -1,9 +1,22 @@
 import { Button, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Modal from "react-modal";
+import useStore from "../../context/useStore";
+import { createRefundRequest } from "../../graphql/Mutations";
+import { useMutation } from "@apollo/client";
+import toast from "react-hot-toast";
 
-const RefundBtn = () => {
+const RefundBtn = ({course}) => {
   let [isOpen, setIsOpen] = useState(false);
+  let {user} = useStore()
+  let [createRefundRequest2] = useMutation(createRefundRequest,{
+      context:{
+        headers: {
+            Authorization: localStorage.getItem("accessToken"),
+          },
+      }
+  })
+  console.log(localStorage.getItem("accessToken"));
   const customStyles = {
     content: {
       top: "50%",
@@ -18,7 +31,23 @@ const RefundBtn = () => {
   };
   let handleSubmit = (e)=>{
     e.preventDefault()
-    alert('submitted')
+    toast.promise(
+        createRefundRequest2({
+          headers: {
+            Authorization: localStorage.getItem("accessToken"),
+          },
+          variables: {
+            "requestedUserId": user.id,
+            "courseId": course.id,
+            "amount": course.price
+          },
+        }),
+         {
+           loading: 'Saving...',
+           success: <b>Refund Request Created!</b>,
+           error: <b>Unable to process your request.</b>,
+         }
+       );
   }
   return (
     <div>
