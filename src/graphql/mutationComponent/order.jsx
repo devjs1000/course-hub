@@ -18,3 +18,20 @@ export const createOrder = `
     }
   }
 `;
+
+export const createRefundRequest = gql`
+mutation CreateRefundRequest($requestedUserId: ID!, $courseId: ID!, $amount: Int!) {
+  createRefundRequest(requestedUserId: $requestedUserId, courseId: $courseId, amount: $amount) {
+    id
+    requestedUserId
+    courseId
+    approverUserId
+    amount
+    requestedDate
+    approvedDate
+    razorpay_payment_id
+    razorpay_signature
+    status
+  }
+}
+`

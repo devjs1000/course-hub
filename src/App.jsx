@@ -25,6 +25,7 @@ import {
   Assignments,
   Notifications,
   Settings,
+  myRefunds
 } from "./components/profile";
 
 import {
@@ -95,6 +96,7 @@ function App() {
                 }
               >
                 <Route path="/my-profile/dashboard" element={<Dashboard />} />
+                <Route path="/my-profile/my-refunds" element={<MyRefunds />} />
                 <Route path="/my-profile/courses" element={<MyCourses />} />
                 <Route path="/my-profile/wishlist" element={<MyWishlist />} />
                 <Route
