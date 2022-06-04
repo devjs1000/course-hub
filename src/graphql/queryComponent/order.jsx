@@ -48,3 +48,20 @@ export const getMyCourses = gql`
     }
   }
 `;
+
+export const getMyRefunds = gql`
+query MyRefunds {
+  myRefunds {
+    id
+    requestedUserId
+    courseId
+    approverUserId
+    amount
+    requestedDate
+    approvedDate
+    razorpay_payment_id
+    razorpay_signature
+    status
+  }
+}
+`

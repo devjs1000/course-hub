@@ -25,9 +25,8 @@ import {
   Assignments,
   Notifications,
   Settings,
-  myRefunds
 } from "./components/profile";
-
+import MyRefunds from "./components/profile/MyRefunds";
 import {
   StudentInfo,
   TeacherInfo,
